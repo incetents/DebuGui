@@ -2,11 +2,6 @@
 -- Module
 local DebuGui = {}
 
--- Helper Functions
-local function QuickTypeAssert(Object, Type)
-    assert(typeof(Object) == Type, "Invalid Type, expected "..Type.." type, got ("..typeof(Object)..")")
-end
-
 -- Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -22,15 +17,17 @@ end
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild('PlayerGui')
 local SCREENGUI = ReplicatedStorage.DebuGui_UI
+local GuiCore = require(script.GuiCore)
+local Utility = require(script.Utility)
 
 -- Global Data
 local ScreenGuis = {}
 
 --
-function DebuGui.new(GuiName)
+function DebuGui.new(GuiName, PosX, PosY, Width, Height)
 
     -- Assert
-    QuickTypeAssert(GuiName, 'string')
+    Utility.QuickTypeAssert(GuiName, 'string')
 
     -- Double Check
     if ScreenGuis[GuiName] then
@@ -38,9 +35,16 @@ function DebuGui.new(GuiName)
         return
     end
 
+    -- Create New Gui Logic
+    local ScreenGui = SCREENGUI:Clone()
+    ScreenGui.Parent = PlayerGui
+    local NewGui = GuiCore.new(ScreenGui, PosX, PosY, Width, Height)
+
+    -- Store
+    ScreenGuis[GuiName] = NewGui
+
     --
-    local NewGui = SCREENGUI:Clone()
-    NewGui.Parent = PlayerGui
+    return NewGui
 
 end
 --

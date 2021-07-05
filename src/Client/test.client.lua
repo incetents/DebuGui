@@ -25,6 +25,9 @@ local Gui1 = DebuGui.new('Core', {
     Height = 500,
 })
 
+-- FOLDERS
+local Folder1 = Gui1.AddFolder('Folder1')
+
 -- BOOLEANS --
 Gui1.AddBool('bool1', true).SetName('fancy bool')
 Gui1.AddBool('bool2', false).SetNameColor(Color3.new(1,0,0))

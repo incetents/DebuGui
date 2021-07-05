@@ -18,6 +18,7 @@ local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
 local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
 local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
+local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
 
 -- Modules
 local Dragger = require(script.Parent.Dragger)
@@ -27,6 +28,7 @@ local GizmoNumber = require(script.GizmoNumber)
 local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
 local GizmoSeparator = require(script.GizmoSeparator)
+local GizmoFolder = require(script.GizmoFolder)
 
 -- Global Functions
 local function UpdateLayout(GizmosArray)
@@ -261,6 +263,11 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	function API.AddSeparator(UniqueName, Color, Text, Height)
 		-- Return API to User
 		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, Color, Text, Height)
+	end
+	--
+	function API.AddFolder(UniqueName)
+		-- Return API to User
+		return AddGizmo(GizmoUI_Separator, GizmoUI_Folder, UniqueName)
 	end
 
 	--

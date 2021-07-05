@@ -1,6 +1,6 @@
 
 -- Modules
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Base
 local GizmoBase = require(script.Parent.GizmoBase)
@@ -12,12 +12,14 @@ local GizmoInteger = {}
 function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 
 	-- Defaults
-	DefaultValue = DefaultValue or '0'
-	ClearTextOnFocus = ClearTextOnFocus or false
+	DefaultValue = tonumber(DefaultValue) or 0
+	if ClearTextOnFocus == nil then
+		ClearTextOnFocus = false
+	end
 
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
-	Utility.QuickTypeAssert(DefaultValue, 'string')
+	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
 
 	-- Init Values

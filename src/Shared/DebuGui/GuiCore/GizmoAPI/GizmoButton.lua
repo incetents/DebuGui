@@ -3,7 +3,7 @@
 local TextService = game:GetService("TextService")
 
 -- Modules
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Base
 local GizmoBase = require(script.Parent.GizmoBase)

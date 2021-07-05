@@ -1,6 +1,6 @@
 
 -- Modules
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Base
 local GizmoBase = require(script.Parent.GizmoBase)
@@ -13,7 +13,9 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 
     -- Defaults
     DefaultValue = DefaultValue or ''
-    ClearTextOnFocus = ClearTextOnFocus or false
+    if ClearTextOnFocus == nil then
+		ClearTextOnFocus = false
+	end
 
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')

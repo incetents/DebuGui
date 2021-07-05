@@ -1,6 +1,6 @@
 
 -- Modules
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Constants
 local VERTICAL_PADDING = 6

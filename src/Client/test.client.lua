@@ -25,9 +25,6 @@ local Gui1 = DebuGui.new('Core', {
     Height = 500,
 })
 
--- FOLDERS
-local Folder1 = Gui1.AddFolder('Folder1')
-
 -- BOOLEANS --
 Gui1.AddBool('bool1', true).SetName('fancy bool')
 Gui1.AddBool('bool2', false).SetNameColor(Color3.new(1,0,0))
@@ -59,29 +56,63 @@ Gui1.AddButton('button4').SetName('Toggle Locked Button').Listen(function()
 	end
 end)
 
+-- FOLDERS
+local Folder1 = Gui1.AddFolder('Folder1', true)
+	.SetName('My Cool Folder')
+	.SetNameColor(Color3.fromRGB(0, 0, 0))
+	.SetColor(Color3.fromRGB(82, 79, 235))
+
+Folder1.AddBool('bool1', true)
+Folder1.AddButton('button1')
+
+local SubFolder1 = Folder1.AddFolder('SubFolder1', true)
+	.SetColor(Color3.fromRGB(139, 108, 41))
+SubFolder1.AddBool('bool1', false)
+SubFolder1.AddInteger('int', 12)
+SubFolder1.AddNumber('num1', 24)
+
+local SubSubFolder1 = SubFolder1.AddFolder('SubSubFolder1', true)
+	.SetNameColor(Color3.fromRGB(0, 0, 0))
+	.SetColor(Color3.fromRGB(82, 79, 235))
+SubSubFolder1.AddBool('bool1', false)
+SubSubFolder1.AddInteger('int', 12)
+SubSubFolder1.AddNumber('num1', 24)
+
+Folder1.AddInteger('int1', 99)
+Folder1.AddNumber('num1', 99.99)
+Folder1.AddSeparator('separator1')
+Folder1.AddString('string1', 'Cool Beans')
+SubSubFolder1.AddString('test1', 'xxx')
+SubFolder1.AddString('test1', 'xxx')
+
+local DeepFolder1 = SubSubFolder1.AddFolder('DeepFolder1', false)
+local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
+local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
+DeepFolder3.AddFolder('DeepFolder4', false)
+
 -- INTEGER
-Gui1.AddInteger('int1', '1').SetName('fancy integer')
-Gui1.AddInteger('int2', '-1').SetNameColor(Color3.fromRGB(255, 148, 148))
+Gui1.AddInteger('int1', 1).SetName('fancy integer')
+Gui1.AddInteger('int2', -1).SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddInteger('int3', '_9_#$%#$&*')
 Gui1.AddInteger('int4')
-Gui1.AddInteger('int5', '6.6').Listen(function(NewValue)
+Gui1.AddInteger('int5', 6.6).Listen(function(NewValue)
     print("NEW int5: "..NewValue)
 end).SetValueColor(Color3.fromRGB(39, 87, 59))
-Gui1.AddInteger('int6', '1').Set('2').SetValueTextColor(Color3.fromRGB(62, 197, 118))
-Gui1.AddInteger('int7', '1').Set('a')
-Gui1.AddInteger('int8', 'a').Set('1').SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
+Gui1.AddInteger('int7', 1).Set('a')
+Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
 -- NUMBER
-Gui1.AddNumber('num1', '1').SetName('fancy number')
-Gui1.AddNumber('num2', '-1').SetNameColor(Color3.fromRGB(148, 255, 175))
+Gui1.AddNumber('num1', 1).SetName('fancy number')
+Gui1.AddNumber('num2', -1).SetNameColor(Color3.fromRGB(148, 255, 175))
 Gui1.AddNumber('num3', '9__#$%#$&*')
 Gui1.AddNumber('num4')
-Gui1.AddNumber('num5', '6.6').Listen(function(NewValue)
+Gui1.AddNumber('num5', 6.6).Listen(function(NewValue)
     print("NEW num: "..NewValue)
 end).SetValueColor(Color3.fromRGB(87, 86, 39))
-Gui1.AddNumber('num6', '1').Set('2').SetValueTextColor(Color3.fromRGB(197, 62, 175))
-Gui1.AddNumber('num7', '1').Set('a').ReadOnly()
-Gui1.AddNumber('num8', 'a').Set('1').SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
+Gui1.AddNumber('num7', 1).Set('a').ReadOnly()
+Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
 -- Separator --
 Gui1.AddSeparator('seperator1')
@@ -101,8 +132,5 @@ Gui1.AddString('string5', 'default').Listen(function(NewValue)
     print("NEW STRING5: "..NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
-
-
-
 
 

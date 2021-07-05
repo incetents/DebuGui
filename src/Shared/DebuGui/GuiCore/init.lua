@@ -13,33 +13,9 @@ local TITLEBAR_WIDTH_PADDING_TOTAL = 8
 -- Layout References
 local VerticalLayout = ReplicatedStorage.VerticalLayout 
 
--- Gizmo UI References
-local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
-local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
-local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
-local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
-local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
-
 -- Modules
 local Dragger = require(script.Parent.Dragger)
-local GizmoString = require(script.GizmoString)
-local GizmoInteger = require(script.GizmoInteger)
-local GizmoNumber = require(script.GizmoNumber)
-local GizmoBool = require(script.GizmoBool)
-local GizmoButton = require(script.GizmoButton)
-local GizmoSeparator = require(script.GizmoSeparator)
-local GizmoFolder = require(script.GizmoFolder)
-
--- Global Functions
-local function UpdateLayout(GizmosArray)
-	for i, GizmoData in ipairs(GizmosArray) do
-		if i % 2 == 0 then
-			GizmoData.Gui.BackgroundColor3 = Color3.new(1, 1, 1)
-		else
-			GizmoData.Gui.BackgroundColor3 = Color3.new(0, 0, 0)
-		end
-	end
-end
+local GizmoAPI = require(script.GizmoAPI)
 
 -- Module
 local GuiCore = {}
@@ -60,12 +36,13 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local Master = ScreenGui.Master
 
 	-- Data
-	local GizmosTable = {}
-	local GizmosArray = {}
+	-- local GizmosTable = {}
+	-- local GizmosArray = {}
 	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
 	local PosBeforeMinimized = nil
+	local SizeBeforeHidden = nil
 	local TitleSize = TextService:GetTextSize(InitData.Title, Master.TopBar.Title.TextSize, Master.TopBar.Title.Font, Master.TopBar.Title.AbsoluteSize)
 
 	-- DEBUG SETUP
@@ -96,6 +73,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 
 	end
 	local function ToggleMinimize()
+
 		-- Pre Data
 		if not IsMinimized then
 			PosBeforeMinimized = Master.AbsolutePosition
@@ -126,6 +104,11 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	end
 	local function ToggleVisibility()
 
+		-- Pre Data
+		if IsVisible then
+			SizeBeforeHidden = Master.AbsoluteSize
+		end
+
 		-- Data
 		IsVisible = not IsVisible
 
@@ -134,6 +117,13 @@ function GuiCore.new(ScreenGuiRef, InitData)
 			Master.TopBar.DropDownBtn.Text = 'v'
 		else
 			Master.TopBar.DropDownBtn.Text = '>'
+		end
+
+		-- Pos/Size
+		if IsVisible then
+			Master.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
+		else
+			Master.Size = UDim2.new(0, Master.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
 		end
 
 		-- Visibility
@@ -146,13 +136,13 @@ function GuiCore.new(ScreenGuiRef, InitData)
 
 	-- Drag Position of Master
 	local MasterPos;
-	local MasterDragger = Dragger.new(Master.TopBar.Title)
-	MasterDragger.OnDragStart(function()
+	local TitleDragger = Dragger.new(Master.TopBar.Title)
+	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
-	MasterDragger.OnDrag(function(Delta)
+	TitleDragger.OnDrag(function(Delta)
 		if not IsMinimized then
 			Master.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
 		end
@@ -160,12 +150,12 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	-- Drag Center of Core
 	local CoreDragger = Dragger.new(Master.DragCore)
 	CoreDragger.OnDragStart(function()
-		if not IsMinimized then
+		if IsVisible and not IsMinimized then
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
 	CoreDragger.OnDrag(function(Delta)
-		if not IsMinimized then
+		if IsVisible and not IsMinimized then
 			Master.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
 		end
 	end)
@@ -174,12 +164,12 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local MasterSize;
 	local ResizeDragger = Dragger.new(Master.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
-		if not IsMinimized then
+		if IsVisible and not IsMinimized then
 			MasterSize = Master.AbsoluteSize
 		end
 	end)
 	ResizeDragger.OnDrag(function(Delta)
-		if not IsMinimized then
+		if IsVisible and not IsMinimized then
 			local NewWidth = math.max(MasterSize.X + Delta.X, MIN_GUI_WIDTH)
 			local NewHeight = math.max(MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
 			Master.Size = UDim2.fromOffset(NewWidth, NewHeight)
@@ -196,82 +186,11 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	-- Toggle Minimize Mode
 	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(ToggleMinimize)
 
-	------------
-	-- Gizmos --
-	------------
+	-----------------
+	-- Core Gizmos --
+	-----------------
+	return GizmoAPI.new(Master.Core)
 
-	local function AddGizmo(GIZMO_UI, GIZMO_CLASS, UniqueName, ...)
-
-		-- Doop Check
-		if GizmosTable[UniqueName] then
-			warn('Gizmo already exists ('..UniqueName..')')
-			return
-		end
-
-		-- New UI
-		local GizmoUI = GIZMO_UI:Clone()
-		GizmoUI.Parent = Master.Core
-		GizmoUI.Name = UniqueName
-
-		-- System
-		local GizmoSystem = GIZMO_CLASS.new(GizmoUI, UniqueName, ...)
-
-		-- API Defaults
-		GizmoSystem.Name = UniqueName
-		GizmoSystem.Gui = GizmoUI
-
-		-- Store
-		GizmosTable[UniqueName] = GizmoSystem
-		table.insert(GizmosArray, GizmoSystem)
-
-		-- Update UI
-		UpdateLayout(GizmosArray)
-
-		-- Return API
-		return GizmoSystem
-	end
-
-	-- Exposing API
-	local API = {}
-
-	--
-	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
-		-- Return API to User
-		return AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
-	end
-	--
-	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
-		-- Return API to User
-		return AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, DefaultValue, ClearTextOnFocus)
-	end
-	--
-	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus)
-		-- Return API to User
-		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus)
-	end
-	--
-	function API.AddBool(UniqueName, DefaultValue)
-		-- Return API to User
-		return AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, DefaultValue)
-	end
-	--
-	function API.AddButton(UniqueName)
-		-- Return API to User
-		return AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
-	end
-	--
-	function API.AddSeparator(UniqueName, Color, Text, Height)
-		-- Return API to User
-		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, Color, Text, Height)
-	end
-	--
-	function API.AddFolder(UniqueName)
-		-- Return API to User
-		return AddGizmo(GizmoUI_Separator, GizmoUI_Folder, UniqueName)
-	end
-
-	--
-	return API
 end
 
 --

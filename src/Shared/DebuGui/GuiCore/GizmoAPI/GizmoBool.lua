@@ -1,6 +1,6 @@
 
 -- Modules
-local Utility = require(script.Parent.Parent.Utility)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Base
 local GizmoBase = require(script.Parent.GizmoBase)
@@ -15,7 +15,9 @@ local GizmoBool = {}
 function GizmoBool.new(Gui, Name, DefaultValue)
 
     -- Defaults
-    DefaultValue = DefaultValue or false
+    if DefaultValue == nil then
+		DefaultValue = false
+	end
 
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')

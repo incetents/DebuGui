@@ -2,6 +2,9 @@
 -- Modules
 local Utility = require(script.Parent.Parent.Utility)
 
+-- Base
+local GizmoBase = require(script.Parent.GizmoBase)
+
 -- Module
 local GizmoString = {}
 
@@ -19,26 +22,75 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     
     -- Init Values
     Gui.TextName.Text = Name
-    Gui.TextButton.TextBox.Text = DefaultValue
-    Gui.TextButton.TextBox.ClearTextOnFocus = ClearTextOnFocus
+    Gui.TextBox.Text = DefaultValue
+    Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
-    -- Data
-    local Listener = nil
-
-    -- Update Values
-    Gui.TextButton.TextBox.FocusLost:Connect(function(enterPressed)
-        if Listener then
-            Listener(Gui.TextButton.TextBox.Text)
-        end
-    end)
+	-- Data
+	local IsReadOnly = false
 
     -- API
-    local API = {}
+    local API = GizmoBase.new()
 
     -- Functionality
-    function API.Listen(func)
-        Listener = func
+    function API.Validate(Input)
+        local Str = tostring(Input)
+        if Str then
+            Gui.TextBox.Text = Str
+            API.LastInput = Str
+            return true, Str
+        else
+            Gui.TextBox.Text = API.LastInput
+            return false
+        end
     end
+	function API.SetName(NewName)
+		Gui.TextName.Text = NewName
+		return API
+	end
+	function API.SetNameColor(NewNameColor)
+		Gui.TextName.TextColor3 = NewNameColor
+		return API
+	end
+	function API.SetValueColor(NewColor)
+		Gui.TextBox.BackgroundColor3 = NewColor
+		return API
+	end
+	function API.SetValueTextColor(NewColor)
+		Gui.TextBox.TextColor3 = NewColor
+		return API
+	end
+	function API.IsReadOnly()
+		return IsReadOnly
+	end
+	function API.ReadOnly(State)
+		-- Set
+		if State == nil then
+			IsReadOnly = true
+		else
+			IsReadOnly = State
+		end
+		-- Apply
+		if IsReadOnly then
+			Gui.TextBox.TextEditable = false
+			Gui.TextBox.TextTransparency = 0.5
+		else
+			Gui.TextBox.TextEditable = true
+			Gui.TextBox.TextTransparency = 0.0
+		end
+		return API
+	end
+
+    -- Update Values
+    Gui.TextBox.FocusLost:Connect(function(enterPressed)
+
+        local Success, Result = API.Validate(Gui.TextBox.Text)
+        if Success then
+            if API.Listener then
+                API.Listener(Result)
+            end
+        end
+
+    end)
 
     -- End
     return API

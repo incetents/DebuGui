@@ -9,8 +9,8 @@ local Players = game:GetService("Players")
 
 -- Ignore self if Server
 if RunService:IsServer() then
-    error("DebuGui can only be used on the Client")
-    return {}
+	error("DebuGui can only be used on the Client")
+	return {}
 end
 
 -- References
@@ -24,27 +24,27 @@ local Utility = require(script.Utility)
 local ScreenGuis = {}
 
 --
-function DebuGui.new(GuiName, PosX, PosY, Width, Height)
+function DebuGui.new(GuiName, InitData)
 
-    -- Assert
-    Utility.QuickTypeAssert(GuiName, 'string')
+	-- Assert
+	Utility.QuickTypeAssert(GuiName, 'string')
 
-    -- Double Check
-    if ScreenGuis[GuiName] then
-        warn('Gui already exists with the name ('..GuiName..')')
-        return
-    end
+	-- Double Check
+	if ScreenGuis[GuiName] then
+		warn('Gui already exists with the name ('..GuiName..')')
+		return
+	end
 
-    -- Create New Gui Logic
-    local ScreenGui = SCREENGUI:Clone()
-    ScreenGui.Parent = PlayerGui
-    local NewGui = GuiCore.new(ScreenGui, PosX, PosY, Width, Height)
+	-- Create New Gui Logic
+	local ScreenGui = SCREENGUI:Clone()
+	ScreenGui.Parent = PlayerGui
+	local NewGui = GuiCore.new(ScreenGui, InitData)
 
-    -- Store
-    ScreenGuis[GuiName] = NewGui
+	-- Store
+	ScreenGuis[GuiName] = NewGui
 
-    --
-    return NewGui
+	--
+	return NewGui
 
 end
 --

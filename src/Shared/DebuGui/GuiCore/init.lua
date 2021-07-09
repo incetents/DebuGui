@@ -16,11 +16,12 @@ local VerticalLayout = ReplicatedStorage.VerticalLayout
 -- Modules
 local Dragger = require(script.Parent.Dragger)
 local GizmoAPI = require(script.GizmoAPI)
+local Utility = require(script.Parent.Utility)
 
 -- Module
 local GuiCore = {}
 
-function GuiCore.new(ScreenGuiRef, InitData)
+function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Defaults
 	InitData.X = InitData.X or 100
@@ -28,7 +29,6 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	InitData.Width = InitData.Width or 300
 	InitData.Height = InitData.Height or 300
 	InitData.Title = InitData.Title or ""
-	InitData.ThemeColor = InitData.ThemeColor or Color3.fromRGB(64, 103, 157)
 
 	-- Ref
 	local ScreenGui = ScreenGuiRef
@@ -36,8 +36,6 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local Master = ScreenGui.Master
 
 	-- Data
-	-- local GizmosTable = {}
-	-- local GizmosArray = {}
 	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
@@ -52,7 +50,6 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	Master.Position = UDim2.fromOffset(InitData.X, InitData.Y)
 	Master.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
 	Master.TopBar.Title.Text = InitData.Title
-	Master.TopBar.BackgroundColor3 = InitData.ThemeColor
 	VerticalLayout:Clone().Parent = Master.Core
 
 	---------------
@@ -72,7 +69,11 @@ function GuiCore.new(ScreenGuiRef, InitData)
 		end
 
 	end
-	local function ToggleMinimize()
+
+	local function SetMinimized(State)
+
+		-- Abort if no change
+		if State == IsMinimized then return end
 
 		-- Pre Data
 		if not IsMinimized then
@@ -101,9 +102,23 @@ function GuiCore.new(ScreenGuiRef, InitData)
 
 		-- Visibility
 		UpdateVisibility()
-	end
-	local function ToggleVisibility()
 
+		-- Let Parent organize their positions
+		if IsMinimized then
+			DebuGui._AddMinimzed(ScreenGui)
+		else
+			DebuGui._RemoveMinimized(ScreenGui)
+		end
+	end
+	local function ToggleMinimized()
+		SetMinimized(not IsMinimized)
+	end
+
+	local function SetVisible(State)
+
+		-- Abort if no change
+		if State == IsVisible then return end
+		
 		-- Pre Data
 		if IsVisible then
 			SizeBeforeHidden = Master.AbsoluteSize
@@ -129,6 +144,10 @@ function GuiCore.new(ScreenGuiRef, InitData)
 		-- Visibility
 		UpdateVisibility()
 	end
+	local function ToggleVisibility()
+		SetVisible(not IsVisible)
+	end
+
 
 	--------------
 	-- Dragging --
@@ -139,6 +158,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local TitleDragger = Dragger.new(Master.TopBar.Title)
 	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
+			DebuGui._BringGuiForward(ScreenGui)
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
@@ -151,6 +171,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local CoreDragger = Dragger.new(Master.DragCore)
 	CoreDragger.OnDragStart(function()
 		if IsVisible and not IsMinimized then
+			DebuGui._BringGuiForward(ScreenGui)
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
@@ -164,6 +185,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local MasterSize;
 	local ResizeDragger = Dragger.new(Master.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
+		DebuGui._BringGuiForward(ScreenGui)
 		if IsVisible and not IsMinimized then
 			MasterSize = Master.AbsoluteSize
 		end
@@ -181,15 +203,82 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	-------------
 
 	-- Toggle Visibility
-	Master.TopBar.DropDownBtn.MouseButton1Down:Connect(ToggleVisibility)
+	Master.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
+		DebuGui._BringGuiForward(ScreenGui)
+		ToggleVisibility()
+	end)
 
 	-- Toggle Minimize Mode
-	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(ToggleMinimize)
+	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
+		DebuGui._BringGuiForward(ScreenGui)
+		ToggleMinimized()
+	end)
 
 	-----------------
 	-- Core Gizmos --
 	-----------------
-	return GizmoAPI.new(Master.Core)
+	local API = GizmoAPI.new(Master.Core)
+
+	-- Custom API
+	function API.Enable()
+		ScreenGui.Enabled = true
+	end
+	function API.Disable()
+		ScreenGui.Enabled = false
+	end
+
+	function API.Show()
+		SetVisible(true)
+		return API
+	end
+	function API.Hide()
+		SetVisible(false)
+		return API
+	end
+	function API.IsVisible()
+		return IsVisible
+	end
+	function API.ToggleVisibility()
+		ToggleVisibility()
+		return API
+	end
+
+	--
+	function API.Minimize()
+		SetMinimized(true)
+		return API
+	end
+	function API.Maximize()
+		SetMinimized(false)
+		return API
+	end
+	function API.IsMinimized()
+		return IsMinimized
+	end
+	function API.ToggleMinimized()
+		ToggleMinimized()
+		return API
+	end
+
+	--
+	function API.SetTopBarColor(NewColor)
+		Utility.QuickTypeAssert(NewColor, 'Color3')
+		Master.TopBar.BackgroundColor3 = NewColor
+		return API
+	end
+	function API.SetScrollbarWidth(Width)
+		Utility.QuickTypeAssert(Width, 'number')
+		Master.Core.ScrollBarThickness = Width
+		return API
+	end
+	function API.SetScrollbarColor(NewColor)
+		Utility.QuickTypeAssert(NewColor, 'Color3')
+		Master.Core.ScrollBarImageColor3 = NewColor
+		return API
+	end
+
+	--
+	return API
 
 end
 

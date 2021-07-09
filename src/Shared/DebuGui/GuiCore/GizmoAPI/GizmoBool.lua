@@ -33,9 +33,9 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     -- API
     local API = GizmoBase.new()
     
-
-    -- Functionality
+    -- Public API --
     function API.Validate(Input)
+		if API._DeadCheck() then return nil end
         local IsTrue = (Input == true)
         if IsTrue then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = DefaultColor
@@ -48,14 +48,17 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         return true, IsTrue
     end
     function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
         Gui.TextName.Text = NewName
         return API
     end
     function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
         Gui.TextName.TextColor3 = NewNameColor
         return API
     end
     function API.SetCheckboxColor(NewColor)
+		if API._DeadCheck() then return nil end
         if API.LastInput == true then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = NewColor
         end
@@ -63,9 +66,11 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         return API
     end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -84,7 +89,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 	end
 
     -- Update Values
-    Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
+    API._AddConnection(Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
 
 		if IsReadOnly then
 			return
@@ -97,7 +102,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
             end
         end
 
-    end)
+    end))
 
     -- Call Validate on Default Value
     API.Validate(DefaultValue)

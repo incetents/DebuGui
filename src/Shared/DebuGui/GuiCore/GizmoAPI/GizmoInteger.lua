@@ -33,8 +33,9 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- API
 	local API = GizmoBase.new()
 	
-	-- Functionality
+	-- Public API --
 	function API.Validate(Input)
+		if API._DeadCheck() then return nil end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			NumberInput = math.round(NumberInput)
@@ -47,25 +48,31 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		end
 	end
 	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
 	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 	function API.SetValueColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
 	function API.SetValueTextColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -84,7 +91,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
    -- Update Values
-   Gui.TextBox.FocusLost:Connect(function(enterPressed)
+   API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
 	   local Success, Result = API.Validate(Gui.TextBox.Text)
 	   if Success then
@@ -93,7 +100,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		   end
 	   end
 
-   end)
+   end))
 
    -- Call Validate on Default Value
    API.Validate(DefaultValue)

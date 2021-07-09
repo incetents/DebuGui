@@ -84,27 +84,29 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewGizmoAPI
 	end
 
-	-- Core API
-	function API.ListenForNewGizmos(func)
+	-- Private API
+	function API._ListenForNewGizmos(func)
 		Utility.QuickTypeAssert(func, 'function')
 		table.insert(ListenersForNewGizmo, func)
 	end
 	--
-	function API.UpdateAllGizmos()
+	function API._UpdateAllGizmos()
 		
 		-- Update self
 		for __, Gizmo in ipairs(API.GizmosArray) do
-			if Gizmo.Update then
-				Gizmo.Update()
+			if Gizmo._Update then
+				Gizmo._Update()
 			end
 		end
 		-- Update Parent
 		if ParentAPI then
-			ParentAPI.UpdateAllGizmos()
+			ParentAPI._UpdateAllGizmos()
 		end
 	
 	end
 	--
+
+	-- Public API
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
 		TriggerListeners()
@@ -145,6 +147,29 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API, IsOpen)
 		TriggerListeners()
 		return NewAPI
+	end
+	--
+	function API.Remove(UniqueName)
+		-- Sanity
+		if API.GizmosTable[UniqueName] == nil then
+			warn("Trying to remove Gizmo ("..UniqueName..") that does not exist")
+			return
+		end
+
+		-- Flag API as bad
+		API.GizmosTable[UniqueName]._Destroy()
+
+
+		-- Destroy Gui
+		API.GizmosTable[UniqueName].Gui:Destroy()
+		-- Remove References
+		API.GizmosTable[UniqueName] = nil
+		local Index = Utility.FindArrayIndexByValue(API.GizmosArray, UniqueName)
+		if Index then
+			table.remove(API.GizmosArray, Index)
+		end
+
+		TriggerListeners()
 	end
 
 	--

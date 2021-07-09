@@ -42,24 +42,29 @@ function GizmoButton.new(Gui, Name)
     -- API
     local API = GizmoBase.new()
 
-    -- Functionality
+	-- Public API --
     function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.Text = NewName
 		Gui.TextButton.Size = GetTextSize(Gui.TextButton)
 		return API
     end
     function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.TextColor3 = NewNameColor
 		return API
     end
     function API.SetColor(NewColor)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.BackgroundColor3 = NewColor
 		return API
     end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -78,7 +83,7 @@ function GizmoButton.new(Gui, Name)
 	end
 
     -- Update Values
-    Gui.TextButton.MouseButton1Down:Connect(function(enterPressed)
+    API._AddConnection(Gui.TextButton.MouseButton1Down:Connect(function(__) -- enterPressed
 
 		if IsReadOnly then
 			return
@@ -88,7 +93,7 @@ function GizmoButton.new(Gui, Name)
             API.Listener()
         end
 
-    end)
+    end))
 
     -- End
     return API

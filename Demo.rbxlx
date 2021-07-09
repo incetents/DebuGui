@@ -13,6 +13,7 @@
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
 			<float name="Gravity">196.199997</float>
+			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
 			<token name="InterpolationThrottling">0</token>
 			<token name="LevelOfDetail">0</token>
 			<token name="MeshPartHeadsAndAccessories">0</token>
@@ -620,15 +621,16 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
-			<Item class="LocalScript" referent="RBX7FC859441FA74B10B5967A65430AF014">
+			<Item class="LocalScript" referent="RBX2E58C660846941D48CEBB0AF75D7C5FB">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">test</string>
-					<string name="ScriptGuid">{57F154FA-5916-4D30-AC95-79B4D91DAF8B}</string>
+					<string name="Name">Example</string>
+					<string name="ScriptGuid">{5AA24728-A29F-407D-84BF-9BF3D8F51509}</string>
 					<ProtectedString name="Source"><![CDATA[
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
 
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -642,9 +644,7 @@ end
 
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
-
-
--- name, x, y, width, height
+-- Create New Window
 local Gui1 = DebuGui.new('Core', {
     Title = 'TEST NAME HERE 12312312',
     ThemeColor = Color3.fromRGB(103, 65, 161),
@@ -654,7 +654,30 @@ local Gui1 = DebuGui.new('Core', {
     Height = 500,
 })
 
--- BOOLEANS --
+UserInputService.InputBegan:Connect(function(input)
+	--
+	if input.KeyCode == Enum.KeyCode.One then
+		Gui1.Disable()
+	elseif input.KeyCode == Enum.KeyCode.Two then
+		Gui1.Enable()
+	elseif input.KeyCode == Enum.KeyCode.Three then
+		Gui1.Hide()
+	elseif input.KeyCode == Enum.KeyCode.Four then
+		Gui1.Show()
+	elseif input.KeyCode == Enum.KeyCode.Five then
+		Gui1.Minimize()
+	elseif input.KeyCode == Enum.KeyCode.Six then
+		Gui1.Maximize()
+	elseif input.KeyCode == Enum.KeyCode.Seven then
+		Gui1.ToggleVisibility()
+	elseif input.KeyCode == Enum.KeyCode.Eight then
+		Gui1.ToggleMinimized()
+	end
+	--
+end)
+	
+
+-- Booleans --
 Gui1.AddBool('bool1', true).SetName('fancy bool')
 Gui1.AddBool('bool2', false).SetNameColor(Color3.new(1,0,0))
 Gui1.AddBool('bool3').SetCheckboxColor(Color3.fromRGB(46, 106, 124))
@@ -685,8 +708,8 @@ Gui1.AddButton('button4').SetName('Toggle Locked Button').Listen(function()
 	end
 end)
 
--- FOLDERS
-local Folder1 = Gui1.AddFolder('Folder1', true)
+-- Folders --
+local Folder1 = Gui1.AddFolder('Folder1', false)
 	.SetName('My Cool Folder')
 	.SetNameColor(Color3.fromRGB(0, 0, 0))
 	.SetColor(Color3.fromRGB(82, 79, 235))
@@ -719,7 +742,22 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
--- INTEGER
+local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', false)
+SmallFrameFolder1
+	.SetColor(Color3.fromRGB(184, 163, 44))
+	.SetNameColor(Color3.new(0,0,0))
+	.SetFrameHeightLimit(48)
+	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
+
+SmallFrameFolder1.AddString('string1', 'text')
+SmallFrameFolder1.AddString('string2', 'text')
+SmallFrameFolder1.AddString('string3', 'text')
+SmallFrameFolder1.AddString('string4', 'text')
+SmallFrameFolder1.AddString('string5', 'text')
+SmallFrameFolder1.AddString('string6', 'text')
+SmallFrameFolder1.AddString('string7', 'text')
+
+-- Integers --
 Gui1.AddInteger('int1', 1).SetName('fancy integer')
 Gui1.AddInteger('int2', -1).SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddInteger('int3', '_9_#$%#$&*')
@@ -731,7 +769,7 @@ Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118)
 Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
--- NUMBER
+-- Numbers --
 Gui1.AddNumber('num1', 1).SetName('fancy number')
 Gui1.AddNumber('num2', -1).SetNameColor(Color3.fromRGB(148, 255, 175))
 Gui1.AddNumber('num3', '9__#$%#$&*')
@@ -743,16 +781,16 @@ Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumber('num7', 1).Set('a').ReadOnly()
 Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
--- Separator --
+-- Separators --
 Gui1.AddSeparator('seperator1')
 Gui1.AddSeparator('seperator2', Color3.fromRGB(223, 157, 35))
 Gui1.AddSeparator('seperator3', Color3.fromRGB(129, 175, 36), 'TEST TEST')
 Gui1.AddSeparator('seperator4', nil, '* SECTION TEST *', 42)
 Gui1.AddSeparator('seperator5').SetColor(Color3.fromRGB(173, 72, 72))
-Gui1.AddSeparator('seperator6').SetText('junkster')
+Gui1.AddSeparator('seperator6').SetName('junkster')
 Gui1.AddSeparator('seperator7').SetHeight(8)
 
--- STRINGS --
+-- Strings --
 Gui1.AddString('string1', '1').SetName('fancy string')
 Gui1.AddString('string2', 'aa').SetNameColor(Color3.fromRGB(255, 200, 148))
 Gui1.AddString('string3', '__#$%#$&*').SetValueColor(Color3.fromRGB(87, 86, 39))
@@ -762,8 +800,64 @@ Gui1.AddString('string5', 'default').Listen(function(NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
 
+---------------
+-- Other API --
+---------------
 
-]]></ProtectedString>
+Gui1.AddSeparator('OtherSeparator').SetName('* Misc *')
+
+-- removing invalid Gui --
+Gui1.Remove('Non-ExistantGuiName')
+
+-- removing valid Gui --
+Gui1.AddInteger('remove1', 1)
+Gui1.Remove('remove1')
+
+-- Attempting to access removed Guis --
+local rBool = Gui1.AddBool('removeBool', true)
+Gui1.Remove('removeBool')
+rBool.SetName('Invalid')
+
+local rButton = Gui1.AddButton('removeButton')
+Gui1.Remove('removeButton')
+rButton.SetName('Invalid')
+
+local rInteger = Gui1.AddInteger('removeInteger')
+Gui1.Remove('removeInteger')
+rInteger.SetName('Invalid')
+
+local rNumber = Gui1.AddNumber('removeNumber')
+Gui1.Remove('removeNumber')
+rNumber.SetName('Invalid')
+
+local rSeparator = Gui1.AddSeparator('removeSeparator')
+Gui1.Remove('removeSeparator')
+rSeparator.SetName('Invalid')
+
+local rString = Gui1.AddString('removeString')
+Gui1.Remove('removeString')
+rString.SetName('Invalid')
+
+----------------------
+-- Multiple Windows --
+----------------------
+local Extra1 = DebuGui.new('Extra1', {
+    Title = 'Extra1',
+    ThemeColor = Color3.fromRGB(65, 103, 161),
+    X = 100,
+    Y = 70,
+    Width = 400,
+    Height = 300,
+})
+
+local Extra2 = DebuGui.new('Extra2', {
+    Title = 'Extra2',
+    ThemeColor = Color3.fromRGB(65, 103, 161),
+    X = 50,
+    Y = 130,
+    Width = 400,
+    Height = 300,
+})]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
@@ -3043,8 +3137,13 @@ local SCREENGUI = ReplicatedStorage.DebuGui_UI
 local GuiCore = require(script.GuiCore)
 local Utility = require(script.Utility)
 
+-- Constants
+local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and increment further
+
 -- Global Data
 local ScreenGuis = {}
+local ScreenGuiCount = 0
+local MinimizeOrder = {} -- Array of Guis that are minimized
 
 --
 function DebuGui.new(GuiName, InitData)
@@ -3058,16 +3157,66 @@ function DebuGui.new(GuiName, InitData)
 		return
 	end
 
+	-- API
+	function DebuGui._BringGuiForward(ChosenGui)
+		-- All Guis in front of it go back 1 step
+		for __, Data in pairs(ScreenGuis) do
+			if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
+				Data.ScreenGui.DisplayOrder -= 1
+			end
+		end
+		-- Gui becomes largest display order
+		ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + ScreenGuiCount - 1
+	end
+	function DebuGui._AddMinimzed(ChosenGui)
+
+		-- Add Minimize Window to end of the list
+		local XOffset = 0
+		for __, Gui in ipairs(MinimizeOrder) do
+			XOffset += Gui.Master.AbsoluteSize.X
+		end
+		ChosenGui.Master.Position = UDim2.new(
+			0, ChosenGui.Master.Position.X.Offset + XOffset,
+			ChosenGui.Master.Position.Y.Scale, ChosenGui.Master.Position.Y.Offset
+		)
+
+		-- Store Window
+		table.insert(MinimizeOrder, ChosenGui)
+	end
+	function DebuGui._RemoveMinimized(ChosenGui)
+
+		-- Remove Window
+		local Index = Utility.FindArrayIndexByValue(MinimizeOrder, ChosenGui)
+		table.remove(MinimizeOrder, Index)
+
+		-- Reorder windows
+		local XOffset = 0
+		for __, Gui in ipairs(MinimizeOrder) do
+			Gui.Master.Position = UDim2.new(
+				0, XOffset,
+				Gui.Master.Position.Y.Scale, Gui.Master.Position.Y.Offset
+			)
+			XOffset += Gui.Master.AbsoluteSize.X
+		end
+
+	end
+
 	-- Create New Gui Logic
 	local ScreenGui = SCREENGUI:Clone()
 	ScreenGui.Parent = PlayerGui
-	local NewGui = GuiCore.new(ScreenGui, InitData)
+	ScreenGui.Name = GuiName
+	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + ScreenGuiCount
+	local API = GuiCore.new(DebuGui, ScreenGui, InitData)
 
 	-- Store
-	ScreenGuis[GuiName] = NewGui
+	ScreenGuis[GuiName] = {
+		ScreenGui = ScreenGui,
+		API = API
+	}
+	ScreenGuiCount += 1
 
 	--
-	return NewGui
+	return API
 
 end
 --
@@ -3182,6 +3331,16 @@ function Utility.QuickTypeAssert(Object, Type)
     assert(typeof(Object) == Type, "Invalid Type, expected "..Type.." type, got ("..typeof(Object)..")")
 end
 
+function Utility.FindArrayIndexByValue(array, value)
+	Utility.QuickTypeAssert(array, 'table')
+	for index, otherValue in ipairs(array) do
+		if otherValue == value then
+			return index
+		end 
+	end
+	return nil
+end
+
 return Utility]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -3215,7 +3374,7 @@ local GizmoAPI = require(script.GizmoAPI)
 -- Module
 local GuiCore = {}
 
-function GuiCore.new(ScreenGuiRef, InitData)
+function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Defaults
 	InitData.X = InitData.X or 100
@@ -3231,8 +3390,6 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local Master = ScreenGui.Master
 
 	-- Data
-	-- local GizmosTable = {}
-	-- local GizmosArray = {}
 	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
@@ -3267,7 +3424,11 @@ function GuiCore.new(ScreenGuiRef, InitData)
 		end
 
 	end
-	local function ToggleMinimize()
+
+	local function SetMinimized(State)
+
+		-- Abort if no change
+		if State == IsMinimized then return end
 
 		-- Pre Data
 		if not IsMinimized then
@@ -3296,9 +3457,23 @@ function GuiCore.new(ScreenGuiRef, InitData)
 
 		-- Visibility
 		UpdateVisibility()
-	end
-	local function ToggleVisibility()
 
+		-- Let Parent organize their positions
+		if IsMinimized then
+			DebuGui._AddMinimzed(ScreenGui)
+		else
+			DebuGui._RemoveMinimized(ScreenGui)
+		end
+	end
+	local function ToggleMinimized()
+		SetMinimized(not IsMinimized)
+	end
+
+	local function SetVisible(State)
+
+		-- Abort if no change
+		if State == IsVisible then return end
+		
 		-- Pre Data
 		if IsVisible then
 			SizeBeforeHidden = Master.AbsoluteSize
@@ -3324,6 +3499,10 @@ function GuiCore.new(ScreenGuiRef, InitData)
 		-- Visibility
 		UpdateVisibility()
 	end
+	local function ToggleVisibility()
+		SetVisible(not IsVisible)
+	end
+
 
 	--------------
 	-- Dragging --
@@ -3334,6 +3513,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local TitleDragger = Dragger.new(Master.TopBar.Title)
 	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
+			DebuGui._BringGuiForward(ScreenGui)
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
@@ -3346,6 +3526,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local CoreDragger = Dragger.new(Master.DragCore)
 	CoreDragger.OnDragStart(function()
 		if IsVisible and not IsMinimized then
+			DebuGui._BringGuiForward(ScreenGui)
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
@@ -3359,6 +3540,7 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	local MasterSize;
 	local ResizeDragger = Dragger.new(Master.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
+		DebuGui._BringGuiForward(ScreenGui)
 		if IsVisible and not IsMinimized then
 			MasterSize = Master.AbsoluteSize
 		end
@@ -3376,15 +3558,65 @@ function GuiCore.new(ScreenGuiRef, InitData)
 	-------------
 
 	-- Toggle Visibility
-	Master.TopBar.DropDownBtn.MouseButton1Down:Connect(ToggleVisibility)
+	Master.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
+		DebuGui._BringGuiForward(ScreenGui)
+		ToggleVisibility()
+	end)
 
 	-- Toggle Minimize Mode
-	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(ToggleMinimize)
+	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
+		DebuGui._BringGuiForward(ScreenGui)
+		ToggleMinimized()
+	end)
 
 	-----------------
 	-- Core Gizmos --
 	-----------------
-	return GizmoAPI.new(Master.Core)
+	local CoreGizmosAPI = GizmoAPI.new(Master.Core)
+
+	-- Custom API
+	function CoreGizmosAPI.Enable()
+		ScreenGui.Enabled = true
+	end
+	function CoreGizmosAPI.Disable()
+		ScreenGui.Enabled = false
+	end
+
+	function CoreGizmosAPI.Show()
+		SetVisible(true)
+		return CoreGizmosAPI
+	end
+	function CoreGizmosAPI.Hide()
+		SetVisible(false)
+		return CoreGizmosAPI
+	end
+	function CoreGizmosAPI.IsVisible()
+		return IsVisible
+	end
+	function CoreGizmosAPI.ToggleVisibility()
+		ToggleVisibility()
+		return CoreGizmosAPI
+	end
+
+	--
+	function CoreGizmosAPI.Minimize()
+		SetMinimized(true)
+		return CoreGizmosAPI
+	end
+	function CoreGizmosAPI.Maximize()
+		SetMinimized(false)
+		return CoreGizmosAPI
+	end
+	function CoreGizmosAPI.IsMinimized()
+		return IsMinimized
+	end
+	function CoreGizmosAPI.ToggleMinimized()
+		ToggleMinimized()
+		return CoreGizmosAPI
+	end
+
+	--
+	return CoreGizmosAPI
 
 end
 
@@ -3485,27 +3717,29 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewGizmoAPI
 	end
 
-	-- Core API
-	function API.ListenForNewGizmos(func)
+	-- Private API
+	function API._ListenForNewGizmos(func)
 		Utility.QuickTypeAssert(func, 'function')
 		table.insert(ListenersForNewGizmo, func)
 	end
 	--
-	function API.UpdateAllGizmos()
+	function API._UpdateAllGizmos()
 		
 		-- Update self
 		for __, Gizmo in ipairs(API.GizmosArray) do
-			if Gizmo.Update then
-				Gizmo.Update()
+			if Gizmo._Update then
+				Gizmo._Update()
 			end
 		end
 		-- Update Parent
 		if ParentAPI then
-			ParentAPI.UpdateAllGizmos()
+			ParentAPI._UpdateAllGizmos()
 		end
 	
 	end
 	--
+
+	-- Public API
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
 		TriggerListeners()
@@ -3547,6 +3781,29 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		TriggerListeners()
 		return NewAPI
 	end
+	--
+	function API.Remove(UniqueName)
+		-- Sanity
+		if API.GizmosTable[UniqueName] == nil then
+			warn("Trying to remove Gizmo ("..UniqueName..") that does not exist")
+			return
+		end
+
+		-- Flag API as bad
+		API.GizmosTable[UniqueName]._Destroy()
+
+
+		-- Destroy Gui
+		API.GizmosTable[UniqueName].Gui:Destroy()
+		-- Remove References
+		API.GizmosTable[UniqueName] = nil
+		local Index = Utility.FindArrayIndexByValue(API.GizmosArray, UniqueName)
+		if Index then
+			table.remove(API.GizmosArray, Index)
+		end
+
+		TriggerListeners()
+	end
 
 	--
 	return API
@@ -3571,22 +3828,44 @@ local GizmoBase = {}
 function GizmoBase.new()
     
     local API = {
+		IsDestroyed = false,
         Listener = nil,
         LastInput = '',
+		Connections = {},
     }
 
-    -- Functions
-    function API.Validate(Input)
+	-- Private API
+	function API._AddConnection(Connection)
+		table.insert(API.Connections, Connection)
+	end
+	function API._Destroy()
+		API.IsDestroyed = true
+		for __, Connection in ipairs(API.Connections) do
+			Connection:Disconnect()
+		end
+	end
+	function API._DeadCheck()
+		if API.IsDestroyed then
+			warn("Warning! Accessing Removed Gizmo ("..API.Name..")")
+			return true
+		end
+		return false
+	end
+
+    -- Public API
+    function API.Validate(__) -- Input
         warn('! Validate Function not implemented')
         return false
     end
     --
     function API.Listen(func)
+		if API._DeadCheck() then return nil end
         API.Listener = func
         return API
     end
     --
     function API.Set(newValue)
+		if API._DeadCheck() then return nil end
         API.Validate(newValue)
         return API
     end
@@ -3643,9 +3922,9 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     -- API
     local API = GizmoBase.new()
     
-
-    -- Functionality
+    -- Public API --
     function API.Validate(Input)
+		if API._DeadCheck() then return nil end
         local IsTrue = (Input == true)
         if IsTrue then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = DefaultColor
@@ -3658,14 +3937,17 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         return true, IsTrue
     end
     function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
         Gui.TextName.Text = NewName
         return API
     end
     function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
         Gui.TextName.TextColor3 = NewNameColor
         return API
     end
     function API.SetCheckboxColor(NewColor)
+		if API._DeadCheck() then return nil end
         if API.LastInput == true then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = NewColor
         end
@@ -3673,9 +3955,11 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         return API
     end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -3694,7 +3978,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 	end
 
     -- Update Values
-    Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
+    API._AddConnection(Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
 
 		if IsReadOnly then
 			return
@@ -3707,7 +3991,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
             end
         end
 
-    end)
+    end))
 
     -- Call Validate on Default Value
     API.Validate(DefaultValue)
@@ -3772,24 +4056,29 @@ function GizmoButton.new(Gui, Name)
     -- API
     local API = GizmoBase.new()
 
-    -- Functionality
+	-- Public API --
     function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.Text = NewName
 		Gui.TextButton.Size = GetTextSize(Gui.TextButton)
 		return API
     end
     function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.TextColor3 = NewNameColor
 		return API
     end
     function API.SetColor(NewColor)
+		if API._DeadCheck() then return nil end
         Gui.TextButton.BackgroundColor3 = NewColor
 		return API
     end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -3808,7 +4097,7 @@ function GizmoButton.new(Gui, Name)
 	end
 
     -- Update Values
-    Gui.TextButton.MouseButton1Down:Connect(function(enterPressed)
+    API._AddConnection(Gui.TextButton.MouseButton1Down:Connect(function(__) -- enterPressed
 
 		if IsReadOnly then
 			return
@@ -3818,7 +4107,7 @@ function GizmoButton.new(Gui, Name)
             API.Listener()
         end
 
-    end)
+    end))
 
     -- End
     return API
@@ -3843,15 +4132,16 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 -- Module
 local GizmoFolder = {}
 
-local function UpdateVisual(API, Gui, State)
+local function UpdateVisual(API, Gui, State, FrameHeightLimit)
 	if State then
 		Gui.ScrollingFrame.Visible = true
-		local Height = 0
+		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API.GizmosArray) do
-			Height += Gizmo.Gui.AbsoluteSize.Y
+			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
-		Gui.Size = UDim2.new(1, 0, 0, Height + 24)
-		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, Height)
+		local FrameHeight = FrameHeightLimit or CanvasHeight
+		Gui.Size = UDim2.new(1, 0, 0, FrameHeight + 24)
+		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
 		Gui.DropDownBtn.Text = 'v'
 	else
 		Gui.ScrollingFrame.Visible = false
@@ -3879,46 +4169,69 @@ function GizmoFolder.new(Gui, Name, ParentAPI, IsOpenRef)
 	local IsOpen = IsOpenRef
 	local GizmoAPI = require(script.Parent)
 	local API = GizmoAPI.new(Gui.ScrollingFrame, ParentAPI)
+	local FrameHeightLimit = nil;
 
 	-- Button Press
 	Gui.DropDownBtn.MouseButton1Down:Connect(function()
 		IsOpen = not IsOpen
-		ParentAPI.UpdateAllGizmos()
+		ParentAPI._UpdateAllGizmos()
 	end)
 
 	-- Update
-	UpdateVisual(API, Gui, IsOpen)
+	UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
 
-	-- Listen
-	API.ListenForNewGizmos(function()
+	-- Private API
+	API._ListenForNewGizmos(function()
 		-- Update Children first
 		for __, Gizmo in ipairs(API.GizmosArray) do
 			if Gizmo.Update then
-				Gizmo.Update()
+				Gizmo._Update()
 			end
 		end
 		-- Update self afterwards
 		UpdateVisual(API, Gui, IsOpen)
 		-- Update Parent
-		ParentAPI.UpdateAllGizmos()
+		ParentAPI._UpdateAllGizmos()
 	end)
-
-	-- Functionality
-	function API.Update()
-		UpdateVisual(API, Gui, IsOpen)
+	function API._Update()
+		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
 	end
+
+	-- Public API
 	function API.SetName(NewName)
+		Utility.QuickTypeAssert(NewName, 'string')
 		Gui.TextName.Text = NewName
 		return API
 	end
 	function API.SetNameColor(NewNameColor)
+		Utility.QuickTypeAssert(NewNameColor, 'Color3')
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 	function API.SetColor(NewColor)
+		Utility.QuickTypeAssert(NewColor, 'Color3')
 		Gui.Line.BackgroundColor3 = NewColor
 		Gui.SideLine.BackgroundColor3 = NewColor
 		return API
+	end
+	function API.SetScrollbarColor(NewColor)
+		Utility.QuickTypeAssert(NewColor, 'Color3')
+		Gui.ScrollingFrame.ScrollBarImageColor3 = NewColor
+		return API
+	end
+	function API.SetFrameHeightLimit(Amount)
+		Utility.QuickTypeAssert(Amount, 'number')
+		FrameHeightLimit = Amount
+		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+		return API
+	end
+	function API.RemoveFrameHeightLimit()
+		FrameHeightLimit = nil;
+		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+		return API
+	end
+	function API.GetFrameHeightLimit()
+		return FrameHeightLimit
 	end
 
 	-- Return API
@@ -3973,8 +4286,9 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- API
 	local API = GizmoBase.new()
 	
-	-- Functionality
+	-- Public API --
 	function API.Validate(Input)
+		if API._DeadCheck() then return nil end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			NumberInput = math.round(NumberInput)
@@ -3987,25 +4301,31 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		end
 	end
 	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
 	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 	function API.SetValueColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
 	function API.SetValueTextColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -4024,7 +4344,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
    -- Update Values
-   Gui.TextBox.FocusLost:Connect(function(enterPressed)
+   API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
 	   local Success, Result = API.Validate(Gui.TextBox.Text)
 	   if Success then
@@ -4033,7 +4353,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		   end
 	   end
 
-   end)
+   end))
 
    -- Call Validate on Default Value
    API.Validate(DefaultValue)
@@ -4089,8 +4409,9 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- API
 	local API = GizmoBase.new()
 
-	-- Functionality
+	-- Public API --
 	function API.Validate(Input)
+		if API._DeadCheck() then return nil end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			Gui.TextBox.Text = NumberInput
@@ -4102,25 +4423,31 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		end
 	end
 	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
 	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 	function API.SetValueColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
 	function API.SetValueTextColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -4139,7 +4466,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
 	-- Update Values
-	Gui.TextBox.FocusLost:Connect(function(enterPressed)
+	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
 		if IsReadOnly then
 			return
@@ -4152,7 +4479,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 			end
 		end
 
-	end)
+	end))
 
 	-- Call Validate on Default Value
 	API.Validate(DefaultValue)
@@ -4176,6 +4503,9 @@ return GizmoNumber]]></ProtectedString>
 							<ProtectedString name="Source"><![CDATA[
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
+
+-- Base
+local GizmoBase = require(script.Parent.GizmoBase)
 
 -- Constants
 local VERTICAL_PADDING = 6
@@ -4203,16 +4533,24 @@ function GizmoSeparator.new(Gui, Name, Color, Text, Height)
     Gui.Size = UDim2.new(1, 0, 0, Height)
 
     -- API
-    local API = {}
+    local API = GizmoBase.new()
 
-    -- Functionality
+	-- Private API --
+	API.Validate = nil
+	API.Listen = nil
+	API.Set = nil
+
+    -- Public API --
     function API.SetColor(NewColor)
+		if API._DeadCheck() then return nil end
         Gui.Line.BackgroundColor3 = NewColor
     end
-    function API.SetText(NewText)
+    function API.SetName(NewText)
+		if API._DeadCheck() then return nil end
         Gui.Line.Text = NewText
     end
     function API.SetHeight(NewHeight)
+		if API._DeadCheck() then return nil end
         Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
     end
 
@@ -4267,8 +4605,9 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     -- API
     local API = GizmoBase.new()
 
-    -- Functionality
+	-- Public API --
     function API.Validate(Input)
+		if API._DeadCheck() then return nil end
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str
@@ -4280,25 +4619,31 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
         end
     end
 	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
 	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 	function API.SetValueColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
 	function API.SetValueTextColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
 	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
 	function API.ReadOnly(State)
+		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
 			IsReadOnly = true
@@ -4317,7 +4662,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
     -- Update Values
-    Gui.TextBox.FocusLost:Connect(function(enterPressed)
+    API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
         local Success, Result = API.Validate(Gui.TextBox.Text)
         if Success then
@@ -4326,7 +4671,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
             end
         end
 
-    end)
+    end))
 
     -- End
     return API

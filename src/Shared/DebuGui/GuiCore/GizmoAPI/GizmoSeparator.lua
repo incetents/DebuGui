@@ -2,6 +2,9 @@
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
+-- Base
+local GizmoBase = require(script.Parent.GizmoBase)
+
 -- Constants
 local VERTICAL_PADDING = 6
 
@@ -28,16 +31,24 @@ function GizmoSeparator.new(Gui, Name, Color, Text, Height)
     Gui.Size = UDim2.new(1, 0, 0, Height)
 
     -- API
-    local API = {}
+    local API = GizmoBase.new()
 
-    -- Functionality
+	-- Private API --
+	API.Validate = nil
+	API.Listen = nil
+	API.Set = nil
+
+    -- Public API --
     function API.SetColor(NewColor)
+		if API._DeadCheck() then return nil end
         Gui.Line.BackgroundColor3 = NewColor
     end
-    function API.SetText(NewText)
+    function API.SetName(NewText)
+		if API._DeadCheck() then return nil end
         Gui.Line.Text = NewText
     end
     function API.SetHeight(NewHeight)
+		if API._DeadCheck() then return nil end
         Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
     end
 

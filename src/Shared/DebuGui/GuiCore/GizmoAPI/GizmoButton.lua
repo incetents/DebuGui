@@ -63,7 +63,7 @@ function GizmoButton.new(Gui, Name)
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
-	function API.ReadOnly(State)
+	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
@@ -89,8 +89,8 @@ function GizmoButton.new(Gui, Name)
 			return
 		end
 
-        if API.Listener then
-            API.Listener()
+        if API._Listener then
+            API._Listener()
         end
 
     end))

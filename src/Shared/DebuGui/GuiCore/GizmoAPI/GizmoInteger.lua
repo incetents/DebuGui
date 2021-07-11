@@ -40,10 +40,10 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if NumberInput then
 			NumberInput = math.round(NumberInput)
 			Gui.TextBox.Text = NumberInput
-			API.LastInput = NumberInput
+			API._LastInput = NumberInput
 			return true, NumberInput
 		else
-			Gui.TextBox.Text = API.LastInput
+			Gui.TextBox.Text = API._LastInput
 			return false
 		end
 	end
@@ -57,7 +57,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
-	function API.SetValueColor(NewColor)
+	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
@@ -71,7 +71,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
-	function API.ReadOnly(State)
+	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
@@ -93,12 +93,11 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
    -- Update Values
    API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
-	   local Success, Result = API.Validate(Gui.TextBox.Text)
-	   if Success then
-		   if API.Listener then
-			   API.Listener(Result)
-		   end
-	   end
+	   local Success = API.Validate(Gui.TextBox.Text)
+		
+	   if Success and API._Listener then
+		API._Listener(API._LastInput)
+	end
 
    end))
 

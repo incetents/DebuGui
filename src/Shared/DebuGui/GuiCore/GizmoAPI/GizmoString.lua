@@ -39,10 +39,10 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str
-            API.LastInput = Str
-            return true, Str
+            API._LastInput = Str
+            return true
         else
-            Gui.TextBox.Text = API.LastInput
+            Gui.TextBox.Text = API._LastInput
             return false
         end
     end
@@ -56,7 +56,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
-	function API.SetValueColor(NewColor)
+	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
@@ -70,7 +70,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
-	function API.ReadOnly(State)
+	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
@@ -92,14 +92,16 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     -- Update Values
     API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
-        local Success, Result = API.Validate(Gui.TextBox.Text)
-        if Success then
-            if API.Listener then
-                API.Listener(Result)
-            end
-        end
+        local Success = API.Validate(Gui.TextBox.Text)
+		
+		if Success and API._Listener then
+			API._Listener(API._LastInput)
+		end
 
     end))
+
+	-- Validate default
+	API.Validate(DefaultValue)
 
     -- End
     return API

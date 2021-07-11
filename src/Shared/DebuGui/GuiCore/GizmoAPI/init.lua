@@ -3,21 +3,25 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Gizmo UI References
-local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
-local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
-local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
+local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
+local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
+local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
+local GizmoUI_TextBox_Multi2 = ReplicatedStorage.GizmoUI_TextBox_Multi2
+local GizmoUI_TextBox_Multi3 = ReplicatedStorage.GizmoUI_TextBox_Multi3
 
 -- Modules
 local Utility = require(script.Parent.Parent.Utility)
-local GizmoString = require(script.GizmoString)
-local GizmoInteger = require(script.GizmoInteger)
-local GizmoNumber = require(script.GizmoNumber)
 local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
-local GizmoSeparator = require(script.GizmoSeparator)
 local GizmoFolder = require(script.GizmoFolder)
+local GizmoInteger = require(script.GizmoInteger)
+local GizmoNumber = require(script.GizmoNumber)
+local GizmoSeparator = require(script.GizmoSeparator)
+local GizmoString = require(script.GizmoString)
+local GizmoVector2 = require(script.GizmoVector2)
+local GizmoVector3 = require(script.GizmoVector3)
 
 -- Module
 local GizmoAPI = {}
@@ -42,7 +46,6 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	-- Data
 	API.GizmosTable = {}
 	API.GizmosArray = {}
-	API.ParentAPI = ParentAPI
 
 	-- Listener
 	local ListenersForNewGizmo = {}
@@ -84,7 +87,10 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewGizmoAPI
 	end
 
-	-- Private API
+	-----------------
+	-- Private API --
+	-----------------
+
 	function API._ListenForNewGizmos(func)
 		Utility.QuickTypeAssert(func, 'function')
 		table.insert(ListenersForNewGizmo, func)
@@ -106,7 +112,10 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	end
 	--
 
-	-- Public API
+	----------------
+	-- Public API --
+	----------------
+
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
 		TriggerListeners()
@@ -119,8 +128,8 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewAPI
 	end
 	--
-	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus)
-		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus)
+	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
 		TriggerListeners()
 		return NewAPI
 	end
@@ -149,10 +158,32 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewAPI
 	end
 	--
+	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		TriggerListeners()
+		return NewAPI
+	end
+	--
+	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		TriggerListeners()
+		return NewAPI
+	end
+
+	-- Returns API of Gizmo
+	function API.Get(UniqueName)
+		-- Sanity
+		if API.GizmosTable[UniqueName] == nil then
+			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
+			return nil
+		end
+		return API.GizmosTable[UniqueName]
+	end
+	-- Removes API of Gizmo
 	function API.Remove(UniqueName)
 		-- Sanity
 		if API.GizmosTable[UniqueName] == nil then
-			warn("Trying to remove Gizmo ("..UniqueName..") that does not exist")
+			warn("Warning! Trying to remove non-existant Gizmo ("..UniqueName..")")
 			return
 		end
 
@@ -170,6 +201,12 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		end
 
 		TriggerListeners()
+	end
+
+	-- Sanity
+	function API.GetValue()
+		warn("Warning! Trying to get a Value from an API class")
+		return nil
 	end
 
 	--

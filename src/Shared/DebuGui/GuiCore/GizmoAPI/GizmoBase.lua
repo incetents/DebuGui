@@ -5,24 +5,25 @@ local GizmoBase = {}
 function GizmoBase.new()
     
     local API = {
-		IsDestroyed = false,
-        Listener = nil,
-        LastInput = '',
-		Connections = {},
+		_IsDestroyed = false,
+        _Listener = nil,
+        _LastInput = nil,
+		_Connections = {},
     }
 
 	-- Private API
 	function API._AddConnection(Connection)
-		table.insert(API.Connections, Connection)
+		table.insert(API._Connections, Connection)
 	end
 	function API._Destroy()
-		API.IsDestroyed = true
-		for __, Connection in ipairs(API.Connections) do
+		API._IsDestroyed = true
+		for __, Connection in ipairs(API._Connections) do
 			Connection:Disconnect()
 		end
+		API._Connections = {}
 	end
 	function API._DeadCheck()
-		if API.IsDestroyed then
+		if API._IsDestroyed then
 			warn("Warning! Accessing Removed Gizmo ("..API.Name..")")
 			return true
 		end
@@ -37,7 +38,7 @@ function GizmoBase.new()
     --
     function API.Listen(func)
 		if API._DeadCheck() then return nil end
-        API.Listener = func
+        API._Listener = func
         return API
     end
     --
@@ -46,6 +47,10 @@ function GizmoBase.new()
         API.Validate(newValue)
         return API
     end
+	--
+	function API.GetValue()
+		return API._LastInput
+	end
 
     -- END
     return API

@@ -5,7 +5,7 @@ local TextService = game:GetService("TextService")
 
 -- Constants
 local MIN_GUI_WIDTH = 60
-local MIN_GUI_HEIGHT = 80
+local MIN_GUI_HEIGHT = 72
 local TITLEBAR_HEIGHT = 20
 local TITLEBAR_ICONSIZE = 20
 local TITLEBAR_WIDTH_PADDING_TOTAL = 8

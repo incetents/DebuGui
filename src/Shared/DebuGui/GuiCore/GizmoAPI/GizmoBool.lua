@@ -44,8 +44,8 @@ function GizmoBool.new(Gui, Name, DefaultValue)
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = COLOR_DARK
             Gui.CheckBoxBG.CheckBoxFG.Checkmark.Visible = false
         end
-        API.LastInput = IsTrue
-        return true, IsTrue
+        API._LastInput = IsTrue
+        return true
     end
     function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
@@ -59,7 +59,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     end
     function API.SetCheckboxColor(NewColor)
 		if API._DeadCheck() then return nil end
-        if API.LastInput == true then
+        if API._LastInput == true then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = NewColor
         end
         DefaultColor = NewColor
@@ -69,7 +69,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
-	function API.ReadOnly(State)
+	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
 		if State == nil then
@@ -95,12 +95,11 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 			return
 		end
 
-        local Success, Result = API.Validate(not API.LastInput)
-        if Success then
-            if API.Listener then
-                API.Listener(Result)
-            end
-        end
+        local Success = API.Validate(not API._LastInput)
+		
+		if Success and API._Listener then
+			API._Listener(API._LastInput)
+		end
 
     end))
 

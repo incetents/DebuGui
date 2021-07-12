@@ -37,7 +37,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Data
 	local API = GizmoAPI.new(Master.Core)
-	local IsVisible = true
+	API._IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
 	local PosBeforeMinimized = nil
@@ -59,7 +59,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	local function UpdateVisibility()
 
-		if not IsVisible or IsMinimized then
+		if not API._IsVisible or IsMinimized then
 			Master.Core.Visible = false
 			Master.ResizeBtn.Visible = false
 			Master.ResizeBtn.Active = false
@@ -118,25 +118,25 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	local function SetVisible(State)
 
 		-- Abort if no change
-		if State == IsVisible then return end
+		if State == API._IsVisible then return end
 		
 		-- Pre Data
-		if IsVisible then
+		if API._IsVisible then
 			SizeBeforeHidden = Master.AbsoluteSize
 		end
 
 		-- Data
-		IsVisible = not IsVisible
+		API._IsVisible = not API._IsVisible
 
 		-- Text
-		if IsVisible then
+		if API._IsVisible then
 			Master.TopBar.DropDownBtn.Text = 'v'
 		else
 			Master.TopBar.DropDownBtn.Text = '>'
 		end
 
 		-- Pos/Size
-		if IsVisible then
+		if API._IsVisible then
 			Master.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
 		else
 			Master.Size = UDim2.new(0, Master.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
@@ -146,15 +146,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 		UpdateVisibility()
 	end
 	local function ToggleVisibility()
-		SetVisible(not IsVisible)
-	end
-
-	local function RecalculateCanvasSize()
-		local Height = 0
-		for __, Data in ipairs(API._GizmosArray) do
-			Height += Data.Gui.AbsoluteSize.Y
-		end
-		Master.Core.CanvasSize = UDim2.fromOffset(0, Height)
+		SetVisible(not API._IsVisible)
 	end
 
 	--------------
@@ -178,13 +170,13 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	-- Drag Center of Core
 	local CoreDragger = Dragger.new(Master.DragCore)
 	CoreDragger.OnDragStart(function()
-		if IsVisible and not IsMinimized then
+		if API._IsVisible and not IsMinimized then
 			DebuGui._BringGuiForward(ScreenGui)
 			MasterPos = Master.AbsolutePosition
 		end
 	end)
 	CoreDragger.OnDrag(function(Delta)
-		if IsVisible and not IsMinimized then
+		if API._IsVisible and not IsMinimized then
 			Master.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
 		end
 	end)
@@ -194,15 +186,16 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	local ResizeDragger = Dragger.new(Master.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
 		DebuGui._BringGuiForward(ScreenGui)
-		if IsVisible and not IsMinimized then
+		if API._IsVisible and not IsMinimized then
 			MasterSize = Master.AbsoluteSize
 		end
 	end)
 	ResizeDragger.OnDrag(function(Delta)
-		if IsVisible and not IsMinimized then
+		if API._IsVisible and not IsMinimized then
 			local NewWidth = math.max(MasterSize.X + Delta.X, MIN_GUI_WIDTH)
 			local NewHeight = math.max(MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
 			Master.Size = UDim2.fromOffset(NewWidth, NewHeight)
+			API._RecalculateCanvasHeight()
 		end
 	end)
 
@@ -228,7 +221,14 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Private API --
 	function API._RecalculateCanvasHeight()
-		RecalculateCanvasSize()
+		local Height = 0
+		for __, Data in ipairs(API._GizmosArray) do
+			Height += Data.Gui.AbsoluteSize.Y
+		end
+		Master.Core.CanvasSize = UDim2.fromOffset(0, Height)
+	end
+	function API._AddToCanvasSize(Amount)
+		Master.Core.CanvasSize = UDim2.fromOffset(0, Master.Core.CanvasSize.Y.Offset + Amount)
 	end
 
 	-- Public API --
@@ -248,7 +248,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 		return API
 	end
 	function API.IsVisible()
-		return IsVisible
+		return API._IsVisible
 	end
 	function API.ToggleVisibility()
 		ToggleVisibility()

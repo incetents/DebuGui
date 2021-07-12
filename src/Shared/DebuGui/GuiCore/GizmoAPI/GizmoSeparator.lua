@@ -12,7 +12,7 @@ local VERTICAL_PADDING = 6
 local GizmoSeparator = {}
 
 --
-function GizmoSeparator.new(Gui, Name, Color, Text, Height)
+function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
 
     -- Defaults
     Color = Color or Color3.fromRGB(59, 60, 120)
@@ -49,7 +49,11 @@ function GizmoSeparator.new(Gui, Name, Color, Text, Height)
     end
     function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
+		local OCHeight = Gui.Size.Y.Offset
         Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
+		local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
+		-- Fix canvas height based on change in height
+		MasterAPI._AddToCanvasSize(DeltaHeight)
     end
 
     -- End

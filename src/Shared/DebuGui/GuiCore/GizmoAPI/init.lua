@@ -29,7 +29,7 @@ local GizmoVector3 = require(script.GizmoVector3)
 local GizmoAPI = {}
 
 -- Global Function
-local function UpdateLayout(MasterAPI, API)
+local function UpdateLayout(API)
 	for i, GizmoData in ipairs(API._GizmosArray) do
 		if i % 2 == 0 then
 			GizmoData.Gui.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -37,8 +37,18 @@ local function UpdateLayout(MasterAPI, API)
 			GizmoData.Gui.BackgroundColor3 = Color3.new(0, 0, 0)
 		end
 	end
-	-- Find Master Parent
-	MasterAPI._RecalculateCanvasHeight()
+end
+local function IsVisible(API)
+	if API._IsVisible == false then
+		return false
+	end
+	while API ~= nil do
+		API = API._ParentAPI
+		if API ~= nil and API._IsVisible == false then
+			return false
+		end
+	end
+	return true
 end
 
 --
@@ -50,6 +60,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	-- Data
 	API._GizmosTable = {}
 	API._GizmosArray = {}
+	API._ParentAPI = ParentAPI
 
 	-- Special Case (if Master API is self)
 	if MasterAPI == nil then
@@ -90,7 +101,11 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		table.insert(API._GizmosArray, NewGizmoAPI)
 
 		-- Update UI
-		UpdateLayout(MasterAPI, API)
+		UpdateLayout(API)
+		-- Add Size if not in hidden folder
+		if IsVisible(API) then
+			MasterAPI._AddToCanvasSize(GizmoUI.AbsoluteSize.Y)
+		end
 
 		-- Return API
 		return NewGizmoAPI
@@ -162,13 +177,13 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	end
 	--
 	function API.AddSeparator(UniqueName, Color, Text, Height)
-		local NewAPI = AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, Color, Text, Height)
+		local NewAPI = AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, MasterAPI, Color, Text, Height)
 		TriggerListeners()
 		return NewAPI
 	end
 	--
-	function API.AddFolder(UniqueName, IsOpen)
-		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, IsOpen)
+	function API.AddFolder(UniqueName, StartOpen)
+		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, StartOpen)
 		TriggerListeners()
 		return NewAPI
 	end
@@ -202,6 +217,11 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 			return
 		end
 
+		-- Remove Canvas Height
+		if IsVisible(API) then
+			MasterAPI._AddToCanvasSize(-API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
+		end
+
 		-- Flag API as destroyed --
 
 		-- Base level destruction
@@ -219,7 +239,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		table.remove(API._GizmosArray, Index)
 
 		-- Update Visuals
-		UpdateLayout(MasterAPI, API)
+		UpdateLayout(API)
 
 		-- Call High level events
 		TriggerListeners()

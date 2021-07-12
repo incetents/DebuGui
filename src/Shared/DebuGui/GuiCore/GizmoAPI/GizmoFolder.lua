@@ -2,14 +2,11 @@
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
---
--- local BugWorkAroundFlag = 1
-
 -- Module
 local GizmoFolder = {}
 
-local function UpdateVisual(API, Gui, State, FrameHeightLimit)
-	if State then
+local function UpdateVisual(API, Gui, FrameHeightLimit)
+	if API._IsVisible then
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API._GizmosArray) do
@@ -27,47 +24,30 @@ local function UpdateVisual(API, Gui, State, FrameHeightLimit)
 end
 
 --
-function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, IsOpenRef)
-
-	-- Defaults
-	if IsOpenRef == nil then
-		IsOpenRef = false
-	end
+function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
-	Utility.QuickTypeAssert(IsOpenRef, 'boolean')
+	Utility.QuickTypeAssert(StartOpen, 'boolean')
 
 	-- Setup
 	Gui.TextName.Text = Name
 
 	-- Data
-	local IsOpen = IsOpenRef
 	local GizmoAPI = require(script.Parent)
 	local API = GizmoAPI.new(Gui.ScrollingFrame, MasterAPI, ParentAPI)
+	API._IsVisible = StartOpen
 	local FrameHeightLimit = nil;
-
-	-- Reference To Master
-	-- local ScreenGui = Gui.Parent.Parent
-	-- while not ScreenGui:IsA('ScreenGui') do
-	-- 	ScreenGui = ScreenGui.Parent
-	-- end
 
 	-- Button Press
 	Gui.DropDownBtn.MouseButton1Down:Connect(function()
-		IsOpen = not IsOpen
+		API._IsVisible = not API._IsVisible
 		ParentAPI._UpdateAllGizmos()
 		MasterAPI._RecalculateCanvasHeight()
-		-- Bug workaround, force update of canvasframe by moving it 1 pixel
-		-- ScreenGui.Master.Position = UDim2.fromOffset(
-		-- 	ScreenGui.Master.Position.X.Offset + BugWorkAroundFlag,
-		-- 	ScreenGui.Master.Position.Y.Offset
-		-- )
-		-- BugWorkAroundFlag = -BugWorkAroundFlag
 	end)
 
 	-- Update
-	UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+	UpdateVisual(API, Gui, FrameHeightLimit)
 
 	-- Private API
 	API._ListenForNewGizmos(function()
@@ -78,12 +58,12 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, IsOpenRef)
 			end
 		end
 		-- Update self afterwards
-		UpdateVisual(API, Gui, IsOpen)
+		UpdateVisual(API, Gui)
 		-- Update Parent
 		ParentAPI._UpdateAllGizmos()
 	end)
 	function API._Update()
-		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+		UpdateVisual(API, Gui, FrameHeightLimit)
 	end
 
 	-- Public API
@@ -116,12 +96,12 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, IsOpenRef)
 	function API.SetFrameHeightLimit(Amount)
 		Utility.QuickTypeAssert(Amount, 'number')
 		FrameHeightLimit = Amount
-		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+		UpdateVisual(API, Gui, FrameHeightLimit)
 		return API
 	end
 	function API.RemoveFrameHeightLimit()
 		FrameHeightLimit = nil;
-		UpdateVisual(API, Gui, IsOpen, FrameHeightLimit)
+		UpdateVisual(API, Gui, FrameHeightLimit)
 		return API
 	end
 	function API.GetFrameHeightLimit()

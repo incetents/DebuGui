@@ -119,12 +119,13 @@ Gui1.AddSeparator('NUMBER_SLIDER_SEPARATOR').SetName('NUMBER SLIDERS')
 Gui1.AddNumberSlider('numslider1', 100, 50, 100).SetValueBGColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumberSlider('numslider2', 100, 100, 200).SetValueTextColor(Color3.fromRGB(62, 197, 118))
 Gui1.AddNumberSlider('numslider3', 100, 50, 150)
-Gui1.AddNumberSlider('numslider4', 1, 2, 3).SetReadOnly()
-Gui1.AddNumberSlider('numslider5', 20, 0, 100, 0)
+Gui1.AddNumberSlider('numslider4', 40, 33, 44)
+Gui1.AddNumberSlider('numslider5', 1, 2, 3).SetReadOnly()
+Gui1.AddNumberSlider('numslider6', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 
-Gui1.Remove('numslider1')
+Gui1.Remove('numslider4')
 	
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
@@ -218,11 +219,11 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
-local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', false)
+local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', true)
 SmallFrameFolder1
 	.SetColor(Color3.fromRGB(184, 163, 44))
 	.SetNameColor(Color3.new(0,0,0))
-	.SetFrameHeightLimit(72)
+	--.SetFrameHeightLimit(72)
 	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
 	.SetScrollbarWidth(24)
 

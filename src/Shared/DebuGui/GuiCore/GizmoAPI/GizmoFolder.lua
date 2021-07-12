@@ -2,6 +2,9 @@
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
+--
+-- local BugWorkAroundFlag = 1
+
 -- Module
 local GizmoFolder = {}
 
@@ -9,7 +12,7 @@ local function UpdateVisual(API, Gui, State, FrameHeightLimit)
 	if State then
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
-		for __, Gizmo in ipairs(API.GizmosArray) do
+		for __, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
 		local FrameHeight = FrameHeightLimit or CanvasHeight
@@ -24,7 +27,7 @@ local function UpdateVisual(API, Gui, State, FrameHeightLimit)
 end
 
 --
-function GizmoFolder.new(Gui, Name, ParentAPI, IsOpenRef)
+function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, IsOpenRef)
 
 	-- Defaults
 	if IsOpenRef == nil then
@@ -41,13 +44,26 @@ function GizmoFolder.new(Gui, Name, ParentAPI, IsOpenRef)
 	-- Data
 	local IsOpen = IsOpenRef
 	local GizmoAPI = require(script.Parent)
-	local API = GizmoAPI.new(Gui.ScrollingFrame, ParentAPI)
+	local API = GizmoAPI.new(Gui.ScrollingFrame, MasterAPI, ParentAPI)
 	local FrameHeightLimit = nil;
+
+	-- Reference To Master
+	-- local ScreenGui = Gui.Parent.Parent
+	-- while not ScreenGui:IsA('ScreenGui') do
+	-- 	ScreenGui = ScreenGui.Parent
+	-- end
 
 	-- Button Press
 	Gui.DropDownBtn.MouseButton1Down:Connect(function()
 		IsOpen = not IsOpen
 		ParentAPI._UpdateAllGizmos()
+		MasterAPI._RecalculateCanvasHeight()
+		-- Bug workaround, force update of canvasframe by moving it 1 pixel
+		-- ScreenGui.Master.Position = UDim2.fromOffset(
+		-- 	ScreenGui.Master.Position.X.Offset + BugWorkAroundFlag,
+		-- 	ScreenGui.Master.Position.Y.Offset
+		-- )
+		-- BugWorkAroundFlag = -BugWorkAroundFlag
 	end)
 
 	-- Update
@@ -56,7 +72,7 @@ function GizmoFolder.new(Gui, Name, ParentAPI, IsOpenRef)
 	-- Private API
 	API._ListenForNewGizmos(function()
 		-- Update Children first
-		for __, Gizmo in ipairs(API.GizmosArray) do
+		for __, Gizmo in ipairs(API._GizmosArray) do
 			if Gizmo.Update then
 				Gizmo._Update()
 			end

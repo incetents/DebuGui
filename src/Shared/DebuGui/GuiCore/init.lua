@@ -149,6 +149,14 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 		SetVisible(not IsVisible)
 	end
 
+	local function RecalculateCanvasSize()
+		local Height = 0
+		for __, Data in ipairs(API._GizmosArray) do
+			Height += Data.Gui.AbsoluteSize.Y
+		end
+		Master.Core.CanvasSize = UDim2.fromOffset(0, Height)
+	end
+
 	--------------
 	-- Dragging --
 	--------------
@@ -218,7 +226,12 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	-- Core Gizmos --
 	-----------------
 
-	-- Custom API
+	-- Private API --
+	function API._RecalculateCanvasHeight()
+		RecalculateCanvasSize()
+	end
+
+	-- Public API --
 	function API.Enable()
 		ScreenGui.Enabled = true
 	end

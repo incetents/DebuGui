@@ -180,9 +180,9 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 -------------
 
 Gui1.AddSeparator('FOLDER_SEPARATOR').SetName('FOLDERS')
---
 
-local Folder1 = Gui1.AddFolder('folder1', false)
+
+local Folder1 = Gui1.AddFolder('folder1', true)
 	.SetName('My Cool Folder')
 	.SetNameColor(Color3.fromRGB(0, 0, 0))
 	.SetColor(Color3.fromRGB(82, 79, 235))
@@ -190,7 +190,7 @@ local Folder1 = Gui1.AddFolder('folder1', false)
 Folder1.AddBool('bool1', true)
 Folder1.AddButton('button1')
 
-local SubFolder1 = Folder1.AddFolder('SubFolder1', true)
+local SubFolder1 = Folder1.AddFolder('SubFolder1', false)
 	.SetColor(Color3.fromRGB(139, 108, 41))
 SubFolder1.AddBool('bool1', false)
 SubFolder1.AddInteger('int', 12)
@@ -238,84 +238,84 @@ SmallFrameFolder1.AddString('string7', 'text')
 -- Getter API --
 ----------------
 
-print("~~~")
-print("BoolGui API: ", Gui1.Get('bool1'))
-print("ButtonGui API: ", Gui1.Get('button1'))
-print("FolderGui API: ", Gui1.Get('folder1'))
-print("IntegerGui API: ", Gui1.Get('int1'))
-print("NumberGui API: ", Gui1.Get('num1'))
-print("SeparatorGui API: ", Gui1.Get('seperator1'))
-print("StringGui API: ", Gui1.Get('string1'))
-print("Vector2Gui API: ", Gui1.Get('vec2_1'))
-print("Vector3Gui API: ", Gui1.Get('vec3_1'))
+-- print("~~~")
+-- print("BoolGui API: ", Gui1.Get('bool1'))
+-- print("ButtonGui API: ", Gui1.Get('button1'))
+-- print("FolderGui API: ", Gui1.Get('folder1'))
+-- print("IntegerGui API: ", Gui1.Get('int1'))
+-- print("NumberGui API: ", Gui1.Get('num1'))
+-- print("SeparatorGui API: ", Gui1.Get('seperator1'))
+-- print("StringGui API: ", Gui1.Get('string1'))
+-- print("Vector2Gui API: ", Gui1.Get('vec2_1'))
+-- print("Vector3Gui API: ", Gui1.Get('vec3_1'))
 
-print("~~~")
-print('bool1 = ', Gui1.Get('bool1').GetValue())
-print('button1 = ', Gui1.Get('button1').GetValue())
-print('folder1 = ', Gui1.Get('folder1').GetValue())
-print('int1 = ', Gui1.Get('int1').GetValue())
-print('Num1 = ', Gui1.Get('num1').GetValue())
-print('seperator6 = ', Gui1.Get('seperator6').GetValue())
-print('string1 = ', Gui1.Get('string1').GetValue())
-print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
+-- print("~~~")
+-- print('bool1 = ', Gui1.Get('bool1').GetValue())
+-- print('button1 = ', Gui1.Get('button1').GetValue())
+-- --print('folder1 = ', Gui1.Get('folder1').GetValue())
+-- print('int1 = ', Gui1.Get('int1').GetValue())
+-- print('Num1 = ', Gui1.Get('num1').GetValue())
+-- print('seperator6 = ', Gui1.Get('seperator6').GetValue())
+-- print('string1 = ', Gui1.Get('string1').GetValue())
+-- print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
 
----------------
--- Removal API --
----------------
+-- ---------------
+-- -- Removal API --
+-- ---------------
 
--- removing invalid Gui --
-Gui1.Remove('Fake Non-ExistantGui')
+-- -- removing invalid Gui --
+-- Gui1.Remove('Fake Non-ExistantGui')
 
--- removing valid Gui --
-Gui1.AddInteger('remove1', 1)
-Gui1.Remove('remove1')
+-- -- removing valid Gui --
+-- Gui1.AddInteger('remove1', 1)
+-- Gui1.Remove('remove1')
 
--- Attempting to access removed Guis --
-local rBool = Gui1.AddBool('removeBool', true)
-Gui1.Remove('removeBool')
-rBool.SetName('Invalid')
+-- -- Attempting to access removed Guis --
+-- local rBool = Gui1.AddBool('removeBool', true)
+-- Gui1.Remove('removeBool')
+-- rBool.SetName('Invalid')
 
-local rButton = Gui1.AddButton('removeButton')
-Gui1.Remove('removeButton')
-rButton.SetName('Invalid')
+-- local rButton = Gui1.AddButton('removeButton')
+-- Gui1.Remove('removeButton')
+-- rButton.SetName('Invalid')
 
-local rInteger = Gui1.AddInteger('removeInteger')
-Gui1.Remove('removeInteger')
-rInteger.SetName('Invalid')
+-- local rInteger = Gui1.AddInteger('removeInteger')
+-- Gui1.Remove('removeInteger')
+-- rInteger.SetName('Invalid')
 
-local rNumber = Gui1.AddNumber('removeNumber')
-Gui1.Remove('removeNumber')
-rNumber.SetName('Invalid')
+-- local rNumber = Gui1.AddNumber('removeNumber')
+-- Gui1.Remove('removeNumber')
+-- rNumber.SetName('Invalid')
 
-local rSeparator = Gui1.AddSeparator('removeSeparator')
-Gui1.Remove('removeSeparator')
-rSeparator.SetName('Invalid')
+-- local rSeparator = Gui1.AddSeparator('removeSeparator')
+-- Gui1.Remove('removeSeparator')
+-- rSeparator.SetName('Invalid')
 
-local rString = Gui1.AddString('removeString')
-Gui1.Remove('removeString')
-rString.SetName('Invalid')
+-- local rString = Gui1.AddString('removeString')
+-- Gui1.Remove('removeString')
+-- rString.SetName('Invalid')
 
-local rVec2 = Gui1.AddVector2('removeVector2')
-Gui1.Remove('removeVector2')
-rVec2.SetName('Invalid')
+-- local rVec2 = Gui1.AddVector2('removeVector2')
+-- Gui1.Remove('removeVector2')
+-- rVec2.SetName('Invalid')
 
-----------------------
--- Multiple Windows --
-----------------------
-local Extra1 = DebuGui.new('Extra1', {
-    Title = 'Extra1',
-    X = 100,
-    Y = 70,
-    Width = 400,
-    Height = 300,
-})
-Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- ----------------------
+-- -- Multiple Windows --
+-- ----------------------
+-- local Extra1 = DebuGui.new('Extra1', {
+--     Title = 'Extra1',
+--     X = 100,
+--     Y = 70,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
-local Extra2 = DebuGui.new('Extra2', {
-    Title = 'Extra2',
-    X = 50,
-    Y = 130,
-    Width = 400,
-    Height = 300,
-})
-Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- local Extra2 = DebuGui.new('Extra2', {
+--     Title = 'Extra2',
+--     X = 50,
+--     Y = 130,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))

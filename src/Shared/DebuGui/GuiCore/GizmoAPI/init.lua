@@ -29,26 +29,32 @@ local GizmoVector3 = require(script.GizmoVector3)
 local GizmoAPI = {}
 
 -- Global Function
-local function UpdateLayout(GizmosArray)
-	for i, GizmoData in ipairs(GizmosArray) do
+local function UpdateLayout(MasterAPI, API)
+	for i, GizmoData in ipairs(API._GizmosArray) do
 		if i % 2 == 0 then
 			GizmoData.Gui.BackgroundColor3 = Color3.new(1, 1, 1)
 		else
 			GizmoData.Gui.BackgroundColor3 = Color3.new(0, 0, 0)
 		end
 	end
+	-- Find Master Parent
+	MasterAPI._RecalculateCanvasHeight()
 end
 
 --
-function GizmoAPI.new(GuiParent, ParentAPI)
+function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 
 	--
 	local API = {}
 
 	-- Data
-	API.GizmosTable = {}
-	API.GizmosArray = {}
-	API._Children = {}
+	API._GizmosTable = {}
+	API._GizmosArray = {}
+
+	-- Special Case (if Master API is self)
+	if MasterAPI == nil then
+		MasterAPI = API
+	end
 
 	-- Listener
 	local ListenersForNewGizmo = {}
@@ -62,7 +68,7 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	local function AddGizmo(GIZMO_UI, GIZMO_CLASS, UniqueName, ...)
 
 		-- Doop Check
-		if API.GizmosTable[UniqueName] then
+		if API._GizmosTable[UniqueName] then
 			warn('Gizmo already exists ('..UniqueName..')')
 			return
 		end
@@ -80,11 +86,11 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		NewGizmoAPI.Gui = GizmoUI
 
 		-- Store
-		API.GizmosTable[UniqueName] = NewGizmoAPI
-		table.insert(API.GizmosArray, NewGizmoAPI)
+		API._GizmosTable[UniqueName] = NewGizmoAPI
+		table.insert(API._GizmosArray, NewGizmoAPI)
 
 		-- Update UI
-		UpdateLayout(API.GizmosArray)
+		UpdateLayout(MasterAPI, API)
 
 		-- Return API
 		return NewGizmoAPI
@@ -102,7 +108,7 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	function API._UpdateAllGizmos()
 		
 		-- Update self
-		for __, Gizmo in ipairs(API.GizmosArray) do
+		for __, Gizmo in ipairs(API._GizmosArray) do
 			if Gizmo._Update then
 				Gizmo._Update()
 			end
@@ -162,7 +168,7 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	end
 	--
 	function API.AddFolder(UniqueName, IsOpen)
-		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API, IsOpen)
+		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, IsOpen)
 		TriggerListeners()
 		return NewAPI
 	end
@@ -182,16 +188,16 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	-- Returns API of Gizmo
 	function API.Get(UniqueName)
 		-- Sanity
-		if API.GizmosTable[UniqueName] == nil then
+		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
 			return nil
 		end
-		return API.GizmosTable[UniqueName]
+		return API._GizmosTable[UniqueName]
 	end
 	-- Removes API of Gizmo
 	function API.Remove(UniqueName)
 		-- Sanity
-		if API.GizmosTable[UniqueName] == nil then
+		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to remove non-existant Gizmo ("..UniqueName..")")
 			return
 		end
@@ -199,21 +205,23 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		-- Flag API as destroyed --
 
 		-- Base level destruction
-		API.GizmosTable[UniqueName]._Destroy()
+		API._GizmosTable[UniqueName]._Destroy()
 		-- High level destruction if requested
-		if API.GizmosTable[UniqueName]._OnDestroy then
-			API.GizmosTable[UniqueName]._OnDestroy()
+		if API._GizmosTable[UniqueName]._OnDestroy then
+			API._GizmosTable[UniqueName]._OnDestroy()
 		end
 
 		-- Destroy Gui
-		API.GizmosTable[UniqueName].Gui:Destroy()
+		API._GizmosTable[UniqueName].Gui:Destroy()
 		-- Remove References
-		API.GizmosTable[UniqueName] = nil
-		local Index = Utility.FindArrayIndexByValue(API.GizmosArray, UniqueName)
-		if Index then
-			table.remove(API.GizmosArray, Index)
-		end
+		API._GizmosTable[UniqueName] = nil
+		local Index = Utility.FindArrayIndexByValue(API._GizmosArray, UniqueName)
+		table.remove(API._GizmosArray, Index)
 
+		-- Update Visuals
+		UpdateLayout(MasterAPI, API)
+
+		-- Call High level events
 		TriggerListeners()
 	end
 

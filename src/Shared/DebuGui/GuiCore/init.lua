@@ -195,7 +195,6 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 			local NewWidth = math.max(MasterSize.X + Delta.X, MIN_GUI_WIDTH)
 			local NewHeight = math.max(MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
 			Master.Size = UDim2.fromOffset(NewWidth, NewHeight)
-			API._RecalculateCanvasHeight()
 		end
 	end)
 

@@ -42,8 +42,12 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	-- Button Press
 	Gui.DropDownBtn.MouseButton1Down:Connect(function()
 		API._IsVisible = not API._IsVisible
+		local OCHeight = Gui.AbsoluteSize.Y
 		ParentAPI._UpdateAllGizmos()
-		MasterAPI._RecalculateCanvasHeight()
+		if Utility.IsAPIVisible(API, false) then
+			local DeltaHeight = Gui.AbsoluteSize.Y - OCHeight
+			MasterAPI._AddToCanvasSize(DeltaHeight)
+		end
 	end)
 
 	-- Update

@@ -38,18 +38,6 @@ local function UpdateLayout(API)
 		end
 	end
 end
-local function IsVisible(API)
-	if API._IsVisible == false then
-		return false
-	end
-	while API ~= nil do
-		API = API._ParentAPI
-		if API ~= nil and API._IsVisible == false then
-			return false
-		end
-	end
-	return true
-end
 
 --
 function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
@@ -103,7 +91,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		-- Update UI
 		UpdateLayout(API)
 		-- Add Size if not in hidden folder
-		if IsVisible(API) then
+		if Utility.IsAPIVisible(API, true) then
 			MasterAPI._AddToCanvasSize(GizmoUI.AbsoluteSize.Y)
 		end
 
@@ -218,7 +206,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		end
 
 		-- Remove Canvas Height
-		if IsVisible(API) then
+		if Utility.IsAPIVisible(API, true) then
 			MasterAPI._AddToCanvasSize(-API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
 		end
 

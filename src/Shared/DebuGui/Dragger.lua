@@ -7,6 +7,32 @@ local Player = Players.LocalPlayer
 local Mouse = Player:GetMouse()
 local Utility = require(script.Parent.Utility)
 
+-- Global Data
+local Draggers = {}
+
+-- Global Functions
+local function DragEndGlobal()
+	for __, Class in ipairs(Draggers) do
+		if Class.IsDragging and Class.Listener_OnDragEnd then
+			Class.Listener_OnDragEnd()
+		end
+		Class.IsDragging = false
+	end
+end
+
+-- Events
+Mouse.Button1Up:Connect(DragEndGlobal)
+--
+Mouse.Move:Connect(function()
+	for __, Class in ipairs(Draggers) do
+		if Class.IsDragging and Class.Listener_OnDrag then
+			local Delta = Vector2.new(Mouse.X - Class.MouseClickPos.X, Mouse.Y - Class.MouseClickPos.Y)    
+			Class.Listener_OnDrag(Delta)
+			return -- Only 1 thing can be dragged at once
+		end
+	end
+end)
+
 -- Module
 local Dragger = {}
 
@@ -38,43 +64,31 @@ function Dragger.new(Button)
     --
     local Connections = {}
     --
-    Connections[1] = Class.Button.MouseButton1Down:Connect(function()
+    table.insert(Connections, Class.Button.MouseButton1Down:Connect(function()
         Class.MouseClickPos = Vector2.new(Mouse.X, Mouse.Y)
         Class.IsDragging = true
         if Class.Listener_OnDragStart then
             Class.Listener_OnDragStart()
         end
-    end)
-    Connections[2] = Class.Button.MouseButton1Up:Connect(function()
-        Class.IsDragging = false
-        if Class.Listener_OnDragEnd then
-            Class.Listener_OnDragEnd()
-        end
-    end)
-    Connections[3] = Mouse.Button1Up:Connect(function()
-        Class.IsDragging = false
-        if Class.Listener_OnDragEnd then
-            Class.Listener_OnDragEnd()
-        end
-    end)
-    Connections[4] = Mouse.Move:Connect(function()
-        if Class.IsDragging then
-            if Class.Listener_OnDrag then
-                local Delta = Vector2.new(Mouse.X - Class.MouseClickPos.X, Mouse.Y - Class.MouseClickPos.Y)    
-                Class.Listener_OnDrag(Delta)
-            end
-        end
-    end)
+    end))
+    table.insert(Connections, Class.Button.MouseButton1Up:Connect(function()
+		DragEndGlobal()
+    end))
     -- Destroy
     function Class.Destroy()
-        for __, Connection in pairs(Connections) do
+        for __, Connection in ipairs(Connections) do
             Connection:Disconnect()
         end
         Connections = nil
         Class.Listener_OnDrag = nil
         Class.Listener_OnDragStart = nil
         Class.Listener_OnDragEnd = nil
+		--
+		local Index = Utility.FindArrayIndexByValue(Dragger, Class)
+		table.remove(Draggers, Index)
     end
+	--
+	table.insert(Draggers, Class)
     --
     return Class
 end

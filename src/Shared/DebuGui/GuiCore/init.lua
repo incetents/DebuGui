@@ -36,6 +36,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	local Master = ScreenGui.Master
 
 	-- Data
+	local API = GizmoAPI.new(Master.Core)
 	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
@@ -148,7 +149,6 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 		SetVisible(not IsVisible)
 	end
 
-
 	--------------
 	-- Dragging --
 	--------------
@@ -217,7 +217,6 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	-----------------
 	-- Core Gizmos --
 	-----------------
-	local API = GizmoAPI.new(Master.Core)
 
 	-- Custom API
 	function API.Enable()

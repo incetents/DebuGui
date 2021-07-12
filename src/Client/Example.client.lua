@@ -113,6 +113,19 @@ Gui1.AddNumber('num7', 1).Set('a').SetReadOnly()
 Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddNumber('num9', '123.456789', false, 3)
 
+-- Number Sliders --
+Gui1.AddSeparator('NUMBER_SLIDER_SEPARATOR').SetName('NUMBER SLIDERS')
+--
+Gui1.AddNumberSlider('numslider1', 100, 50, 100).SetValueBGColor(Color3.fromRGB(197, 62, 175))
+Gui1.AddNumberSlider('numslider2', 100, 100, 200).SetValueTextColor(Color3.fromRGB(62, 197, 118))
+Gui1.AddNumberSlider('numslider3', 100, 50, 150)
+Gui1.AddNumberSlider('numslider4', 1, 2, 3).SetReadOnly()
+Gui1.AddNumberSlider('numslider5', 20, 0, 100, 0)
+	.SetName('No Decimals')
+	.SetNameColor(Color3.fromRGB(223, 157, 35))
+
+Gui1.Remove('numslider1')
+	
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
@@ -195,6 +208,8 @@ Folder1.AddNumber('num1', 99.99)
 Folder1.AddSeparator('separator1')
 Folder1.AddString('string1', 'Cool Beans')
 Folder1.AddVector2('vec2', Vector2.new(33, 565))
+Folder1.AddVector2('vec3', Vector2.new(33, 565))
+Folder1.AddNumberSlider('numslider', 100, 0, 200)
 SubSubFolder1.AddString('test1', 'xxx')
 SubFolder1.AddString('test1', 'xxx')
 
@@ -232,6 +247,7 @@ print("NumberGui API: ", Gui1.Get('num1'))
 print("SeparatorGui API: ", Gui1.Get('seperator1'))
 print("StringGui API: ", Gui1.Get('string1'))
 print("Vector2Gui API: ", Gui1.Get('vec2_1'))
+print("Vector3Gui API: ", Gui1.Get('vec3_1'))
 
 print("~~~")
 print('bool1 = ', Gui1.Get('bool1').GetValue())

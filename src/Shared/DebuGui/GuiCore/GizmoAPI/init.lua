@@ -7,6 +7,7 @@ local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
 local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
 local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
+local GizmoUI_Slider = ReplicatedStorage.GizmoUI_Slider
 local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
 local GizmoUI_TextBox_Multi2 = ReplicatedStorage.GizmoUI_TextBox_Multi2
 local GizmoUI_TextBox_Multi3 = ReplicatedStorage.GizmoUI_TextBox_Multi3
@@ -18,6 +19,7 @@ local GizmoButton = require(script.GizmoButton)
 local GizmoFolder = require(script.GizmoFolder)
 local GizmoInteger = require(script.GizmoInteger)
 local GizmoNumber = require(script.GizmoNumber)
+local GizmoNumberSlider = require(script.GizmoNumberSlider)
 local GizmoSeparator = require(script.GizmoSeparator)
 local GizmoString = require(script.GizmoString)
 local GizmoVector2 = require(script.GizmoVector2)
@@ -46,6 +48,7 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 	-- Data
 	API.GizmosTable = {}
 	API.GizmosArray = {}
+	API._Children = {}
 
 	-- Listener
 	local ListenersForNewGizmo = {}
@@ -134,6 +137,12 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 		return NewAPI
 	end
 	--
+	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
+		local NewAPI = AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
+		TriggerListeners()
+		return NewAPI
+	end
+	--
 	function API.AddBool(UniqueName, DefaultValue)
 		local NewAPI = AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, DefaultValue)
 		TriggerListeners()
@@ -187,9 +196,14 @@ function GizmoAPI.new(GuiParent, ParentAPI)
 			return
 		end
 
-		-- Flag API as bad
-		API.GizmosTable[UniqueName]._Destroy()
+		-- Flag API as destroyed --
 
+		-- Base level destruction
+		API.GizmosTable[UniqueName]._Destroy()
+		-- High level destruction if requested
+		if API.GizmosTable[UniqueName]._OnDestroy then
+			API.GizmosTable[UniqueName]._OnDestroy()
+		end
 
 		-- Destroy Gui
 		API.GizmosTable[UniqueName].Gui:Destroy()

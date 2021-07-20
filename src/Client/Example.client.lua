@@ -9,18 +9,18 @@ local PlayerGui = Player:WaitForChild('PlayerGui')
 -- DEBUG SETUP
 local C = PlayerGui:WaitForChild('DebuGui_UI')
 if C then
-    C:Destroy()
+	C:Destroy()
 end
 
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window
 local Gui1 = DebuGui.new('Core', {
-    Title = 'TEST NAME HERE 12312312',
-    X = 550,
-    Y = 50,
-    Width = 600,
-    Height = 520,
+	Title = 'TEST NAME HERE 12312312',
+	X = 350,
+	Y = 20,
+	Width = 600,
+	Height = 520,
 })
 Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
@@ -56,7 +56,7 @@ Gui1.AddBool('bool1', true).SetName('fancy bool')
 Gui1.AddBool('bool2', false).SetNameColor(Color3.new(1,0,0))
 Gui1.AddBool('bool3').SetCheckboxColor(Color3.fromRGB(46, 106, 124))
 Gui1.AddBool('bool4', true).Listen(function(NewValue)
-    print("New Bool4: ", NewValue)
+	print("New Bool4: ", NewValue)
 end)
 Gui1.AddBool('bool5', false).Set(true).SetCheckboxColor(Color3.fromRGB(122, 40, 122))
 Gui1.AddBool('bool6', true).SetReadOnly()
@@ -67,7 +67,7 @@ Gui1.AddSeparator('BUTTON_SEPARATOR').SetName('BUTTONS')
 --
 Gui1.AddButton('button1').SetName('fancy button')
 Gui1.AddButton('button2').Listen(function()
-    print("PRESSED BUTTON 2")
+	print("PRESSED BUTTON 2")
 end).SetColor(Color3.fromRGB(54, 45, 134))
 Gui1.AddButton('(X)').SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddButton('1234567890123456789012345678901234567890').SetColor(Color3.fromRGB(52, 134, 45))
@@ -92,11 +92,18 @@ Gui1.AddInteger('int2', -1).SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddInteger('int3', '_9_#$%#$&*')
 Gui1.AddInteger('int4')
 Gui1.AddInteger('int5', 6.6).Listen(function(NewValue)
-    print("NEW int5: "..NewValue)
+	print("NEW int5: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(39, 87, 59))
 Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
 Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+
+-- Integer Sliders --
+Gui1.AddSeparator('INTEGER_SLIDER_SEPARATOR').SetName('INTEGER SLIDERS')
+--
+Gui1.AddIntegerSlider('intslider1', 2, 0, 10)
+Gui1.AddIntegerSlider('intslider2', 0, -5, 5)
+Gui1.AddIntegerSlider('intslider3', 50.1, 0.1, 50.1)
 
 -- Numbers --
 Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
@@ -106,27 +113,31 @@ Gui1.AddNumber('num2', -1).SetNameColor(Color3.fromRGB(148, 255, 175))
 Gui1.AddNumber('num3', '9__#$%#$&*')
 Gui1.AddNumber('num4')
 Gui1.AddNumber('num5', 6.6).Listen(function(NewValue)
-    print("NEW num: "..NewValue)
+	print("NEW num: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumber('num7', 1).Set('a').SetReadOnly()
 Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
-Gui1.AddNumber('num9', '123.456789', false, 3)
+Gui1.AddNumber('num9', '123.456789', false, 3).Listen(function(NewValue)
+	print(NewValue)
+end)
 
 -- Number Sliders --
 Gui1.AddSeparator('NUMBER_SLIDER_SEPARATOR').SetName('NUMBER SLIDERS')
 --
 Gui1.AddNumberSlider('numslider1', 100, 50, 100).SetValueBGColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumberSlider('numslider2', 100, 100, 200).SetValueTextColor(Color3.fromRGB(62, 197, 118))
-Gui1.AddNumberSlider('numslider3', 100, 50, 150)
+Gui1.AddNumberSlider('numslider3', 20, 0, 100)
 Gui1.AddNumberSlider('numslider4', 40, 33, 44)
-Gui1.AddNumberSlider('numslider5', 1, 2, 3).SetReadOnly()
+Gui1.AddNumberSlider('numslider5', 1, 2, 3)--.SetReadOnly()
 Gui1.AddNumberSlider('numslider6', 20, 0, 100, 0)
+Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 
 Gui1.Remove('numslider4')
-	
+
+
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
@@ -146,7 +157,7 @@ Gui1.AddString('string2', '1').SetNameColor(Color3.fromRGB(255, 200, 148))
 Gui1.AddString('string3', '__#$%#$&*').SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddString('string4').SetValueTextColor(Color3.fromRGB(248, 150, 232))
 Gui1.AddString('string5', 'default').Listen(function(NewValue)
-    print("NEW STRING5: "..NewValue)
+	print("NEW STRING5: "..NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
 
@@ -181,7 +192,6 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 -------------
 
 Gui1.AddSeparator('FOLDER_SEPARATOR').SetName('FOLDERS')
-
 
 local Folder1 = Gui1.AddFolder('folder1', true)
 	.SetName('My Cool Folder')
@@ -234,6 +244,8 @@ SmallFrameFolder1.AddString('string4', 'text')
 SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
+
+Gui1.Remove('folder1')
 
 ----------------
 -- Getter API --
@@ -299,6 +311,8 @@ SmallFrameFolder1.AddString('string7', 'text')
 -- local rVec2 = Gui1.AddVector2('removeVector2')
 -- Gui1.Remove('removeVector2')
 -- rVec2.SetName('Invalid')
+
+--Gui1.Destroy()
 
 -- ----------------------
 -- -- Multiple Windows --

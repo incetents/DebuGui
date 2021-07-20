@@ -639,18 +639,18 @@ local PlayerGui = Player:WaitForChild('PlayerGui')
 -- DEBUG SETUP
 local C = PlayerGui:WaitForChild('DebuGui_UI')
 if C then
-    C:Destroy()
+	C:Destroy()
 end
 
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window
 local Gui1 = DebuGui.new('Core', {
-    Title = 'TEST NAME HERE 12312312',
-    X = 550,
-    Y = 50,
-    Width = 600,
-    Height = 520,
+	Title = 'TEST NAME HERE 12312312',
+	X = 350,
+	Y = 20,
+	Width = 600,
+	Height = 520,
 })
 Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
@@ -686,7 +686,7 @@ Gui1.AddBool('bool1', true).SetName('fancy bool')
 Gui1.AddBool('bool2', false).SetNameColor(Color3.new(1,0,0))
 Gui1.AddBool('bool3').SetCheckboxColor(Color3.fromRGB(46, 106, 124))
 Gui1.AddBool('bool4', true).Listen(function(NewValue)
-    print("New Bool4: ", NewValue)
+	print("New Bool4: ", NewValue)
 end)
 Gui1.AddBool('bool5', false).Set(true).SetCheckboxColor(Color3.fromRGB(122, 40, 122))
 Gui1.AddBool('bool6', true).SetReadOnly()
@@ -697,7 +697,7 @@ Gui1.AddSeparator('BUTTON_SEPARATOR').SetName('BUTTONS')
 --
 Gui1.AddButton('button1').SetName('fancy button')
 Gui1.AddButton('button2').Listen(function()
-    print("PRESSED BUTTON 2")
+	print("PRESSED BUTTON 2")
 end).SetColor(Color3.fromRGB(54, 45, 134))
 Gui1.AddButton('(X)').SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddButton('1234567890123456789012345678901234567890').SetColor(Color3.fromRGB(52, 134, 45))
@@ -722,11 +722,18 @@ Gui1.AddInteger('int2', -1).SetNameColor(Color3.fromRGB(255, 148, 148))
 Gui1.AddInteger('int3', '_9_#$%#$&*')
 Gui1.AddInteger('int4')
 Gui1.AddInteger('int5', 6.6).Listen(function(NewValue)
-    print("NEW int5: "..NewValue)
+	print("NEW int5: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(39, 87, 59))
 Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
 Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+
+-- Integer Sliders --
+Gui1.AddSeparator('INTEGER_SLIDER_SEPARATOR').SetName('INTEGER SLIDERS')
+--
+Gui1.AddIntegerSlider('intslider1', 2, 0, 10)
+Gui1.AddIntegerSlider('intslider2', 0, -5, 5)
+Gui1.AddIntegerSlider('intslider3', 50.1, 0.1, 50.1)
 
 -- Numbers --
 Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
@@ -736,27 +743,31 @@ Gui1.AddNumber('num2', -1).SetNameColor(Color3.fromRGB(148, 255, 175))
 Gui1.AddNumber('num3', '9__#$%#$&*')
 Gui1.AddNumber('num4')
 Gui1.AddNumber('num5', 6.6).Listen(function(NewValue)
-    print("NEW num: "..NewValue)
+	print("NEW num: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumber('num7', 1).Set('a').SetReadOnly()
 Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
-Gui1.AddNumber('num9', '123.456789', false, 3)
+Gui1.AddNumber('num9', '123.456789', false, 3).Listen(function(NewValue)
+	print(NewValue)
+end)
 
 -- Number Sliders --
 Gui1.AddSeparator('NUMBER_SLIDER_SEPARATOR').SetName('NUMBER SLIDERS')
 --
 Gui1.AddNumberSlider('numslider1', 100, 50, 100).SetValueBGColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumberSlider('numslider2', 100, 100, 200).SetValueTextColor(Color3.fromRGB(62, 197, 118))
-Gui1.AddNumberSlider('numslider3', 100, 50, 150)
+Gui1.AddNumberSlider('numslider3', 20, 0, 100)
 Gui1.AddNumberSlider('numslider4', 40, 33, 44)
-Gui1.AddNumberSlider('numslider5', 1, 2, 3).SetReadOnly()
+Gui1.AddNumberSlider('numslider5', 1, 2, 3)--.SetReadOnly()
 Gui1.AddNumberSlider('numslider6', 20, 0, 100, 0)
+Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 
 Gui1.Remove('numslider4')
-	
+
+
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
@@ -776,7 +787,7 @@ Gui1.AddString('string2', '1').SetNameColor(Color3.fromRGB(255, 200, 148))
 Gui1.AddString('string3', '__#$%#$&*').SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddString('string4').SetValueTextColor(Color3.fromRGB(248, 150, 232))
 Gui1.AddString('string5', 'default').Listen(function(NewValue)
-    print("NEW STRING5: "..NewValue)
+	print("NEW STRING5: "..NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
 
@@ -811,7 +822,6 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 -------------
 
 Gui1.AddSeparator('FOLDER_SEPARATOR').SetName('FOLDERS')
-
 
 local Folder1 = Gui1.AddFolder('folder1', true)
 	.SetName('My Cool Folder')
@@ -864,6 +874,8 @@ SmallFrameFolder1.AddString('string4', 'text')
 SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
+
+Gui1.Remove('folder1')
 
 ----------------
 -- Getter API --
@@ -929,6 +941,8 @@ SmallFrameFolder1.AddString('string7', 'text')
 -- local rVec2 = Gui1.AddVector2('removeVector2')
 -- Gui1.Remove('removeVector2')
 -- rVec2.SetName('Invalid')
+
+--Gui1.Destroy()
 
 -- ----------------------
 -- -- Multiple Windows --
@@ -4580,11 +4594,7 @@ local function DragEndGlobal()
 		Class.IsDragging = false
 	end
 end
-
--- Events
-Mouse.Button1Up:Connect(DragEndGlobal)
---
-Mouse.Move:Connect(function()
+local function DragGlobal()
 	for __, Class in ipairs(Draggers) do
 		if Class.IsDragging and Class.Listener_OnDrag then
 			local Delta = Vector2.new(Mouse.X - Class.MouseClickPos.X, Mouse.Y - Class.MouseClickPos.Y)    
@@ -4592,19 +4602,22 @@ Mouse.Move:Connect(function()
 			return -- Only 1 thing can be dragged at once
 		end
 	end
-end)
+end
+
+-- Events
+Mouse.Button1Up:Connect(DragEndGlobal)
+Mouse.Move:Connect(DragGlobal)
 
 -- Module
 local Dragger = {}
 
 -- Create
-function Dragger.new(Button)
+function Dragger.new(DraggerButton)
+
+	-- Class
     local Class = {
         IsDragging = false,
-        Button = Button,
-        StartPos = nil,
         MouseClickPos = Vector2.new(0, 0),
-        MouseDragDelta = Vector2.new(0, 0),
         -- Listeners
         Listener_OnDrag = nil,
         Listener_OnDragStart = nil,
@@ -4622,19 +4635,23 @@ function Dragger.new(Button)
         Utility.QuickTypeAssert(func, 'function')
         Class.Listener_OnDragEnd = func
     end
-    --
+
+    -- Data
+	local Button = DraggerButton
     local Connections = {}
-    --
-    table.insert(Connections, Class.Button.MouseButton1Down:Connect(function()
+
+    -- Setup
+    table.insert(Connections, Button.MouseButton1Down:Connect(function()
         Class.MouseClickPos = Vector2.new(Mouse.X, Mouse.Y)
         Class.IsDragging = true
         if Class.Listener_OnDragStart then
             Class.Listener_OnDragStart()
         end
     end))
-    table.insert(Connections, Class.Button.MouseButton1Up:Connect(function()
+    table.insert(Connections, Button.MouseButton1Up:Connect(function()
 		DragEndGlobal()
     end))
+
     -- Destroy
     function Class.Destroy()
         for __, Connection in ipairs(Connections) do
@@ -4645,9 +4662,11 @@ function Dragger.new(Button)
         Class.Listener_OnDragStart = nil
         Class.Listener_OnDragEnd = nil
 		--
-		local Index = Utility.FindArrayIndexByValue(Dragger, Class)
+		local Index = Utility.FindArrayIndexByValue(Draggers, Class)
+		assert(Index ~= nil, 'Dragger Class is nil')
 		table.remove(Draggers, Index)
     end
+
 	--
 	table.insert(Draggers, Class)
     --
@@ -4711,6 +4730,7 @@ return Utility]]></ProtectedString>
 -- Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextService = game:GetService("TextService")
+local GuiService = game:GetService("GuiService")
 
 -- Constants
 local MIN_GUI_WIDTH = 60
@@ -4734,7 +4754,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Defaults
 	InitData.X = InitData.X or 100
-	InitData.Y = InitData.Y or 100
+	InitData.Y = InitData.Y - GuiService:GetGuiInset().Y or 100
 	InitData.Width = InitData.Width or 300
 	InitData.Height = InitData.Height or 300
 	InitData.Title = InitData.Title or ""
@@ -4940,11 +4960,18 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	end
 
 	-- Public API --
+	function API.Destroy()
+		API.RemoveAll()
+		ScreenGui:Destroy()
+	end
+
 	function API.Enable()
 		ScreenGui.Enabled = true
+		return API
 	end
 	function API.Disable()
 		ScreenGui.Enabled = false
+		return API
 	end
 
 	function API.Show()
@@ -5033,6 +5060,7 @@ local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
 local GizmoFolder = require(script.GizmoFolder)
 local GizmoInteger = require(script.GizmoInteger)
+local GizmoIntegerSlider = require(script.GizmoIntegerSlider)
 local GizmoNumber = require(script.GizmoNumber)
 local GizmoNumberSlider = require(script.GizmoNumberSlider)
 local GizmoSeparator = require(script.GizmoSeparator)
@@ -5074,7 +5102,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	local ListenersForNewGizmo = {}
 
 	-- Helper Functions
-	local function TriggerListeners()
+	local function TriggerNewGizmoListeners()
 		for __, Listener in ipairs(ListenersForNewGizmo) do
 			Listener()
 		end
@@ -5118,6 +5146,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	-- Private API --
 	-----------------
 
+	--
 	function API._ListenForNewGizmos(func)
 		Utility.QuickTypeAssert(func, 'function')
 		table.insert(ListenersForNewGizmo, func)
@@ -5145,66 +5174,73 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, DefaultValue, ClearTextOnFocus)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
+		return NewAPI
+	end
+	--
+	function API.AddIntegerSlider(UniqueName, DefaultValue, MinValue, MaxValue)
+		local NewAPI = AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue)
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddBool(UniqueName, DefaultValue)
 		local NewAPI = AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, DefaultValue)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddButton(UniqueName)
 		local NewAPI = AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddSeparator(UniqueName, Color, Text, Height)
 		local NewAPI = AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, MasterAPI, Color, Text, Height)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddFolder(UniqueName, StartOpen)
 		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, StartOpen)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 
 	-- Returns API of Gizmo
 	function API.Get(UniqueName)
+
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
@@ -5212,8 +5248,10 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		end
 		return API._GizmosTable[UniqueName]
 	end
+
 	-- Removes API of Gizmo
 	function API.Remove(UniqueName)
+
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to remove non-existant Gizmo ("..UniqueName..")")
@@ -5225,8 +5263,6 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 			MasterAPI._AddToCanvasSize(-API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
 		end
 
-		-- Flag API as destroyed --
-
 		-- Base level destruction
 		API._GizmosTable[UniqueName]._Destroy()
 		-- High level destruction if requested
@@ -5234,18 +5270,32 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 			API._GizmosTable[UniqueName]._OnDestroy()
 		end
 
+		-- Remove References
+		local Index = Utility.FindArrayIndexByValue(API._GizmosArray, API._GizmosTable[UniqueName])
+		assert(Index ~= nil, 'Nil Index Error')
+		table.remove(API._GizmosArray, Index)
+		
 		-- Destroy Gui
 		API._GizmosTable[UniqueName].Gui:Destroy()
-		-- Remove References
 		API._GizmosTable[UniqueName] = nil
-		local Index = Utility.FindArrayIndexByValue(API._GizmosArray, UniqueName)
-		table.remove(API._GizmosArray, Index)
 
 		-- Update Visuals
 		UpdateLayout(API)
 
 		-- Call High level events
-		TriggerListeners()
+		TriggerNewGizmoListeners()
+	end
+
+	-- Removes API of Gizmo
+	function API.RemoveAll()
+		for __, Gui in ipairs(API._GizmosArray) do
+			Gui._Destroy()
+			if Gui._OnDestroy then
+				Gui._OnDestroy()
+			end
+		end
+		API._GizmosTable = {}
+		API._GizmosArray = {}
 	end
 
 	-- Sanity
@@ -5629,11 +5679,8 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 			MasterAPI._AddToCanvasSize(DeltaHeight)
 		end
 	end)
-
-	-- Update
-	UpdateVisual(API, Gui, FrameHeightLimit)
-
-	-- Private API
+	
+	-- Listen
 	API._ListenForNewGizmos(function()
 		-- Update Children first
 		for __, Gizmo in ipairs(API._GizmosArray) do
@@ -5646,6 +5693,21 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		-- Update Parent
 		ParentAPI._UpdateAllGizmos()
 	end)
+
+	-- Update
+	UpdateVisual(API, Gui, FrameHeightLimit)
+
+	-- Private API
+	function API._Destroy()
+		for __, OtherGui in ipairs(API._GizmosArray) do
+			OtherGui._Destroy()
+			if OtherGui._OnDestroy then
+				OtherGui._OnDestroy()
+			end
+		end
+		API._GizmosTable = {}
+		API._GizmosArray = {}
+	end
 	function API._Update()
 		UpdateVisual(API, Gui, FrameHeightLimit)
 	end
@@ -6671,6 +6733,176 @@ end
 
 -- End
 return GizmoNumberSlider]]></ProtectedString>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+						</Properties>
+					</Item>
+					<Item class="ModuleScript" referent="RBXC3D16B2C9FA9452AA9EB2DAFB3A9C9F0">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<Content name="LinkedSource"><null></null></Content>
+							<string name="Name">GizmoIntegerSlider</string>
+							<string name="ScriptGuid">{CCCEA4A7-A419-46D2-AFE1-34F49377D2B6}</string>
+							<ProtectedString name="Source"><![CDATA[
+-- Modules
+local Utility = require(script.Parent.Parent.Parent.Utility)
+local Dragger = require(script.Parent.Parent.Parent.Dragger)
+
+-- Ref
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+
+-- Base
+local GizmoBase = require(script.Parent.GizmoBase)
+
+-- Module
+local GizmoIntegerSlider = {}
+
+-- Global Functions
+local function InverseLerp(v, a, b)
+	return (v - a) / (b - a)
+end
+local function Lerp(a, b, t)
+	return (1 - t) * a + t * b;
+end
+
+local function UpdateDraggerPositionFromValue(SliderGui, Value, MinValue, MaxValue)
+	local t = InverseLerp(Value, MinValue, MaxValue)
+	SliderGui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(t, 0)
+end
+local function GetValueFromDraggerPosition(SliderGui, MinValue, MaxValue)
+	return Lerp(MinValue, MaxValue, SliderGui.TextBox.DragRange.Dragger.Position.X.Scale)
+end
+
+--
+function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
+
+	-- Defaults
+	MinValue = math.round(tonumber(MinValue)) or 0
+	MaxValue = math.round(tonumber(MaxValue)) or 0
+	DefaultValue = math.round(tonumber(DefaultValue)) or 0
+
+	-- Sanity
+	if MinValue > MaxValue then
+		warn('Warning! NumberSlider Min is larger than Max')
+		MinValue = MaxValue
+	end
+	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(DefaultValue, 'number')
+	Utility.QuickTypeAssert(MinValue, 'number')
+	Utility.QuickTypeAssert(MaxValue, 'number')
+	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
+	
+	-- Init Values
+	Gui.TextName.Text = Name
+	Gui.TextBox.Text = DefaultValue
+	UpdateDraggerPositionFromValue(Gui, DefaultValue, MinValue, MaxValue)
+
+	-- Data
+	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
+	local IsReadOnly = false
+
+	-- API
+	local API = GizmoBase.new()
+	API._LastInput = DefaultValue
+
+	-- Private API --
+	function API._OnDestroy()
+		ValueDragger.Destroy()
+	end
+
+	-- Public API --
+	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
+		Gui.TextName.Text = NewName
+		return API
+	end
+	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
+		Gui.TextName.TextColor3 = NewNameColor
+		return API
+	end
+	function API.SetValueBGColor(NewColor)
+		if API._DeadCheck() then return nil end
+		Gui.TextBox.BackgroundColor3 = NewColor
+		return API
+	end
+	function API.SetValueTextColor(NewColor)
+		if API._DeadCheck() then return nil end
+		Gui.TextBox.TextColor3 = NewColor
+		return API
+	end
+	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
+		return IsReadOnly
+	end
+	function API.SetReadOnly(State)
+		if API._DeadCheck() then return nil end
+		-- Set
+		if State == nil then
+			IsReadOnly = true
+		else
+			IsReadOnly = State
+		end
+		-- Apply
+		if IsReadOnly then
+			Gui.TextBox.DragRange.Dragger.Selectable = false
+			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
+			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+		else
+			Gui.TextBox.DragRange.Dragger.Selectable = true
+			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
+			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+		end
+		return API
+	end
+
+	-- Dragger
+	ValueDragger.OnDrag(function()
+		if API._DeadCheck() then return nil end
+
+		if IsReadOnly then
+			return
+		end
+
+		-- Move Button to correct Position
+		local ButtonPositionT = InverseLerp(
+			Mouse.X,
+			Gui.TextBox.DragRange.AbsolutePosition.X,
+			Gui.TextBox.DragRange.AbsolutePosition.X + Gui.TextBox.DragRange.AbsoluteSize.X
+		)
+		ButtonPositionT = math.clamp(ButtonPositionT, 0, 1)
+		Gui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(ButtonPositionT, 0)
+
+		-- Get New Value based on Mouse and round result
+		local NewValue = GetValueFromDraggerPosition(Gui, MinValue, MaxValue)
+		NewValue = math.round(NewValue)
+
+		-- Move Position based on rounded Value
+		UpdateDraggerPositionFromValue(Gui, NewValue, MinValue, MaxValue)
+
+		-- Calculate value from position
+		API._LastInput = NewValue
+		-- if DecimalAmount then
+		-- 	local Mod = (10 ^ DecimalAmount)
+		-- 	API._LastInput = math.round(API._LastInput * Mod) / Mod
+		-- end
+
+		-- Text
+		Gui.TextBox.Text = API._LastInput
+
+		-- Listeners
+		if API._Listener then
+			API._Listener(API._LastInput)
+		end
+
+	end)
+
+	-- End
+	return API
+end
+
+-- End
+return GizmoIntegerSlider]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 						</Properties>

@@ -18,6 +18,7 @@ local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
 local GizmoFolder = require(script.GizmoFolder)
 local GizmoInteger = require(script.GizmoInteger)
+local GizmoIntegerSlider = require(script.GizmoIntegerSlider)
 local GizmoNumber = require(script.GizmoNumber)
 local GizmoNumberSlider = require(script.GizmoNumberSlider)
 local GizmoSeparator = require(script.GizmoSeparator)
@@ -59,7 +60,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	local ListenersForNewGizmo = {}
 
 	-- Helper Functions
-	local function TriggerListeners()
+	local function TriggerNewGizmoListeners()
 		for __, Listener in ipairs(ListenersForNewGizmo) do
 			Listener()
 		end
@@ -103,6 +104,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 	-- Private API --
 	-----------------
 
+	--
 	function API._ListenForNewGizmos(func)
 		Utility.QuickTypeAssert(func, 'function')
 		table.insert(ListenersForNewGizmo, func)
@@ -130,66 +132,73 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, DefaultValue, ClearTextOnFocus)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
+		return NewAPI
+	end
+	--
+	function API.AddIntegerSlider(UniqueName, DefaultValue, MinValue, MaxValue)
+		local NewAPI = AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue)
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddBool(UniqueName, DefaultValue)
 		local NewAPI = AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, DefaultValue)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddButton(UniqueName)
 		local NewAPI = AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddSeparator(UniqueName, Color, Text, Height)
 		local NewAPI = AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, MasterAPI, Color, Text, Height)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddFolder(UniqueName, StartOpen)
 		local NewAPI = AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, StartOpen)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 	--
 	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
 		local NewAPI = AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
-		TriggerListeners()
+		TriggerNewGizmoListeners()
 		return NewAPI
 	end
 
 	-- Returns API of Gizmo
 	function API.Get(UniqueName)
+
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
@@ -197,8 +206,10 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		end
 		return API._GizmosTable[UniqueName]
 	end
+
 	-- Removes API of Gizmo
 	function API.Remove(UniqueName)
+
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
 			warn("Warning! Trying to remove non-existant Gizmo ("..UniqueName..")")
@@ -210,8 +221,6 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 			MasterAPI._AddToCanvasSize(-API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
 		end
 
-		-- Flag API as destroyed --
-
 		-- Base level destruction
 		API._GizmosTable[UniqueName]._Destroy()
 		-- High level destruction if requested
@@ -219,18 +228,32 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 			API._GizmosTable[UniqueName]._OnDestroy()
 		end
 
+		-- Remove References
+		local Index = Utility.FindArrayIndexByValue(API._GizmosArray, API._GizmosTable[UniqueName])
+		assert(Index ~= nil, 'Nil Index Error')
+		table.remove(API._GizmosArray, Index)
+		
 		-- Destroy Gui
 		API._GizmosTable[UniqueName].Gui:Destroy()
-		-- Remove References
 		API._GizmosTable[UniqueName] = nil
-		local Index = Utility.FindArrayIndexByValue(API._GizmosArray, UniqueName)
-		table.remove(API._GizmosArray, Index)
 
 		-- Update Visuals
 		UpdateLayout(API)
 
 		-- Call High level events
-		TriggerListeners()
+		TriggerNewGizmoListeners()
+	end
+
+	-- Removes API of Gizmo
+	function API.RemoveAll()
+		for __, Gui in ipairs(API._GizmosArray) do
+			Gui._Destroy()
+			if Gui._OnDestroy then
+				Gui._OnDestroy()
+			end
+		end
+		API._GizmosTable = {}
+		API._GizmosArray = {}
 	end
 
 	-- Sanity

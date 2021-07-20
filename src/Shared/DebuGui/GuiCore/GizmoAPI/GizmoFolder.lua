@@ -49,11 +49,8 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 			MasterAPI._AddToCanvasSize(DeltaHeight)
 		end
 	end)
-
-	-- Update
-	UpdateVisual(API, Gui, FrameHeightLimit)
-
-	-- Private API
+	
+	-- Listen
 	API._ListenForNewGizmos(function()
 		-- Update Children first
 		for __, Gizmo in ipairs(API._GizmosArray) do
@@ -66,6 +63,21 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		-- Update Parent
 		ParentAPI._UpdateAllGizmos()
 	end)
+
+	-- Update
+	UpdateVisual(API, Gui, FrameHeightLimit)
+
+	-- Private API
+	function API._Destroy()
+		for __, OtherGui in ipairs(API._GizmosArray) do
+			OtherGui._Destroy()
+			if OtherGui._OnDestroy then
+				OtherGui._OnDestroy()
+			end
+		end
+		API._GizmosTable = {}
+		API._GizmosArray = {}
+	end
 	function API._Update()
 		UpdateVisual(API, Gui, FrameHeightLimit)
 	end

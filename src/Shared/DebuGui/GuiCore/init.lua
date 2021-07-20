@@ -2,6 +2,7 @@
 -- Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextService = game:GetService("TextService")
+local GuiService = game:GetService("GuiService")
 
 -- Constants
 local MIN_GUI_WIDTH = 60
@@ -25,7 +26,7 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 
 	-- Defaults
 	InitData.X = InitData.X or 100
-	InitData.Y = InitData.Y or 100
+	InitData.Y = InitData.Y - GuiService:GetGuiInset().Y or 100
 	InitData.Width = InitData.Width or 300
 	InitData.Height = InitData.Height or 300
 	InitData.Title = InitData.Title or ""
@@ -231,11 +232,18 @@ function GuiCore.new(DebuGui, ScreenGuiRef, InitData)
 	end
 
 	-- Public API --
+	function API.Destroy()
+		API.RemoveAll()
+		ScreenGui:Destroy()
+	end
+
 	function API.Enable()
 		ScreenGui.Enabled = true
+		return API
 	end
 	function API.Disable()
 		ScreenGui.Enabled = false
+		return API
 	end
 
 	function API.Show()

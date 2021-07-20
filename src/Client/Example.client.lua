@@ -272,9 +272,9 @@ Gui1.Remove('folder1')
 -- print('string1 = ', Gui1.Get('string1').GetValue())
 -- print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
 
--- ---------------
--- -- Removal API --
--- ---------------
+---------------
+-- Removal API --
+---------------
 
 -- -- removing invalid Gui --
 -- Gui1.Remove('Fake Non-ExistantGui')
@@ -312,7 +312,7 @@ Gui1.Remove('folder1')
 -- Gui1.Remove('removeVector2')
 -- rVec2.SetName('Invalid')
 
---Gui1.Destroy()
+Gui1.Destroy()
 
 -- ----------------------
 -- -- Multiple Windows --

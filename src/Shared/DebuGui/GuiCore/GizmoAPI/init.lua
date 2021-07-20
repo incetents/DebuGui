@@ -246,11 +246,12 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 
 	-- Removes API of Gizmo
 	function API.RemoveAll()
-		for __, Gui in ipairs(API._GizmosArray) do
-			Gui._Destroy()
-			if Gui._OnDestroy then
-				Gui._OnDestroy()
+		for __, Gizmo in ipairs(API._GizmosArray) do
+			Gizmo._Destroy()
+			if Gizmo._OnDestroy then
+				Gizmo._OnDestroy()
 			end
+			Gizmo.Gui:Destroy()
 		end
 		API._GizmosTable = {}
 		API._GizmosArray = {}

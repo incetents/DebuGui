@@ -28,8 +28,16 @@ local ScreenGuis = {}
 local ScreenGuiCount = 0
 local MinimizeOrder = {} -- Array of Guis that are minimized
 
---
-function DebuGui.new(GuiName, InitData)
+-- Public API --
+
+function DebuGui.Get(GuiName)
+	if ScreenGuis[GuiName] then
+		return ScreenGuis[GuiName].API
+	end
+	return nil
+end
+
+function DebuGui.New(GuiName, InitData)
 
 	-- Assert
 	Utility.QuickTypeAssert(GuiName, 'string')

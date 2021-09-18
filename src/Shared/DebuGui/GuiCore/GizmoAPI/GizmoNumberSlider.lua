@@ -63,11 +63,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	-- API
 	local API = GizmoBase.new()
 	API._LastInput = DefaultValue
-
-	-- Private API --
-	function API._OnDestroy()
-		ValueDragger.Destroy()
-	end
+	API._AddDragger(ValueDragger)
 
 	-- Public API --
 	function API.SetName(NewName)
@@ -142,7 +138,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		-- Text
 		Gui.TextBox.Text = API._LastInput
 
-		-- Listeners
+		-- Trigger Listeners
 		if API._Listener then
 			API._Listener(API._LastInput)
 		end

@@ -8,20 +8,47 @@ function GizmoBase.new()
 		_IsDestroyed = false,
         _Listener = nil,
         _LastInput = nil,
-		_Connections = {},
+		_Connections = nil,
+		_Draggers = nil,
     }
 
 	-- Private API
 	function API._AddConnection(Connection)
+		if API._Connections == nil then
+			API._Connections = {}
+		end
 		table.insert(API._Connections, Connection)
 	end
+
+	function API._AddDragger(Dragger)
+		if API._Draggers == nil then
+			API._Draggers = {}
+		end
+		table.insert(API._Draggers, Dragger)
+	end
+
 	function API._Destroy()
 		API._IsDestroyed = true
-		for __, Connection in ipairs(API._Connections) do
-			Connection:Disconnect()
+		-- Remove Connections
+		if API._Connections then
+			for _, Connection in ipairs(API._Connections) do
+				Connection:Disconnect()
+			end
 		end
-		API._Connections = {}
+		API._Connections = nil
+		-- Remove Draggers
+		if API._Draggers then
+			for _, Dragger in ipairs(API._Draggers) do
+				Dragger.Destroy()
+			end
+		end
+		-- Remove GUI
+		if API.Gui then
+			API.Gui:Destroy()
+		end
+		API.Gui = nil
 	end
+
 	function API._DeadCheck()
 		if API._IsDestroyed then
 			warn("Warning! Accessing Removed Gizmo ("..API.Name..")")

@@ -59,11 +59,7 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 	-- API
 	local API = GizmoBase.new()
 	API._LastInput = DefaultValue
-
-	-- Private API --
-	function API._OnDestroy()
-		ValueDragger.Destroy()
-	end
+	API._AddDragger(ValueDragger)
 
 	-- Public API --
 	function API.SetName(NewName)
@@ -137,15 +133,11 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 
 		-- Calculate value from position
 		API._LastInput = NewValue
-		-- if DecimalAmount then
-		-- 	local Mod = (10 ^ DecimalAmount)
-		-- 	API._LastInput = math.round(API._LastInput * Mod) / Mod
-		-- end
 
 		-- Text
 		Gui.TextBox.Text = API._LastInput
 
-		-- Listeners
+		-- Trigger Listeners
 		if API._Listener then
 			API._Listener(API._LastInput)
 		end

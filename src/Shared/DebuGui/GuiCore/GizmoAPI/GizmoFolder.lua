@@ -71,9 +71,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	function API._Destroy()
 		for __, OtherGui in ipairs(API._GizmosArray) do
 			OtherGui._Destroy()
-			if OtherGui._OnDestroy then
-				OtherGui._OnDestroy()
-			end
 		end
 		API._GizmosTable = {}
 		API._GizmosArray = {}

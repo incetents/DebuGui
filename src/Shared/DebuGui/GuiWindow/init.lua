@@ -52,40 +52,36 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	InitData.Height = InitData.Height or 300
 	InitData.Title = InitData.Title or ""
 
-	-- Ref
-	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
-	ScreenGui.Enabled = true
-	local Master = ScreenGui.Master
-
-	-- Data
-	local API = GizmoAPI.New(Master.Core)
-	API._IsVisible = true
-
 	-- Private Data
+	local MasterFrame = ScreenGui.MasterFrame
+	local API = GizmoAPI.New(MasterFrame.Core)
+	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
 	local PosBeforeMinimized = nil
 	local SizeBeforeHidden = nil
-	local TitleSize = TextService:GetTextSize(InitData.Title, Master.TopBar.Title.TextSize, Master.TopBar.Title.Font, Master.TopBar.Title.AbsoluteSize)
+	local TitleSize = TextService:GetTextSize(InitData.Title, MasterFrame.TopBar.Title.TextSize, MasterFrame.TopBar.Title.Font, MasterFrame.TopBar.Title.AbsoluteSize)
 
 	-- Setup
-	Master.Position = UDim2.fromOffset(InitData.X, InitData.Y)
-	Master.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
-	Master.TopBar.Title.Text = InitData.Title
-	VerticalLayout:Clone().Parent = Master.Core
+	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
+	ScreenGui.Enabled = true
+	MasterFrame.Position = UDim2.fromOffset(InitData.X, InitData.Y)
+	MasterFrame.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
+	MasterFrame.TopBar.Title.Text = InitData.Title
+	VerticalLayout:Clone().Parent = MasterFrame.Core
 
 	----------------------
 	-- Helper Functions --
 	----------------------
 	local function UpdateVisibility()
-		if not API._IsVisible or IsMinimized then
-			Master.Core.Visible = false
-			Master.ResizeBtn.Visible = false
-			Master.ResizeBtn.Active = false
+		if not IsVisible or IsMinimized then
+			MasterFrame.Core.Visible = false
+			MasterFrame.ResizeBtn.Visible = false
+			MasterFrame.ResizeBtn.Active = false
 		else
-			Master.Core.Visible = true
-			Master.ResizeBtn.Visible = true
-			Master.ResizeBtn.Active = false
+			MasterFrame.Core.Visible = true
+			MasterFrame.ResizeBtn.Visible = true
+			MasterFrame.ResizeBtn.Active = false
 		end
 	end
 
@@ -95,57 +91,53 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 		-- Pre Data
 		if not IsMinimized then
-			PosBeforeMinimized = Master.AbsolutePosition
-			SizeBeforeMinimized = Master.AbsoluteSize
+			PosBeforeMinimized = MasterFrame.AbsolutePosition
+			SizeBeforeMinimized = MasterFrame.AbsoluteSize
 		end
 
 		-- Data
 		IsMinimized = not IsMinimized
 
-		-- Text
+		-- Minimize
 		if IsMinimized then
-			Master.TopBar.MinimizeBtn.Text = '+'
-		else
-			Master.TopBar.MinimizeBtn.Text = '-'
-		end
-
-		-- Pos/Size
-		if IsMinimized then
-			Master.Position = UDim2.new(0, 0, 1, -TITLEBAR_HEIGHT)
-			Master.Size = UDim2.new(0, TitleSize.X + TITLEBAR_ICONSIZE * 2 + TITLEBAR_WIDTH_PADDING_TOTAL, 0, TITLEBAR_HEIGHT)
-		else
-			Master.Position = UDim2.fromOffset(PosBeforeMinimized.X, PosBeforeMinimized.Y) 
-			Master.Size = UDim2.fromOffset(SizeBeforeMinimized.X, SizeBeforeMinimized.Y)
-		end
-
-		-- Let Parent organize their positions
-		if IsMinimized then
-			-- Add Minimize Window to end of the list
+			-- Text
+			MasterFrame.TopBar.MinimizeBtn.Text = '+'
+			
+			-- Find X Position at end of Minimized List
 			local XOffset = 0
 			for __, Gui in ipairs(DebuGui.MinimizeOrder) do
-				XOffset += Gui.Master.AbsoluteSize.X
+				XOffset += Gui.MasterFrame.AbsoluteSize.X
 			end
 			-- Placed Minimized Position
-			Master.Position = UDim2.new(
-				0, Master.Position.X.Offset + XOffset,
-				Master.Position.Y.Scale, Master.Position.Y.Offset
-			)
+			MasterFrame.Position = UDim2.new(0, XOffset, 1, -TITLEBAR_HEIGHT)
 
-			-- Store Window
+			-- Size
+			MasterFrame.Size = UDim2.new(0, TitleSize.X + TITLEBAR_ICONSIZE * 2 + TITLEBAR_WIDTH_PADDING_TOTAL, 0, TITLEBAR_HEIGHT)
+
+			-- Store Window in Minimized Array
 			table.insert(DebuGui.MinimizeOrder, ScreenGui)
+
+		-- Maximize
 		else
+			-- Text
+			MasterFrame.TopBar.MinimizeBtn.Text = '-'
+			-- Pos
+			MasterFrame.Position = UDim2.fromOffset(PosBeforeMinimized.X, PosBeforeMinimized.Y)
+			-- Size
+			MasterFrame.Size = UDim2.fromOffset(SizeBeforeMinimized.X, SizeBeforeMinimized.Y)
+
 			-- Remove Window from Minimize List
 			local Index = Utility.FindArrayIndexByValue(DebuGui.MinimizeOrder, ScreenGui)
 			table.remove(DebuGui.MinimizeOrder, Index)
 
-			-- Reorder all minimized windows
+			-- Reorder all Minimized windows
 			local XOffset = 0
 			for __, Gui in ipairs(DebuGui.MinimizeOrder) do
-				Gui.Master.Position = UDim2.new(
+				Gui.MasterFrame.Position = UDim2.new(
 					0, XOffset,
-					Gui.Master.Position.Y.Scale, Gui.Master.Position.Y.Offset
+					Gui.MasterFrame.Position.Y.Scale, Gui.MasterFrame.Position.Y.Offset
 				)
-				XOffset += Gui.Master.AbsoluteSize.X
+				XOffset += Gui.MasterFrame.AbsoluteSize.X
 			end
 		end
 
@@ -160,28 +152,28 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	local function SetVisible(State)
 
 		-- Abort if no change
-		if State == API._IsVisible then return end
+		if State == IsVisible then return end
 		
 		-- Pre Data
-		if API._IsVisible then
-			SizeBeforeHidden = Master.AbsoluteSize
+		if IsVisible then
+			SizeBeforeHidden = MasterFrame.AbsoluteSize
 		end
 
 		-- Data
-		API._IsVisible = not API._IsVisible
+		IsVisible = not IsVisible
 
 		-- Text
-		if API._IsVisible then
-			Master.TopBar.DropDownBtn.Text = 'v'
+		if IsVisible then
+			MasterFrame.TopBar.DropDownBtn.Text = 'v'
 		else
-			Master.TopBar.DropDownBtn.Text = '>'
+			MasterFrame.TopBar.DropDownBtn.Text = '>'
 		end
 
 		-- Pos/Size
-		if API._IsVisible then
-			Master.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
+		if IsVisible then
+			MasterFrame.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
 		else
-			Master.Size = UDim2.new(0, Master.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
+			MasterFrame.Size = UDim2.new(0, MasterFrame.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
 		end
 
 		-- Visibility
@@ -189,56 +181,56 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	end
 
 	local function ToggleVisibility()
-		SetVisible(not API._IsVisible)
+		SetVisible(not IsVisible)
 	end
 
 	--------------
 	-- Draggers --
 	--------------
 
-	-- Drag Position of Master
+	-- Drag Position of MasterFrame
 	local MasterPos;
-	local TitleDragger = Dragger.new(Master.TopBar.Title)
+	local TitleDragger = Dragger.new(MasterFrame.TopBar.Title)
 	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
 			BringGuiForward(DebuGui, ScreenGui)
-			MasterPos = Master.AbsolutePosition
+			MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
 	TitleDragger.OnDrag(function(Delta)
 		if not IsMinimized then
-			Master.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
+			MasterFrame.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
 		end
 	end)
 
 	-- Drag Center of Core
-	local CoreDragger = Dragger.new(Master.DragCore)
+	local CoreDragger = Dragger.new(MasterFrame.DragCore)
 	CoreDragger.OnDragStart(function()
-		if API._IsVisible and not IsMinimized then
+		if IsVisible and not IsMinimized then
 			BringGuiForward(DebuGui, ScreenGui)
-			MasterPos = Master.AbsolutePosition
+			MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
 	CoreDragger.OnDrag(function(Delta)
-		if API._IsVisible and not IsMinimized then
-			Master.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
+		if IsVisible and not IsMinimized then
+			MasterFrame.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
 		end
 	end)
 
 	-- Drag ResizeBtn to Resize
 	local MasterSize;
-	local ResizeDragger = Dragger.new(Master.ResizeBtn)
+	local ResizeDragger = Dragger.new(MasterFrame.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
 		BringGuiForward(DebuGui, ScreenGui)
-		if API._IsVisible and not IsMinimized then
-			MasterSize = Master.AbsoluteSize
+		if IsVisible and not IsMinimized then
+			MasterSize = MasterFrame.AbsoluteSize
 		end
 	end)
 	ResizeDragger.OnDrag(function(Delta)
-		if API._IsVisible and not IsMinimized then
+		if IsVisible and not IsMinimized then
 			local NewWidth = math.max(MasterSize.X + Delta.X, MIN_GUI_WIDTH)
 			local NewHeight = math.max(MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
-			Master.Size = UDim2.fromOffset(NewWidth, NewHeight)
+			MasterFrame.Size = UDim2.fromOffset(NewWidth, NewHeight)
 		end
 	end)
 
@@ -247,13 +239,13 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	-------------
 
 	-- Toggle Visibility
-	Master.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
+	MasterFrame.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
 		BringGuiForward(DebuGui, ScreenGui)
 		ToggleVisibility()
 	end)
 
 	-- Toggle Minimize Mode
-	Master.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
+	MasterFrame.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
 		BringGuiForward(DebuGui, ScreenGui)
 		ToggleMinimized()
 	end)
@@ -268,10 +260,10 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		for __, Data in ipairs(API._GizmosArray) do
 			Height += Data.Gui.AbsoluteSize.Y
 		end
-		Master.Core.CanvasSize = UDim2.fromOffset(0, Height)
+		MasterFrame.Core.CanvasSize = UDim2.fromOffset(0, Height)
 	end
 	function API._AddToCanvasSize(Amount)
-		Master.Core.CanvasSize = UDim2.fromOffset(0, Master.Core.CanvasSize.Y.Offset + Amount)
+		MasterFrame.Core.CanvasSize = UDim2.fromOffset(0, MasterFrame.Core.CanvasSize.Y.Offset + Amount)
 	end
 
 	-- Public API --
@@ -300,7 +292,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	end
 
 	function API.IsVisible()
-		return API._IsVisible
+		return IsVisible
 	end
 
 	function API.ToggleVisibility()
@@ -329,19 +321,19 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	function API.SetTopBarColor(NewColor)
 		Utility.QuickTypeAssert(NewColor, 'Color3')
-		Master.TopBar.BackgroundColor3 = NewColor
+		MasterFrame.TopBar.BackgroundColor3 = NewColor
 		return API
 	end
 
 	function API.SetScrollbarWidth(Width)
 		Utility.QuickTypeAssert(Width, 'number')
-		Master.Core.ScrollBarThickness = Width
+		MasterFrame.Core.ScrollBarThickness = Width
 		return API
 	end
 
 	function API.SetScrollbarColor(NewColor)
 		Utility.QuickTypeAssert(NewColor, 'Color3')
-		Master.Core.ScrollBarImageColor3 = NewColor
+		MasterFrame.Core.ScrollBarImageColor3 = NewColor
 		return API
 	end
 

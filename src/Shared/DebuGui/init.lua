@@ -23,7 +23,7 @@ local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild('PlayerGui')
 --local ScreenGuiReference = ReplicatedStorage.DebuGui_UI
 local ScreenGuiReference = StarterGui.DebuGui_UI
-ScreenGuiReference.Master.Core:ClearAllChildren()
+ScreenGuiReference.MasterFrame.Core:ClearAllChildren()
 
 -- Module Data
 DebuGui.ScreenGuis = {}

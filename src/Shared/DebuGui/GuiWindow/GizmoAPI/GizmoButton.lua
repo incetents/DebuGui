@@ -40,7 +40,7 @@ function GizmoButton.new(Gui, Name)
 	local IsReadOnly = false
 
     -- API
-    local API = GizmoBase.new()
+    local API = GizmoBase.New()
 
 	-- Public API --
     function API.SetName(NewName)

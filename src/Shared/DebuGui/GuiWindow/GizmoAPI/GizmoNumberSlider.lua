@@ -10,7 +10,7 @@ local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 local GizmoBase = require(script.Parent.GizmoBase)
 
 -- Module
-local GizmoIntegerSlider = {}
+local GizmoNumberSlider = {}
 
 -- Global Functions
 local function InverseLerp(v, a, b)
@@ -29,12 +29,12 @@ local function GetValueFromDraggerPosition(SliderGui, MinValue, MaxValue)
 end
 
 --
-function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
+function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, DecimalAmount)
 
 	-- Defaults
-	MinValue = math.round(tonumber(MinValue)) or 0
-	MaxValue = math.round(tonumber(MaxValue)) or 0
-	DefaultValue = math.round(tonumber(DefaultValue)) or 0
+	MinValue = tonumber(MinValue) or 0
+	MaxValue = tonumber(MaxValue) or 0
+	DefaultValue = tonumber(DefaultValue) or 0
 
 	-- Sanity
 	if MinValue > MaxValue then
@@ -45,6 +45,10 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(MinValue, 'number')
 	Utility.QuickTypeAssert(MaxValue, 'number')
+	if DecimalAmount ~= nil then
+		Utility.QuickTypeAssert(DecimalAmount, 'number')
+		DecimalAmount = math.floor(DecimalAmount)
+	end
 	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
 	
 	-- Init Values
@@ -57,7 +61,7 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 	local IsReadOnly = false
 
 	-- API
-	local API = GizmoBase.new()
+	local API = GizmoBase.New()
 	API._LastInput = DefaultValue
 	API._AddDragger(ValueDragger)
 
@@ -124,15 +128,12 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 		ButtonPositionT = math.clamp(ButtonPositionT, 0, 1)
 		Gui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(ButtonPositionT, 0)
 
-		-- Get New Value based on Mouse and round result
-		local NewValue = GetValueFromDraggerPosition(Gui, MinValue, MaxValue)
-		NewValue = math.round(NewValue)
-
-		-- Move Position based on rounded Value
-		UpdateDraggerPositionFromValue(Gui, NewValue, MinValue, MaxValue)
-
 		-- Calculate value from position
-		API._LastInput = NewValue
+		API._LastInput = GetValueFromDraggerPosition(Gui, MinValue, MaxValue)
+		if DecimalAmount then
+			local Mod = (10 ^ DecimalAmount)
+			API._LastInput = math.round(API._LastInput * Mod) / Mod
+		end
 
 		-- Text
 		Gui.TextBox.Text = API._LastInput
@@ -149,4 +150,4 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 end
 
 -- End
-return GizmoIntegerSlider
+return GizmoNumberSlider

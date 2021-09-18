@@ -6,10 +6,10 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 local GizmoBase = require(script.Parent.GizmoBase)
 
 -- Module
-local GizmoNumber = {}
+local GizmoInteger = {}
 
 --
-function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 
 	-- Defaults
 	DefaultValue = tonumber(DefaultValue) or 0
@@ -21,11 +21,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 	Utility.QuickTypeAssert(Name, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
-	if DecimalAmount ~= nil then
-		Utility.QuickTypeAssert(DecimalAmount, 'number')
-		DecimalAmount = math.floor(DecimalAmount)
-	end
-	
+
 	-- Init Values
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
@@ -35,20 +31,17 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 	local IsReadOnly = false
 
 	-- API
-	local API = GizmoBase.new()
-
+	local API = GizmoBase.New()
+	
 	-- Public API --
 	function API.Validate(Input)
 		if API._DeadCheck() then return nil end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
-			if DecimalAmount then
-				local Mod = (10 ^ DecimalAmount)
-				NumberInput = math.round(NumberInput * Mod) / Mod
-			end
+			NumberInput = math.round(NumberInput)
 			Gui.TextBox.Text = NumberInput
 			API._LastInput = NumberInput
-			return true
+			return true, NumberInput
 		else
 			Gui.TextBox.Text = API._LastInput
 			return false
@@ -97,27 +90,23 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		return API
 	end
 
-	-- Update Values
-	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+   -- Update Values
+   API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
 
-		if IsReadOnly then
-			return
-		end
-
-		local Success = API.Validate(Gui.TextBox.Text)
+	   local Success = API.Validate(Gui.TextBox.Text)
 		
-		if Success and API._Listener then
-			API._Listener(API._LastInput)
-		end
+	   if Success and API._Listener then
+		API._Listener(API._LastInput)
+	end
 
-	end))
+   end))
 
-	-- Call Validate on Default Value
-	API.Validate(DefaultValue)
+   -- Call Validate on Default Value
+   API.Validate(DefaultValue)
 
-	-- End
-	return API
+   -- End
+   return API
 end
 
 -- End
-return GizmoNumber
+return GizmoInteger

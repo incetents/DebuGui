@@ -1,3 +1,5 @@
+-- Module
+local GizmoAPI = {}
 
 -- Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -28,10 +30,9 @@ local GizmoString = require(script.GizmoString)
 local GizmoVector2 = require(script.GizmoVector2)
 local GizmoVector3 = require(script.GizmoVector3)
 
--- Module
-local GizmoAPI = {}
-
--- Global Function
+----------------------
+-- Helper Functions --
+----------------------
 local function UpdateLayout(API)
 	for i, GizmoData in ipairs(API._GizmosArray) do
 		if i % 2 == 0 then
@@ -42,13 +43,15 @@ local function UpdateLayout(API)
 	end
 end
 
---
-function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
+-----------------
+-- Public API --
+-----------------
+function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
-	--
+	-------------
+	-- Defines --
+	-------------
 	local API = {}
-
-	-- Data
 	API._GizmosTable = {}
 	API._GizmosArray = {}
 	API._ParentAPI = ParentAPI
@@ -263,10 +266,7 @@ function GizmoAPI.new(GuiParent, MasterAPI, ParentAPI)
 		return nil
 	end
 
-	--
 	return API
-
 end
 
--- End
 return GizmoAPI

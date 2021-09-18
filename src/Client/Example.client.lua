@@ -15,7 +15,7 @@ end
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window
-local Gui1 = DebuGui.New('Core', {
+local Gui1 = DebuGui.NewWindow('Core', {
 	Title = 'TEST NAME HERE 12312312',
 	X = 350,
 	Y = 20,
@@ -48,7 +48,7 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 -- 	--
 -- end)
 
-local Gui1_AlternateRef = DebuGui.Get('Core')
+local Gui1_AlternateRef = DebuGui.GetWindow('Core')
 Gui1_AlternateRef.AddIntegerSlider('TEST123', 2, 0, 10)
 
 -- Booleans --
@@ -332,23 +332,23 @@ SmallFrameFolder1.AddString('string7', 'text')
 
 --Gui1.Destroy()
 
--- ----------------------
--- -- Multiple Windows --
--- ----------------------
--- local Extra1 = DebuGui.new('Extra1', {
---     Title = 'Extra1',
---     X = 100,
---     Y = 70,
---     Width = 400,
---     Height = 300,
--- })
--- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+----------------------
+-- Multiple Windows --
+----------------------
+local Extra1 = DebuGui.NewWindow('Extra1', {
+    Title = 'Extra1',
+    X = 100,
+    Y = 70,
+    Width = 400,
+    Height = 300,
+})
+Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
--- local Extra2 = DebuGui.new('Extra2', {
---     Title = 'Extra2',
---     X = 50,
---     Y = 130,
---     Width = 400,
---     Height = 300,
--- })
--- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+local Extra2 = DebuGui.NewWindow('Extra2', {
+    Title = 'Extra2',
+    X = 50,
+    Y = 130,
+    Width = 400,
+    Height = 300,
+})
+Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))

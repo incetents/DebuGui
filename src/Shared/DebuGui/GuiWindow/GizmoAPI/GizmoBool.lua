@@ -31,7 +31,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 	local IsReadOnly = false
 
     -- API
-    local API = GizmoBase.new()
+    local API = GizmoBase.New()
     
     -- Public API --
     function API.Validate(Input)

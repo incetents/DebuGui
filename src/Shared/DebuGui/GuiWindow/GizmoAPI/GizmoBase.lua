@@ -2,8 +2,11 @@
 -- Module
 local GizmoBase = {}
 
-function GizmoBase.new()
-    
+function GizmoBase.New()
+
+	-------------
+	-- Defines --
+	-------------
     local API = {
 		_IsDestroyed = false,
         _Listener = nil,
@@ -12,7 +15,9 @@ function GizmoBase.new()
 		_Draggers = nil,
     }
 
-	-- Private API
+	-----------------
+	-- Private API --
+	-----------------
 	function API._AddConnection(Connection)
 		if API._Connections == nil then
 			API._Connections = {}
@@ -57,32 +62,31 @@ function GizmoBase.new()
 		return false
 	end
 
-    -- Public API
+	----------------
+    -- Public API --
+	----------------
     function API.Validate(__) -- Input
         warn('! Validate Function not implemented')
         return false
     end
-    --
+
     function API.Listen(func)
 		if API._DeadCheck() then return nil end
         API._Listener = func
         return API
     end
-    --
+
     function API.Set(newValue)
 		if API._DeadCheck() then return nil end
         API.Validate(newValue)
         return API
     end
-	--
+
 	function API.GetValue()
 		return API._LastInput
 	end
 
-    -- END
     return API
 end
 
-
--- End
 return GizmoBase

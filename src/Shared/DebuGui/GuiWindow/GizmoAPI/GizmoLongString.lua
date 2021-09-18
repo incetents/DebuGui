@@ -28,7 +28,7 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 	local IsReadOnly = false
 
 	-- API
-	local API = GizmoBase.new()
+	local API = GizmoBase.New()
 
 	-- Public API --
 	function API.Validate(Input)

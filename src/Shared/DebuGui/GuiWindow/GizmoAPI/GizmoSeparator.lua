@@ -31,7 +31,7 @@ function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
     Gui.Size = UDim2.new(1, 0, 0, Height)
 
     -- API
-    local API = GizmoBase.new()
+    local API = GizmoBase.New()
 
 	-- Private API --
 	API.Validate = nil

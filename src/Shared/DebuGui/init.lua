@@ -5,111 +5,69 @@ local DebuGui = {}
 -- Services
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local StarterGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
 -- Ignore self if Server
 if RunService:IsServer() then
-	error("DebuGui can only be used on the Client")
+	error("! DebuGui can only be used Client-Side")
 	return {}
 end
 
--- References
-local Player = Players.LocalPlayer
-local PlayerGui = Player:WaitForChild('PlayerGui')
-local SCREENGUI = ReplicatedStorage.DebuGui_UI
-local GuiCore = require(script.GuiCore)
+-- Modules
+local GuiWindow = require(script.GuiWindow)
 local Utility = require(script.Utility)
 
--- Constants
-local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and increment further
+-- Defines --
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild('PlayerGui')
+--local ScreenGuiReference = ReplicatedStorage.DebuGui_UI
+local ScreenGuiReference = StarterGui.DebuGui_UI
+ScreenGuiReference.Master.Core:ClearAllChildren()
 
--- Global Data
-local ScreenGuis = {}
-local ScreenGuiCount = 0
-local MinimizeOrder = {} -- Array of Guis that are minimized
+-- Module Data
+DebuGui.ScreenGuis = {}
+DebuGui.ScreenGuiCount = 0
+DebuGui.MinimizeOrder = {} -- Array of Guis that are minimized
 
+----------------
 -- Public API --
-
-function DebuGui.Get(GuiName)
-	if ScreenGuis[GuiName] then
-		return ScreenGuis[GuiName].API
+----------------
+function DebuGui.GetWindow(GuiName)
+	if DebuGui.ScreenGuis[GuiName] then
+		return DebuGui.ScreenGuis[GuiName].API
 	end
 	return nil
 end
 
-function DebuGui.New(GuiName, InitData)
+function DebuGui.NewWindow(GuiName, InitData)
 
 	-- Assert
 	Utility.QuickTypeAssert(GuiName, 'string')
 
 	-- Double Check
-	if ScreenGuis[GuiName] then
+	if DebuGui.ScreenGuis[GuiName] then
 		warn('Gui already exists with the name ('..GuiName..')')
 		return
 	end
 
-	-- API
-	function DebuGui._BringGuiForward(ChosenGui)
-		-- All Guis in front of it go back 1 step
-		for __, Data in pairs(ScreenGuis) do
-			if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
-				Data.ScreenGui.DisplayOrder -= 1
-			end
-		end
-		-- Gui becomes largest display order
-		ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + ScreenGuiCount - 1
-	end
-	function DebuGui._AddMinimzed(ChosenGui)
+	-- Data
+	DebuGui.ScreenGuis[GuiName] = {}
 
-		-- Add Minimize Window to end of the list
-		local XOffset = 0
-		for __, Gui in ipairs(MinimizeOrder) do
-			XOffset += Gui.Master.AbsoluteSize.X
-		end
-		ChosenGui.Master.Position = UDim2.new(
-			0, ChosenGui.Master.Position.X.Offset + XOffset,
-			ChosenGui.Master.Position.Y.Scale, ChosenGui.Master.Position.Y.Offset
-		)
-
-		-- Store Window
-		table.insert(MinimizeOrder, ChosenGui)
-	end
-	function DebuGui._RemoveMinimized(ChosenGui)
-
-		-- Remove Window
-		local Index = Utility.FindArrayIndexByValue(MinimizeOrder, ChosenGui)
-		table.remove(MinimizeOrder, Index)
-
-		-- Reorder windows
-		local XOffset = 0
-		for __, Gui in ipairs(MinimizeOrder) do
-			Gui.Master.Position = UDim2.new(
-				0, XOffset,
-				Gui.Master.Position.Y.Scale, Gui.Master.Position.Y.Offset
-			)
-			XOffset += Gui.Master.AbsoluteSize.X
-		end
-
-	end
-
-	-- Create New Gui Logic
-	local ScreenGui = SCREENGUI:Clone()
+	-- Create New Gui
+	local ScreenGui = ScreenGuiReference:Clone()
 	ScreenGui.Parent = PlayerGui
 	ScreenGui.Name = GuiName
-	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + ScreenGuiCount
-	local API = GuiCore.new(DebuGui, ScreenGui, InitData)
+
+	-- Create Gui API
+	local API = GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Store
-	ScreenGuis[GuiName] = {
-		ScreenGui = ScreenGui,
-		API = API
-	}
-	ScreenGuiCount += 1
+	DebuGui.ScreenGuis[GuiName].ScreenGui = ScreenGui
+	DebuGui.ScreenGuis[GuiName].API = API
+	DebuGui.ScreenGuiCount += 1
 
-	--
 	return API
-
 end
---
 
 return DebuGui

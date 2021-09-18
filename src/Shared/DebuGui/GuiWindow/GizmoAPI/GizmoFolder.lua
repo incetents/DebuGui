@@ -35,7 +35,7 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Data
 	local GizmoAPI = require(script.Parent)
-	local API = GizmoAPI.new(Gui.ScrollingFrame, MasterAPI, ParentAPI)
+	local API = GizmoAPI.New(Gui.ScrollingFrame, MasterAPI, ParentAPI)
 	API._IsVisible = StartOpen
 	local FrameHeightLimit = nil;
 

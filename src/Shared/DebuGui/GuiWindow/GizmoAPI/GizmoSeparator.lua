@@ -53,7 +53,7 @@ function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
         Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
 		local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
 		-- Fix canvas height based on change in height
-		MasterAPI._AddToCanvasSize(DeltaHeight)
+		Utility.ModifyCanvasHeight(MasterAPI._GuiParent, DeltaHeight)
     end
 
     -- End

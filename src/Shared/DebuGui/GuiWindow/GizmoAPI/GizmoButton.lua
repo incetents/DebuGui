@@ -1,21 +1,20 @@
+-- Module
+local GizmoButton = {}
 
 -- Services
 local TextService = game:GetService("TextService")
 
 -- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-
--- Base
 local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Constants
 local PADDING = 10
 local MINSIZE = 100
 
--- Module
-local GizmoButton = {}
-
--- Global Functions
+---------------------
+-- Herlp Functions --
+---------------------
 local function GetTextSize(TextButton)
 	local NameSize = TextService:GetTextSize(
 		TextButton.Text,
@@ -26,23 +25,24 @@ local function GetTextSize(TextButton)
 	return UDim2.new(0, math.max(MINSIZE, NameSize.X + PADDING), 1, -4)
 end
 
---
+----------------
+-- Public API --
+----------------
 function GizmoButton.new(Gui, Name)
-
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')
     
-    -- Init Values
+    -- Setup
     Gui.TextButton.Text = Name
 	Gui.TextButton.Size = GetTextSize(Gui.TextButton)
 
-	--
+	-- Defines
+    local API = GizmoBase.New()
 	local IsReadOnly = false
 
-    -- API
-    local API = GizmoBase.New()
-
+	----------------
 	-- Public API --
+	----------------
     function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
         Gui.TextButton.Text = NewName
@@ -95,9 +95,7 @@ function GizmoButton.new(Gui, Name)
 
     end))
 
-    -- End
     return API
 end
 
--- End
 return GizmoButton

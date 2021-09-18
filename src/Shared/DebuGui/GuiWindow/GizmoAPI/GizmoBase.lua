@@ -1,7 +1,9 @@
-
 -- Module
 local GizmoBase = {}
 
+----------------
+-- Public API --
+----------------
 function GizmoBase.New()
 
 	-------------

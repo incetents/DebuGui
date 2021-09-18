@@ -17,9 +17,7 @@ local MIN_GUI_HEIGHT = 72
 local TITLEBAR_HEIGHT = 20
 local TITLEBAR_ICONSIZE = 20
 local TITLEBAR_WIDTH_PADDING_TOTAL = 8
--- Constants
 local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and increment further
-
 
 -- Defines
 local VerticalLayout = ReplicatedStorage.VerticalLayout 
@@ -44,7 +42,6 @@ end
 -- Public API --
 ----------------
 function GuiWindow.New(DebuGui, ScreenGui, InitData)
-
 	-- Defaults
 	InitData.X = InitData.X or 100
 	InitData.Y = (InitData.Y or 100) - GuiService:GetGuiInset().Y
@@ -54,13 +51,18 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Private Data
 	local MasterFrame = ScreenGui.MasterFrame
-	local API = GizmoAPI.New(MasterFrame.Core)
+	local API = GizmoAPI.New(MasterFrame.DrawFrame)
 	local IsVisible = true
 	local IsMinimized = false
 	local SizeBeforeMinimized = nil
 	local PosBeforeMinimized = nil
 	local SizeBeforeHidden = nil
 	local TitleSize = TextService:GetTextSize(InitData.Title, MasterFrame.TopBar.Title.TextSize, MasterFrame.TopBar.Title.Font, MasterFrame.TopBar.Title.AbsoluteSize)
+	local Dragger_MasterPos;
+	local Dragger_MasterSize;
+	local TitleDragger = Dragger.new(MasterFrame.TopBar.Title)
+	local CoreDragger = Dragger.new(MasterFrame.DragCore)
+	local ResizeDragger = Dragger.new(MasterFrame.ResizeBtn)
 
 	-- Setup
 	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
@@ -68,18 +70,19 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	MasterFrame.Position = UDim2.fromOffset(InitData.X, InitData.Y)
 	MasterFrame.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
 	MasterFrame.TopBar.Title.Text = InitData.Title
-	VerticalLayout:Clone().Parent = MasterFrame.Core
+	VerticalLayout:Clone().Parent = MasterFrame.DrawFrame
 
 	----------------------
 	-- Helper Functions --
 	----------------------
+
 	local function UpdateVisibility()
 		if not IsVisible or IsMinimized then
-			MasterFrame.Core.Visible = false
+			MasterFrame.DrawFrame.Visible = false
 			MasterFrame.ResizeBtn.Visible = false
 			MasterFrame.ResizeBtn.Active = false
 		else
-			MasterFrame.Core.Visible = true
+			MasterFrame.DrawFrame.Visible = true
 			MasterFrame.ResizeBtn.Visible = true
 			MasterFrame.ResizeBtn.Active = false
 		end
@@ -102,7 +105,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		if IsMinimized then
 			-- Text
 			MasterFrame.TopBar.MinimizeBtn.Text = '+'
-			
+
 			-- Find X Position at end of Minimized List
 			local XOffset = 0
 			for __, Gui in ipairs(DebuGui.MinimizeOrder) do
@@ -145,15 +148,10 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		UpdateVisibility()
 	end
 
-	local function ToggleMinimized()
-		SetMinimized(not IsMinimized)
-	end
-
 	local function SetVisible(State)
-
 		-- Abort if no change
 		if State == IsVisible then return end
-		
+
 		-- Pre Data
 		if IsVisible then
 			SizeBeforeHidden = MasterFrame.AbsoluteSize
@@ -180,56 +178,47 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		UpdateVisibility()
 	end
 
-	local function ToggleVisibility()
-		SetVisible(not IsVisible)
-	end
-
 	--------------
 	-- Draggers --
 	--------------
 
 	-- Drag Position of MasterFrame
-	local MasterPos;
-	local TitleDragger = Dragger.new(MasterFrame.TopBar.Title)
 	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
 			BringGuiForward(DebuGui, ScreenGui)
-			MasterPos = MasterFrame.AbsolutePosition
+			Dragger_MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
 	TitleDragger.OnDrag(function(Delta)
 		if not IsMinimized then
-			MasterFrame.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
+			MasterFrame.Position = UDim2.fromOffset(Dragger_MasterPos.X + Delta.X, Dragger_MasterPos.Y + Delta.Y)
 		end
 	end)
 
-	-- Drag Center of Core
-	local CoreDragger = Dragger.new(MasterFrame.DragCore)
+	-- Drag Center of DrawFrame
 	CoreDragger.OnDragStart(function()
 		if IsVisible and not IsMinimized then
 			BringGuiForward(DebuGui, ScreenGui)
-			MasterPos = MasterFrame.AbsolutePosition
+			Dragger_MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
 	CoreDragger.OnDrag(function(Delta)
 		if IsVisible and not IsMinimized then
-			MasterFrame.Position = UDim2.fromOffset(MasterPos.X + Delta.X, MasterPos.Y + Delta.Y)
+			MasterFrame.Position = UDim2.fromOffset(Dragger_MasterPos.X + Delta.X, Dragger_MasterPos.Y + Delta.Y)
 		end
 	end)
 
 	-- Drag ResizeBtn to Resize
-	local MasterSize;
-	local ResizeDragger = Dragger.new(MasterFrame.ResizeBtn)
 	ResizeDragger.OnDragStart(function()
 		BringGuiForward(DebuGui, ScreenGui)
 		if IsVisible and not IsMinimized then
-			MasterSize = MasterFrame.AbsoluteSize
+			Dragger_MasterSize = MasterFrame.AbsoluteSize
 		end
 	end)
 	ResizeDragger.OnDrag(function(Delta)
 		if IsVisible and not IsMinimized then
-			local NewWidth = math.max(MasterSize.X + Delta.X, MIN_GUI_WIDTH)
-			local NewHeight = math.max(MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
+			local NewWidth = math.max(Dragger_MasterSize.X + Delta.X, MIN_GUI_WIDTH)
+			local NewHeight = math.max(Dragger_MasterSize.Y + Delta.Y, MIN_GUI_HEIGHT)
 			MasterFrame.Size = UDim2.fromOffset(NewWidth, NewHeight)
 		end
 	end)
@@ -241,32 +230,18 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	-- Toggle Visibility
 	MasterFrame.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
 		BringGuiForward(DebuGui, ScreenGui)
-		ToggleVisibility()
+		SetVisible(not IsVisible)
 	end)
 
 	-- Toggle Minimize Mode
 	MasterFrame.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
 		BringGuiForward(DebuGui, ScreenGui)
-		ToggleMinimized()
+		SetMinimized(not IsMinimized)
 	end)
 
-	-----------------
-	-- Core Gizmos --
-	-----------------
-
-	-- Private API --
-	function API._RecalculateCanvasHeight()
-		local Height = 0
-		for __, Data in ipairs(API._GizmosArray) do
-			Height += Data.Gui.AbsoluteSize.Y
-		end
-		MasterFrame.Core.CanvasSize = UDim2.fromOffset(0, Height)
-	end
-	function API._AddToCanvasSize(Amount)
-		MasterFrame.Core.CanvasSize = UDim2.fromOffset(0, MasterFrame.Core.CanvasSize.Y.Offset + Amount)
-	end
-
+	----------------
 	-- Public API --
+	----------------
 	function API.Destroy()
 		API.RemoveAll()
 		ScreenGui:Destroy()
@@ -296,7 +271,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	end
 
 	function API.ToggleVisibility()
-		ToggleVisibility()
+		SetVisible(not IsVisible)
 		return API
 	end
 
@@ -315,7 +290,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	end
 
 	function API.ToggleMinimized()
-		ToggleMinimized()
+		SetMinimized(not IsMinimized)
 		return API
 	end
 
@@ -327,18 +302,17 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	function API.SetScrollbarWidth(Width)
 		Utility.QuickTypeAssert(Width, 'number')
-		MasterFrame.Core.ScrollBarThickness = Width
+		MasterFrame.DrawFrame.ScrollBarThickness = Width
 		return API
 	end
 
 	function API.SetScrollbarColor(NewColor)
 		Utility.QuickTypeAssert(NewColor, 'Color3')
-		MasterFrame.Core.ScrollBarImageColor3 = NewColor
+		MasterFrame.DrawFrame.ScrollBarImageColor3 = NewColor
 		return API
 	end
 
 	return API
-
 end
 
-return GuiWindow 
+return GuiWindow

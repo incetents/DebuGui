@@ -1,14 +1,13 @@
-
--- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-
--- Base
-local GizmoBase = require(script.Parent.GizmoBase)
-
 -- Module
 local GizmoString = {}
 
---
+-- Modules
+local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
+
+----------------
+-- Public API --
+----------------
 function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 
     -- Defaults
@@ -22,18 +21,18 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     Utility.QuickTypeAssert(DefaultValue, 'string')
     Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
     
-    -- Init Values
+    -- Setup
     Gui.TextName.Text = Name
     Gui.TextBox.Text = DefaultValue
     Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
-	-- Data
+	-- Defines
 	local IsReadOnly = false
-
-    -- API
     local API = GizmoBase.New()
 
+	----------------
 	-- Public API --
+	----------------
     function API.Validate(Input)
 		if API._DeadCheck() then return nil end
         local Str = tostring(Input)
@@ -46,30 +45,36 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
             return false
         end
     end
+
 	function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
+
 	function API.SetNameColor(NewNameColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
+
 	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
+
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
+
 	function API.IsReadOnly()
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
+
 	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
@@ -91,7 +96,6 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 
     -- Update Values
     API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-
         local Success = API.Validate(Gui.TextBox.Text)
 		
 		if Success and API._Listener then
@@ -103,9 +107,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Validate default
 	API.Validate(DefaultValue)
 
-    -- End
     return API
 end
 
--- End
 return GizmoString

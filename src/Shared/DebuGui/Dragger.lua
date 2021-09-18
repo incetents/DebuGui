@@ -1,16 +1,18 @@
+-- Module
+local Dragger = {}
 
 -- Services
 local Players = game:GetService("Players")
 
--- References
-local Player = Players.LocalPlayer
-local Mouse = Player:GetMouse()
+-- Modules
 local Utility = require(script.Parent.Utility)
 
--- Global Data
+-- Defines
+local Player = Players.LocalPlayer
+local Mouse = Player:GetMouse()
 local Draggers = {}
 
--- Global Functions
+-- Helper Functions --
 local function DragEndGlobal()
 	for __, Class in ipairs(Draggers) do
 		if Class.IsDragging and Class.Listener_OnDragEnd then
@@ -33,13 +35,10 @@ end
 Mouse.Button1Up:Connect(DragEndGlobal)
 Mouse.Move:Connect(DragGlobal)
 
--- Module
-local Dragger = {}
-
--- Create
+-- Public API --
 function Dragger.new(DraggerButton)
 
-	-- Class
+	-- Defines
     local Class = {
         IsDragging = false,
         MouseClickPos = Vector2.new(0, 0),
@@ -48,24 +47,10 @@ function Dragger.new(DraggerButton)
         Listener_OnDragStart = nil,
         Listener_OnDragEnd = nil,
     }
-    function Class.OnDrag(func)
-        Utility.QuickTypeAssert(func, 'function')
-        Class.Listener_OnDrag = func
-    end
-    function Class.OnDragStart(func)
-        Utility.QuickTypeAssert(func, 'function')
-        Class.Listener_OnDragStart = func
-    end
-    function Class.OnDragEnd(func)
-        Utility.QuickTypeAssert(func, 'function')
-        Class.Listener_OnDragEnd = func
-    end
-
-    -- Data
 	local Button = DraggerButton
-    local Connections = {}
+	local Connections = {}
 
-    -- Setup
+	-- Setup
     table.insert(Connections, Button.MouseButton1Down:Connect(function()
         Class.MouseClickPos = Vector2.new(Mouse.X, Mouse.Y)
         Class.IsDragging = true
@@ -77,7 +62,22 @@ function Dragger.new(DraggerButton)
 		DragEndGlobal()
     end))
 
-    -- Destroy
+	-- Public API --
+    function Class.OnDrag(func)
+        Utility.QuickTypeAssert(func, 'function')
+        Class.Listener_OnDrag = func
+    end
+
+    function Class.OnDragStart(func)
+        Utility.QuickTypeAssert(func, 'function')
+        Class.Listener_OnDragStart = func
+    end
+
+    function Class.OnDragEnd(func)
+        Utility.QuickTypeAssert(func, 'function')
+        Class.Listener_OnDragEnd = func
+    end
+
     function Class.Destroy()
         for __, Connection in ipairs(Connections) do
             Connection:Disconnect()
@@ -92,11 +92,10 @@ function Dragger.new(DraggerButton)
 		table.remove(Draggers, Index)
     end
 
-	--
+	-- Add
 	table.insert(Draggers, Class)
-    --
+
     return Class
 end
 
--- End
 return Dragger

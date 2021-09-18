@@ -1,21 +1,22 @@
 
--- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-local Dragger = require(script.Parent.Parent.Parent.Dragger)
-
--- Ref
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-
--- Base
-local GizmoBase = require(script.Parent.GizmoBase)
-
 -- Module
 local GizmoNumberSlider = {}
 
--- Global Functions
+-- Modules
+local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
+local Dragger = require(script.Parent.Parent.Parent.Dragger)
+
+-- Defines
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+
+----------------------
+-- Helper Functions --
+----------------------
 local function InverseLerp(v, a, b)
 	return (v - a) / (b - a)
 end
+
 local function Lerp(a, b, t)
 	return (1 - t) * a + t * b;
 end
@@ -24,11 +25,14 @@ local function UpdateDraggerPositionFromValue(SliderGui, Value, MinValue, MaxVal
 	local t = InverseLerp(Value, MinValue, MaxValue)
 	SliderGui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(t, 0)
 end
+
 local function GetValueFromDraggerPosition(SliderGui, MinValue, MaxValue)
 	return Lerp(MinValue, MaxValue, SliderGui.TextBox.DragRange.Dragger.Position.X.Scale)
 end
 
---
+----------------
+-- Public API --
+----------------
 function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, DecimalAmount)
 
 	-- Defaults
@@ -51,45 +55,50 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	end
 	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
 	
-	-- Init Values
+	-- Defines
+	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
+	local IsReadOnly = false
+	local API = GizmoBase.New()
+
+	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
 	UpdateDraggerPositionFromValue(Gui, DefaultValue, MinValue, MaxValue)
-
-	-- Data
-	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
-	local IsReadOnly = false
-
-	-- API
-	local API = GizmoBase.New()
 	API._LastInput = DefaultValue
 	API._AddDragger(ValueDragger)
 
+	----------------
 	-- Public API --
+	----------------
 	function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
+
 	function API.SetNameColor(NewNameColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
+
 	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
+
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
+
 	function API.IsReadOnly()
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
+
 	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
@@ -142,12 +151,9 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		if API._Listener then
 			API._Listener(API._LastInput)
 		end
-
 	end)
 
-	-- End
 	return API
 end
 
--- End
 return GizmoNumberSlider

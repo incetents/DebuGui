@@ -1,14 +1,13 @@
-
--- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-
--- Base
-local GizmoBase = require(script.Parent.GizmoBase)
-
 -- Module
 local GizmoNumber = {}
 
---
+-- Modules
+local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
+
+----------------
+-- Public API --
+----------------
 function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
 
 	-- Defaults
@@ -26,18 +25,18 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		DecimalAmount = math.floor(DecimalAmount)
 	end
 	
-	-- Init Values
+	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
 	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
-	-- Data
+	-- Defines
+	local API = GizmoBase.New()
 	local IsReadOnly = false
 
-	-- API
-	local API = GizmoBase.New()
-
+	----------------
 	-- Public API --
+	----------------
 	function API.Validate(Input)
 		if API._DeadCheck() then return nil end
 		local NumberInput = tonumber(Input)
@@ -54,30 +53,36 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 			return false
 		end
 	end
+
 	function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
+
 	function API.SetNameColor(NewNameColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
+
 	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
+
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
 		return API
 	end
+
 	function API.IsReadOnly()
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
+
 	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
@@ -99,7 +104,6 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-
 		if IsReadOnly then
 			return
 		end
@@ -109,15 +113,12 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		if Success and API._Listener then
 			API._Listener(API._LastInput)
 		end
-
 	end))
 
 	-- Call Validate on Default Value
 	API.Validate(DefaultValue)
 
-	-- End
 	return API
 end
 
--- End
 return GizmoNumber

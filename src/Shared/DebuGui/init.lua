@@ -3,7 +3,7 @@
 local DebuGui = {}
 
 -- Services
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+--local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local StarterGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
@@ -23,7 +23,7 @@ local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild('PlayerGui')
 --local ScreenGuiReference = ReplicatedStorage.DebuGui_UI
 local ScreenGuiReference = StarterGui.DebuGui_UI
-ScreenGuiReference.MasterFrame.Core:ClearAllChildren()
+ScreenGuiReference.MasterFrame.DrawFrame:ClearAllChildren()
 
 -- Module Data
 DebuGui.ScreenGuis = {}
@@ -41,7 +41,6 @@ function DebuGui.GetWindow(GuiName)
 end
 
 function DebuGui.NewWindow(GuiName, InitData)
-
 	-- Assert
 	Utility.QuickTypeAssert(GuiName, 'string')
 
@@ -57,7 +56,7 @@ function DebuGui.NewWindow(GuiName, InitData)
 	-- Create New Gui
 	local ScreenGui = ScreenGuiReference:Clone()
 	ScreenGui.Parent = PlayerGui
-	ScreenGui.Name = GuiName
+	ScreenGui.Name = 'DebuGui_'..GuiName
 
 	-- Create Gui API
 	local API = GuiWindow.New(DebuGui, ScreenGui, InitData)

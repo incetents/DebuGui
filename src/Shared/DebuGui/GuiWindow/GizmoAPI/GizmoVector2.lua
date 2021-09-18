@@ -1,16 +1,14 @@
-
--- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-
--- Base
-local GizmoBase = require(script.Parent.GizmoBase)
-
 -- Module
 local GizmoVector2 = {}
 
---
-function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+-- Modules
+local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
+----------------
+-- Public API --
+----------------
+function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
 	-- Defaults
 	DefaultValue = DefaultValue or Vector2.new(0, 0)
 	if ClearTextOnFocus == nil then
@@ -26,20 +24,20 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		DecimalAmount = math.floor(DecimalAmount)
 	end
 	
-	-- Init Values
+	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox1.Text = DefaultValue.x
 	Gui.TextBox2.Text = DefaultValue.y
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 
-	-- Data
+	-- Defines
+	local API = GizmoBase.New()
 	local IsReadOnly = false
 
-	-- API
-	local API = GizmoBase.New()
-
+	----------------
 	-- Public API --
+	----------------
 	function API.Validate(InputA, InputB)
 		if API._DeadCheck() then return nil end
 
@@ -66,32 +64,38 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return false
 		end
 	end
+
 	function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.Text = NewName
 		return API
 	end
+
 	function API.SetNameColor(NewNameColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
+
 	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox1.BackgroundColor3 = NewColor
 		Gui.TextBox2.BackgroundColor3 = NewColor
 		return API
 	end
+
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox1.TextColor3 = NewColor
 		Gui.TextBox2.TextColor3 = NewColor
 		return API
 	end
+
 	function API.IsReadOnly()
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
+
 	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
@@ -117,7 +121,6 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox1.FocusLost:Connect(function(__) -- enterPressed
-
 		if IsReadOnly then
 			return
 		end
@@ -127,10 +130,8 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		if Success and API._Listener then
 			API._Listener(API._LastInput)
 		end
-
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
-
 		if IsReadOnly then
 			return
 		end
@@ -140,15 +141,12 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		if Success and API._Listener then
 			API._Listener(API._LastInput)
 		end
-
 	end))
 
 	-- Call Validate on Default Value
 	API.Validate(DefaultValue.X, DefaultValue.Y)
 
-	-- End
 	return API
 end
 
--- End
 return GizmoVector2

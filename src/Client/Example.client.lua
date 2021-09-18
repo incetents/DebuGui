@@ -153,7 +153,6 @@ Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 Gui1.Remove('numslider4')
 
 
-
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
@@ -247,6 +246,8 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
+-- local asd = Gui1.AddFolder('asd', true)
+
 local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', true)
 SmallFrameFolder1
 	.SetColor(Color3.fromRGB(184, 163, 44))
@@ -263,7 +264,13 @@ SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
 
---Gui1.Remove('folder1')
+-- local zxc = Gui1.AddFolder('zxc', true)
+-- local zxc1 = Gui1.AddFolder('zxc1', true)
+-- local zxc2 = Gui1.AddFolder('zxc2', true)
+-- local zxc3 = Gui1.AddFolder('zxc3', true)
+-- local zxc4 = Gui1.AddFolder('zxc4', true)
+
+--Gui1.Remove('Small Frame Folder')
 
 ----------------
 -- Getter API --
@@ -332,23 +339,23 @@ SmallFrameFolder1.AddString('string7', 'text')
 
 --Gui1.Destroy()
 
-----------------------
--- Multiple Windows --
-----------------------
-local Extra1 = DebuGui.NewWindow('Extra1', {
-    Title = 'Extra1',
-    X = 100,
-    Y = 70,
-    Width = 400,
-    Height = 300,
-})
-Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- ----------------------
+-- -- Multiple Windows --
+-- ----------------------
+-- local Extra1 = DebuGui.NewWindow('Extra1', {
+--     Title = 'Extra1',
+--     X = 100,
+--     Y = 70,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
-local Extra2 = DebuGui.NewWindow('Extra2', {
-    Title = 'Extra2',
-    X = 50,
-    Y = 130,
-    Width = 400,
-    Height = 300,
-})
-Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- local Extra2 = DebuGui.NewWindow('Extra2', {
+--     Title = 'Extra2',
+--     X = 50,
+--     Y = 130,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))

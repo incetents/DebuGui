@@ -1,19 +1,17 @@
+-- Module
+local GizmoBool = {}
 
 -- Modules
-local Utility = require(script.Parent.Parent.Parent.Utility)
-
--- Base
 local GizmoBase = require(script.Parent.GizmoBase)
+local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Constants
 local COLOR_DARK = Color3.fromRGB(43, 43, 43)
 
--- Module
-local GizmoBool = {}
-
---
+----------------
+-- Public API --
+----------------
 function GizmoBool.new(Gui, Name, DefaultValue)
-
     -- Defaults
     if DefaultValue == nil then
 		DefaultValue = false
@@ -22,18 +20,18 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'boolean')
-    
-    -- Init Values
+
+    -- Setup
     Gui.TextName.Text = Name
+
+	-- Defines
+    local API = GizmoBase.New()
+	local IsReadOnly = false
     local DefaultColor = Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3
 
-	-- Data
-	local IsReadOnly = false
-
-    -- API
-    local API = GizmoBase.New()
-    
-    -- Public API --
+    ----------------
+	-- Public API --
+	----------------
     function API.Validate(Input)
 		if API._DeadCheck() then return nil end
         local IsTrue = (Input == true)
@@ -47,16 +45,19 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         API._LastInput = IsTrue
         return true
     end
+
     function API.SetName(NewName)
 		if API._DeadCheck() then return nil end
         Gui.TextName.Text = NewName
         return API
     end
+
     function API.SetNameColor(NewNameColor)
 		if API._DeadCheck() then return nil end
         Gui.TextName.TextColor3 = NewNameColor
         return API
     end
+
     function API.SetCheckboxColor(NewColor)
 		if API._DeadCheck() then return nil end
         if API._LastInput == true then
@@ -65,10 +66,12 @@ function GizmoBool.new(Gui, Name, DefaultValue)
         DefaultColor = NewColor
         return API
     end
+
 	function API.IsReadOnly()
 		if API._DeadCheck() then return nil end
 		return IsReadOnly
 	end
+
 	function API.SetReadOnly(State)
 		if API._DeadCheck() then return nil end
 		-- Set
@@ -106,9 +109,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     -- Call Validate on Default Value
     API.Validate(DefaultValue)
 
-    -- End
     return API
 end
 
--- End
 return GizmoBool

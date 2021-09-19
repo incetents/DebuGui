@@ -55,17 +55,17 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox1.Text = _x
 			Gui.TextBox2.Text = _y
 			Gui.TextBox3.Text = _z
-			API._LastInput = Vector3.new(_x, _y, _z)
+			API._Input = Vector3.new(_x, _y, _z)
 			return true
 		else
 			if not _x then
-				Gui.TextBox1.Text = API._LastInput.X
+				Gui.TextBox1.Text = API._Input.X
 			end
 			if not _y then
-				Gui.TextBox2.Text = API._LastInput.Y
+				Gui.TextBox2.Text = API._Input.Y
 			end
 			if not _z then
-				Gui.TextBox3.Text = API._LastInput.Z
+				Gui.TextBox3.Text = API._Input.Z
 			end
 			return false
 		end
@@ -137,10 +137,10 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._LastInput.Y, Gui.TextBox3.Text)
+		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text)
 
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -148,10 +148,10 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._LastInput.X, Gui.TextBox2.Text, Gui.TextBox3.Text)
+		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text)
 
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -159,10 +159,10 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._LastInput.Z)
+		local Success = API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z)
 
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 

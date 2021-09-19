@@ -20,18 +20,19 @@ local function Lerp(a, b, t)
 	return (1 - t) * a + t * b;
 end
 
-local function UpdateDraggerPositionFromValue(SliderGui, Value, MinValue, MaxValue)
+local function UpdateDraggerPositionFromValue(DraggerUI, Value, MinValue, MaxValue)
 	local t = InverseLerp(Value, MinValue, MaxValue)
-	SliderGui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(t, 0)
+	DraggerUI.Position = UDim2.fromScale(t, 0)
 end
-local function GetValueFromDraggerPosition(SliderGui, MinValue, MaxValue)
-	return Lerp(MinValue, MaxValue, SliderGui.TextBox.DragRange.Dragger.Position.X.Scale)
+
+local function GetValueFromDraggerPosition(DraggerUI, MinValue, MaxValue)
+	return Lerp(MinValue, MaxValue, DraggerUI.Position.X.Scale)
 end
 
 ----------------
 -- Public API --
 ----------------
-function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
+function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 
 	-- Defaults
 	MinValue = math.round(tonumber(MinValue)) or 0
@@ -57,8 +58,8 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
-	UpdateDraggerPositionFromValue(Gui, DefaultValue, MinValue, MaxValue)
-	API._LastInput = DefaultValue
+	UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, DefaultValue, MinValue, MaxValue)
+	API._Input = DefaultValue
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -116,11 +117,8 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 
 	-- Dragger
 	ValueDragger.OnDrag(function()
-		if API._DeadCheck() then return nil end
-
-		if IsReadOnly then
-			return
-		end
+		if API._DeadCheck() then return end
+		if IsReadOnly then return end
 
 		-- Move Button to correct Position
 		local ButtonPositionT = InverseLerp(
@@ -132,23 +130,32 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue)
 		Gui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(ButtonPositionT, 0)
 
 		-- Get New Value based on Mouse and round result
-		local NewValue = GetValueFromDraggerPosition(Gui, MinValue, MaxValue)
+		local NewValue = GetValueFromDraggerPosition(Gui.TextBox.DragRange.Dragger, MinValue, MaxValue)
 		NewValue = math.round(NewValue)
 
 		-- Move Position based on rounded Value
-		UpdateDraggerPositionFromValue(Gui, NewValue, MinValue, MaxValue)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, NewValue, MinValue, MaxValue)
 
 		-- Calculate value from position
-		API._LastInput = NewValue
+		API._Input = NewValue
 
 		-- Text
-		Gui.TextBox.Text = API._LastInput
+		Gui.TextBox.Text = API._Input
 
 		-- Trigger Listeners
-		if API._Listener then
-			API._Listener(API._LastInput)
+		if not UpdateOnlyOnDragEnd and API._Listener then
+			API._Listener(API._Input)
 		end
 	end)
+
+	-- Drag End
+	if UpdateOnlyOnDragEnd then
+		ValueDragger.OnDragEnd(function()
+			if API._Listener then
+				API._Listener(API._Input)
+			end
+		end)
+	end
 
 	return API
 end

@@ -12,7 +12,7 @@ function GizmoBase.New()
     local API = {
 		_IsDestroyed = false,
         _Listener = nil,
-        _LastInput = nil,
+        _Input = nil,
 		_Connections = nil,
 		_Draggers = nil,
     }
@@ -85,7 +85,7 @@ function GizmoBase.New()
     end
 
 	function API.GetValue()
-		return API._LastInput
+		return API._Input
 	end
 
     return API

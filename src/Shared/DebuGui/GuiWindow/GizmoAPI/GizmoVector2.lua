@@ -52,14 +52,14 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			end
 			Gui.TextBox1.Text = _x
 			Gui.TextBox2.Text = _y
-			API._LastInput = Vector2.new(_x, _y)
+			API._Input = Vector2.new(_x, _y)
 			return true
 		else
 			if not _x then
-				Gui.TextBox1.Text = API._LastInput.X
+				Gui.TextBox1.Text = API._Input.X
 			end
 			if not _y then
-				Gui.TextBox2.Text = API._LastInput.Y
+				Gui.TextBox2.Text = API._Input.Y
 			end
 			return false
 		end
@@ -125,10 +125,10 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._LastInput.Y)
+		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y)
 		
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -136,10 +136,10 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._LastInput.X, Gui.TextBox2.Text)
+		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text)
 		
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 

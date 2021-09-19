@@ -38,10 +38,10 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str
-            API._LastInput = Str
+            API._Input = Str
             return true
         else
-            Gui.TextBox.Text = API._LastInput
+            Gui.TextBox.Text = API._Input
             return false
         end
     end
@@ -99,7 +99,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
         local Success = API.Validate(Gui.TextBox.Text)
 		
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 
     end))

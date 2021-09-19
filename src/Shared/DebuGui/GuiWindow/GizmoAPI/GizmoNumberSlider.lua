@@ -21,19 +21,19 @@ local function Lerp(a, b, t)
 	return (1 - t) * a + t * b;
 end
 
-local function UpdateDraggerPositionFromValue(SliderGui, Value, MinValue, MaxValue)
+local function UpdateDraggerPositionFromValue(DraggerUI, Value, MinValue, MaxValue)
 	local t = InverseLerp(Value, MinValue, MaxValue)
-	SliderGui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(t, 0)
+	DraggerUI.Position = UDim2.fromScale(t, 0)
 end
 
-local function GetValueFromDraggerPosition(SliderGui, MinValue, MaxValue)
-	return Lerp(MinValue, MaxValue, SliderGui.TextBox.DragRange.Dragger.Position.X.Scale)
+local function GetValueFromDraggerPosition(DraggerUI, MinValue, MaxValue)
+	return Lerp(MinValue, MaxValue, DraggerUI.Position.X.Scale)
 end
 
 ----------------
 -- Public API --
 ----------------
-function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, DecimalAmount)
+function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 
 	-- Defaults
 	MinValue = tonumber(MinValue) or 0
@@ -63,8 +63,8 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
-	UpdateDraggerPositionFromValue(Gui, DefaultValue, MinValue, MaxValue)
-	API._LastInput = DefaultValue
+	UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, DefaultValue, MinValue, MaxValue)
+	API._Input = DefaultValue
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -122,11 +122,8 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 
 	-- Dragger
 	ValueDragger.OnDrag(function()
-		if API._DeadCheck() then return nil end
-
-		if IsReadOnly then
-			return
-		end
+		if API._DeadCheck() then return end
+		if IsReadOnly then return end
 
 		-- Move Button to correct Position
 		local ButtonPositionT = InverseLerp(
@@ -138,20 +135,29 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Gui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(ButtonPositionT, 0)
 
 		-- Calculate value from position
-		API._LastInput = GetValueFromDraggerPosition(Gui, MinValue, MaxValue)
+		API._Input = GetValueFromDraggerPosition(Gui.TextBox.DragRange.Dragger, MinValue, MaxValue)
 		if DecimalAmount then
 			local Mod = (10 ^ DecimalAmount)
-			API._LastInput = math.round(API._LastInput * Mod) / Mod
+			API._Input = math.round(API._Input * Mod) / Mod
 		end
 
 		-- Text
-		Gui.TextBox.Text = API._LastInput
+		Gui.TextBox.Text = API._Input
 
 		-- Trigger Listeners
-		if API._Listener then
-			API._Listener(API._LastInput)
+		if not UpdateOnlyOnDragEnd and API._Listener then
+			API._Listener(API._Input)
 		end
 	end)
+
+	-- Drag End
+	if UpdateOnlyOnDragEnd then
+		ValueDragger.OnDragEnd(function()
+			if API._Listener then
+				API._Listener(API._Input)
+			end
+		end)
+	end
 
 	return API
 end

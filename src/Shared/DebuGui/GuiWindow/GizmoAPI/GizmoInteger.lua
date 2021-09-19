@@ -39,10 +39,10 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if NumberInput then
 			NumberInput = math.round(NumberInput)
 			Gui.TextBox.Text = NumberInput
-			API._LastInput = NumberInput
+			API._Input = NumberInput
 			return true, NumberInput
 		else
-			Gui.TextBox.Text = API._LastInput
+			Gui.TextBox.Text = API._Input
 			return false
 		end
 	end
@@ -100,7 +100,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	   local Success = API.Validate(Gui.TextBox.Text)
 
 	   if Success and API._Listener then
-		API._Listener(API._LastInput)
+		API._Listener(API._Input)
 	end
 
    end))

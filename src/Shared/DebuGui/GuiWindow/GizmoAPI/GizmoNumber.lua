@@ -46,10 +46,10 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 				NumberInput = math.round(NumberInput * Mod) / Mod
 			end
 			Gui.TextBox.Text = NumberInput
-			API._LastInput = NumberInput
+			API._Input = NumberInput
 			return true
 		else
-			Gui.TextBox.Text = API._LastInput
+			Gui.TextBox.Text = API._Input
 			return false
 		end
 	end
@@ -104,14 +104,12 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-		if IsReadOnly then
-			return
-		end
+		if IsReadOnly then return end
 
 		local Success = API.Validate(Gui.TextBox.Text)
 		
 		if Success and API._Listener then
-			API._Listener(API._LastInput)
+			API._Listener(API._Input)
 		end
 	end))
 

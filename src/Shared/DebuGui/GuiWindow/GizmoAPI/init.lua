@@ -18,6 +18,7 @@ local GizmoSeparator = require(script.GizmoSeparator)
 local GizmoString = require(script.GizmoString)
 local GizmoVector2 = require(script.GizmoVector2)
 local GizmoVector3 = require(script.GizmoVector3)
+local GizmoColorSlider = require(script.GizmoColorSlider)
 
 -- Gizmo UI References
 local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
@@ -29,6 +30,7 @@ local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
 local GizmoUI_TextBox_Multi2 = ReplicatedStorage.GizmoUI_TextBox_Multi2
 local GizmoUI_TextBox_Multi3 = ReplicatedStorage.GizmoUI_TextBox_Multi3
 local GizmoUI_TextMultiline = ReplicatedStorage.GizmoUI_TextMultiline
+local GizmoUI_TripleSlider = ReplicatedStorage.GizmoUI_TripleSlider
 
 ----------------------
 -- Helper Functions --
@@ -151,16 +153,16 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, DefaultValue, ClearTextOnFocus)
 	end
 
-	function API.AddIntegerSlider(UniqueName, DefaultValue, MinValue, MaxValue)
-		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue)
+	function API.AddIntegerSlider(UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 	end
 
 	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
 		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
 	end
 
-	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
-		return AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount)
+	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 	end
 
 	function API.AddBool(UniqueName, DefaultValue)
@@ -185,6 +187,18 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
 		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+	end
+
+	function API.AddColorSliderRGB(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, nil)
+	end
+
+	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, DecimalAmount)
+	end
+
+	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
 	end
 
 	-- Returns API of Gizmo

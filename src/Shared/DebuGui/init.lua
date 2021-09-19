@@ -1,6 +1,10 @@
 
 -- Module
-local DebuGui = {}
+local DebuGui = {
+	-- Module Constants
+	SLIDERPARAM_UPDATE_ON_MOVEMENT = false;
+	SLIDERPARAM_UPDATE_ON_RELEASE = true;
+}
 
 -- Services
 --local ReplicatedStorage = game:GetService("ReplicatedStorage")

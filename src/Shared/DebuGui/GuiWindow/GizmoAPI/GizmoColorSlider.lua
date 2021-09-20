@@ -89,33 +89,33 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Setup
 	Gui.TextName.Text = Name
-	if Mode == MODES.RGB then
-		Gui.TextBox1.Text = 'R: '..tostring(GetColor255(DefaultColor.R))
-		Gui.TextBox2.Text = 'G: '..tostring(GetColor255(DefaultColor.G))
-		Gui.TextBox3.Text = 'B: '..tostring(GetColor255(DefaultColor.B))
-	elseif Mode == MODES.RGBINT then
-		Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(DefaultColor.R, DecimalAmount))
-		Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(DefaultColor.G, DecimalAmount))
-		Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(DefaultColor.B, DecimalAmount))
-	elseif Mode == MODES.HSV then
-		local H, S, V = Color3.toHSV(DefaultColor)
-		Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
-		Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
-		Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
-	end
-	
-	Gui.ColorDisplayer.BackgroundColor3 = DefaultColor
 
-	if Mode == MODES.RGB or Mode == MODES.RGBINT then
-		UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, DefaultColor.R, 0, 1)
-		UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, DefaultColor.G, 0, 1)
-		UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, DefaultColor.B, 0, 1)
-	elseif Mode == MODES.HSV then
-		local H, S, V = Color3.toHSV(DefaultColor)
-		UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
-		UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
-		UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
-	end
+	-- if Mode == MODES.RGB then
+	-- 	Gui.TextBox1.Text = 'R: '..tostring(GetColor255(DefaultColor.R))
+	-- 	Gui.TextBox2.Text = 'G: '..tostring(GetColor255(DefaultColor.G))
+	-- 	Gui.TextBox3.Text = 'B: '..tostring(GetColor255(DefaultColor.B))
+	-- elseif Mode == MODES.RGBINT then
+	-- 	Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(DefaultColor.R, DecimalAmount))
+	-- 	Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(DefaultColor.G, DecimalAmount))
+	-- 	Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(DefaultColor.B, DecimalAmount))
+	-- elseif Mode == MODES.HSV then
+	-- 	local H, S, V = Color3.toHSV(DefaultColor)
+	-- 	Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
+	-- 	Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
+	-- 	Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
+	-- end
+
+
+	-- if Mode == MODES.RGB or Mode == MODES.RGBINT then
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, DefaultColor.R, 0, 1)
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, DefaultColor.G, 0, 1)
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, DefaultColor.B, 0, 1)
+	-- elseif Mode == MODES.HSV then
+	-- 	local H, S, V = Color3.toHSV(DefaultColor)
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
+	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+	-- end
 
 	-- RGB stored
 	API._Input = DefaultColor
@@ -174,6 +174,46 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
 		end
 		return API
+	end
+
+	-- Validate
+	function API.Validate(Input)
+		if API._DeadCheck() then return nil end
+		if typeof(Input) ~= 'Color3' then
+			warn('GizmoColorSlider Given non Color Parameter')
+			return false
+		end
+
+		API._Input = Input
+		Gui.ColorDisplayer.BackgroundColor3 = Input
+
+		if Mode == MODES.RGB then
+			Gui.TextBox1.Text = 'R: '..tostring(GetColor255(API._Input.R))
+			Gui.TextBox2.Text = 'G: '..tostring(GetColor255(API._Input.G))
+			Gui.TextBox3.Text = 'B: '..tostring(GetColor255(API._Input.B))
+			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
+			
+		elseif Mode == MODES.RGBINT then
+			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
+			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
+			Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(API._Input.B, DecimalAmount))
+			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
+
+		elseif Mode == MODES.HSV then
+			local H, S, V = Color3.toHSV(API._Input)
+			Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
+			Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
+			Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
+			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+		end
+
+		return true
 	end
 
 	---------------------
@@ -272,6 +312,9 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			end
 		end)
 	end
+
+	-- Validate Default
+	API.Validate(DefaultColor)
 
 	return API
 end

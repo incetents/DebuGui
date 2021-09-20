@@ -55,11 +55,8 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 	local API = GizmoBase.New()
 
 	-- Setup
-	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
 	Gui.TextName.Text = Name
-	Gui.TextBox.Text = DefaultValue
-	UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, DefaultValue, MinValue, MaxValue)
-	API._Input = DefaultValue
+
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -115,6 +112,19 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 		return API
 	end
 
+	function API.Validate(Input)
+		if typeof(Input) ~= 'number' then
+			warn('GizmoIntegerSlider Given non Color Parameter')
+			return false
+		end
+		Input = math.clamp(Input, MinValue, MaxValue)
+		Gui.TextBox.Text = Input
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
+		API._Input = Input
+
+		return true
+	end
+
 	-- Dragger
 	ValueDragger.OnDrag(function()
 		if API._DeadCheck() then return end
@@ -156,6 +166,9 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 			end
 		end)
 	end
+
+	-- Validate Default
+	API.Validate(DefaultValue)
 
 	return API
 end

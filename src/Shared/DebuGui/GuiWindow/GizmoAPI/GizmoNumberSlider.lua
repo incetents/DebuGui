@@ -53,7 +53,6 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	DefaultValue = math.clamp(DefaultValue, MinValue, MaxValue)
 	
 	-- Defines
 	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
@@ -62,9 +61,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox.Text = DefaultValue
-	UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, DefaultValue, MinValue, MaxValue)
-	API._Input = DefaultValue
+	
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -120,6 +117,19 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		return API
 	end
 
+	function API.Validate(Input)
+		if typeof(Input) ~= 'number' then
+			warn('GizmoNumberSlider Given non Color Parameter')
+			return false
+		end
+		Input = math.clamp(Input, MinValue, MaxValue)
+		Gui.TextBox.Text = Input
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
+		API._Input = Input
+
+		return true
+	end
+
 	-- Dragger
 	ValueDragger.OnDrag(function()
 		if API._DeadCheck() then return end
@@ -158,6 +168,9 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 			end
 		end)
 	end
+
+	-- Validate Default
+	API.Validate(DefaultValue)
 
 	return API
 end

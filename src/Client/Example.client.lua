@@ -391,67 +391,85 @@ Gui1.Remove('Small Frame Folder 2')
 -- Getter API --
 ----------------
 
--- print("~~~")
+-- API Acessing
+-- !!! EXPENSIVE/SLOW TO PRINT, only use for testing/sparingly !!! --
+
 -- print("BoolGui API: ", Gui1.Get('bool1'))
 -- print("ButtonGui API: ", Gui1.Get('button1'))
+-- print("ColorSliderGui API: ", Gui1.Get('ColorSliderRGB_1'))
 -- print("FolderGui API: ", Gui1.Get('folder1'))
 -- print("IntegerGui API: ", Gui1.Get('int1'))
+-- print("IntegerSliderGui API: ", Gui1.Get('intslider1'))
+-- print("ListPickerGui API: ", Gui1.Get('listpicker1'))
+-- print("LongStringGui API: ", Gui1.Get('longstring1'))
 -- print("NumberGui API: ", Gui1.Get('num1'))
+-- print("NumberSliderGui API: ", Gui1.Get('numslider1'))
 -- print("SeparatorGui API: ", Gui1.Get('seperator1'))
 -- print("StringGui API: ", Gui1.Get('string1'))
+-- print("TextGui API: ", Gui1.Get('text1'))
 -- print("Vector2Gui API: ", Gui1.Get('vec2_1'))
 -- print("Vector3Gui API: ", Gui1.Get('vec3_1'))
 
--- print("~~~")
--- print('bool1 = ', Gui1.Get('bool1').GetValue())
--- print('button1 = ', Gui1.Get('button1').GetValue())
--- --print('folder1 = ', Gui1.Get('folder1').GetValue())
--- print('int1 = ', Gui1.Get('int1').GetValue())
--- print('Num1 = ', Gui1.Get('num1').GetValue())
--- print('seperator6 = ', Gui1.Get('seperator6').GetValue())
--- print('string1 = ', Gui1.Get('string1').GetValue())
--- print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
+print("~~~ Quick Value Getters")
+print('bool1 = ', Gui1.Get('bool1').GetValue())
+print('button1 = ', Gui1.Get('button1').GetValue())
+print('ColorSliderRGB_1 = ', Gui1.Get('ColorSliderRGB_1').GetValue())
+print('folder1 = ', Gui1.Get('folder1').GetValue())
+print('int1 = ', Gui1.Get('int1').GetValue())
+print('intslider1 = ', Gui1.Get('intslider1').GetValue())
+print('num1 = ', Gui1.Get('num1').GetValue())
+print('numslider1 = ', Gui1.Get('numslider1').GetValue())
+print('seperator6 = ', Gui1.Get('seperator6').GetValue())
+print('string1 = ', Gui1.Get('string1').GetValue())
+print('text1 = ', Gui1.Get('text1').GetValue())
+print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
+print('vec3_1 = ', Gui1.Get('vec3_1').GetValue())
 
 ---------------
 -- Removal API --
 ---------------
 
--- -- removing invalid Gui --
--- Gui1.Remove('Fake Non-ExistantGui')
+-- removing invalid Gui --
+Gui1.Remove('Fake Non-ExistantGui')
 
--- -- removing valid Gui --
--- Gui1.AddInteger('remove1', 1)
--- Gui1.Remove('remove1')
+-- removing valid Gui --
+Gui1.AddInteger('remove1', 1)
+Gui1.Remove('remove1')
 
--- -- Attempting to access removed Guis --
--- local rBool = Gui1.AddBool('removeBool', true)
--- Gui1.Remove('removeBool')
--- rBool.SetName('Invalid')
+-- Examples of attempting to access removed Guis --
+print("~~~")
+local rBool = Gui1.AddBool('removeBool', true)
+print(Gui1.Get('removeBool').GetValue())
+Gui1.Remove('removeBool')
+rBool.SetName('Invalid')
 
--- local rButton = Gui1.AddButton('removeButton')
--- Gui1.Remove('removeButton')
--- rButton.SetName('Invalid')
+local rButton = Gui1.AddButton('removeButton')
+Gui1.Remove('removeButton')
+rButton.SetName('Invalid')
 
--- local rInteger = Gui1.AddInteger('removeInteger')
--- Gui1.Remove('removeInteger')
--- rInteger.SetName('Invalid')
+local rInteger = Gui1.AddInteger('removeInteger')
+Gui1.Remove('removeInteger')
+rInteger.SetName('Invalid')
 
--- local rNumber = Gui1.AddNumber('removeNumber')
--- Gui1.Remove('removeNumber')
--- rNumber.SetName('Invalid')
+local rNumber = Gui1.AddNumber('removeNumber')
+Gui1.Remove('removeNumber')
+rNumber.SetName('Invalid')
 
--- local rSeparator = Gui1.AddSeparator('removeSeparator')
--- Gui1.Remove('removeSeparator')
--- rSeparator.SetName('Invalid')
+local rSeparator = Gui1.AddSeparator('removeSeparator')
+Gui1.Remove('removeSeparator')
+rSeparator.SetName('Invalid')
 
--- local rString = Gui1.AddString('removeString')
--- Gui1.Remove('removeString')
--- rString.SetName('Invalid')
+local rString = Gui1.AddString('removeString')
+Gui1.Remove('removeString')
+rString.SetName('Invalid')
 
--- local rVec2 = Gui1.AddVector2('removeVector2')
--- Gui1.Remove('removeVector2')
--- rVec2.SetName('Invalid')
+local rVec2 = Gui1.AddVector2('removeVector2')
+Gui1.Remove('removeVector2')
+rVec2.SetName('Invalid')
 
+------------------------
+-- Destroy Entire Gui --
+------------------------
 --Gui1.Destroy()
 
 ----------------------

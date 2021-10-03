@@ -81,6 +81,14 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		UpdateVisual(API, Gui)
 	end
 
+	function API._Destroy()
+		Gui:Destroy()
+		-- Destroy Children too
+		for _, Gizmo in ipairs(API._GizmosArray) do
+			Gizmo._Destroy()
+		end
+	end
+
 	----------------
 	-- Public API --
 	----------------

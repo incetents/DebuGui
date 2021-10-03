@@ -400,8 +400,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 
 		-- Destroy Gui
-		API._GizmosTable[UniqueName].Gui:Destroy()
-
+		API._GizmosTable[UniqueName]._Destroy()
+		
 		-- Possible full destruction (Gizmo has API inside of it)
 		if API._GizmosTable[UniqueName].RemoveAll then
 			API._GizmosTable[UniqueName].RemoveAll()

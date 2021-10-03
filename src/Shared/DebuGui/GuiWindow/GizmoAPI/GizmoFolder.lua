@@ -103,18 +103,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		return API
 	end
 
-	function API.SetScrollbarColor(NewColor)
-		Utility.QuickTypeAssert(NewColor, 'Color3')
-		Gui.ScrollingFrame.ScrollBarImageColor3 = NewColor
-		return API
-	end
-
-	function API.SetScrollbarWidth(Width)
-		Utility.QuickTypeAssert(Width, 'number')
-		Gui.ScrollingFrame.ScrollBarThickness = Width
-		return API
-	end
-
 	function API.IsVisible()
 		return IsVisible
 	end

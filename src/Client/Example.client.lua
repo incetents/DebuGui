@@ -2,7 +2,6 @@
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local UserInputService = game:GetService("UserInputService")
 
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
@@ -360,12 +359,10 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
-local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', true)
+local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', false)
 SmallFrameFolder1
 	.SetColor(Color3.fromRGB(184, 163, 44))
 	.SetNameColor(Color3.new(0,0,0))
-	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
-	.SetScrollbarWidth(24)
 
 SmallFrameFolder1.AddString('string1', 'text')
 SmallFrameFolder1.AddString('string2', 'text')
@@ -375,7 +372,20 @@ SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
 
-Gui1.Remove('Small Frame Folder')
+local SmallFrameFolder2 = Gui1.AddFolder('Small Frame Folder 2', true)
+SmallFrameFolder2
+	.SetColor(Color3.fromRGB(184, 163, 44))
+	.SetNameColor(Color3.new(0,0,0))
+
+SmallFrameFolder2.AddString('string1', 'text')
+SmallFrameFolder2.AddString('string2', 'text')
+SmallFrameFolder2.AddString('string3', 'text')
+SmallFrameFolder2.AddString('string4', 'text')
+SmallFrameFolder2.AddString('string5', 'text')
+SmallFrameFolder2.AddString('string6', 'text')
+SmallFrameFolder2.AddString('string7', 'text')
+
+Gui1.Remove('Small Frame Folder 2')
 
 ----------------
 -- Getter API --

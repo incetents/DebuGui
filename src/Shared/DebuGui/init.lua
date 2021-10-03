@@ -44,6 +44,24 @@ function DebuGui.GetWindow(GuiName)
 	return nil
 end
 
+function DebuGui.WaitForWindow(GuiName, TimeOutTime)
+	-- Wait a specific amount of time
+	if TimeOutTime and typeof(TimeOutTime) == 'number' then
+		local FailTime = os.clock() + TimeOutTime;
+		while not DebuGui.ScreenGuis[GuiName] and os.clock() < FailTime do
+			task.wait()
+		end
+		return DebuGui.GetWindow(GuiName)
+
+	-- Yield forever until window is available
+	else
+		while not DebuGui.ScreenGuis[GuiName] do
+			task.wait(1)
+		end
+		return DebuGui.ScreenGuis[GuiName].API
+	end
+end
+
 function DebuGui.NewWindow(GuiName, InitData)
 	-- Assert
 	Utility.QuickTypeAssert(GuiName, 'string')

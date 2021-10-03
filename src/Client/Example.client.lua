@@ -1,4 +1,4 @@
-
+-- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 
@@ -62,6 +62,15 @@ Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
 -- 	print('listpicker1')
 -- end)
 
+-- Text --
+Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
+--
+Gui1.AddText('text1', 'abc')
+Gui1.AddText('text2', 'abc').SetName('custom name')
+Gui1.AddText('text3', 'zxc').Set('Funky')
+Gui1.AddText('text4', 'text')
+	.SetNameColor(Color3.fromRGB(223, 78, 78))
+	.SetValueTextColor(Color3.fromRGB(78, 93, 223))
 
 -- Booleans --
 Gui1.AddSeparator('BOOL_SEPARATOR').SetName('BOOLS')

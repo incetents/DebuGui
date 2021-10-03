@@ -16,6 +16,7 @@ local GizmoNumber = require(script.GizmoNumber)
 local GizmoNumberSlider = require(script.GizmoNumberSlider)
 local GizmoSeparator = require(script.GizmoSeparator)
 local GizmoString = require(script.GizmoString)
+local GizmoText = require(script.GizmoText)
 local GizmoVector2 = require(script.GizmoVector2)
 local GizmoVector3 = require(script.GizmoVector3)
 local GizmoColorSlider = require(script.GizmoColorSlider)
@@ -26,6 +27,7 @@ local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
 local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
 local GizmoUI_Slider = ReplicatedStorage.GizmoUI_Slider
+local GizmoUI_Text = ReplicatedStorage.GizmoUI_Text
 local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
 local GizmoUI_TextBox_Multi2 = ReplicatedStorage.GizmoUI_TextBox_Multi2
 local GizmoUI_TextBox_Multi3 = ReplicatedStorage.GizmoUI_TextBox_Multi3
@@ -76,7 +78,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 	end
 	local function AddGizmo(GIZMO_UI, GIZMO_CLASS, UniqueName, ...)
-
 		-- Doop Check
 		if API._GizmosTable[UniqueName] then
 			warn('Gizmo already exists ('..UniqueName..')')
@@ -123,9 +124,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	-----------------
 	function API._UpdateAllGizmos()
 		-- Update self
-		-- for _, Gizmo in pairs(API._GizmosFolders) do
-		-- 	Gizmo._UpdateVisual()
-		-- end
 		for __, Gizmo in ipairs(API._GizmosArray) do
 			if Gizmo._UpdateVisual then
 				Gizmo._UpdateVisual()
@@ -143,6 +141,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	----------------
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		return AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
+	end
+
+	function API.AddText(UniqueName, DefaultValue)
+		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, DefaultValue)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, Height)

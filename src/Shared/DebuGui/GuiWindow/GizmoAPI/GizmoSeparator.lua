@@ -1,3 +1,4 @@
+-- © 2021 Emmanuel Lajeunesse
 
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)

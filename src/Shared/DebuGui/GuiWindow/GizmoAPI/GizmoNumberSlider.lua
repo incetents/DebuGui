@@ -1,3 +1,4 @@
+-- © 2021 Emmanuel Lajeunesse
 
 -- Module
 local GizmoNumberSlider = {}
@@ -118,6 +119,8 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	end
 
 	function API.Validate(Input)
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'number' then
 			warn('GizmoNumberSlider Given non Color Parameter')
 			return false

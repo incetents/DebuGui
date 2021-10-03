@@ -620,7 +620,9 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Example</string>
 					<string name="ScriptGuid">{5AA24728-A29F-407D-84BF-9BF3D8F51509}</string>
-					<ProtectedString name="Source"><![CDATA[-- Roblox Services --
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 
@@ -648,41 +650,21 @@ Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
 Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 
--- UserInputService.InputBegan:Connect(function(input)
--- 	--
--- 	if input.KeyCode == Enum.KeyCode.One then
--- 		Gui1.Disable()
--- 	elseif input.KeyCode == Enum.KeyCode.Two then
--- 		Gui1.Enable()
--- 	elseif input.KeyCode == Enum.KeyCode.Three then
--- 		Gui1.Hide()
--- 	elseif input.KeyCode == Enum.KeyCode.Four then
--- 		Gui1.Show()
--- 	elseif input.KeyCode == Enum.KeyCode.Five then
--- 		Gui1.Minimize()
--- 	elseif input.KeyCode == Enum.KeyCode.Six then
--- 		Gui1.Maximize()
--- 	elseif input.KeyCode == Enum.KeyCode.Seven then
--- 		Gui1.ToggleVisibility()
--- 	elseif input.KeyCode == Enum.KeyCode.Eight then
--- 		Gui1.ToggleMinimized()
--- 	end
--- 	--
--- end)
+-- Additional Master Functions for testing
+--	Gui1.Disable()
+--	Gui1.Enable()
+--	Gui1.Hide()
+--	Gui1.Show()
+--	Gui1.Minimize()
+--	Gui1.Maximize()
+--	Gui1.ToggleVisibility()
+--	Gui1.ToggleMinimized()
 
 -- Getting Reference to Gui
 local Gui1_AlternateRef = DebuGui.GetWindow('Core')
 Gui1_AlternateRef.AddIntegerSlider('TEST123', 2, 0, 10)
 Gui1_AlternateRef.Remove('TEST123')
 
--- List Picker --
-Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
---
-Gui1.AddListPicker('listpicker1', 'bbb', {
-	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
-}).Listen(function(NewChoice)
-	print('listpicker1 choice: ', NewChoice)
-end)
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
@@ -693,6 +675,19 @@ Gui1.AddText('text3', 'zxc').Set('Funky')
 Gui1.AddText('text4', 'text')
 	.SetNameColor(Color3.fromRGB(223, 78, 78))
 	.SetValueTextColor(Color3.fromRGB(78, 93, 223))
+
+Gui1.AddText('text5', 'abc')
+	.Listen(function(V)
+		print('text5 changed to: ', V)
+	end)
+	.Set('Krankey Kong')
+
+Gui1.AddText('text6', 'abc')
+	.Set('Frankey Kong')
+	.Listen(function(V)
+		print('text6 changed to: ', V)
+	end)
+
 
 -- Booleans --
 Gui1.AddSeparator('BOOL_SEPARATOR').SetName('BOOLS')
@@ -842,7 +837,7 @@ Gui1.AddString('string6', 'a').Set('b')
 Gui1.AddSeparator('VECTOR_SEPARATOR').SetName('VECTORS')
 --
 Gui1.AddVector2('vec2_1', Vector2.new(7.9, -2)).Listen(function(NewVector)
-	print("New vec2_1 Value: "..NewVector)
+	print("New vec2_1 Value: ", NewVector)
 end)
 Gui1.AddVector2('vec2_2', Vector2.new(666, 999)).SetReadOnly()
 Gui1.AddVector2('vec2_3')
@@ -854,7 +849,7 @@ Gui1.AddVector2('vec2_5', Vector2.new(-1, -1))
 
 
 Gui1.AddVector3('vec3_1', Vector3.new(7.9, -2, 54)).Listen(function(NewVector)
-	print("New vec3_1 Value: "..NewVector)
+	print("New vec3_1 Value: ", NewVector)
 end)
 Gui1.AddVector3('vec3_2', Vector3.new(666, 999, -1)).SetReadOnly()
 Gui1.AddVector3('vec3_3')
@@ -892,6 +887,52 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
+
+-- List Picker --
+Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
+--
+Gui1.AddListPicker('listpicker1', 'bbb', {
+	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
+}).Listen(function(NewChoice)
+	print('listpicker1 choice: ', NewChoice)
+end)
+
+Gui1.AddListPicker('listpicker2', 'true', {
+	'false', 'true', 'false', 'true', 'false', 'true', 'none'
+}).Set('false')
+
+Gui1.AddListPicker('listpicker3', nil, {'a', 'b', 'c'})
+	.Listen(function(NewChoice)
+		print('listpicker3 choice: ', NewChoice)
+	end)
+
+Gui1.AddListPicker('listpicker4', nil, {'a', 'b', 'c'}, true)
+	.Listen(function(NewChoice)
+		print('listpicker4 choice: ', NewChoice)
+	end)
+	.SetName('funny custom name')
+
+Gui1.AddListPicker('listpicker5', '1', {'1'})
+	.AddChoice('2')
+	.AddChoice('3')
+	.AddChoice('4')
+	.Set('3')
+
+Gui1.AddListPicker('listpicker6', '4', {'1', '2', '3', '4'})
+	.RemoveChoice('2')
+	.RemoveChoice('4')
+	.RemoveChoice('1')
+	.Set('1')
+	.SetNameColor(Color3.fromRGB(223, 78, 78))
+
+Gui1.AddListPicker('listpicker7', '3', {'1', '2', '3', '4'})
+	.ChangeChoices({'a', 'b', 'c', 'd', '3'})
+	.SetValueTextColor(Color3.fromRGB(223, 78, 78))
+
+Gui1.AddListPicker('listpicker8', '3', {'1', '2', '3', '4'})
+	.ChangeChoices({'a', 'b', 'c', 'd', 'e'})
+
+
 -------------
 -- Folders --
 -------------
@@ -927,6 +968,11 @@ Folder1.AddVector2('vec2', Vector2.new(33, 565))
 Folder1.AddVector2('vec3', Vector2.new(33, 565))
 Folder1.AddNumberSlider('numslider', 100, 0, 200)
 Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Folder1.AddListPicker('listpicker1', 'bbb', {
+	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
+}).Listen(function(NewChoice)
+	print('listpicker1 choice: ', NewChoice)
+end)
 
 SubSubFolder1.AddString('test1', 'xxx')
 SubFolder1.AddString('test1', 'xxx')
@@ -936,13 +982,10 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
--- local asd = Gui1.AddFolder('asd', true)
-
 local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', true)
 SmallFrameFolder1
 	.SetColor(Color3.fromRGB(184, 163, 44))
 	.SetNameColor(Color3.new(0,0,0))
-	--.SetFrameHeightLimit(72)
 	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
 	.SetScrollbarWidth(24)
 
@@ -954,11 +997,21 @@ SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
 
--- local zxc = Gui1.AddFolder('zxc', true)
--- local zxc1 = Gui1.AddFolder('zxc1', true)
--- local zxc2 = Gui1.AddFolder('zxc2', true)
--- local zxc3 = Gui1.AddFolder('zxc3', true)
--- local zxc4 = Gui1.AddFolder('zxc4', true)
+-- local SmallFrameFolder2 = Gui1.AddFolder('Small Frame Folder 2', true)
+-- SmallFrameFolder2
+-- 	.SetColor(Color3.fromRGB(184, 163, 44))
+-- 	.SetNameColor(Color3.new(0,0,0))
+-- 	.SetFrameHeightLimit(72)
+-- 	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
+-- 	.SetScrollbarWidth(24)
+
+-- SmallFrameFolder2.AddString('string1', 'text')
+-- SmallFrameFolder2.AddString('string2', 'text')
+-- SmallFrameFolder2.AddString('string3', 'text')
+-- SmallFrameFolder2.AddString('string4', 'text')
+-- SmallFrameFolder2.AddString('string5', 'text')
+-- SmallFrameFolder2.AddString('string6', 'text')
+-- SmallFrameFolder2.AddString('string7', 'text')
 
 --Gui1.Remove('Small Frame Folder')
 
@@ -1032,23 +1085,23 @@ SmallFrameFolder1.AddString('string7', 'text')
 ----------------------
 -- Multiple Windows --
 ----------------------
-local Extra1 = DebuGui.NewWindow('Extra1', {
-    Title = 'Extra1',
-    X = 100,
-    Y = 70,
-    Width = 400,
-    Height = 300,
-})
-Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- local Extra1 = DebuGui.NewWindow('Extra1', {
+--     Title = 'Extra1',
+--     X = 100,
+--     Y = 70,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
-local Extra2 = DebuGui.NewWindow('Extra2', {
-    Title = 'Extra2',
-    X = 50,
-    Y = 130,
-    Width = 400,
-    Height = 300,
-})
-Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))]]></ProtectedString>
+-- local Extra2 = DebuGui.NewWindow('Extra2', {
+--     Title = 'Extra2',
+--     X = 50,
+--     Y = 130,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
@@ -1060,7 +1113,9 @@ Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Example2</string>
 					<string name="ScriptGuid">{51388683-2B0B-4D4B-BDFD-C4E7A90431F2}</string>
-					<ProtectedString name="Source"><![CDATA[-- Roblox Services --
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Module
@@ -1228,7 +1283,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					</Properties>
 					<Item class="TextButton" referent="RBX5155122831EC419B83E2F0324F0D28AB">
 						<Properties>
-							<bool name="Active">false</bool>
+							<bool name="Active">true</bool>
 							<Vector2 name="AnchorPoint">
 								<X>0</X>
 								<Y>0</Y>
@@ -1309,7 +1364,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					</Item>
 					<Item class="TextButton" referent="RBXC435B7890DA0455B95EE31A4B3BB7736">
 						<Properties>
-							<bool name="Active">false</bool>
+							<bool name="Active">true</bool>
 							<Vector2 name="AnchorPoint">
 								<X>0</X>
 								<Y>0</Y>
@@ -1414,7 +1469,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					</Item>
 					<Item class="TextButton" referent="RBX73EFAC6878AE4BB0B124613945330124">
 						<Properties>
-							<bool name="Active">false</bool>
+							<bool name="Active">true</bool>
 							<Vector2 name="AnchorPoint">
 								<X>0</X>
 								<Y>0</Y>
@@ -6323,7 +6378,7 @@ asd]]></string>
 				</Item>
 				<Item class="TextButton" referent="RBX5ABB71A12A444FDA961E9DC3A8B68181">
 					<Properties>
-						<bool name="Active">false</bool>
+						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
 							<X>0</X>
 							<Y>0</Y>
@@ -6505,7 +6560,7 @@ asd]]></string>
 				</Item>
 				<Item class="TextButton" referent="RBX72E92D98C1E14A68A1B466563C1DBE25">
 					<Properties>
-						<bool name="Active">false</bool>
+						<bool name="Active">true</bool>
 						<Vector2 name="AnchorPoint">
 							<X>0</X>
 							<Y>0</Y>
@@ -6869,7 +6924,8 @@ asd]]></string>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">DebuGui</string>
 				<string name="ScriptGuid">{DC43DC3C-AA18-4070-96E0-F96134D67DE0}</string>
-				<ProtectedString name="Source"><![CDATA[
+				<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local DebuGui = {
 	-- Module Constants
@@ -6974,7 +7030,9 @@ return DebuGui]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Dragger</string>
 					<string name="ScriptGuid">{9059B306-0BF1-4EBC-A03A-15C61F1C0312}</string>
-					<ProtectedString name="Source"><![CDATA[-- Module
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local Dragger = {}
 
 -- Services
@@ -7085,7 +7143,8 @@ return Dragger]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Utility</string>
 					<string name="ScriptGuid">{48B40446-D8BF-4438-96C7-4E33AF0A43AB}</string>
-					<ProtectedString name="Source"><![CDATA[
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
 local Utility = {}
 
 function Utility.QuickTypeAssert(Object, Type)
@@ -7131,7 +7190,9 @@ return Utility]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">GuiWindow</string>
 					<string name="ScriptGuid">{9523E78C-F780-4C51-A911-7B87B00FD658}</string>
-					<ProtectedString name="Source"><![CDATA[-- Module
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GuiWindow = {}
 
 -- Services
@@ -7154,12 +7215,6 @@ local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and in
 
 -- Defines
 local VerticalLayout = ReplicatedStorage.VerticalLayout 
-
-----------------------
--- Helper Functions --
-----------------------
-
-
 
 ----------------
 -- Public API --
@@ -7474,7 +7529,9 @@ return GuiWindow]]></ProtectedString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">GizmoAPI</string>
 						<string name="ScriptGuid">{0E86CDF6-F1A5-48CC-B359-F06A4E76B059}</string>
-						<ProtectedString name="Source"><![CDATA[-- Module
+						<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoAPI = {}
 
 -- Services
@@ -7545,6 +7602,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	local API = {}
 	API._GuiParent = GuiParent
 	API._ParentAPI = ParentAPI
+	API._MasterAPI = MasterAPI or API
 	API._GizmosTable = {} -- [UniqueName] = GizmoAPI Hold all Gizmos in a table
 	API._GizmosArray = {} -- {Array of GizmoAPI}
 	API._GizmosFolders = {} -- [UniqueName] = Folders GizmoAPI (more specific version of _GizmosTable)
@@ -7553,11 +7611,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		ListenerAPI = nil,
 		Frame = nil
 	}
-
-	-- Special Case (if Master API is self)
-	if MasterAPI == nil then
-		MasterAPI = API
-	end
 
 	----------------------
 	-- Helper Functions --
@@ -7601,7 +7654,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Add Size if not in hidden folder
 		if Utility.IsFolderVisible(API, true) then
-			Utility.ModifyCanvasHeight(MasterAPI._GuiParent, GizmoUI.AbsoluteSize.Y)
+			Utility.ModifyCanvasHeight(API._MasterAPI._GuiParent, GizmoUI.AbsoluteSize.Y)
 		end
 
 		-- Update
@@ -7628,10 +7681,31 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 	end
 
-	-- Final Choice
+	-- Modal Ignore
+	function API._CloseModal()
+		-- Needs to be master API
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._CloseModal()
+		end
+
+		-- Check if Modal is not in-use
+		if not API._Modal.Lock then return end
+
+			-- Remove Modal
+			GuiParent.Parent.ModalLock.Visible = false
+			API._Modal.Frame:Destroy()
+
+			-- Remove Locks
+			API._Modal.Lock = false
+			API._Modal.ListenerAPI = nil
+			API._Modal.Frame = nil
+	end
+
 	function API._ModalChoiceSelected(Choice)
 		-- Needs to be master API
-		if MasterAPI ~= API then return MasterAPI._CreateModal() end
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._ModalChoiceSelected(Choice)
+		end
 
 		-- Check if Modal is not in-use
 		if not API._Modal.Lock then return end
@@ -7644,19 +7718,14 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			end
 		end
 
-		-- Remove Modal
-		GuiParent.Parent.ModalLock.Visible = false
-		API._Modal.Frame:Destroy()
-
-		-- Remove Locks
-		API._Modal.Lock = false
-		API._Modal.ListenerAPI = nil
-		API._Modal.Frame = nil
+		API._CloseModal()
 	end
 
-	function API._CreateModal(ModalListenerAPI, DefaultChoice, Choices)
+	function API._CreateModal(ModalName, ModalListenerAPI, DefaultChoice, Choices)
 		-- Needs to be master API
-		if MasterAPI ~= API then return MasterAPI._CreateModal() end
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._CreateModal(ModalName, ModalListenerAPI, DefaultChoice, Choices)
+		end
 
 		-- Modal in-use
 		if API._Modal.Lock then return end
@@ -7672,6 +7741,9 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		ModalFrame.Parent = ScreenGui
 		ModalFrame.Visible = true
 		API._Modal.Frame = ModalFrame
+
+		-- Title
+		ModalFrame.TopBar.Title.Text = ModalName
 
 		-- Force Gui to be the front-most one
 		API.BringGuiForward(ScreenGui)
@@ -7750,7 +7822,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Close Modal
 		ModalFrame.CloseBtn.MouseButton1Down:Connect(function()
-			API._ModalChoiceSelected(nil)
+			API._CloseModal()
 		end)
 	end
 
@@ -7766,7 +7838,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, Height)
-		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, MasterAPI, DefaultValue, Height)
+		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API._MasterAPI, DefaultValue, Height)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
@@ -7794,11 +7866,11 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddSeparator(UniqueName, Color, Text, Height)
-		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, MasterAPI, Color, Text, Height)
+		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API._MasterAPI, Color, Text, Height)
 	end
 
 	function API.AddFolder(UniqueName, StartOpen)
-		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, StartOpen)
+		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API._MasterAPI, API, StartOpen)
 	end
 
 	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
@@ -7821,8 +7893,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
 	end
 
-	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray)
-		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray)
+	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
 	end
 
 	-- Returns API of Gizmo
@@ -7855,7 +7927,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Remove Canvas Height
 		if Utility.IsFolderVisible(API, true) then
-			Utility.ModifyCanvasHeight(MasterAPI._GuiParent, -API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
+			Utility.ModifyCanvasHeight(API._MasterAPI._GuiParent, -API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
 		end
 
 		-- Destroy Gui
@@ -7899,7 +7971,9 @@ return GizmoAPI]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBase</string>
 							<string name="ScriptGuid">{A59DFBD5-9565-42EA-9DAD-07E2F8AF019B}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoBase = {}
 
 ----------------
@@ -7982,6 +8056,9 @@ function GizmoBase.New()
     function API.Set(newValue)
 		if API._DeadCheck() then return nil end
         API.Validate(newValue)
+		if API._Listener then
+			API._Listener(API._Input)
+		end
         return API
     end
 
@@ -8003,7 +8080,9 @@ return GizmoBase]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBool</string>
 							<string name="ScriptGuid">{3602A8E2-958A-48D2-A84B-DFF4BC01D4E0}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoBool = {}
 
 -- Modules
@@ -8038,7 +8117,8 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 	-- Public API --
 	----------------
     function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
         local IsTrue = (Input == true)
         if IsTrue then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = DefaultColor
@@ -8128,7 +8208,9 @@ return GizmoBool]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoButton</string>
 							<string name="ScriptGuid">{11589E8D-B199-485E-AA59-259C6CB383BB}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoButton = {}
 
 -- Services
@@ -8239,7 +8321,9 @@ return GizmoButton]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoFolder</string>
 							<string name="ScriptGuid">{D193CF61-BC46-4A26-BB5D-5C985079B1C1}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoFolder = {}
 
 -- Modules
@@ -8248,25 +8332,19 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------------
 -- Helper Functions --
 ----------------------
-local function UpdateVisual(API, Gui, FrameHeightLimit)
+local function UpdateVisual(API, Gui)
 	if API.IsVisible() then
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
-		local FrameHeight = FrameHeightLimit or CanvasHeight
+		local FrameHeight = CanvasHeight
 		Gui.Size = UDim2.new(1, 0, 0, FrameHeight + 24)
 		Gui.DropDownBtn.Text = 'v'
 		-- Show Everything in Canvas
-		if FrameHeightLimit == nil then
-			Gui.ScrollingFrame.ScrollingEnabled = false
-			Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
-		-- Limited Canvas Frame
-		else
-			Gui.ScrollingFrame.ScrollingEnabled = true
-			Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
-		end
+		Gui.ScrollingFrame.ScrollingEnabled = false
+		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
 	else
 		Gui.ScrollingFrame.Visible = false
 		Gui.Size = UDim2.new(1, 0, 0, 24)
@@ -8290,7 +8368,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	local GizmoAPI = require(script.Parent)
 	local API = GizmoAPI.New(Gui.ScrollingFrame, MasterAPI, ParentAPI)
 	local IsVisible = StartOpen
-	local FrameHeightLimit = nil;
 
 	------------
 	-- Button --
@@ -8324,7 +8401,7 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	end
 
 	function API._UpdateVisual()
-		UpdateVisual(API, Gui, FrameHeightLimit)
+		UpdateVisual(API, Gui)
 	end
 
 	----------------
@@ -8361,23 +8438,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		return API
 	end
 
-	function API.SetFrameHeightLimit(Amount)
-		Utility.QuickTypeAssert(Amount, 'number')
-		FrameHeightLimit = Amount
-		UpdateVisual(API, Gui, FrameHeightLimit)
-		return API
-	end
-
-	function API.RemoveFrameHeightLimit()
-		FrameHeightLimit = nil;
-		UpdateVisual(API, Gui, FrameHeightLimit)
-		return API
-	end
-
-	function API.GetFrameHeightLimit()
-		return FrameHeightLimit
-	end
-
 	function API.IsVisible()
 		return IsVisible
 	end
@@ -8399,7 +8459,9 @@ return GizmoFolder]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoInteger</string>
 							<string name="ScriptGuid">{C5B6DB0C-5508-477B-B3B9-7138546BC915}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoInteger = {}
 
 -- Modules
@@ -8435,7 +8497,8 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Public API --
 	----------------
 	function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			NumberInput = math.round(NumberInput)
@@ -8523,7 +8586,9 @@ return GizmoInteger]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoIntegerSlider</string>
 							<string name="ScriptGuid">{B1DEC54D-D044-4427-AC0F-6AA78814819B}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoIntegerSlider = {}
 
 -- Modules
@@ -8638,6 +8703,8 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 	end
 
 	function API.Validate(Input)
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'number' then
 			warn('GizmoIntegerSlider Given non Color Parameter')
 			return false
@@ -8709,7 +8776,9 @@ return GizmoIntegerSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoLongString</string>
 							<string name="ScriptGuid">{7F905EB5-BB16-4537-897B-83F1F3BA7575}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoLongString = {}
 
 -- Modules
@@ -8843,7 +8912,9 @@ return GizmoLongString]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumber</string>
 							<string name="ScriptGuid">{E0FAC82C-9106-4A5E-ABE0-709F55783EB4}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoNumber = {}
 
 -- Modules
@@ -8883,7 +8954,8 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 	-- Public API --
 	----------------
 	function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			if DecimalAmount then
@@ -8975,7 +9047,8 @@ return GizmoNumber]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumberSlider</string>
 							<string name="ScriptGuid">{294D026D-D60D-4ABB-B975-3ABCCDC22BB9}</string>
-							<ProtectedString name="Source"><![CDATA[
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoNumberSlider = {}
 
@@ -9095,6 +9168,8 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	end
 
 	function API.Validate(Input)
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'number' then
 			warn('GizmoNumberSlider Given non Color Parameter')
 			return false
@@ -9163,7 +9238,8 @@ return GizmoNumberSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoSeparator</string>
 							<string name="ScriptGuid">{EEB658EE-3EA4-464C-90F3-5BF04B05CF83}</string>
-							<ProtectedString name="Source"><![CDATA[
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
@@ -9237,7 +9313,9 @@ return GizmoSeparator]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoString</string>
 							<string name="ScriptGuid">{93F28F9F-0C01-47B3-8149-17F5172CDA43}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoString = {}
 
 -- Modules
@@ -9259,7 +9337,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'string')
     Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
-    
+
     -- Setup
     Gui.TextName.Text = Name
     Gui.TextBox.Text = DefaultValue
@@ -9273,7 +9351,8 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Public API --
 	----------------
     function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str
@@ -9360,7 +9439,9 @@ return GizmoString]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector2</string>
 							<string name="ScriptGuid">{2BEBEDD1-D2BA-429C-9A8B-BC476BB37D3C}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoVector2 = {}
 
 -- Modules
@@ -9401,12 +9482,21 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 	-- Public API --
 	----------------
 	function API.Validate(InputA, InputB)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
 
 		local _x = tonumber(InputA)
 		local _y = tonumber(InputB)
 
 		if _x and _y then
+			-- Check if values not changed
+			if API._Input
+				and typeof(API._Input) == 'Vector2'
+				and math.abs(tonumber(_x) - API._Input.X) < 1e-10
+				and math.abs(tonumber(_y) - API._Input.Y) < 1e-10
+			then
+				return false
+			end
+
 			if DecimalAmount then
 				local Mod = (10 ^ DecimalAmount)
 				_x = math.round(_x * Mod) / Mod
@@ -9522,7 +9612,9 @@ return GizmoVector2]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector3</string>
 							<string name="ScriptGuid">{74FC14EE-E84C-4509-95B2-99F67BD78BCD}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoVector3 = {}
 
 -- Modules
@@ -9547,7 +9639,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox1.Text = DefaultValue.x
@@ -9563,13 +9655,22 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 
 	-- Public API --
 	function API.Validate(InputA, InputB, InputC)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
 
 		local _x = tonumber(InputA)
 		local _y = tonumber(InputB)
 		local _z = tonumber(InputC)
 
 		if _x and _y and _z then
+			-- Check if values not changed
+			if API._Input
+				and typeof(API._Input) == 'Vector3'
+				and math.abs(tonumber(InputA) - API._Input.X) < 1e-10
+				and math.abs(tonumber(InputB) - API._Input.Y) < 1e-10
+				and math.abs(tonumber(InputC) - API._Input.Z) < 1e-10
+			then
+				return false
+			end
 			if DecimalAmount then
 				local Mod = (10 ^ DecimalAmount)
 				_x = math.round(_x * Mod) / Mod
@@ -9707,7 +9808,8 @@ return GizmoVector3]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoColorSlider</string>
 							<string name="ScriptGuid">{A9C08860-3E7C-4D6F-91EB-48EE2FEC952A}</string>
-							<ProtectedString name="Source"><![CDATA[
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoColorSlider = {}
 
@@ -9799,33 +9901,6 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Setup
 	Gui.TextName.Text = Name
 
-	-- if Mode == MODES.RGB then
-	-- 	Gui.TextBox1.Text = 'R: '..tostring(GetColor255(DefaultColor.R))
-	-- 	Gui.TextBox2.Text = 'G: '..tostring(GetColor255(DefaultColor.G))
-	-- 	Gui.TextBox3.Text = 'B: '..tostring(GetColor255(DefaultColor.B))
-	-- elseif Mode == MODES.RGBINT then
-	-- 	Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(DefaultColor.R, DecimalAmount))
-	-- 	Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(DefaultColor.G, DecimalAmount))
-	-- 	Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(DefaultColor.B, DecimalAmount))
-	-- elseif Mode == MODES.HSV then
-	-- 	local H, S, V = Color3.toHSV(DefaultColor)
-	-- 	Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
-	-- 	Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
-	-- 	Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
-	-- end
-
-
-	-- if Mode == MODES.RGB or Mode == MODES.RGBINT then
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, DefaultColor.R, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, DefaultColor.G, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, DefaultColor.B, 0, 1)
-	-- elseif Mode == MODES.HSV then
-	-- 	local H, S, V = Color3.toHSV(DefaultColor)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
-	-- end
-
 	-- RGB stored
 	API._Input = DefaultColor
 	API._AddDragger(ValueDragger_1)
@@ -9887,7 +9962,8 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Validate
 	function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false
@@ -10039,7 +10115,9 @@ return GizmoColorSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoText</string>
 							<string name="ScriptGuid">{4BB9F2FD-59E6-4870-B886-CF2C414DAFBA}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoText = {}
 
 -- Modules
@@ -10113,7 +10191,9 @@ return GizmoText]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoListPicker</string>
 							<string name="ScriptGuid">{9442DE75-704B-4B43-8506-7A977A0025DA}</string>
-							<ProtectedString name="Source"><![CDATA[-- Module
+							<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Module
 local GizmoListPicker = {}
 
 -- Modules
@@ -10123,21 +10203,40 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices)
+function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, AllowNoChoice, ClearTextOnFocus)
 
-    -- Defaults
-    DefaultChoice = DefaultChoice or ''
+	-- Defaults
+	if ClearTextOnFocus == nil then
+		ClearTextOnFocus = false
+	end
+	if AllowNoChoice == nil then
+		AllowNoChoice = false
+	end
 
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')
-    Utility.QuickTypeAssert(DefaultChoice, 'string')
+	if DefaultChoice then
+		Utility.QuickTypeAssert(DefaultChoice, 'string')
+	end
     Utility.QuickTypeAssert(Choices, 'table')
-	if not table.find(Choices, DefaultChoice) then
+	for _, Value in ipairs(Choices) do
+		if typeof(Value) ~= 'string' then
+			error('a choice was not a string in Choices for '..Name)
+		end
+	end
+	if DefaultChoice and not table.find(Choices, DefaultChoice) then
 		error('Choice ('..DefaultChoice..') not found in Choices for '..Name)
+	end
+	if #Choices == 0 then
+		error('No choices given for '..Name)
+	end
+	if not AllowNoChoice and not DefaultChoice then
+		DefaultChoice = Choices[1]
 	end
 
     -- Setup
     Gui.TextName.Text = Name
+	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
     local API = GizmoBase.New()
@@ -10146,15 +10245,35 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices)
 	-- Public API --
 	----------------
     function API.Validate(Input)
-		if Input == nil then return nil end
 		if API._DeadCheck() then return nil end
+		-- Possibility of nil
+		if AllowNoChoice then
+			if Input == nil or Input == '' then
+				Gui.TextBox.Text = ''
+				if API._Input == nil then
+					return false
+				else
+					API._Input = nil
+					return true
+				end
+			end
+		end
+		-- Check Choice
+		if Input == API._Input then return false end
         local Str = tostring(Input)
         if Str and table.find(Choices, Str) then
             Gui.TextBox.Text = Str
             API._Input = Str
             return true
-        else
-            Gui.TextBox.Text = API._Input
+		elseif AllowNoChoice then
+			if API._Input ~= nil then
+				Gui.TextBox.Text = API._Input
+			else
+				Gui.TextBox.Text = ''
+			end
+			return false
+		else
+			Gui.TextBox.Text = API._Input
             return false
         end
     end
@@ -10177,11 +10296,50 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices)
 		return API
 	end
 
+	function API.AddChoice(Choice)
+		if API._DeadCheck() then return nil end
+		if typeof(Choice) ~= 'string' then
+			error('Choice is not of type string')
+		end
+		table.insert(Choices, Choice)
+		return API
+	end
+
+	function API.RemoveChoice(Choice)
+		if API._DeadCheck() then return nil end
+		if typeof(Choice) ~= 'string' then
+			error('Choice is not of type string')
+		end
+		local ChoiceIndex = table.find(Choices, Choice)
+		if ChoiceIndex then
+			table.remove(Choices, Choice)
+			-- Check if current selection is gone
+			if API._Input == Choice then
+				API.Validate(Choices[1])
+			end
+		end
+		return API
+	end
+
+	function API.ChangeChoices(NewChoices)
+		if API._DeadCheck() then return nil end
+		if typeof(NewChoices) ~= 'table' then
+			error('Choices is not of type table')
+		end
+		Choices = NewChoices
+		-- Check if current choice doesn't exist in new choices set
+		local ChoiceIndex = table.find(Choices, API._Input)
+		if not ChoiceIndex then
+			API.Validate(Choices[1])
+		end
+		return API
+	end
+
 	----------------------
 	-- Selection Button --
 	----------------------
 	API._AddConnection(Gui.ModalButton.MouseButton1Down:Connect(function()
-		ParentAPI._CreateModal(API, API._Input, Choices)
+		ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
 	end))
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
         local Success = API.Validate(Gui.TextBox.Text)

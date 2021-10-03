@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoVector3 = {}
 
@@ -23,7 +25,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox1.Text = DefaultValue.x
@@ -39,13 +41,22 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 
 	-- Public API --
 	function API.Validate(InputA, InputB, InputC)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
 
 		local _x = tonumber(InputA)
 		local _y = tonumber(InputB)
 		local _z = tonumber(InputC)
 
 		if _x and _y and _z then
+			-- Check if values not changed
+			if API._Input
+				and typeof(API._Input) == 'Vector3'
+				and math.abs(tonumber(InputA) - API._Input.X) < 1e-10
+				and math.abs(tonumber(InputB) - API._Input.Y) < 1e-10
+				and math.abs(tonumber(InputC) - API._Input.Z) < 1e-10
+			then
+				return false
+			end
 			if DecimalAmount then
 				local Mod = (10 ^ DecimalAmount)
 				_x = math.round(_x * Mod) / Mod

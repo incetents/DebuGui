@@ -1,3 +1,4 @@
+-- © 2021 Emmanuel Lajeunesse
 
 -- Module
 local GizmoColorSlider = {}
@@ -90,33 +91,6 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Setup
 	Gui.TextName.Text = Name
 
-	-- if Mode == MODES.RGB then
-	-- 	Gui.TextBox1.Text = 'R: '..tostring(GetColor255(DefaultColor.R))
-	-- 	Gui.TextBox2.Text = 'G: '..tostring(GetColor255(DefaultColor.G))
-	-- 	Gui.TextBox3.Text = 'B: '..tostring(GetColor255(DefaultColor.B))
-	-- elseif Mode == MODES.RGBINT then
-	-- 	Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(DefaultColor.R, DecimalAmount))
-	-- 	Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(DefaultColor.G, DecimalAmount))
-	-- 	Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(DefaultColor.B, DecimalAmount))
-	-- elseif Mode == MODES.HSV then
-	-- 	local H, S, V = Color3.toHSV(DefaultColor)
-	-- 	Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
-	-- 	Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
-	-- 	Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
-	-- end
-
-
-	-- if Mode == MODES.RGB or Mode == MODES.RGBINT then
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, DefaultColor.R, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, DefaultColor.G, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, DefaultColor.B, 0, 1)
-	-- elseif Mode == MODES.HSV then
-	-- 	local H, S, V = Color3.toHSV(DefaultColor)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
-	-- 	UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
-	-- end
-
 	-- RGB stored
 	API._Input = DefaultColor
 	API._AddDragger(ValueDragger_1)
@@ -178,7 +152,8 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Validate
 	function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false

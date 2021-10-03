@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
@@ -26,41 +28,21 @@ Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
 Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 
--- UserInputService.InputBegan:Connect(function(input)
--- 	--
--- 	if input.KeyCode == Enum.KeyCode.One then
--- 		Gui1.Disable()
--- 	elseif input.KeyCode == Enum.KeyCode.Two then
--- 		Gui1.Enable()
--- 	elseif input.KeyCode == Enum.KeyCode.Three then
--- 		Gui1.Hide()
--- 	elseif input.KeyCode == Enum.KeyCode.Four then
--- 		Gui1.Show()
--- 	elseif input.KeyCode == Enum.KeyCode.Five then
--- 		Gui1.Minimize()
--- 	elseif input.KeyCode == Enum.KeyCode.Six then
--- 		Gui1.Maximize()
--- 	elseif input.KeyCode == Enum.KeyCode.Seven then
--- 		Gui1.ToggleVisibility()
--- 	elseif input.KeyCode == Enum.KeyCode.Eight then
--- 		Gui1.ToggleMinimized()
--- 	end
--- 	--
--- end)
+-- Additional Master Functions for testing
+--	Gui1.Disable()
+--	Gui1.Enable()
+--	Gui1.Hide()
+--	Gui1.Show()
+--	Gui1.Minimize()
+--	Gui1.Maximize()
+--	Gui1.ToggleVisibility()
+--	Gui1.ToggleMinimized()
 
 -- Getting Reference to Gui
 local Gui1_AlternateRef = DebuGui.GetWindow('Core')
 Gui1_AlternateRef.AddIntegerSlider('TEST123', 2, 0, 10)
 Gui1_AlternateRef.Remove('TEST123')
 
--- List Picker --
-Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
---
-Gui1.AddListPicker('listpicker1', 'bbb', {
-	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
-}).Listen(function(NewChoice)
-	print('listpicker1 choice: ', NewChoice)
-end)
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
@@ -71,6 +53,19 @@ Gui1.AddText('text3', 'zxc').Set('Funky')
 Gui1.AddText('text4', 'text')
 	.SetNameColor(Color3.fromRGB(223, 78, 78))
 	.SetValueTextColor(Color3.fromRGB(78, 93, 223))
+
+Gui1.AddText('text5', 'abc')
+	.Listen(function(V)
+		print('text5 changed to: ', V)
+	end)
+	.Set('Krankey Kong')
+
+Gui1.AddText('text6', 'abc')
+	.Set('Frankey Kong')
+	.Listen(function(V)
+		print('text6 changed to: ', V)
+	end)
+
 
 -- Booleans --
 Gui1.AddSeparator('BOOL_SEPARATOR').SetName('BOOLS')
@@ -220,7 +215,7 @@ Gui1.AddString('string6', 'a').Set('b')
 Gui1.AddSeparator('VECTOR_SEPARATOR').SetName('VECTORS')
 --
 Gui1.AddVector2('vec2_1', Vector2.new(7.9, -2)).Listen(function(NewVector)
-	print("New vec2_1 Value: "..NewVector)
+	print("New vec2_1 Value: ", NewVector)
 end)
 Gui1.AddVector2('vec2_2', Vector2.new(666, 999)).SetReadOnly()
 Gui1.AddVector2('vec2_3')
@@ -232,7 +227,7 @@ Gui1.AddVector2('vec2_5', Vector2.new(-1, -1))
 
 
 Gui1.AddVector3('vec3_1', Vector3.new(7.9, -2, 54)).Listen(function(NewVector)
-	print("New vec3_1 Value: "..NewVector)
+	print("New vec3_1 Value: ", NewVector)
 end)
 Gui1.AddVector3('vec3_2', Vector3.new(666, 999, -1)).SetReadOnly()
 Gui1.AddVector3('vec3_3')
@@ -270,6 +265,52 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
+
+-- List Picker --
+Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
+--
+Gui1.AddListPicker('listpicker1', 'bbb', {
+	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
+}).Listen(function(NewChoice)
+	print('listpicker1 choice: ', NewChoice)
+end)
+
+Gui1.AddListPicker('listpicker2', 'true', {
+	'false', 'true', 'false', 'true', 'false', 'true', 'none'
+}).Set('false')
+
+Gui1.AddListPicker('listpicker3', nil, {'a', 'b', 'c'})
+	.Listen(function(NewChoice)
+		print('listpicker3 choice: ', NewChoice)
+	end)
+
+Gui1.AddListPicker('listpicker4', nil, {'a', 'b', 'c'}, true)
+	.Listen(function(NewChoice)
+		print('listpicker4 choice: ', NewChoice)
+	end)
+	.SetName('funny custom name')
+
+Gui1.AddListPicker('listpicker5', '1', {'1'})
+	.AddChoice('2')
+	.AddChoice('3')
+	.AddChoice('4')
+	.Set('3')
+
+Gui1.AddListPicker('listpicker6', '4', {'1', '2', '3', '4'})
+	.RemoveChoice('2')
+	.RemoveChoice('4')
+	.RemoveChoice('1')
+	.Set('1')
+	.SetNameColor(Color3.fromRGB(223, 78, 78))
+
+Gui1.AddListPicker('listpicker7', '3', {'1', '2', '3', '4'})
+	.ChangeChoices({'a', 'b', 'c', 'd', '3'})
+	.SetValueTextColor(Color3.fromRGB(223, 78, 78))
+
+Gui1.AddListPicker('listpicker8', '3', {'1', '2', '3', '4'})
+	.ChangeChoices({'a', 'b', 'c', 'd', 'e'})
+
+
 -------------
 -- Folders --
 -------------
@@ -305,6 +346,11 @@ Folder1.AddVector2('vec2', Vector2.new(33, 565))
 Folder1.AddVector2('vec3', Vector2.new(33, 565))
 Folder1.AddNumberSlider('numslider', 100, 0, 200)
 Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Folder1.AddListPicker('listpicker1', 'bbb', {
+	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
+}).Listen(function(NewChoice)
+	print('listpicker1 choice: ', NewChoice)
+end)
 
 SubSubFolder1.AddString('test1', 'xxx')
 SubFolder1.AddString('test1', 'xxx')
@@ -314,13 +360,10 @@ local DeepFolder2 = DeepFolder1.AddFolder('DeepFolder2', false)
 local DeepFolder3 = DeepFolder2.AddFolder('DeepFolder3', false)
 DeepFolder3.AddFolder('DeepFolder4', false)
 
--- local asd = Gui1.AddFolder('asd', true)
-
 local SmallFrameFolder1 = Gui1.AddFolder('Small Frame Folder', true)
 SmallFrameFolder1
 	.SetColor(Color3.fromRGB(184, 163, 44))
 	.SetNameColor(Color3.new(0,0,0))
-	--.SetFrameHeightLimit(72)
 	.SetScrollbarColor(Color3.fromRGB(184, 163, 44))
 	.SetScrollbarWidth(24)
 
@@ -332,13 +375,7 @@ SmallFrameFolder1.AddString('string5', 'text')
 SmallFrameFolder1.AddString('string6', 'text')
 SmallFrameFolder1.AddString('string7', 'text')
 
--- local zxc = Gui1.AddFolder('zxc', true)
--- local zxc1 = Gui1.AddFolder('zxc1', true)
--- local zxc2 = Gui1.AddFolder('zxc2', true)
--- local zxc3 = Gui1.AddFolder('zxc3', true)
--- local zxc4 = Gui1.AddFolder('zxc4', true)
-
---Gui1.Remove('Small Frame Folder')
+Gui1.Remove('Small Frame Folder')
 
 ----------------
 -- Getter API --
@@ -410,20 +447,20 @@ SmallFrameFolder1.AddString('string7', 'text')
 ----------------------
 -- Multiple Windows --
 ----------------------
-local Extra1 = DebuGui.NewWindow('Extra1', {
-    Title = 'Extra1',
-    X = 100,
-    Y = 70,
-    Width = 400,
-    Height = 300,
-})
-Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- local Extra1 = DebuGui.NewWindow('Extra1', {
+--     Title = 'Extra1',
+--     X = 100,
+--     Y = 70,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
-local Extra2 = DebuGui.NewWindow('Extra2', {
-    Title = 'Extra2',
-    X = 50,
-    Y = 130,
-    Width = 400,
-    Height = 300,
-})
-Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+-- local Extra2 = DebuGui.NewWindow('Extra2', {
+--     Title = 'Extra2',
+--     X = 50,
+--     Y = 130,
+--     Width = 400,
+--     Height = 300,
+-- })
+-- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))

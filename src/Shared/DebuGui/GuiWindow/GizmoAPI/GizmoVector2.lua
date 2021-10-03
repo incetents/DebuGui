@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoVector2 = {}
 
@@ -39,12 +41,21 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 	-- Public API --
 	----------------
 	function API.Validate(InputA, InputB)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
 
 		local _x = tonumber(InputA)
 		local _y = tonumber(InputB)
 
 		if _x and _y then
+			-- Check if values not changed
+			if API._Input
+				and typeof(API._Input) == 'Vector2'
+				and math.abs(tonumber(_x) - API._Input.X) < 1e-10
+				and math.abs(tonumber(_y) - API._Input.Y) < 1e-10
+			then
+				return false
+			end
+
 			if DecimalAmount then
 				local Mod = (10 ^ DecimalAmount)
 				_x = math.round(_x * Mod) / Mod

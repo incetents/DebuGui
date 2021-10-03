@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GuiWindow = {}
 
@@ -21,12 +23,6 @@ local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and in
 
 -- Defines
 local VerticalLayout = ReplicatedStorage.VerticalLayout 
-
-----------------------
--- Helper Functions --
-----------------------
-
-
 
 ----------------
 -- Public API --

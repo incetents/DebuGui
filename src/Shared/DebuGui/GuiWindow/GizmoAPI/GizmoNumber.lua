@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoNumber = {}
 
@@ -38,7 +40,8 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 	-- Public API --
 	----------------
 	function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			if DecimalAmount then

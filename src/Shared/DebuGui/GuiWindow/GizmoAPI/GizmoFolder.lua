@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoFolder = {}
 
@@ -7,25 +9,19 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------------
 -- Helper Functions --
 ----------------------
-local function UpdateVisual(API, Gui, FrameHeightLimit)
+local function UpdateVisual(API, Gui)
 	if API.IsVisible() then
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
-		local FrameHeight = FrameHeightLimit or CanvasHeight
+		local FrameHeight = CanvasHeight
 		Gui.Size = UDim2.new(1, 0, 0, FrameHeight + 24)
 		Gui.DropDownBtn.Text = 'v'
 		-- Show Everything in Canvas
-		if FrameHeightLimit == nil then
-			Gui.ScrollingFrame.ScrollingEnabled = false
-			Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
-		-- Limited Canvas Frame
-		else
-			Gui.ScrollingFrame.ScrollingEnabled = true
-			Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
-		end
+		Gui.ScrollingFrame.ScrollingEnabled = false
+		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
 	else
 		Gui.ScrollingFrame.Visible = false
 		Gui.Size = UDim2.new(1, 0, 0, 24)
@@ -49,7 +45,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	local GizmoAPI = require(script.Parent)
 	local API = GizmoAPI.New(Gui.ScrollingFrame, MasterAPI, ParentAPI)
 	local IsVisible = StartOpen
-	local FrameHeightLimit = nil;
 
 	------------
 	-- Button --
@@ -83,7 +78,7 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	end
 
 	function API._UpdateVisual()
-		UpdateVisual(API, Gui, FrameHeightLimit)
+		UpdateVisual(API, Gui)
 	end
 
 	----------------
@@ -118,23 +113,6 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		Utility.QuickTypeAssert(Width, 'number')
 		Gui.ScrollingFrame.ScrollBarThickness = Width
 		return API
-	end
-
-	function API.SetFrameHeightLimit(Amount)
-		Utility.QuickTypeAssert(Amount, 'number')
-		FrameHeightLimit = Amount
-		UpdateVisual(API, Gui, FrameHeightLimit)
-		return API
-	end
-
-	function API.RemoveFrameHeightLimit()
-		FrameHeightLimit = nil;
-		UpdateVisual(API, Gui, FrameHeightLimit)
-		return API
-	end
-
-	function API.GetFrameHeightLimit()
-		return FrameHeightLimit
 	end
 
 	function API.IsVisible()

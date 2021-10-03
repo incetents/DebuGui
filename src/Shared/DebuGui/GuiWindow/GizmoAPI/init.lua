@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoAPI = {}
 
@@ -69,6 +71,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	local API = {}
 	API._GuiParent = GuiParent
 	API._ParentAPI = ParentAPI
+	API._MasterAPI = MasterAPI or API
 	API._GizmosTable = {} -- [UniqueName] = GizmoAPI Hold all Gizmos in a table
 	API._GizmosArray = {} -- {Array of GizmoAPI}
 	API._GizmosFolders = {} -- [UniqueName] = Folders GizmoAPI (more specific version of _GizmosTable)
@@ -77,11 +80,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		ListenerAPI = nil,
 		Frame = nil
 	}
-
-	-- Special Case (if Master API is self)
-	if MasterAPI == nil then
-		MasterAPI = API
-	end
 
 	----------------------
 	-- Helper Functions --
@@ -125,7 +123,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Add Size if not in hidden folder
 		if Utility.IsFolderVisible(API, true) then
-			Utility.ModifyCanvasHeight(MasterAPI._GuiParent, GizmoUI.AbsoluteSize.Y)
+			Utility.ModifyCanvasHeight(API._MasterAPI._GuiParent, GizmoUI.AbsoluteSize.Y)
 		end
 
 		-- Update
@@ -152,10 +150,31 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 	end
 
-	-- Final Choice
+	-- Modal Ignore
+	function API._CloseModal()
+		-- Needs to be master API
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._CloseModal()
+		end
+
+		-- Check if Modal is not in-use
+		if not API._Modal.Lock then return end
+
+			-- Remove Modal
+			GuiParent.Parent.ModalLock.Visible = false
+			API._Modal.Frame:Destroy()
+
+			-- Remove Locks
+			API._Modal.Lock = false
+			API._Modal.ListenerAPI = nil
+			API._Modal.Frame = nil
+	end
+
 	function API._ModalChoiceSelected(Choice)
 		-- Needs to be master API
-		if MasterAPI ~= API then return MasterAPI._CreateModal() end
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._ModalChoiceSelected(Choice)
+		end
 
 		-- Check if Modal is not in-use
 		if not API._Modal.Lock then return end
@@ -168,19 +187,14 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			end
 		end
 
-		-- Remove Modal
-		GuiParent.Parent.ModalLock.Visible = false
-		API._Modal.Frame:Destroy()
-
-		-- Remove Locks
-		API._Modal.Lock = false
-		API._Modal.ListenerAPI = nil
-		API._Modal.Frame = nil
+		API._CloseModal()
 	end
 
-	function API._CreateModal(ModalListenerAPI, DefaultChoice, Choices)
+	function API._CreateModal(ModalName, ModalListenerAPI, DefaultChoice, Choices)
 		-- Needs to be master API
-		if MasterAPI ~= API then return MasterAPI._CreateModal() end
+		if API._MasterAPI ~= API then
+			return API._MasterAPI._CreateModal(ModalName, ModalListenerAPI, DefaultChoice, Choices)
+		end
 
 		-- Modal in-use
 		if API._Modal.Lock then return end
@@ -196,6 +210,9 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		ModalFrame.Parent = ScreenGui
 		ModalFrame.Visible = true
 		API._Modal.Frame = ModalFrame
+
+		-- Title
+		ModalFrame.TopBar.Title.Text = ModalName
 
 		-- Force Gui to be the front-most one
 		API.BringGuiForward(ScreenGui)
@@ -274,7 +291,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Close Modal
 		ModalFrame.CloseBtn.MouseButton1Down:Connect(function()
-			API._ModalChoiceSelected(nil)
+			API._CloseModal()
 		end)
 	end
 
@@ -290,7 +307,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, Height)
-		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, MasterAPI, DefaultValue, Height)
+		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API._MasterAPI, DefaultValue, Height)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
@@ -318,11 +335,11 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddSeparator(UniqueName, Color, Text, Height)
-		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, MasterAPI, Color, Text, Height)
+		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API._MasterAPI, Color, Text, Height)
 	end
 
 	function API.AddFolder(UniqueName, StartOpen)
-		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, MasterAPI, API, StartOpen)
+		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API._MasterAPI, API, StartOpen)
 	end
 
 	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
@@ -345,8 +362,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
 	end
 
-	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray)
-		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray)
+	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
 	end
 
 	-- Returns API of Gizmo
@@ -379,7 +396,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Remove Canvas Height
 		if Utility.IsFolderVisible(API, true) then
-			Utility.ModifyCanvasHeight(MasterAPI._GuiParent, -API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
+			Utility.ModifyCanvasHeight(API._MasterAPI._GuiParent, -API._GizmosTable[UniqueName].Gui.AbsoluteSize.Y)
 		end
 
 		-- Destroy Gui

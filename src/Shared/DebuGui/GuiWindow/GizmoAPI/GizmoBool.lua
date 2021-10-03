@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoBool = {}
 
@@ -33,7 +35,8 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 	-- Public API --
 	----------------
     function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
         local IsTrue = (Input == true)
         if IsTrue then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = DefaultColor

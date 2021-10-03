@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Module
 local GizmoString = {}
 
@@ -20,7 +22,7 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
     Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'string')
     Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
-    
+
     -- Setup
     Gui.TextName.Text = Name
     Gui.TextBox.Text = DefaultValue
@@ -34,7 +36,8 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Public API --
 	----------------
     function API.Validate(Input)
-		if API._DeadCheck() then return nil end
+		if API._DeadCheck() then return false end
+		if Input == API._Input then return false end
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str

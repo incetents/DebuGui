@@ -1,3 +1,4 @@
+-- © 2021 Emmanuel Lajeunesse
 
 local Utility = {}
 

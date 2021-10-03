@@ -1,3 +1,5 @@
+-- © 2021 Emmanuel Lajeunesse
+
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 

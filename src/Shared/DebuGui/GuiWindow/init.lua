@@ -26,17 +26,7 @@ local VerticalLayout = ReplicatedStorage.VerticalLayout
 -- Helper Functions --
 ----------------------
 
--- Make Gui appear in front of all other Guis
-local function BringGuiForward(DebuGui, ChosenGui)
-	-- All Guis in front of it go back 1 step
-	for __, Data in pairs(DebuGui.ScreenGuis) do
-		if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
-			Data.ScreenGui.DisplayOrder -= 1
-		end
-	end
-	-- Gui becomes largest display order
-	ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount - 1
-end
+
 
 ----------------
 -- Public API --
@@ -120,6 +110,9 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 			-- Store Window in Minimized Array
 			table.insert(DebuGui.MinimizeOrder, ScreenGui)
 
+			-- Close Any Modals opened
+			API._ModalChoiceSelected(nil)
+
 		-- Maximize
 		else
 			-- Text
@@ -160,6 +153,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		-- Data
 		IsVisible = not IsVisible
 
+		-- Close Any Modals opened
+		if not IsVisible then
+			API._ModalChoiceSelected(nil)
+		end
+
 		-- Text
 		if IsVisible then
 			MasterFrame.TopBar.DropDownBtn.Text = 'v'
@@ -185,7 +183,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	-- Drag Position of MasterFrame
 	TitleDragger.OnDragStart(function()
 		if not IsMinimized then
-			BringGuiForward(DebuGui, ScreenGui)
+			API.BringGuiForward(ScreenGui)
 			Dragger_MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
@@ -198,7 +196,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	-- Drag Center of DrawFrame
 	CoreDragger.OnDragStart(function()
 		if IsVisible and not IsMinimized then
-			BringGuiForward(DebuGui, ScreenGui)
+			API.BringGuiForward(ScreenGui)
 			Dragger_MasterPos = MasterFrame.AbsolutePosition
 		end
 	end)
@@ -210,7 +208,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Drag ResizeBtn to Resize
 	ResizeDragger.OnDragStart(function()
-		BringGuiForward(DebuGui, ScreenGui)
+		API.BringGuiForward(ScreenGui)
 		if IsVisible and not IsMinimized then
 			Dragger_MasterSize = MasterFrame.AbsoluteSize
 		end
@@ -229,19 +227,37 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Toggle Visibility
 	MasterFrame.TopBar.DropDownBtn.MouseButton1Down:Connect(function()
-		BringGuiForward(DebuGui, ScreenGui)
+		API.BringGuiForward(ScreenGui)
 		SetVisible(not IsVisible)
 	end)
 
 	-- Toggle Minimize Mode
 	MasterFrame.TopBar.MinimizeBtn.MouseButton1Down:Connect(function()
-		BringGuiForward(DebuGui, ScreenGui)
+		API.BringGuiForward(ScreenGui)
 		SetMinimized(not IsMinimized)
+	end)
+
+	-- Modal Lock closes Modal
+	MasterFrame.ModalLock.MouseButton1Down:Connect(function()
+		API._ModalChoiceSelected(nil)
 	end)
 
 	----------------
 	-- Public API --
 	----------------
+
+	-- Make Gui appear in front of all other Guis
+	function API.BringGuiForward(ChosenGui)
+		-- All Guis in front of it go back 1 step
+		for __, Data in pairs(DebuGui.ScreenGuis) do
+			if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
+				Data.ScreenGui.DisplayOrder -= 1
+			end
+		end
+		-- Gui becomes largest display order
+		ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount - 1
+	end
+
 	function API.Destroy()
 		API.RemoveAll()
 		ScreenGui:Destroy()

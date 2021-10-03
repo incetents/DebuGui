@@ -2,8 +2,15 @@
 local GizmoAPI = {}
 
 -- Services
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
 local TextService = game:GetService("TextService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Define
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local Camera = Workspace.CurrentCamera
 
 -- Modules
 local Utility = require(script.Parent.Parent.Utility)
@@ -65,7 +72,11 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	API._GizmosTable = {} -- [UniqueName] = GizmoAPI Hold all Gizmos in a table
 	API._GizmosArray = {} -- {Array of GizmoAPI}
 	API._GizmosFolders = {} -- [UniqueName] = Folders GizmoAPI (more specific version of _GizmosTable)
-	API._ModalLock = false
+	API._Modal = {
+		Lock = false,
+		ListenerAPI = nil,
+		Frame = nil
+	}
 
 	-- Special Case (if Master API is self)
 	if MasterAPI == nil then
@@ -141,29 +152,53 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 	end
 
+	-- Final Choice
+	function API._ModalChoiceSelected(Choice)
+		-- Needs to be master API
+		if MasterAPI ~= API then return MasterAPI._CreateModal() end
+
+		-- Check if Modal is not in-use
+		if not API._Modal.Lock then return end
+
+		-- Update Data
+		if API._Modal.ListenerAPI.Validate(Choice) then
+			-- Update Listener as well
+			if API._Modal.ListenerAPI._Listener then
+				API._Modal.ListenerAPI._Listener(Choice)
+			end
+		end
+
+		-- Remove Modal
+		GuiParent.Parent.ModalLock.Visible = false
+		API._Modal.Frame:Destroy()
+
+		-- Remove Locks
+		API._Modal.Lock = false
+		API._Modal.ListenerAPI = nil
+		API._Modal.Frame = nil
+	end
+
 	function API._CreateModal(ModalListenerAPI, DefaultChoice, Choices)
 		-- Needs to be master API
-		if MasterAPI ~= API then
-			print('going to master')
-			return MasterAPI._CreateModal()
-		end
+		if MasterAPI ~= API then return MasterAPI._CreateModal() end
 
 		-- Modal in-use
-		if API._ModalLock then
-			return
-		end
-		API._ModalLock = true
+		if API._Modal.Lock then return end
+		API._Modal.Lock = true
+		API._Modal.ListenerAPI = ModalListenerAPI
 
 		-- Hide self
-		GuiParent.Parent.ModalLock.BackgroundTransparency = 0.3
-
-		--GuiParent.Parent.Parent.ModalFrame.Visible = true
+		GuiParent.Parent.ModalLock.Visible = true
 
 		-- Defaults
 		local ScreenGui = GuiParent.Parent.Parent
 		local ModalFrame = ScreenGui.ModalFrame:Clone()
 		ModalFrame.Parent = ScreenGui
 		ModalFrame.Visible = true
+		API._Modal.Frame = ModalFrame
+
+		-- Force Gui to be the front-most one
+		API.BringGuiForward(ScreenGui)
 
 		-- Drag Position of ModalFrame
 		local ModalTitleDragger = Dragger.new(ModalFrame.TopBar)
@@ -183,24 +218,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			ModalFrame.Position = UDim2.fromOffset(Dragger_ModalPos.X + Delta.X, Dragger_ModalPos.Y + Delta.Y)
 		end)
 
-		-- Final Choice
-		local function ChoiceSelected(Choice)
-			-- Update Data
-			if ModalListenerAPI.Validate(Choice) then
-				-- Update Listener as well
-				if ModalListenerAPI._Listener then
-					ModalListenerAPI._Listener(Choice)
-				end
-			end
-
-			-- Remove Modal
-			GuiParent.Parent.ModalLock.BackgroundTransparency = 1.0
-			ModalFrame:Destroy()
-
-			-- Remove Lock
-			API._ModalLock = false
-		end
-
 		-- Add Things to the modal
 		local TotalWidth = 200 -- Minimum
 		local TotalHeight = ModalFrame.TopBar.AbsoluteSize.Y
@@ -208,6 +225,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			-- Create Button
 			local Button = GizmoUI_Button:Clone()
 			Button.Parent = ModalFrame.DrawFrame
+			Button.Name = Choices[Index]
 			Button.TextButton.Text = Choices[Index]
 			if Choices[Index] == DefaultChoice then
 				Button.TextButton.BackgroundColor3 = Color3.fromRGB(55, 108, 12)
@@ -216,11 +234,11 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 			-- Fix Frame
 			Button.TextButton.Position = UDim2.new(0, 5, 0.5, 0)
-			Button.TextButton.Size = UDim2.new(1, -5, 1, -4)
+			Button.TextButton.Size = UDim2.new(1, -10, 1, -4)
 
 			-- Choice
 			Button.TextButton.MouseButton1Down:Connect(function()
-				ChoiceSelected(Choices[Index])
+				API._ModalChoiceSelected(Choices[Index])
 			end)
 
 			-- Record change in height
@@ -230,16 +248,33 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 				Button.TextButton.Text,
 				Button.TextButton.TextSize,
 				Button.TextButton.Font,
-				Vector2.new(workspace.CurrentCamera.ViewportSize.X, Button.TextButton.TextSize)
+				Vector2.new(Camera.ViewportSize.X, Button.TextButton.TextSize)
 			).X
-			TotalWidth = math.max(TotalWidth, Width)
+			TotalWidth = math.max(TotalWidth, Width + 15) -- 15 pixels Padding
 		end
 
+		-- Cap Size by Window Size
+		TotalWidth = math.min(TotalWidth, Camera.ViewportSize.X)
+		TotalHeight = math.min(TotalHeight, Camera.ViewportSize.Y)
+		-- Fix Size
 		ModalFrame.Size = UDim2.fromOffset(TotalWidth, TotalHeight)
+
+		-- Fix Position (below and to the right of the mouse)
+		local TargetX = Mouse.X
+		local TargetY = Mouse.Y
+		-- Check if can't fit below mouse
+		if Mouse.Y + TotalHeight > Camera.ViewportSize.Y then
+			TargetY -= TotalHeight
+		end
+		-- Check if can't fit to the right of the mouse
+		if Mouse.X + TotalWidth > Camera.ViewportSize.X then
+			TargetX -= TotalWidth
+		end
+		ModalFrame.Position = UDim2.fromOffset(TargetX, TargetY)
 
 		-- Close Modal
 		ModalFrame.CloseBtn.MouseButton1Down:Connect(function()
-			ChoiceSelected(nil)
+			API._ModalChoiceSelected(nil)
 		end)
 	end
 

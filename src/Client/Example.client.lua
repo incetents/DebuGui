@@ -407,23 +407,23 @@ SmallFrameFolder1.AddString('string7', 'text')
 
 --Gui1.Destroy()
 
--- ----------------------
--- -- Multiple Windows --
--- ----------------------
--- local Extra1 = DebuGui.NewWindow('Extra1', {
---     Title = 'Extra1',
---     X = 100,
---     Y = 70,
---     Width = 400,
---     Height = 300,
--- })
--- Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+----------------------
+-- Multiple Windows --
+----------------------
+local Extra1 = DebuGui.NewWindow('Extra1', {
+    Title = 'Extra1',
+    X = 100,
+    Y = 70,
+    Width = 400,
+    Height = 300,
+})
+Extra1.SetTopBarColor(Color3.fromRGB(65, 103, 161))
 
--- local Extra2 = DebuGui.NewWindow('Extra2', {
---     Title = 'Extra2',
---     X = 50,
---     Y = 130,
---     Width = 400,
---     Height = 300,
--- })
--- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))
+local Extra2 = DebuGui.NewWindow('Extra2', {
+    Title = 'Extra2',
+    X = 50,
+    Y = 130,
+    Width = 400,
+    Height = 300,
+})
+Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))

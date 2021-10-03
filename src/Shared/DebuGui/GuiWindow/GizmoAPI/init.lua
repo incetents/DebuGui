@@ -2,15 +2,18 @@
 local GizmoAPI = {}
 
 -- Services
+local TextService = game:GetService("TextService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Modules
 local Utility = require(script.Parent.Parent.Utility)
+local Dragger = require(script.Parent.Parent.Dragger)
 local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
 local GizmoFolder = require(script.GizmoFolder)
 local GizmoInteger = require(script.GizmoInteger)
 local GizmoIntegerSlider = require(script.GizmoIntegerSlider)
+local GizmoListPicker = require(script.GizmoListPicker)
 local GizmoLongString = require(script.GizmoLongString)
 local GizmoNumber = require(script.GizmoNumber)
 local GizmoNumberSlider = require(script.GizmoNumberSlider)
@@ -25,6 +28,7 @@ local GizmoColorSlider = require(script.GizmoColorSlider)
 local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
 local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
 local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
+local GizmoUI_Picker = ReplicatedStorage.GizmoUI_Picker
 local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
 local GizmoUI_Slider = ReplicatedStorage.GizmoUI_Slider
 local GizmoUI_Text = ReplicatedStorage.GizmoUI_Text
@@ -61,6 +65,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	API._GizmosTable = {} -- [UniqueName] = GizmoAPI Hold all Gizmos in a table
 	API._GizmosArray = {} -- {Array of GizmoAPI}
 	API._GizmosFolders = {} -- [UniqueName] = Folders GizmoAPI (more specific version of _GizmosTable)
+	API._ModalLock = false
 
 	-- Special Case (if Master API is self)
 	if MasterAPI == nil then
@@ -136,6 +141,108 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		end
 	end
 
+	function API._CreateModal(ModalListenerAPI, DefaultChoice, Choices)
+		-- Needs to be master API
+		if MasterAPI ~= API then
+			print('going to master')
+			return MasterAPI._CreateModal()
+		end
+
+		-- Modal in-use
+		if API._ModalLock then
+			return
+		end
+		API._ModalLock = true
+
+		-- Hide self
+		GuiParent.Parent.ModalLock.BackgroundTransparency = 0.3
+
+		--GuiParent.Parent.Parent.ModalFrame.Visible = true
+
+		-- Defaults
+		local ScreenGui = GuiParent.Parent.Parent
+		local ModalFrame = ScreenGui.ModalFrame:Clone()
+		ModalFrame.Parent = ScreenGui
+		ModalFrame.Visible = true
+
+		-- Drag Position of ModalFrame
+		local ModalTitleDragger = Dragger.new(ModalFrame.TopBar)
+		local NodalCoreDragger = Dragger.new(ModalFrame.DragCore)
+
+		local Dragger_ModalPos;
+		ModalTitleDragger.OnDragStart(function()
+			Dragger_ModalPos = ModalFrame.AbsolutePosition
+		end)
+		ModalTitleDragger.OnDrag(function(Delta)
+			ModalFrame.Position = UDim2.fromOffset(Dragger_ModalPos.X + Delta.X, Dragger_ModalPos.Y + Delta.Y)
+		end)
+		NodalCoreDragger.OnDragStart(function()
+			Dragger_ModalPos = ModalFrame.AbsolutePosition
+		end)
+		NodalCoreDragger.OnDrag(function(Delta)
+			ModalFrame.Position = UDim2.fromOffset(Dragger_ModalPos.X + Delta.X, Dragger_ModalPos.Y + Delta.Y)
+		end)
+
+		-- Final Choice
+		local function ChoiceSelected(Choice)
+			-- Update Data
+			if ModalListenerAPI.Validate(Choice) then
+				-- Update Listener as well
+				if ModalListenerAPI._Listener then
+					ModalListenerAPI._Listener(Choice)
+				end
+			end
+
+			-- Remove Modal
+			GuiParent.Parent.ModalLock.BackgroundTransparency = 1.0
+			ModalFrame:Destroy()
+
+			-- Remove Lock
+			API._ModalLock = false
+		end
+
+		-- Add Things to the modal
+		local TotalWidth = 200 -- Minimum
+		local TotalHeight = ModalFrame.TopBar.AbsoluteSize.Y
+		for Index = 1, #Choices do
+			-- Create Button
+			local Button = GizmoUI_Button:Clone()
+			Button.Parent = ModalFrame.DrawFrame
+			Button.TextButton.Text = Choices[Index]
+			if Choices[Index] == DefaultChoice then
+				Button.TextButton.BackgroundColor3 = Color3.fromRGB(55, 108, 12)
+				Button.TextButton.TextColor3 = Color3.fromRGB(20, 255, 248)
+			end
+
+			-- Fix Frame
+			Button.TextButton.Position = UDim2.new(0, 5, 0.5, 0)
+			Button.TextButton.Size = UDim2.new(1, -5, 1, -4)
+
+			-- Choice
+			Button.TextButton.MouseButton1Down:Connect(function()
+				ChoiceSelected(Choices[Index])
+			end)
+
+			-- Record change in height
+			TotalHeight += Button.AbsoluteSize.Y
+			-- Check if change in width
+			local Width = TextService:GetTextSize(
+				Button.TextButton.Text,
+				Button.TextButton.TextSize,
+				Button.TextButton.Font,
+				Vector2.new(workspace.CurrentCamera.ViewportSize.X, Button.TextButton.TextSize)
+			).X
+			TotalWidth = math.max(TotalWidth, Width)
+		end
+
+		ModalFrame.Size = UDim2.fromOffset(TotalWidth, TotalHeight)
+
+		-- Close Modal
+		ModalFrame.CloseBtn.MouseButton1Down:Connect(function()
+			ChoiceSelected(nil)
+		end)
+	end
+
 	----------------
 	-- Public API --
 	----------------
@@ -201,6 +308,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
+	end
+
+	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray)
+		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray)
 	end
 
 	-- Returns API of Gizmo

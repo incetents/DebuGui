@@ -26,8 +26,10 @@ local Utility = require(script.Utility)
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild('PlayerGui')
 --local ScreenGuiReference = ReplicatedStorage.DebuGui_UI
+-- DEBUG DEBUG DEBUG DEBUG
 local ScreenGuiReference = StarterGui.DebuGui_UI
 ScreenGuiReference.MasterFrame.DrawFrame:ClearAllChildren()
+ScreenGuiReference.ModalFrame.Visible = false
 
 -- Module Data
 DebuGui.ScreenGuis = {}

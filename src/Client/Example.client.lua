@@ -56,11 +56,11 @@ Gui1_AlternateRef.Remove('TEST123')
 -- List Picker --
 Gui1.AddSeparator('LIST_PICKER_SEPARATOR').SetName('LIST PICKERS')
 --
--- Gui1.AddListPicker('listpicker1', 'bbb', {
--- 	'aaa', 'bbb', 'ccc', 'ddd', 'eee'
--- }).Listen(function(NewChoice)
--- 	print('listpicker1')
--- end)
+Gui1.AddListPicker('listpicker1', 'bbb', {
+	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
+}).Listen(function(NewChoice)
+	print('listpicker1 choice: ', NewChoice)
+end)
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')

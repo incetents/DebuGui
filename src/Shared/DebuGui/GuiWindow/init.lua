@@ -4,7 +4,6 @@
 local GuiWindow = {}
 
 -- Services
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextService = game:GetService("TextService")
 local GuiService = game:GetService("GuiService")
 
@@ -22,7 +21,11 @@ local TITLEBAR_WIDTH_PADDING_TOTAL = 8
 local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and increment further
 
 -- Defines
-local VerticalLayout = ReplicatedStorage.VerticalLayout 
+local VerticalLayout = Instance.new('UIListLayout')
+VerticalLayout.FillDirection = Enum.FillDirection.Vertical
+VerticalLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+VerticalLayout.SortOrder = Enum.SortOrder.LayoutOrder
+VerticalLayout.VerticalAlignment = Enum.VerticalAlignment.Top
 
 ----------------
 -- Public API --

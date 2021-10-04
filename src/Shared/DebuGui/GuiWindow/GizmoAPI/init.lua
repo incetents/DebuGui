@@ -13,6 +13,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local Camera = Workspace.CurrentCamera
+local DebuGuiRef = script.Parent.Parent
 
 -- Modules
 local Utility = require(script.Parent.Parent.Utility)
@@ -34,18 +35,18 @@ local GizmoVector3 = require(script.GizmoVector3)
 local GizmoColorSlider = require(script.GizmoColorSlider)
 
 -- Gizmo UI References
-local GizmoUI_Button = ReplicatedStorage.GizmoUI_Button
-local GizmoUI_CheckBox = ReplicatedStorage.GizmoUI_CheckBox
-local GizmoUI_Folder = ReplicatedStorage.GizmoUI_Folder
-local GizmoUI_Picker = ReplicatedStorage.GizmoUI_Picker
-local GizmoUI_Separator = ReplicatedStorage.GizmoUI_Separator
-local GizmoUI_Slider = ReplicatedStorage.GizmoUI_Slider
-local GizmoUI_Text = ReplicatedStorage.GizmoUI_Text
-local GizmoUI_TextBox = ReplicatedStorage.GizmoUI_TextBox
-local GizmoUI_TextBox_Multi2 = ReplicatedStorage.GizmoUI_TextBox_Multi2
-local GizmoUI_TextBox_Multi3 = ReplicatedStorage.GizmoUI_TextBox_Multi3
-local GizmoUI_TextMultiline = ReplicatedStorage.GizmoUI_TextMultiline
-local GizmoUI_TripleSlider = ReplicatedStorage.GizmoUI_TripleSlider
+local GizmoUI_Button = DebuGuiRef.GizmoUI_Button
+local GizmoUI_CheckBox = DebuGuiRef.GizmoUI_CheckBox
+local GizmoUI_Folder = DebuGuiRef.GizmoUI_Folder
+local GizmoUI_Picker = DebuGuiRef.GizmoUI_Picker
+local GizmoUI_Separator = DebuGuiRef.GizmoUI_Separator
+local GizmoUI_Slider = DebuGuiRef.GizmoUI_Slider
+local GizmoUI_Text = DebuGuiRef.GizmoUI_Text
+local GizmoUI_TextBox = DebuGuiRef.GizmoUI_TextBox
+local GizmoUI_TextBox_Multi2 = DebuGuiRef.GizmoUI_TextBox_Multi2
+local GizmoUI_TextBox_Multi3 = DebuGuiRef.GizmoUI_TextBox_Multi3
+local GizmoUI_TextMultiline = DebuGuiRef.GizmoUI_TextMultiline
+local GizmoUI_TripleSlider = DebuGuiRef.GizmoUI_TripleSlider
 
 ----------------------
 -- Helper Functions --
@@ -206,7 +207,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Defaults
 		local ScreenGui = GuiParent.Parent.Parent
-		local ModalFrame = ScreenGui.ModalFrame:Clone()
+		local ModalFrame = DebuGuiRef.ModalFrame:Clone()
 		ModalFrame.Parent = ScreenGui
 		ModalFrame.Visible = true
 		API._Modal.Frame = ModalFrame
@@ -401,7 +402,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Destroy Gui
 		API._GizmosTable[UniqueName]._Destroy()
-		
+
 		-- Possible full destruction (Gizmo has API inside of it)
 		if API._GizmosTable[UniqueName].RemoveAll then
 			API._GizmosTable[UniqueName].RemoveAll()

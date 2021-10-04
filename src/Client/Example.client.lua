@@ -3,16 +3,7 @@
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerGui = Player:WaitForChild('PlayerGui')
-
--- DEBUG SETUP
-local C = PlayerGui:WaitForChild('DebuGui_UI')
-if C then
-	C:Destroy()
-end
-
+-- Module --
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window

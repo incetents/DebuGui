@@ -247,6 +247,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Make Gui appear in front of all other Guis
 	function API.BringGuiForward(ChosenGui)
+		-- Safety Check
+		if not DebuGui.ScreenGuis[ChosenGui] then
+			return
+		end
+
 		-- All Guis in front of it go back 1 step
 		for __, Data in pairs(DebuGui.ScreenGuis) do
 			if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
@@ -255,6 +260,10 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		end
 		-- Gui becomes largest display order
 		ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount - 1
+	end
+
+	function API.GetScreenGui()
+		return ScreenGui
 	end
 
 	function API.Destroy()
@@ -266,6 +275,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		ScreenGui.Enabled = true
 		return API
 	end
+	
 	function API.Disable()
 		ScreenGui.Enabled = false
 		return API

@@ -3,7 +3,7 @@
 	-- © 2021 Emmanuel Lajeunesse
 	-- DebuGui Documentation
 
-	-- DebugGui
+	-- DebuGui : First point of Access
 
 		-- NewWindow (GuiName, InitData)
 			-- @Description: Creates a GuiWindow object and returns it
@@ -29,7 +29,7 @@
 					TimeOutTime (number) = Time to wait, nil = wait forever
 
 
-	-- GuiWindow (Core)
+	-- GuiWindow (Core) : A singular window spawned from DebuGui's NewWindow
 
 		-- BringGuiForward (ChosenGui)
 			-- @Description: Makes the Gui have the highest Display Order of all other GuiWindows
@@ -262,7 +262,8 @@
 					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
-	-- Gizmo (Base)
+
+	-- Gizmo (Base) : All Gizmos will have this api
 
 		-- Listen (func)
 			-- @Description: Listen for changes in the gizmos value
@@ -280,33 +281,517 @@
 			-- @Description: returns the internal stored value
 			-- @Returns: (Gizmo's Stored Value)
 
-	-- Gizmo (Bool)
 
-	-- Gizmo (Button)
+	-- Gizmo (Bool) : Can toggle on/off
 
-	-- Gizmo (ColorSlider)
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Folder)
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Integer)
+		-- SetCheckboxColor (color)
+			-- @Description: Changes color of the checkbox
+			-- @Parameters:
+					color (Color3) = New color for the checkbox
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (IntegerSlider)
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (ListPicker)
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
 
-	-- Gizmo (LongString)
 
-	-- Gizmo (Number)
+	-- Gizmo (Button) : a Button then when pushed will call its Listen function
 
-	-- Gizmo (NumberSlider)
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Separator)
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (String)
+		-- SetColor (color)
+			-- @Description: Changes color of the button
+			-- @Parameters:
+					color (Color3) = New color for the button
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Text)
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Vector2)
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
 
-	-- Gizmo (Vector3)
+
+	-- Gizmo (ColorSlider) : 3 sliders for RGB/HSV values
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Folder) : Folder that can also contain Gizmos in a recursive fashion
+		-- [ Same API as (Gizmos) ]
+
+		-- Get (UniqueName)
+		-- Remove (UniqueName)
+		-- RemoveAll ()
+		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddText (UniqueName, DefaultValue)
+		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddIntegerSlider (UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
+		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddBool (UniqueName, DefaultValue)
+		-- AddButton (UniqueName)
+		-- AddSeparator (UniqueName, Color, Text, Height)
+		-- AddFolder (UniqueName, StartOpen)
+		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		-- AddColorSliderRGBInt (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddColorSliderHSV (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+
+	-- Gizmo (Integer) : stores 1 rounded number
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (IntegerSlider) : stores 1 rounded number with min/max values 
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (ListPicker) : stores a list of strings with only 1 that can be selected
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- AddChoice (choice)
+			-- @Description: Adds a choice from the list of choices
+			-- @Parameters:
+					choice (string) = New string choice
+			-- @Returns: (Gizmo)
+
+		-- RemoveChoice (choice)
+			-- @Description: Removes a choice from the list of choices
+			-- @Parameters:
+					choice (string) = choice to be removed
+			-- @Returns: (Gizmo)
+
+		-- ChangeChoices (NewChoices)
+			-- @Description: Sets all choices with a list of new ones
+			-- @Parameters:
+					NewChoices (table) = table array of strings
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (LongString) : stores a multiline string
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+		-- SetHeight (NewHeight)
+			-- @Description: Modifies pixel height of the gizmo
+			-- @Parameters:
+					NewHeight (number) = height in pixels
+			-- @Returns: (Gizmo)
+
+		-- SetHeightBasedOnLineCount (LineCount)
+			-- @Description: Modifies height of the gizmo based on amount of rows
+			-- @Parameters:
+					NewHeight (number) = row count
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (Number) : stores 1 number
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (NumberSlider) : stores 1 number with min/max values
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Separator) : small textbox to visually seperate a section
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetColor (color)
+			-- @Description: Changes color of the separator
+			-- @Parameters:
+					color (Color3) = New color for the separator
+			-- @Returns: (Gizmo)
+
+		-- SetHeight (NewHeight)
+			-- @Description: Modifies pixel height of the gizmo
+			-- @Parameters:
+					NewHeight (number) = height in pixels
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (String) : editable textbox
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Text) : non-editable textbox
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (Vector2) : stores 2 numbers
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Vector3) : stores 3 numbers
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
 ]]

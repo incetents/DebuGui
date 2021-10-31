@@ -52,6 +52,7 @@
 			<BinaryString name="Tags"></BinaryString>
 			<bool name="TerrainWeldsFixed">true</bool>
 			<bool name="TouchesUseCollisionGroups">false</bool>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd00017e4d</UniqueId>
 			<OptionalCoordinateFrame name="WorldPivotData">
 				<CFrame>
 					<X>0</X>
@@ -73,27 +74,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-20.8302689</X>
-					<Y>22.3785019</Y>
-					<Z>-38.3055305</Z>
-					<R00>-0.809609175</R00>
-					<R01>0.265051425</R01>
-					<R02>-0.523718119</R02>
+					<X>40.5865517</X>
+					<Y>44.2145042</Y>
+					<Z>-119.055664</Z>
+					<R00>-0.911785781</R00>
+					<R01>0.0460899882</R01>
+					<R02>-0.408071607</R02>
 					<R10>-0</R10>
-					<R11>0.89224112</R11>
-					<R12>0.451559275</R12>
-					<R20>0.586969256</R20>
-					<R21>0.365586519</R21>
-					<R22>-0.722366691</R22>
+					<R11>0.993682086</R11>
+					<R12>0.112232238</R12>
+					<R20>0.410666198</R20>
+					<R21>0.102331758</R21>
+					<R22>-0.906025171</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-19.7828331</X>
-					<Y>21.4753838</Y>
-					<Z>-36.8607979</Z>
+					<X>41.4026947</X>
+					<Y>43.9900398</Y>
+					<Z>-117.243614</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -109,6 +110,7 @@
 				<string name="Name">Camera</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019165</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Part" referent="RBXB54DFB609ECC411A91C50C88C5070B18">
@@ -157,7 +159,6 @@
 				<bool name="Locked">true</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
-				<Ref name="MaterialVariant">null</Ref>
 				<string name="Name">Baseplate</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -191,6 +192,7 @@
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019166</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -222,6 +224,7 @@
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><url>rbxassetid://6372755229</url></Content>
 					<float name="Transparency">0.800000012</float>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019167</UniqueId>
 					<int name="ZIndex">1</int>
 				</Properties>
 			</Item>
@@ -276,7 +279,6 @@
 				<token name="Material">256</token>
 				<BinaryString name="MaterialColors"><![CDATA[AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHta
 gcLgc4RKxr21zq2UlJSM]]></BinaryString>
-				<Ref name="MaterialVariant">null</Ref>
 				<string name="Name">Terrain</string>
 				<BinaryString name="PhysicsGrid">AgMAAAAAAAAAAAAAAAA=</BinaryString>
 				<CoordinateFrame name="PivotOffset">
@@ -312,6 +314,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019168</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -382,7 +385,6 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
-				<Ref name="MaterialVariant">null</Ref>
 				<string name="Name">SpawnLocation</string>
 				<bool name="Neutral">true</bool>
 				<CoordinateFrame name="PivotOffset">
@@ -418,6 +420,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019169</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -445,6 +448,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><url>rbxasset://textures/SpawnLocation.png</url></Content>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916a</UniqueId>
 					<int name="ZIndex">1</int>
 				</Properties>
 			</Item>
@@ -461,6 +465,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<float name="RolloffScale">1</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190b9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="NonReplicatedCSGDictionaryService" referent="RBXA0290C6B22FD40DC98628E1ACAD0D6A1">
@@ -469,6 +474,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190c5</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CSGDictionaryService" referent="RBXBAC29ED8630A4A5EBB8D4D355EE4428C">
@@ -477,6 +483,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">CSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190c6</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Chat" referent="RBXEFE6B100D94C47C69A462DB8D8AE1067">
@@ -487,6 +494,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">Chat</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190ca</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TimerService" referent="RBX593BF212D26B4922AB3093154554CF94">
@@ -495,6 +503,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190cb</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Players" referent="RBX0BCB2545A14F4660A7032355CEA51846">
@@ -507,6 +516,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<float name="RespawnTime">3</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190cd</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ReplicatedFirst" referent="RBXF07FFD1CC9734F4E99775E629A2C0F62">
@@ -515,6 +525,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">ReplicatedFirst</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190d1</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TweenService" referent="RBX7E7A289D5A5E49CA91FCA434300C10A5">
@@ -523,6 +534,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">TweenService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190d3</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="PermissionsService" referent="RBX4F946AA548064AE3B6B5B3C0854897F1">
@@ -531,6 +543,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<string name="Name">PermissionsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190d7</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="PlayerEmulatorService" referent="RBX11B751FF9BEA4AEC965F2947460C2BB3">
@@ -544,6 +557,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190d9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StudioData" referent="RBX616DF6630AD24495AE13EF1F13ECA07B">
@@ -559,6 +573,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<int64 name="SrcPlaceId">6531585849</int64>
 			<int64 name="SrcUniverseId">2448884957</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190db</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StarterPlayer" referent="RBX9FE0244AA02D49D5AF901BEFA89919C8">
@@ -604,6 +619,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<float name="NameDisplayDistance">100</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190dc</UniqueId>
 			<bool name="UserEmotesEnabled">true</bool>
 		</Properties>
 		<Item class="StarterPlayerScripts" referent="RBXAD0B9D2AACCF457C9C4D4C71874FC7FC">
@@ -612,6 +628,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<string name="Name">StarterPlayerScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd0001916c</UniqueId>
 			</Properties>
 			<Item class="LocalScript" referent="RBX2E58C660846941D48CEBB0AF75D7C5FB">
 				<Properties>
@@ -1107,6 +1124,7 @@ rVec2.SetName('Invalid')
 -- Extra2.SetTopBarColor(Color3.fromRGB(65, 103, 161))]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916d</UniqueId>
 				</Properties>
 			</Item>
 			<Item class="LocalScript" referent="RBX5228B189FEE24ECB903CEE849A7E0673">
@@ -1131,6 +1149,7 @@ local Gui1 = DebuGui.WaitForWindow('Core')
 Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916e</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -1140,6 +1159,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 				<string name="Name">StarterCharacterScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd0001916f</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
@@ -1149,6 +1169,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">StarterPack</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190dd</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StarterGui" referent="RBX3CC98BF0C189472BA8B7D78F8463EC76">
@@ -1160,6 +1181,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<bool name="ShowDevelopmentGui">true</bool>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190de</UniqueId>
 			<token name="VirtualCursorMode">0</token>
 		</Properties>
 	</Item>
@@ -1169,6 +1191,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">LocalizationService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190e0</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TeleportService" referent="RBXC28881E1C3AB4F49A0AEF8FBCAAEB2F6">
@@ -1177,6 +1200,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">Teleport Service</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190e4</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CollectionService" referent="RBXA4C93A7A4C16442B9D70C8D440EF9817">
@@ -1185,6 +1209,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">CollectionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190e6</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="PhysicsService" referent="RBXAC709B308EC64D858B34AC329139491B">
@@ -1193,6 +1218,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">PhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190e7</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Geometry" referent="RBXF2590483C762486E87E49C18DE5F0046">
@@ -1201,6 +1227,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">Geometry</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190e9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="InsertService" referent="RBX6E99962C10DD4B6E852346A4FA0E33DD">
@@ -1211,6 +1238,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">InsertService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190eb</UniqueId>
 		</Properties>
 		<Item class="StringValue" referent="RBX6C4CC05201354931886307786067D19B">
 			<Properties>
@@ -1218,6 +1246,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 				<string name="Name">InsertionHash</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019170</UniqueId>
 				<string name="Value">{F812C407-E2F0-4EE2-B6F1-2FD92CC10199}</string>
 			</Properties>
 		</Item>
@@ -1228,6 +1257,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">GamePassService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190ec</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Debris" referent="RBXDEB24AE185D844C49D50855D2473C9FB">
@@ -1237,6 +1267,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">Debris</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190ed</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CookiesService" referent="RBX0B1D24C4DAE645F291F173EA1D531BDC">
@@ -1245,6 +1276,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">CookiesService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190ee</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="VRService" referent="RBXAC03B3D7B0844158A7DAC06C6DDA44CB">
@@ -1253,6 +1285,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">VRService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190f8</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ContextActionService" referent="RBX903ABB01FCB2462A87B4896F3EE05B64">
@@ -1261,6 +1294,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">ContextActionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190f9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ScriptService" referent="RBX9AA273FF25E14ED59D1CD210918806BB">
@@ -1269,6 +1303,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190fb</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="AssetService" referent="RBXFEA31424DF984D348D91B340252B067E">
@@ -1277,6 +1312,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">AssetService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190fc</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TouchInputService" referent="RBX86118045108A4982993EDD4AA6149507">
@@ -1285,6 +1321,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">TouchInputService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000190fd</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="AnalyticsService" referent="RBX64C90DC54A3C44758E53D323108690BF">
@@ -1294,6 +1331,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">AnalyticsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd00019100</UniqueId>
 		</Properties>
 		<Item class="ModuleScript" referent="RBXE6C7FF6F133343D4B994111A0016666E">
 			<Properties>
@@ -1310,6 +1348,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 }]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019171</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
@@ -1319,6 +1358,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">Selection</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd00019103</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ServerScriptService" referent="RBX583A2BA252AE4F2392693E328BAFFC7F">
@@ -1328,6 +1368,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">ServerScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd0001910c</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ServerStorage" referent="RBX102C832A83EC4248A091891B46B46D7D">
@@ -1336,6 +1377,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">ServerStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd0001910d</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ReplicatedStorage" referent="RBXADFAD439F7F14B9D943369167C9AEC03">
@@ -1344,6 +1386,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 			<string name="Name">ReplicatedStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd0001910e</UniqueId>
 		</Properties>
 		<Item class="ModuleScript" referent="RBX2B43BB612C7543259D0718CEB23C2CBA">
 			<Properties>
@@ -1444,6 +1487,7 @@ end
 return DebuGui]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd00019172</UniqueId>
 			</Properties>
 			<Item class="ModuleScript" referent="RBX15B2D72FFBA44913A7DA9A6C083FA1B8">
 				<Properties>
@@ -1556,6 +1600,7 @@ end
 return Dragger]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019173</UniqueId>
 				</Properties>
 			</Item>
 			<Item class="ModuleScript" referent="RBX14C10991F8164E4D8644F5294EAFBFE1">
@@ -1603,6 +1648,7 @@ end
 return Utility]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019174</UniqueId>
 				</Properties>
 			</Item>
 			<Item class="ModuleScript" referent="RBXF5BC51AE4BE44207A8166FF7250A7943">
@@ -1956,6 +2002,7 @@ end
 return GuiWindow]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019175</UniqueId>
 				</Properties>
 				<Item class="ModuleScript" referent="RBX6AAEF307BA794F74B6986ACAB2E06CEC">
 					<Properties>
@@ -2399,6 +2446,7 @@ end
 return GizmoAPI]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd00019176</UniqueId>
 					</Properties>
 					<Item class="ModuleScript" referent="RBX17B99AD62B95400F97EEDB827C39C489">
 						<Properties>
@@ -2507,6 +2555,7 @@ end
 return GizmoBase]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019177</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX11A6816DB40A4581B83BF6C47A9E1A27">
@@ -2635,6 +2684,7 @@ end
 return GizmoBool]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019178</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX69C0F86EA8FD469898A29432C86ABD34">
@@ -2748,6 +2798,7 @@ end
 return GizmoButton]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019179</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXA0CE51C29D984EBBAF24F6DDBD9026EB">
@@ -2882,6 +2933,7 @@ end
 return GizmoFolder]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917a</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXC8A115146A3B4B27B0DD7D1471BD3ABC">
@@ -3009,6 +3061,7 @@ end
 return GizmoInteger]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917b</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX5DFED56081234E67AA2BEA6B596CBB1F">
@@ -3199,6 +3252,7 @@ end
 return GizmoIntegerSlider]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917c</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX997437460D614EA7802198918E3BA842">
@@ -3335,6 +3389,7 @@ end
 return GizmoLongString]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917d</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXA1C2959714B44D7CB9A850FBE7B9F341">
@@ -3470,6 +3525,7 @@ end
 return GizmoNumber]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917e</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX1CBF99DB62014749909E50B2B3BB551E">
@@ -3661,6 +3717,7 @@ end
 return GizmoNumberSlider]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001917f</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXDCDE6E440242464A9102DF9E09C50F75">
@@ -3736,6 +3793,7 @@ end
 return GizmoSeparator]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019180</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX3AF9E14B807D42A3B83389654304CDE7">
@@ -3862,6 +3920,7 @@ end
 return GizmoString]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019181</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX550C18FC4D28423CBC39DF70415CFD88">
@@ -4035,6 +4094,7 @@ end
 return GizmoVector2]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019182</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX8B38CDA1B52D45F1A9AF3CF5579975DC">
@@ -4231,6 +4291,7 @@ end
 return GizmoVector3]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019183</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBX938EEA2D773E451BA7A1A073FC5A14B6">
@@ -4538,6 +4599,7 @@ end
 return GizmoColorSlider]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019184</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXFD5092A10B8C4682A502CD3F0DDC2499">
@@ -4614,6 +4676,7 @@ end
 return GizmoText]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019185</UniqueId>
 						</Properties>
 					</Item>
 					<Item class="ModuleScript" referent="RBXA8D4DC96CDFF41C8AE145A55EAAA474E">
@@ -4789,6 +4852,7 @@ end
 return GizmoListPicker]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019186</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -4805,6 +4869,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019187</UniqueId>
 					<token name="ZIndexBehavior">1</token>
 				</Properties>
 				<Item class="Frame" referent="RBX74475E3ACF5545719DC2FDA2A9FDA46A">
@@ -4858,6 +4923,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd00019188</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
@@ -4912,6 +4978,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019189</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">90</int>
 						</Properties>
@@ -4992,6 +5059,7 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">2</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd0001918a</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">91</int>
 							</Properties>
@@ -5073,6 +5141,7 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">0</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd0001918b</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">92</int>
 							</Properties>
@@ -5098,6 +5167,7 @@ return GizmoListPicker]]></ProtectedString>
 									</UDim>
 									<int64 name="SourceAssetId">-1</int64>
 									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">46009198e08047480187a7bd0001918c</UniqueId>
 								</Properties>
 							</Item>
 						</Item>
@@ -5178,6 +5248,7 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">2</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd0001918d</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">91</int>
 							</Properties>
@@ -5260,6 +5331,7 @@ return GizmoListPicker]]></ProtectedString>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001918e</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1000</int>
 						</Properties>
@@ -5339,6 +5411,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 							<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001918f</UniqueId>
 							<token name="VerticalScrollBarInset">1</token>
 							<token name="VerticalScrollBarPosition">0</token>
 							<bool name="Visible">true</bool>
@@ -5357,6 +5430,7 @@ return GizmoListPicker]]></ProtectedString>
 								<token name="SortOrder">2</token>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd00019190</UniqueId>
 								<token name="VerticalAlignment">1</token>
 							</Properties>
 						</Item>
@@ -5451,6 +5525,7 @@ return GizmoListPicker]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019191</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
@@ -5545,6 +5620,7 @@ return GizmoListPicker]]></ProtectedString>
 								<YS>1</YS>
 								<YO>0</YO>
 							</UDim2>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019192</UniqueId>
 							<bool name="Visible">false</bool>
 							<int name="ZIndex">999</int>
 						</Properties>
@@ -5602,6 +5678,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019193</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -5682,6 +5759,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd00019194</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -5695,6 +5773,7 @@ return GizmoListPicker]]></ProtectedString>
 							<string name="Name">UICorner</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019195</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -5750,6 +5829,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd00019196</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -5826,6 +5906,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd00019197</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -5851,6 +5932,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd00019198</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -5905,6 +5987,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd00019199</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -5985,6 +6068,7 @@ return GizmoListPicker]]></ProtectedString>
 							<bool name="TextWrapped">true</bool>
 							<token name="TextXAlignment">2</token>
 							<token name="TextYAlignment">1</token>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd0001919a</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">5</int>
 						</Properties>
@@ -5998,6 +6082,7 @@ return GizmoListPicker]]></ProtectedString>
 								<string name="Name">UICorner</string>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd0001919b</UniqueId>
 							</Properties>
 						</Item>
 						<Item class="TextLabel" referent="RBX2BDDC881FD7C4190BA391862DEF5B054">
@@ -6073,6 +6158,7 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="TextWrapped">true</bool>
 								<token name="TextXAlignment">2</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd0001919c</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">6</int>
 							</Properties>
@@ -6131,6 +6217,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd0001919d</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -6211,6 +6298,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd0001919e</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">91</int>
 					</Properties>
@@ -6288,6 +6376,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd0001919f</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">5</int>
 					</Properties>
@@ -6313,6 +6402,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191a0</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -6391,6 +6481,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191a1</UniqueId>
 						<token name="VerticalScrollBarInset">1</token>
 						<token name="VerticalScrollBarPosition">0</token>
 						<bool name="Visible">true</bool>
@@ -6409,6 +6500,7 @@ return GizmoListPicker]]></ProtectedString>
 							<token name="SortOrder">2</token>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191a2</UniqueId>
 							<token name="VerticalAlignment">1</token>
 						</Properties>
 					</Item>
@@ -6464,6 +6556,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191a3</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -6519,6 +6612,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191a4</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -6575,6 +6669,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191a5</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -6651,6 +6746,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191a6</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -6676,6 +6772,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191a7</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -6756,6 +6853,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">true</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191a8</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -6769,6 +6867,7 @@ return GizmoListPicker]]></ProtectedString>
 							<string name="Name">UICorner</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191a9</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -6855,6 +6954,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191aa</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -6911,6 +7011,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191ab</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -6987,6 +7088,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191ac</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7043,6 +7145,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191ad</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -7119,6 +7222,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191ae</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7144,6 +7248,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191af</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -7220,6 +7325,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191b0</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -7274,6 +7380,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191b1</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">0</int>
 						</Properties>
@@ -7354,6 +7461,7 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">0</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd000191b2</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">6</int>
 							</Properties>
@@ -7412,6 +7520,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191b3</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -7488,6 +7597,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191b4</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7513,6 +7623,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191b5</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -7589,6 +7700,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191b6</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7614,6 +7726,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191b7</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -7669,6 +7782,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191b8</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -7745,6 +7859,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191b9</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7770,6 +7885,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191ba</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -7856,6 +7972,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191bb</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -7881,6 +7998,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191bc</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -7936,6 +8054,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191bd</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -8012,6 +8131,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191be</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8037,6 +8157,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191bf</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8123,6 +8244,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191c0</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8148,6 +8270,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191c1</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8234,6 +8357,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191c2</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8259,6 +8383,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191c3</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8314,6 +8439,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191c4</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -8390,6 +8516,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191c5</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8415,6 +8542,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191c6</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8501,6 +8629,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191c7</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8526,6 +8655,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191c8</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8612,6 +8742,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191c9</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8637,6 +8768,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191ca</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8723,6 +8855,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191cb</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8748,6 +8881,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191cc</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8803,6 +8937,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191cd</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -8879,6 +9014,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191ce</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -8904,6 +9040,7 @@ return GizmoListPicker]]></ProtectedString>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191cf</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -8993,6 +9130,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">0</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191d0</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -9018,6 +9156,7 @@ asd]]></string>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191d1</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -9073,6 +9212,7 @@ asd]]></string>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191d2</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">3</int>
 				</Properties>
@@ -9149,6 +9289,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">0</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191d3</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">4</int>
 					</Properties>
@@ -9174,6 +9315,7 @@ asd]]></string>
 							</UDim>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191d4</UniqueId>
 						</Properties>
 					</Item>
 				</Item>
@@ -9250,6 +9392,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191d5</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -9304,6 +9447,7 @@ asd]]></string>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191d6</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">0</int>
 						</Properties>
@@ -9384,6 +9528,7 @@ asd]]></string>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">0</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd000191d7</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">6</int>
 							</Properties>
@@ -9463,6 +9608,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191d8</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -9517,6 +9663,7 @@ asd]]></string>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191d9</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">0</int>
 						</Properties>
@@ -9597,6 +9744,7 @@ asd]]></string>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">0</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd000191da</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">6</int>
 							</Properties>
@@ -9676,6 +9824,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191db</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">6</int>
 					</Properties>
@@ -9730,6 +9879,7 @@ asd]]></string>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191dc</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">0</int>
 						</Properties>
@@ -9810,6 +9960,7 @@ asd]]></string>
 								<bool name="TextWrapped">false</bool>
 								<token name="TextXAlignment">0</token>
 								<token name="TextYAlignment">1</token>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd000191dd</UniqueId>
 								<bool name="Visible">true</bool>
 								<int name="ZIndex">6</int>
 							</Properties>
@@ -9867,6 +10018,7 @@ asd]]></string>
 						<int64 name="SourceAssetId">-1</int64>
 						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191de</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">7</int>
 					</Properties>
@@ -9923,6 +10075,7 @@ asd]]></string>
 					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191df</UniqueId>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">2</int>
 				</Properties>
@@ -10001,6 +10154,7 @@ asd]]></string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191e0</UniqueId>
 						<token name="VerticalScrollBarInset">1</token>
 						<token name="VerticalScrollBarPosition">0</token>
 						<bool name="Visible">true</bool>
@@ -10019,6 +10173,7 @@ asd]]></string>
 							<token name="SortOrder">2</token>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191e1</UniqueId>
 							<token name="VerticalAlignment">1</token>
 						</Properties>
 					</Item>
@@ -10100,6 +10255,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191e2</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">90</int>
 					</Properties>
@@ -10176,6 +10332,7 @@ asd]]></string>
 							<bool name="TextWrapped">false</bool>
 							<token name="TextXAlignment">0</token>
 							<token name="TextYAlignment">1</token>
+							<UniqueId name="UniqueId">46009198e08047480187a7bd000191e3</UniqueId>
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">92</int>
 						</Properties>
@@ -10201,6 +10358,7 @@ asd]]></string>
 								</UDim>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">46009198e08047480187a7bd000191e4</UniqueId>
 							</Properties>
 						</Item>
 					</Item>
@@ -10282,6 +10440,7 @@ asd]]></string>
 						<bool name="TextWrapped">false</bool>
 						<token name="TextXAlignment">2</token>
 						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191e5</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">91</int>
 					</Properties>
@@ -10376,6 +10535,7 @@ asd]]></string>
 							<YS>1</YS>
 							<YO>0</YO>
 						</UDim2>
+						<UniqueId name="UniqueId">46009198e08047480187a7bd000191e6</UniqueId>
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
@@ -10701,6 +10861,7 @@ asd]]></string>
 ]]]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">46009198e08047480187a7bd000191e7</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -10711,6 +10872,16 @@ asd]]></string>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd00019117</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProcessInstancePhysicsService" referent="RBXD31AA94457B847D8B5663A8169DE9EDC">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">ProcessInstancePhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd0001911b</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Lighting" referent="RBXF5AABC98F9924019985D7AF8E9141F57">
@@ -10756,6 +10927,7 @@ asd]]></string>
 			<BinaryString name="Tags"></BinaryString>
 			<token name="Technology">3</token>
 			<string name="TimeOfDay">14:30:00</string>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd00019136</UniqueId>
 		</Properties>
 		<Item class="Sky" referent="RBX866F2AC543AF4F7E916090D06409EF90">
 			<Properties>
@@ -10775,6 +10947,7 @@ asd]]></string>
 				<float name="SunAngularSize">11</float>
 				<Content name="SunTextureId"><url>rbxassetid://6196665106</url></Content>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd000191e8</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SunRaysEffect" referent="RBXA38D9D14AC76490E80275547B3275AEB">
@@ -10786,6 +10959,7 @@ asd]]></string>
 				<int64 name="SourceAssetId">-1</int64>
 				<float name="Spread">0.100000001</float>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd000191e9</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Atmosphere" referent="RBX746DE486E91D46C4A17CDEABC8C471B3">
@@ -10808,6 +10982,7 @@ asd]]></string>
 				<float name="Offset">0.25</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd000191ea</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BloomEffect" referent="RBX9EFDB9C73FF947DF81EA37C9B955E79D">
@@ -10820,6 +10995,7 @@ asd]]></string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Threshold">2</float>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd000191eb</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="DepthOfFieldEffect" referent="RBX97B2694706B749169F87D1E536D050AC">
@@ -10833,6 +11009,7 @@ asd]]></string>
 				<float name="NearIntensity">0.75</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">46009198e08047480187a7bd000191ec</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
@@ -10844,6 +11021,7 @@ asd]]></string>
 			<string name="Name">DataStoreService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ed</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="HttpService" referent="RBX38BD93E8C04A460CA5B29B7DA319C5BB">
@@ -10853,6 +11031,7 @@ asd]]></string>
 			<string name="Name">HttpService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ee</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="LanguageService" referent="RBX155A93E6D2624988A06D1AC1FA0C3923">
@@ -10861,6 +11040,7 @@ asd]]></string>
 			<string name="Name">LanguageService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ef</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Teams" referent="RBX636FC8B8607D4BEB8C3BC6B886491E18">
@@ -10869,6 +11049,7 @@ asd]]></string>
 			<string name="Name">Teams</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191f0</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TestService" referent="RBX46F38FC077CB4F559438F9D4186D9C08">
@@ -10886,6 +11067,7 @@ asd]]></string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<double name="Timeout">10</double>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191f1</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="VirtualInputManager" referent="RBX6F605A817D5E47059E63D5A56A158EAB">
@@ -10894,6 +11076,18 @@ asd]]></string>
 			<string name="Name">VirtualInputManager</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191f2</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProximityPromptService" referent="RBX7E755389EC3549FCB6946E9051AF106F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="Enabled">true</bool>
+			<int name="MaxPromptsVisible">16</int>
+			<string name="Name">ProximityPromptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000afcc6</UniqueId>
 		</Properties>
 	</Item>
 	<SharedStrings>

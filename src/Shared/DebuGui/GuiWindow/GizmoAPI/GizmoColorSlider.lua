@@ -80,7 +80,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
 	Utility.QuickTypeAssert(DefaultColor, 'Color3')
-	
+
 	-- Defines
 	local ValueDragger_1 = Dragger.new(Gui.TextBox1.DragRange.Dragger)
 	local ValueDragger_2 = Dragger.new(Gui.TextBox2.DragRange.Dragger)

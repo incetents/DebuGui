@@ -116,7 +116,6 @@ Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddInteger('int9', 99).SetReadOnly()
 
-
 -- Integer Sliders --
 Gui1.AddSeparator('INTEGER_SLIDER_SEPARATOR').SetName('INTEGER SLIDERS')
 --
@@ -131,6 +130,11 @@ Gui1.AddIntegerSlider('intslider4', 25, 0, 50).Set(99)
 Gui1.AddIntegerSlider('intslider5', 25, 0, 50).Set(-1)
 Gui1.AddIntegerSlider('intslider6', 1, -2, 2).SetReadOnly()
 
+Gui1.AddIntegerSlider('intslider_min', 0, -20, 20)
+	.SetMinValue(1)
+
+Gui1.AddIntegerSlider('intslider_max', 0, -20, 20)
+	.SetMaxValue(-1)
 
 -- Long String
 Gui1.AddSeparator('LONG_STRING_SEPARATOR').SetName('LONG STRING')
@@ -189,6 +193,11 @@ Gui1.Remove('numslider4')
 
 Gui1.AddNumberSlider('numslider8', 1, 2, 3, 2).SetReadOnly()
 
+Gui1.AddNumberSlider('numslider_min', 0, -20, 20, 4)
+	.SetMinValue(1)
+
+Gui1.AddNumberSlider('numslider_max', 0, -20, 20, 4)
+	.SetMaxValue(-1)
 
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')

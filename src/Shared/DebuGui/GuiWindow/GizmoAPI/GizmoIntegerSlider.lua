@@ -118,6 +118,34 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 		return API
 	end
 
+	function API.SetMinValue(NewMinValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMinValue, 'number')
+
+		MinValue = math.round(tonumber(NewMinValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
+	function API.SetMaxValue(NewMaxValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMaxValue, 'number')
+
+		MaxValue = math.round(tonumber(NewMaxValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
 		if Input == API._Input then return false end

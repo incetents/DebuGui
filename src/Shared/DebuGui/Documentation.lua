@@ -472,6 +472,18 @@
 					color (Color3) = New color for the displayed value
 			-- @Returns: (Gizmo)
 
+		-- SetMinValue (NewMinValue)
+			-- @Description: Changes the min value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMinValue (number) = New lowest value for the slider
+			-- @Returns: (Gizmo)
+
+		-- SetMaxValue (NewMaxValue)
+			-- @Description: Changes the max value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMaxValue (number) = New highest value for the slider
+			-- @Returns: (Gizmo)
+
 		-- SetReadOnly (state)
 			-- @Description: Will lock UI from being modified by the User
 			-- @Parameters:
@@ -642,6 +654,18 @@
 			-- @Description: Changes color of the displayed value
 			-- @Parameters:
 					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetMinValue (NewMinValue)
+			-- @Description: Changes the min value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMinValue (number) = New lowest value for the slider
+			-- @Returns: (Gizmo)
+
+		-- SetMaxValue (NewMaxValue)
+			-- @Description: Changes the max value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMaxValue (number) = New highest value for the slider
 			-- @Returns: (Gizmo)
 
 		-- SetReadOnly (state)

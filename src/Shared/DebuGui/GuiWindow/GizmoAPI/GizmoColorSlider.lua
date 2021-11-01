@@ -161,15 +161,12 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Validate
 	function API.Validate(Input)
-		print("!!!!")
-		print(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then print("oh no.mp3") return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false
 		end
-		print('Passed')
 
 		API._Input = Input
 		Gui.ColorDisplayer.BackgroundColor3 = Input

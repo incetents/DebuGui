@@ -161,6 +161,10 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Gui.TextBox.Text = Input
 		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
 		API._Input = Input
+		if DecimalAmount then
+			local Mod = (10 ^ DecimalAmount)
+			API._Input = math.round(API._Input * Mod) / Mod
+		end
 
 		return true
 	end

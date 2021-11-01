@@ -153,7 +153,7 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 			warn('GizmoIntegerSlider Given non Color Parameter')
 			return false
 		end
-		Input = math.clamp(Input, MinValue, MaxValue)
+		Input = math.clamp(math.round(Input), MinValue, MaxValue)
 		Gui.TextBox.Text = Input
 		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
 		API._Input = Input

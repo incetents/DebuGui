@@ -755,7 +755,6 @@ Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddInteger('int9', 99).SetReadOnly()
 
-
 -- Integer Sliders --
 Gui1.AddSeparator('INTEGER_SLIDER_SEPARATOR').SetName('INTEGER SLIDERS')
 --
@@ -770,6 +769,11 @@ Gui1.AddIntegerSlider('intslider4', 25, 0, 50).Set(99)
 Gui1.AddIntegerSlider('intslider5', 25, 0, 50).Set(-1)
 Gui1.AddIntegerSlider('intslider6', 1, -2, 2).SetReadOnly()
 
+Gui1.AddIntegerSlider('intslider_min', 0, -20, 20)
+	.SetMinValue(1)
+
+Gui1.AddIntegerSlider('intslider_max', 0, -20, 20)
+	.SetMaxValue(-1)
 
 -- Long String
 Gui1.AddSeparator('LONG_STRING_SEPARATOR').SetName('LONG STRING')
@@ -828,6 +832,11 @@ Gui1.Remove('numslider4')
 
 Gui1.AddNumberSlider('numslider8', 1, 2, 3, 2).SetReadOnly()
 
+Gui1.AddNumberSlider('numslider_min', 0, -20, 20, 4)
+	.SetMinValue(1)
+
+Gui1.AddNumberSlider('numslider_max', 0, -20, 20, 4)
+	.SetMaxValue(-1)
 
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
@@ -1174,6 +1183,87 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">69021653e03abbda01910337002abafe</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="LocalScript" referent="RBX05B60732FDB54816AC05F5693C43ED67">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Example_Scene</string>
+					<string name="ScriptGuid">{CD28711D-DAC4-43CC-A702-40582EA48F59}</string>
+					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
+
+-- Roblox Services --
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Lighting = game:GetService("Lighting")
+
+-- Module --
+local DebuGui = require(ReplicatedStorage.DebuGui)
+
+-- Create New Window
+local Gui = DebuGui.NewWindow('Scene', {
+	Title = 'Scene Modifier',
+	X = 250,
+	Y = 30,
+	Width = 600,
+	Height = 520,
+})
+Gui.Minimize()
+
+-- Lighting --
+local Gui_Lighting = Gui.AddFolder('Scene Lighting', true)
+
+Gui_Lighting.AddColorSliderRGB('Ambient', Lighting.Ambient).Listen(function(NewColor)
+	Lighting.Ambient = NewColor
+end)
+
+Gui_Lighting.AddNumberSlider('Brightness', Lighting.Brightness, 0, 10, 3).Listen(function(NewNumber)
+	Lighting.Brightness = NewNumber
+end)
+
+Gui_Lighting.AddColorSliderRGB('ColorShift_Bottom', Lighting.ColorShift_Bottom).Listen(function(NewColor)
+	Lighting.ColorShift_Bottom = NewColor
+end)
+
+Gui_Lighting.AddColorSliderRGB('ColorShift_Top', Lighting.ColorShift_Bottom).Listen(function(NewColor)
+	Lighting.ColorShift_Bottom = NewColor
+end)
+
+Gui_Lighting.AddNumberSlider('EnvironmentDiffuseScale', Lighting.EnvironmentDiffuseScale, 0, 1, 3).Listen(function(NewNumber)
+	Lighting.EnvironmentDiffuseScale = NewNumber
+end)
+
+Gui_Lighting.AddNumberSlider('EnvironmentSpecularScale', Lighting.EnvironmentSpecularScale, 0, 1, 3).Listen(function(NewNumber)
+	Lighting.EnvironmentSpecularScale = NewNumber
+end)
+
+Gui_Lighting.AddBool('GlobalShadows', Lighting.GlobalShadows).Listen(function(NewBool)
+	Lighting.GlobalShadows = NewBool
+end)
+
+Gui_Lighting.AddColorSliderRGB('OutdoorAmbient', Lighting.OutdoorAmbient).Listen(function(NewColor)
+	Lighting.OutdoorAmbient = NewColor
+end)
+
+Gui_Lighting.AddNumberSlider('ShadowSoftness', Lighting.ShadowSoftness, 0, 1, 3).Listen(function(NewNumber)
+	Lighting.ShadowSoftness = NewNumber
+end)
+
+Gui_Lighting.AddNumberSlider('ClockTime', Lighting.ClockTime, 0, 24, 3).Listen(function(NewNumber)
+	Lighting.ClockTime = NewNumber
+end)
+
+Gui_Lighting.AddNumberSlider('GeographicLatitude', Lighting.GeographicLatitude, 0, 360, 1).Listen(function(NewNumber)
+	Lighting.GeographicLatitude = NewNumber
+end)
+
+Gui_Lighting.AddNumberSlider('ExposureCompensation', Lighting.ExposureCompensation, -3, 3, 3).Listen(function(NewNumber)
+	Lighting.ExposureCompensation = NewNumber
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">69021653e03abbda01910337015707b0</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -1930,8 +2020,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Make Gui appear in front of all other Guis
 	function API.BringGuiForward(ChosenGui)
+
+		local IDName = string.sub(ChosenGui.Name, 9) -- Ignoring 'DebuGui_' prefix
+
 		-- Safety Check
-		if not DebuGui.ScreenGuis[ChosenGui] then
+		if not DebuGui.ScreenGuis[IDName] then
 			return
 		end
 
@@ -3217,6 +3310,34 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 		return API
 	end
 
+	function API.SetMinValue(NewMinValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMinValue, 'number')
+
+		MinValue = math.round(tonumber(NewMinValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
+	function API.SetMaxValue(NewMaxValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMaxValue, 'number')
+
+		MaxValue = math.round(tonumber(NewMaxValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
 		if Input == API._Input then return false end
@@ -3224,7 +3345,7 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 			warn('GizmoIntegerSlider Given non Color Parameter')
 			return false
 		end
-		Input = math.clamp(Input, MinValue, MaxValue)
+		Input = math.clamp(math.round(Input), MinValue, MaxValue)
 		Gui.TextBox.Text = Input
 		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
 		API._Input = Input
@@ -3693,6 +3814,34 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		return API
 	end
 
+	function API.SetMinValue(NewMinValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMinValue, 'number')
+
+		MinValue = math.round(tonumber(NewMinValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
+	function API.SetMaxValue(NewMaxValue)
+		if API._DeadCheck() then return nil end
+		Utility.QuickTypeAssert(NewMaxValue, 'number')
+
+		MaxValue = math.round(tonumber(NewMaxValue))
+
+		-- Internal Update
+		API._Input = math.clamp(API._Input, MinValue, MaxValue)
+		Gui.TextBox.Text = tostring(API._Input)
+		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, API._Input, MinValue, MaxValue)
+
+		return API
+	end
+
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
 		if Input == API._Input then return false end
@@ -3704,6 +3853,10 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Gui.TextBox.Text = Input
 		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, Input, MinValue, MaxValue)
 		API._Input = Input
+		if DecimalAmount then
+			local Mod = (10 ^ DecimalAmount)
+			API._Input = math.round(API._Input * Mod) / Mod
+		end
 
 		return true
 	end
@@ -4497,15 +4650,12 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Validate
 	function API.Validate(Input)
-		print("!!!!")
-		print(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then print("oh no.mp3") return false end
+		if Input == API._Input then return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false
 		end
-		print('Passed')
 
 		API._Input = Input
 		Gui.ColorDisplayer.BackgroundColor3 = Input
@@ -11092,6 +11242,18 @@ asd]]></string>
 					color (Color3) = New color for the displayed value
 			-- @Returns: (Gizmo)
 
+		-- SetMinValue (NewMinValue)
+			-- @Description: Changes the min value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMinValue (number) = New lowest value for the slider
+			-- @Returns: (Gizmo)
+
+		-- SetMaxValue (NewMaxValue)
+			-- @Description: Changes the max value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMaxValue (number) = New highest value for the slider
+			-- @Returns: (Gizmo)
+
 		-- SetReadOnly (state)
 			-- @Description: Will lock UI from being modified by the User
 			-- @Parameters:
@@ -11262,6 +11424,18 @@ asd]]></string>
 			-- @Description: Changes color of the displayed value
 			-- @Parameters:
 					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetMinValue (NewMinValue)
+			-- @Description: Changes the min value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMinValue (number) = New lowest value for the slider
+			-- @Returns: (Gizmo)
+
+		-- SetMaxValue (NewMaxValue)
+			-- @Description: Changes the max value and updates the current value to clamp it properly
+			-- @Parameters:
+					NewMaxValue (number) = New highest value for the slider
 			-- @Returns: (Gizmo)
 
 		-- SetReadOnly (state)
@@ -11496,7 +11670,7 @@ asd]]></string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<token name="Technology">3</token>
-			<string name="TimeOfDay">14:30:00</string>
+			<string name="TimeOfDay">14:00:00</string>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd00019136</UniqueId>
 		</Properties>
 		<Item class="Sky" referent="RBX866F2AC543AF4F7E916090D06409EF90">

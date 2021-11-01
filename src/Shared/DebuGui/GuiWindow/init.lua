@@ -247,8 +247,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	-- Make Gui appear in front of all other Guis
 	function API.BringGuiForward(ChosenGui)
+
+		local IDName = string.sub(ChosenGui.Name, 9) -- Ignoring 'DebuGui_' prefix
+
 		-- Safety Check
-		if not DebuGui.ScreenGuis[ChosenGui] then
+		if not DebuGui.ScreenGuis[IDName] then
 			return
 		end
 

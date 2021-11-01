@@ -709,6 +709,13 @@ Gui1.AddBool('bool5', false).Set(true).SetCheckboxColor(Color3.fromRGB(122, 40, 
 Gui1.AddBool('bool6', true).SetReadOnly()
 Gui1.AddBool('bool7', false).SetReadOnly().Set(true).Set(false)
 
+Gui1.AddBool('bool_multi_listen', true)
+	.Listen(function()
+		print('multi listen A')
+	end)
+	.Listen(function()
+		print('multi listen B')
+	end)
 
 -- Buttons --
 Gui1.AddSeparator('BUTTON_SEPARATOR').SetName('BUTTONS')
@@ -746,6 +753,7 @@ end).SetValueBGColor(Color3.fromRGB(39, 87, 59))
 Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
 Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddInteger('int9', 99).SetReadOnly()
 
 
 -- Integer Sliders --
@@ -760,6 +768,7 @@ end)
 Gui1.AddIntegerSlider('intslider3', 50.1, 0.1, 50.1)
 Gui1.AddIntegerSlider('intslider4', 25, 0, 50).Set(99)
 Gui1.AddIntegerSlider('intslider5', 25, 0, 50).Set(-1)
+Gui1.AddIntegerSlider('intslider6', 1, -2, 2).SetReadOnly()
 
 
 -- Long String
@@ -768,6 +777,9 @@ Gui1.AddSeparator('LONG_STRING_SEPARATOR').SetName('LONG STRING')
 Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
+
+Gui1.AddLongString('longstring3', "line1\nline2\nline3")
+	.SetReadOnly()
 
 
 -- Numbers --
@@ -806,13 +818,15 @@ Gui1.AddNumberSlider('numslider2', 100, 100, 200, 4, DebuGui.SLIDERPARAM_UPDATE_
 end)
 Gui1.AddNumberSlider('numslider3', 20, 0, 100, 3).Set(45)
 Gui1.AddNumberSlider('numslider4', 40, 33, 44)
-Gui1.AddNumberSlider('numslider5', 1, 2, 3, 2)--.SetReadOnly()
+Gui1.AddNumberSlider('numslider5', 1, 2, 3, 2)
 Gui1.AddNumberSlider('numslider6', 20, 0, 100, 1).Set(-1)
 Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 
 Gui1.Remove('numslider4')
+
+Gui1.AddNumberSlider('numslider8', 1, 2, 3, 2).SetReadOnly()
 
 
 -- Separators --
@@ -838,6 +852,7 @@ Gui1.AddString('string5', 'default').Listen(function(NewValue)
 	print("New String5 Value: "..NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
+Gui1.AddString('string7', 'readonly string').SetReadOnly()
 
 
 -- Vectors --
@@ -854,6 +869,8 @@ Gui1.AddVector2('vec2_5', Vector2.new(-1, -1))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
 	.SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
+Gui1.AddVector2('vec2_6', Vector2.new(6, 6)).SetReadOnly()
+
 
 Gui1.AddVector3('vec3_1', Vector3.new(7.9, -2, 54)).Listen(function(NewVector)
 	print("New vec3_1 Value: ", NewVector)
@@ -866,6 +883,7 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
 	.SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
+Gui1.AddVector3('vec3_6', Vector3.new(6, 6, 6)).SetReadOnly()
 
 -- Color Slider
 Gui1.AddSeparator('COLOR_SLIDER_SEPARATOR').SetName('COLOR SLIDERS')
@@ -893,6 +911,9 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
+
+Gui1.AddColorSliderRGB('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+	.SetReadOnly()
 
 
 -- List Picker --
@@ -939,6 +960,7 @@ Gui1.AddListPicker('listpicker7', '3', {'1', '2', '3', '4'})
 Gui1.AddListPicker('listpicker8', '3', {'1', '2', '3', '4'})
 	.ChangeChoices({'a', 'b', 'c', 'd', 'e'})
 
+Gui1.AddListPicker('listpicker_locked', '1', {'1', '2', '3'}).SetReadOnly()
 
 -------------
 -- Folders --
@@ -1021,6 +1043,23 @@ Gui1.Remove('Small Frame Folder 2')
 -- Getter API --
 ----------------
 
+-- Getters for Values
+
+-- print("~~~ Quick Value Getters")
+-- print('bool1 = ', Gui1.Get('bool1').GetValue())
+-- print('button1 = ', Gui1.Get('button1').GetValue())
+-- print('ColorSliderRGB_1 = ', Gui1.Get('ColorSliderRGB_1').GetValue())
+-- print('folder1 = ', Gui1.Get('folder1').GetValue())
+-- print('int1 = ', Gui1.Get('int1').GetValue())
+-- print('intslider1 = ', Gui1.Get('intslider1').GetValue())
+-- print('num1 = ', Gui1.Get('num1').GetValue())
+-- print('numslider1 = ', Gui1.Get('numslider1').GetValue())
+-- print('separator6 = ', Gui1.Get('separator6').GetValue())
+-- print('string1 = ', Gui1.Get('string1').GetValue())
+-- print('text1 = ', Gui1.Get('text1').GetValue())
+-- print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
+-- print('vec3_1 = ', Gui1.Get('vec3_1').GetValue())
+
 -- API Acessing
 -- !!! EXPENSIVE/SLOW TO PRINT, only use for testing/sparingly !!! --
 
@@ -1039,21 +1078,6 @@ Gui1.Remove('Small Frame Folder 2')
 -- print("TextGui API: ", Gui1.Get('text1'))
 -- print("Vector2Gui API: ", Gui1.Get('vec2_1'))
 -- print("Vector3Gui API: ", Gui1.Get('vec3_1'))
-
-print("~~~ Quick Value Getters")
-print('bool1 = ', Gui1.Get('bool1').GetValue())
-print('button1 = ', Gui1.Get('button1').GetValue())
-print('ColorSliderRGB_1 = ', Gui1.Get('ColorSliderRGB_1').GetValue())
-print('folder1 = ', Gui1.Get('folder1').GetValue())
-print('int1 = ', Gui1.Get('int1').GetValue())
-print('intslider1 = ', Gui1.Get('intslider1').GetValue())
-print('num1 = ', Gui1.Get('num1').GetValue())
-print('numslider1 = ', Gui1.Get('numslider1').GetValue())
-print('separator6 = ', Gui1.Get('separator6').GetValue())
-print('string1 = ', Gui1.Get('string1').GetValue())
-print('text1 = ', Gui1.Get('text1').GetValue())
-print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
-print('vec3_1 = ', Gui1.Get('vec3_1').GetValue())
 
 ---------------
 -- Removal API --
@@ -1127,13 +1151,13 @@ rVec2.SetName('Invalid')
 					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916d</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="LocalScript" referent="RBX5228B189FEE24ECB903CEE849A7E0673">
+			<Item class="LocalScript" referent="RBXA886B93B325648F098D34CBBE08AB9AF">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Example2</string>
-					<string name="ScriptGuid">{51388683-2B0B-4D4B-BDFD-C4E7A90431F2}</string>
+					<string name="Name">Example_RacingCondition</string>
+					<string name="ScriptGuid">{AABD3203-6AF9-4265-ABD5-477C5AB24D66}</string>
 					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
 -- Roblox Services --
@@ -1149,7 +1173,7 @@ local Gui1 = DebuGui.WaitForWindow('Core')
 Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916e</UniqueId>
+					<UniqueId name="UniqueId">69021653e03abbda01910337002abafe</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -2194,10 +2218,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Update Data
 		if API._Modal.ListenerAPI.Validate(Choice) then
-			-- Update Listener as well
-			if API._Modal.ListenerAPI._Listener then
-				API._Modal.ListenerAPI._Listener(Choice)
-			end
+			API._Modal.ListenerAPI.TriggerListeners()
 		end
 
 		API._CloseModal()
@@ -2469,7 +2490,7 @@ function GizmoBase.New()
 	-------------
     local API = {
 		_IsDestroyed = false,
-        _Listener = nil,
+        _Listeners = {},
         _Input = nil,
 		_Connections = nil,
 		_Draggers = nil,
@@ -2494,6 +2515,7 @@ function GizmoBase.New()
 
 	function API._Destroy()
 		API._IsDestroyed = true
+		API._Listeners = nil
 		-- Remove Connections
 		if API._Connections then
 			for _, Connection in ipairs(API._Connections) do
@@ -2530,9 +2552,16 @@ function GizmoBase.New()
         return false
     end
 
+	function API.TriggerListeners()
+		for _, Function in ipairs(API._Listeners) do
+			Function(API._Input)
+		end
+		return API
+	end
+
     function API.Listen(func)
 		if API._DeadCheck() then return nil end
-        API._Listener = func
+        table.insert(API._Listeners, func)
         return API
     end
 
@@ -2590,6 +2619,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     Utility.QuickTypeAssert(DefaultValue, 'boolean')
 
     -- Setup
+	Gui.CheckBoxBG.CheckBoxFG.Checkmark.Text = '✓' -- Best to store unicode in Script vs in parameter
     Gui.TextName.Text = Name
 
 	-- Defines
@@ -2651,9 +2681,11 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 		end
 		-- Apply
 		if IsReadOnly then
+			Gui.TextName.TextTransparency = 0.5
 			Gui.CheckBoxBG.CheckBoxFG.Checkmark.TextTransparency = 0.5
 			Gui.CheckBoxBG.CheckBoxFG.BackgroundTransparency = 0.45
 		else
+			Gui.TextName.TextTransparency = 0.0
 			Gui.CheckBoxBG.CheckBoxFG.Checkmark.TextTransparency = 0.0
 			Gui.CheckBoxBG.CheckBoxFG.BackgroundTransparency = 0.0
 		end
@@ -2662,17 +2694,13 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 
     -- Update Values
     API._AddConnection(Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
-
 		if IsReadOnly then
 			return
 		end
 
-        local Success = API.Validate(not API._Input)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(not API._Input) then
+			API.TriggerListeners()
 		end
-
     end))
 
     -- Call Validate on Default Value
@@ -2781,15 +2809,11 @@ function GizmoButton.new(Gui, Name)
 
     -- Update Values
     API._AddConnection(Gui.TextButton.MouseButton1Down:Connect(function(__) -- enterPressed
-
 		if IsReadOnly then
 			return
 		end
 
-        if API._Listener then
-            API._Listener()
-        end
-
+        API.TriggerListeners()
     end))
 
     return API
@@ -2975,7 +2999,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Defines
 	local API = GizmoBase.New()
 	local IsReadOnly = false
-	
+
 	----------------
 	-- Public API --
 	----------------
@@ -3035,27 +3059,30 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
-   -- Update Values
-   API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-	   local Success = API.Validate(Gui.TextBox.Text)
+	-- Update Values
+	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+		if IsReadOnly then
+			return
+		end
 
-	   if Success and API._Listener then
-		API._Listener(API._Input)
-	end
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
+		end
+	end))
 
-   end))
+	-- Call Validate on Default Value
+	API.Validate(DefaultValue)
 
-   -- Call Validate on Default Value
-   API.Validate(DefaultValue)
-
-   return API
+	return API
 end
 
 return GizmoInteger]]></ProtectedString>
@@ -3122,7 +3149,7 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(MinValue, 'number')
 	Utility.QuickTypeAssert(MaxValue, 'number')
-	
+
 	-- Defines
 	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
 	local IsReadOnly = false
@@ -3178,10 +3205,14 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 			Gui.TextBox.DragRange.Dragger.Selectable = false
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.DragRange.Dragger.Selectable = true
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -3229,17 +3260,15 @@ function GizmoIntegerSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Upd
 		Gui.TextBox.Text = API._Input
 
 		-- Trigger Listeners
-		if not UpdateOnlyOnDragEnd and API._Listener then
-			API._Listener(API._Input)
+		if not UpdateOnlyOnDragEnd then
+			API.TriggerListeners()
 		end
 	end)
 
 	-- Drag End
 	if UpdateOnlyOnDragEnd then
 		ValueDragger.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 	end
 
@@ -3350,9 +3379,11 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -3373,10 +3404,12 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-		local Success = API.Validate(Gui.TextBox.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if IsReadOnly then
+			return
+		end
+
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
 		end
 	end))
 
@@ -3426,7 +3459,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
@@ -3498,21 +3531,23 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-		if IsReadOnly then return end
+		if IsReadOnly then
+			return
+		end
 
-		local Success = API.Validate(Gui.TextBox.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
 		end
 	end))
 
@@ -3590,7 +3625,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Defines
 	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
 	local IsReadOnly = false
@@ -3598,7 +3633,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 
 	-- Setup
 	Gui.TextName.Text = Name
-	
+
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -3646,10 +3681,14 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 			Gui.TextBox.DragRange.Dragger.Selectable = false
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.DragRange.Dragger.Selectable = true
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -3694,17 +3733,15 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Gui.TextBox.Text = API._Input
 
 		-- Trigger Listeners
-		if not UpdateOnlyOnDragEnd and API._Listener then
-			API._Listener(API._Input)
+		if not UpdateOnlyOnDragEnd then
+			API.TriggerListeners()
 		end
 	end)
 
 	-- Drag End
 	if UpdateOnlyOnDragEnd then
 		ValueDragger.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 	end
 
@@ -3894,21 +3931,24 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
     -- Update Values
     API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-        local Success = API.Validate(Gui.TextBox.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
-		end
+       	if IsReadOnly then
+			return
+	    end
 
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
+		end
     end))
 
 	-- Validate default
@@ -3956,11 +3996,11 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox1.Text = DefaultValue.x
-	Gui.TextBox2.Text = DefaultValue.y
+	Gui.TextBox1.Text = DefaultValue.X
+	Gui.TextBox2.Text = DefaultValue.Y
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 
@@ -4052,11 +4092,13 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox2.TextEditable = false
 			Gui.TextBox1.TextTransparency = 0.5
 			Gui.TextBox2.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox1.TextEditable = true
 			Gui.TextBox2.TextEditable = true
 			Gui.TextBox1.TextTransparency = 0.0
 			Gui.TextBox2.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -4067,10 +4109,8 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -4078,10 +4118,8 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(API._Input.X, Gui.TextBox2.Text) then
+			API.TriggerListeners()
 		end
 	end))
 
@@ -4133,9 +4171,9 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox1.Text = DefaultValue.x
-	Gui.TextBox2.Text = DefaultValue.y
-	Gui.TextBox3.Text = DefaultValue.z
+	Gui.TextBox1.Text = DefaultValue.X
+	Gui.TextBox2.Text = DefaultValue.Y
+	Gui.TextBox3.Text = DefaultValue.Z
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox3.ClearTextOnFocus = ClearTextOnFocus
@@ -4236,6 +4274,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox1.TextTransparency = 0.5
 			Gui.TextBox2.TextTransparency = 0.5
 			Gui.TextBox3.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox1.TextEditable = true
 			Gui.TextBox2.TextEditable = true
@@ -4243,6 +4282,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox1.TextTransparency = 0.0
 			Gui.TextBox2.TextTransparency = 0.0
 			Gui.TextBox3.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -4253,10 +4293,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -4264,10 +4302,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -4275,10 +4311,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z) then
+			API.TriggerListeners()
 		end
 	end))
 
@@ -4382,7 +4416,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
 	Utility.QuickTypeAssert(DefaultColor, 'Color3')
-	
+
 	-- Defines
 	local ValueDragger_1 = Dragger.new(Gui.TextBox1.DragRange.Dragger)
 	local ValueDragger_2 = Dragger.new(Gui.TextBox2.DragRange.Dragger)
@@ -4394,7 +4428,6 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	Gui.TextName.Text = Name
 
 	-- RGB stored
-	API._Input = DefaultColor
 	API._AddDragger(ValueDragger_1)
 	API._AddDragger(ValueDragger_2)
 	API._AddDragger(ValueDragger_3)
@@ -4441,25 +4474,38 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		end
 		-- Apply
 		if IsReadOnly then
-			Gui.TextBox.DragRange.Dragger.Selectable = false
-			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
-			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+			for Index = 1, 3 do
+				local TextBoxName = 'TextBox'..tostring(Index)
+				Gui[TextBoxName].DragRange.Dragger.Selectable = false
+				Gui[TextBoxName].DragRange.Dragger.AutoButtonColor = false
+				Gui[TextBoxName].DragRange.Dragger.BackgroundTransparency = 0.9
+				Gui[TextBoxName].TextTransparency = 0.5
+			end
+			Gui.TextName.TextTransparency = 0.5
 		else
-			Gui.TextBox.DragRange.Dragger.Selectable = true
-			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
-			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+			for Index = 1, 3 do
+				local TextBoxName = 'TextBox'..tostring(Index)
+				Gui[TextBoxName].DragRange.Dragger.Selectable = true
+				Gui[TextBoxName].DragRange.Dragger.AutoButtonColor = true
+				Gui[TextBoxName].DragRange.Dragger.BackgroundTransparency = 0.7
+				Gui[TextBoxName].TextTransparency = 0.0
+			end
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
 	-- Validate
 	function API.Validate(Input)
+		print("!!!!")
+		print(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == API._Input then print("oh no.mp3") return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false
 		end
+		print('Passed')
 
 		API._Input = Input
 		Gui.ColorDisplayer.BackgroundColor3 = Input
@@ -4471,7 +4517,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
-			
+
 		elseif Mode == MODES.RGBINT then
 			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
 			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
@@ -4511,17 +4557,17 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 		-- Calculate value from position
 		local Value = GetValueFromDraggerPosition(TextBox.DragRange.Dragger, 0, 1)
-		
+
 		-- Calculate Result in RGB
 		if Mode == MODES.RGB or Mode == MODES.RGBINT then
 
 			-- Value
 			if ColorIndex == 1 then
 				API._Input = Color3.new(Value, API._Input.G, API._Input.B)
-	
+
 			elseif ColorIndex == 2 then
 				API._Input = Color3.new(API._Input.R, Value, API._Input.B)
-	
+
 			else
 				API._Input = Color3.new(API._Input.R, API._Input.G, Value)
 			end
@@ -4529,7 +4575,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			-- Text
 			if Mode == MODES.RGB then
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
-			
+
 			elseif Mode == MODES.RGBINT then
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 			end
@@ -4555,8 +4601,8 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		Gui.ColorDisplayer.BackgroundColor3 = API._Input
 
 		-- Trigger Listeners if updating per drag
-		if not UpdateOnlyOnDragEnd and API._Listener then
-			API._Listener(API._Input)
+		if not UpdateOnlyOnDragEnd then
+			API.TriggerListeners()
 		end
 	end
 
@@ -4574,19 +4620,13 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Drag End
 	if UpdateOnlyOnDragEnd then
 		ValueDragger_1.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 		ValueDragger_2.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 		ValueDragger_3.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 	end
 
@@ -4734,6 +4774,7 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 
 	-- Defines
     local API = GizmoBase.New()
+	local IsReadOnly = false
 
 	----------------
 	-- Public API --
@@ -4829,19 +4870,49 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 		return API
 	end
 
+	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
+		return IsReadOnly
+	end
+
+	function API.SetReadOnly(State)
+		if API._DeadCheck() then return nil end
+		-- Set
+		if State == nil then
+			IsReadOnly = true
+		else
+			IsReadOnly = State
+		end
+		-- Apply
+		if IsReadOnly then
+			Gui.TextBox.TextEditable = false
+			Gui.TextBox.TextTransparency = 0.5
+			Gui.ModalButton.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
+		else
+			Gui.TextBox.TextEditable = true
+			Gui.TextBox.TextTransparency = 0.0
+			Gui.ModalButton.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
+		end
+		return API
+	end
+
 	----------------------
 	-- Selection Button --
 	----------------------
 	API._AddConnection(Gui.ModalButton.MouseButton1Down:Connect(function()
-		ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
+		if not IsReadOnly then
+			ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
+		end
 	end))
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-        local Success = API.Validate(Gui.TextBox.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if IsReadOnly then
+			return
 		end
-
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
+		end
     end))
 
 	API.Validate(DefaultChoice)
@@ -6139,7 +6210,7 @@ return GizmoListPicker]]></ProtectedString>
 								<token name="SizeConstraint">0</token>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<string name="Text">&#226;&#156;&#147;</string>
+								<string name="Text"></string>
 								<Color3 name="TextColor3">
 									<R>1</R>
 									<G>1</G>
@@ -10552,7 +10623,7 @@ asd]]></string>
 	-- © 2021 Emmanuel Lajeunesse
 	-- DebuGui Documentation
 
-	-- DebugGui
+	-- DebuGui : First point of Access
 
 		-- NewWindow (GuiName, InitData)
 			-- @Description: Creates a GuiWindow object and returns it
@@ -10578,7 +10649,7 @@ asd]]></string>
 					TimeOutTime (number) = Time to wait, nil = wait forever
 
 
-	-- GuiWindow (Core)
+	-- GuiWindow (Core) : A singular window spawned from DebuGui's NewWindow
 
 		-- BringGuiForward (ChosenGui)
 			-- @Description: Makes the Gui have the highest Display Order of all other GuiWindows
@@ -10811,12 +10882,17 @@ asd]]></string>
 					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
-	-- Gizmo (Base)
+
+	-- Gizmo (Base) : All Gizmos will have this api
 
 		-- Listen (func)
 			-- @Description: Listen for changes in the gizmos value
 			-- @Parameters:
 					func (Function) = Reference to the function that is called when the value is changed
+			-- @Returns: (Gizmo)
+
+		-- TriggerListeners ()
+			-- @Description: calls every function listening to this gizmo with the currently stored value
 			-- @Returns: (Gizmo)
 
 		-- Set (newValue)
@@ -10829,35 +10905,529 @@ asd]]></string>
 			-- @Description: returns the internal stored value
 			-- @Returns: (Gizmo's Stored Value)
 
-	-- Gizmo (Bool)
 
-	-- Gizmo (Button)
+	-- Gizmo (Bool) : Can toggle on/off
 
-	-- Gizmo (ColorSlider)
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Folder)
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Integer)
+		-- SetCheckboxColor (color)
+			-- @Description: Changes color of the checkbox
+			-- @Parameters:
+					color (Color3) = New color for the checkbox
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (IntegerSlider)
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (ListPicker)
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
 
-	-- Gizmo (LongString)
 
-	-- Gizmo (Number)
+	-- Gizmo (Button) : a Button then when pushed will call its Listen function
 
-	-- Gizmo (NumberSlider)
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Separator)
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (String)
+		-- SetColor (color)
+			-- @Description: Changes color of the button
+			-- @Parameters:
+					color (Color3) = New color for the button
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Text)
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
 
-	-- Gizmo (Vector2)
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
 
-	-- Gizmo (Vector3)
+
+	-- Gizmo (ColorSlider) : 3 sliders for RGB/HSV values
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Folder) : Folder that can also contain Gizmos in a recursive fashion
+		-- [ Same API as (Gizmos) ]
+
+		-- Get (UniqueName)
+		-- Remove (UniqueName)
+		-- RemoveAll ()
+		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddText (UniqueName, DefaultValue)
+		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddIntegerSlider (UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
+		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddBool (UniqueName, DefaultValue)
+		-- AddButton (UniqueName)
+		-- AddSeparator (UniqueName, Color, Text, Height)
+		-- AddFolder (UniqueName, StartOpen)
+		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		-- AddColorSliderRGBInt (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddColorSliderHSV (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+
+	-- Gizmo (Integer) : stores 1 rounded number
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (IntegerSlider) : stores 1 rounded number with min/max values 
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (ListPicker) : stores a list of strings with only 1 that can be selected
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- AddChoice (choice)
+			-- @Description: Adds a choice from the list of choices
+			-- @Parameters:
+					choice (string) = New string choice
+			-- @Returns: (Gizmo)
+
+		-- RemoveChoice (choice)
+			-- @Description: Removes a choice from the list of choices
+			-- @Parameters:
+					choice (string) = choice to be removed
+			-- @Returns: (Gizmo)
+
+		-- ChangeChoices (NewChoices)
+			-- @Description: Sets all choices with a list of new ones
+			-- @Parameters:
+					NewChoices (table) = table array of strings
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (LongString) : stores a multiline string
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+		-- SetHeight (NewHeight)
+			-- @Description: Modifies pixel height of the gizmo
+			-- @Parameters:
+					NewHeight (number) = height in pixels
+			-- @Returns: (Gizmo)
+
+		-- SetHeightBasedOnLineCount (LineCount)
+			-- @Description: Modifies height of the gizmo based on amount of rows
+			-- @Parameters:
+					NewHeight (number) = row count
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (Number) : stores 1 number
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (NumberSlider) : stores 1 number with min/max values
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Separator) : small textbox to visually seperate a section
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetColor (color)
+			-- @Description: Changes color of the separator
+			-- @Parameters:
+					color (Color3) = New color for the separator
+			-- @Returns: (Gizmo)
+
+		-- SetHeight (NewHeight)
+			-- @Description: Modifies pixel height of the gizmo
+			-- @Parameters:
+					NewHeight (number) = height in pixels
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (String) : editable textbox
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Text) : non-editable textbox
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+
+	-- Gizmo (Vector2) : stores 2 numbers
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
+	-- Gizmo (Vector3) : stores 3 numbers
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetValueBGColor (color)
+			-- @Description: Changes color of the background element of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the background element
+			-- @Returns: (Gizmo)
+
+		-- SetValueTextColor (color)
+			-- @Description: Changes color of the displayed value
+			-- @Parameters:
+					color (Color3) = New color for the displayed value
+			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
+
+
 ]]]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>

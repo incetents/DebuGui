@@ -87,9 +87,11 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -110,10 +112,12 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-		local Success = API.Validate(Gui.TextBox.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if IsReadOnly then
+			return
+		end
+
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
 		end
 	end))
 

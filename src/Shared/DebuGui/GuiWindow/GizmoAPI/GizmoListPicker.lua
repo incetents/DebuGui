@@ -47,6 +47,7 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 
 	-- Defines
     local API = GizmoBase.New()
+	local IsReadOnly = false
 
 	----------------
 	-- Public API --
@@ -142,19 +143,49 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 		return API
 	end
 
+	function API.IsReadOnly()
+		if API._DeadCheck() then return nil end
+		return IsReadOnly
+	end
+
+	function API.SetReadOnly(State)
+		if API._DeadCheck() then return nil end
+		-- Set
+		if State == nil then
+			IsReadOnly = true
+		else
+			IsReadOnly = State
+		end
+		-- Apply
+		if IsReadOnly then
+			Gui.TextBox.TextEditable = false
+			Gui.TextBox.TextTransparency = 0.5
+			Gui.ModalButton.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
+		else
+			Gui.TextBox.TextEditable = true
+			Gui.TextBox.TextTransparency = 0.0
+			Gui.ModalButton.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
+		end
+		return API
+	end
+
 	----------------------
 	-- Selection Button --
 	----------------------
 	API._AddConnection(Gui.ModalButton.MouseButton1Down:Connect(function()
-		ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
+		if not IsReadOnly then
+			ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
+		end
 	end))
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-        local Success = API.Validate(Gui.TextBox.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if IsReadOnly then
+			return
 		end
-
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
+		end
     end))
 
 	API.Validate(DefaultChoice)

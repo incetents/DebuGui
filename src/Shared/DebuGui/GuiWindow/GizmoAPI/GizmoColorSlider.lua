@@ -92,7 +92,6 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	Gui.TextName.Text = Name
 
 	-- RGB stored
-	API._Input = DefaultColor
 	API._AddDragger(ValueDragger_1)
 	API._AddDragger(ValueDragger_2)
 	API._AddDragger(ValueDragger_3)
@@ -139,25 +138,38 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		end
 		-- Apply
 		if IsReadOnly then
-			Gui.TextBox.DragRange.Dragger.Selectable = false
-			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
-			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+			for Index = 1, 3 do
+				local TextBoxName = 'TextBox'..tostring(Index)
+				Gui[TextBoxName].DragRange.Dragger.Selectable = false
+				Gui[TextBoxName].DragRange.Dragger.AutoButtonColor = false
+				Gui[TextBoxName].DragRange.Dragger.BackgroundTransparency = 0.9
+				Gui[TextBoxName].TextTransparency = 0.5
+			end
+			Gui.TextName.TextTransparency = 0.5
 		else
-			Gui.TextBox.DragRange.Dragger.Selectable = true
-			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
-			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+			for Index = 1, 3 do
+				local TextBoxName = 'TextBox'..tostring(Index)
+				Gui[TextBoxName].DragRange.Dragger.Selectable = true
+				Gui[TextBoxName].DragRange.Dragger.AutoButtonColor = true
+				Gui[TextBoxName].DragRange.Dragger.BackgroundTransparency = 0.7
+				Gui[TextBoxName].TextTransparency = 0.0
+			end
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
 	-- Validate
 	function API.Validate(Input)
+		print("!!!!")
+		print(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == API._Input then print("oh no.mp3") return false end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false
 		end
+		print('Passed')
 
 		API._Input = Input
 		Gui.ColorDisplayer.BackgroundColor3 = Input
@@ -169,7 +181,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
-			
+
 		elseif Mode == MODES.RGBINT then
 			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
 			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
@@ -209,17 +221,17 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 		-- Calculate value from position
 		local Value = GetValueFromDraggerPosition(TextBox.DragRange.Dragger, 0, 1)
-		
+
 		-- Calculate Result in RGB
 		if Mode == MODES.RGB or Mode == MODES.RGBINT then
 
 			-- Value
 			if ColorIndex == 1 then
 				API._Input = Color3.new(Value, API._Input.G, API._Input.B)
-	
+
 			elseif ColorIndex == 2 then
 				API._Input = Color3.new(API._Input.R, Value, API._Input.B)
-	
+
 			else
 				API._Input = Color3.new(API._Input.R, API._Input.G, Value)
 			end
@@ -227,7 +239,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			-- Text
 			if Mode == MODES.RGB then
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
-			
+
 			elseif Mode == MODES.RGBINT then
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 			end
@@ -253,8 +265,8 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		Gui.ColorDisplayer.BackgroundColor3 = API._Input
 
 		-- Trigger Listeners if updating per drag
-		if not UpdateOnlyOnDragEnd and API._Listener then
-			API._Listener(API._Input)
+		if not UpdateOnlyOnDragEnd then
+			API.TriggerListeners()
 		end
 	end
 
@@ -272,19 +284,13 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	-- Drag End
 	if UpdateOnlyOnDragEnd then
 		ValueDragger_1.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 		ValueDragger_2.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 		ValueDragger_3.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 	end
 

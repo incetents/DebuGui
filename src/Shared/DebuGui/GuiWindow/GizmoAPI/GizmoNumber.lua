@@ -26,7 +26,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
@@ -98,21 +98,23 @@ function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmoun
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
 	-- Update Values
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-		if IsReadOnly then return end
+		if IsReadOnly then
+			return
+		end
 
-		local Success = API.Validate(Gui.TextBox.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
 		end
 	end))
 

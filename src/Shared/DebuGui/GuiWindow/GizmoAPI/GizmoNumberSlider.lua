@@ -54,7 +54,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Defines
 	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
 	local IsReadOnly = false
@@ -62,7 +62,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 
 	-- Setup
 	Gui.TextName.Text = Name
-	
+
 	API._AddDragger(ValueDragger)
 
 	----------------
@@ -110,10 +110,14 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 			Gui.TextBox.DragRange.Dragger.Selectable = false
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = false
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.9
+			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.DragRange.Dragger.Selectable = true
 			Gui.TextBox.DragRange.Dragger.AutoButtonColor = true
 			Gui.TextBox.DragRange.Dragger.BackgroundTransparency = 0.7
+			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -158,17 +162,15 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		Gui.TextBox.Text = API._Input
 
 		-- Trigger Listeners
-		if not UpdateOnlyOnDragEnd and API._Listener then
-			API._Listener(API._Input)
+		if not UpdateOnlyOnDragEnd then
+			API.TriggerListeners()
 		end
 	end)
 
 	-- Drag End
 	if UpdateOnlyOnDragEnd then
 		ValueDragger.OnDragEnd(function()
-			if API._Listener then
-				API._Listener(API._Input)
-			end
+			API.TriggerListeners()
 		end)
 	end
 

@@ -24,6 +24,7 @@ function GizmoBool.new(Gui, Name, DefaultValue)
     Utility.QuickTypeAssert(DefaultValue, 'boolean')
 
     -- Setup
+	Gui.CheckBoxBG.CheckBoxFG.Checkmark.Text = '✓' -- Best to store unicode in Script vs in parameter
     Gui.TextName.Text = Name
 
 	-- Defines
@@ -85,9 +86,11 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 		end
 		-- Apply
 		if IsReadOnly then
+			Gui.TextName.TextTransparency = 0.5
 			Gui.CheckBoxBG.CheckBoxFG.Checkmark.TextTransparency = 0.5
 			Gui.CheckBoxBG.CheckBoxFG.BackgroundTransparency = 0.45
 		else
+			Gui.TextName.TextTransparency = 0.0
 			Gui.CheckBoxBG.CheckBoxFG.Checkmark.TextTransparency = 0.0
 			Gui.CheckBoxBG.CheckBoxFG.BackgroundTransparency = 0.0
 		end
@@ -96,17 +99,13 @@ function GizmoBool.new(Gui, Name, DefaultValue)
 
     -- Update Values
     API._AddConnection(Gui.CheckBoxBG.CheckBoxFG.MouseButton1Down:Connect(function()
-
 		if IsReadOnly then
 			return
 		end
 
-        local Success = API.Validate(not API._Input)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(not API._Input) then
+			API.TriggerListeners()
 		end
-
     end))
 
     -- Call Validate on Default Value

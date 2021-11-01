@@ -25,11 +25,11 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 		Utility.QuickTypeAssert(DecimalAmount, 'number')
 		DecimalAmount = math.floor(DecimalAmount)
 	end
-	
+
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox1.Text = DefaultValue.x
-	Gui.TextBox2.Text = DefaultValue.y
+	Gui.TextBox1.Text = DefaultValue.X
+	Gui.TextBox2.Text = DefaultValue.Y
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 
@@ -121,11 +121,13 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox2.TextEditable = false
 			Gui.TextBox1.TextTransparency = 0.5
 			Gui.TextBox2.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox1.TextEditable = true
 			Gui.TextBox2.TextEditable = true
 			Gui.TextBox1.TextTransparency = 0.0
 			Gui.TextBox2.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -136,10 +138,8 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -147,10 +147,8 @@ function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text)
-		
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(API._Input.X, Gui.TextBox2.Text) then
+			API.TriggerListeners()
 		end
 	end))
 

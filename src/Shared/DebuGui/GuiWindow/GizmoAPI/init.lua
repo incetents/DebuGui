@@ -182,10 +182,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 		-- Update Data
 		if API._Modal.ListenerAPI.Validate(Choice) then
-			-- Update Listener as well
-			if API._Modal.ListenerAPI._Listener then
-				API._Modal.ListenerAPI._Listener(Choice)
-			end
+			API._Modal.ListenerAPI.TriggerListeners()
 		end
 
 		API._CloseModal()

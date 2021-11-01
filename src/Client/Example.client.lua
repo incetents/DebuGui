@@ -70,6 +70,13 @@ Gui1.AddBool('bool5', false).Set(true).SetCheckboxColor(Color3.fromRGB(122, 40, 
 Gui1.AddBool('bool6', true).SetReadOnly()
 Gui1.AddBool('bool7', false).SetReadOnly().Set(true).Set(false)
 
+Gui1.AddBool('bool_multi_listen', true)
+	.Listen(function()
+		print('multi listen A')
+	end)
+	.Listen(function()
+		print('multi listen B')
+	end)
 
 -- Buttons --
 Gui1.AddSeparator('BUTTON_SEPARATOR').SetName('BUTTONS')
@@ -107,6 +114,7 @@ end).SetValueBGColor(Color3.fromRGB(39, 87, 59))
 Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
 Gui1.AddInteger('int7', 1).Set('a')
 Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddInteger('int9', 99).SetReadOnly()
 
 
 -- Integer Sliders --
@@ -121,6 +129,7 @@ end)
 Gui1.AddIntegerSlider('intslider3', 50.1, 0.1, 50.1)
 Gui1.AddIntegerSlider('intslider4', 25, 0, 50).Set(99)
 Gui1.AddIntegerSlider('intslider5', 25, 0, 50).Set(-1)
+Gui1.AddIntegerSlider('intslider6', 1, -2, 2).SetReadOnly()
 
 
 -- Long String
@@ -129,6 +138,9 @@ Gui1.AddSeparator('LONG_STRING_SEPARATOR').SetName('LONG STRING')
 Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
+
+Gui1.AddLongString('longstring3', "line1\nline2\nline3")
+	.SetReadOnly()
 
 
 -- Numbers --
@@ -167,13 +179,15 @@ Gui1.AddNumberSlider('numslider2', 100, 100, 200, 4, DebuGui.SLIDERPARAM_UPDATE_
 end)
 Gui1.AddNumberSlider('numslider3', 20, 0, 100, 3).Set(45)
 Gui1.AddNumberSlider('numslider4', 40, 33, 44)
-Gui1.AddNumberSlider('numslider5', 1, 2, 3, 2)--.SetReadOnly()
+Gui1.AddNumberSlider('numslider5', 1, 2, 3, 2)
 Gui1.AddNumberSlider('numslider6', 20, 0, 100, 1).Set(-1)
 Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 
 Gui1.Remove('numslider4')
+
+Gui1.AddNumberSlider('numslider8', 1, 2, 3, 2).SetReadOnly()
 
 
 -- Separators --
@@ -199,6 +213,7 @@ Gui1.AddString('string5', 'default').Listen(function(NewValue)
 	print("New String5 Value: "..NewValue)
 end)
 Gui1.AddString('string6', 'a').Set('b')
+Gui1.AddString('string7', 'readonly string').SetReadOnly()
 
 
 -- Vectors --
@@ -215,6 +230,8 @@ Gui1.AddVector2('vec2_5', Vector2.new(-1, -1))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
 	.SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
+Gui1.AddVector2('vec2_6', Vector2.new(6, 6)).SetReadOnly()
+
 
 Gui1.AddVector3('vec3_1', Vector3.new(7.9, -2, 54)).Listen(function(NewVector)
 	print("New vec3_1 Value: ", NewVector)
@@ -227,6 +244,7 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
 	.SetValueTextColor(Color3.fromRGB(0, 0, 0))
 
+Gui1.AddVector3('vec3_6', Vector3.new(6, 6, 6)).SetReadOnly()
 
 -- Color Slider
 Gui1.AddSeparator('COLOR_SLIDER_SEPARATOR').SetName('COLOR SLIDERS')
@@ -254,6 +272,9 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
+
+Gui1.AddColorSliderRGB('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+	.SetReadOnly()
 
 
 -- List Picker --
@@ -300,6 +321,7 @@ Gui1.AddListPicker('listpicker7', '3', {'1', '2', '3', '4'})
 Gui1.AddListPicker('listpicker8', '3', {'1', '2', '3', '4'})
 	.ChangeChoices({'a', 'b', 'c', 'd', 'e'})
 
+Gui1.AddListPicker('listpicker_locked', '1', {'1', '2', '3'}).SetReadOnly()
 
 -------------
 -- Folders --
@@ -382,6 +404,23 @@ Gui1.Remove('Small Frame Folder 2')
 -- Getter API --
 ----------------
 
+-- Getters for Values
+
+-- print("~~~ Quick Value Getters")
+-- print('bool1 = ', Gui1.Get('bool1').GetValue())
+-- print('button1 = ', Gui1.Get('button1').GetValue())
+-- print('ColorSliderRGB_1 = ', Gui1.Get('ColorSliderRGB_1').GetValue())
+-- print('folder1 = ', Gui1.Get('folder1').GetValue())
+-- print('int1 = ', Gui1.Get('int1').GetValue())
+-- print('intslider1 = ', Gui1.Get('intslider1').GetValue())
+-- print('num1 = ', Gui1.Get('num1').GetValue())
+-- print('numslider1 = ', Gui1.Get('numslider1').GetValue())
+-- print('separator6 = ', Gui1.Get('separator6').GetValue())
+-- print('string1 = ', Gui1.Get('string1').GetValue())
+-- print('text1 = ', Gui1.Get('text1').GetValue())
+-- print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
+-- print('vec3_1 = ', Gui1.Get('vec3_1').GetValue())
+
 -- API Acessing
 -- !!! EXPENSIVE/SLOW TO PRINT, only use for testing/sparingly !!! --
 
@@ -400,21 +439,6 @@ Gui1.Remove('Small Frame Folder 2')
 -- print("TextGui API: ", Gui1.Get('text1'))
 -- print("Vector2Gui API: ", Gui1.Get('vec2_1'))
 -- print("Vector3Gui API: ", Gui1.Get('vec3_1'))
-
-print("~~~ Quick Value Getters")
-print('bool1 = ', Gui1.Get('bool1').GetValue())
-print('button1 = ', Gui1.Get('button1').GetValue())
-print('ColorSliderRGB_1 = ', Gui1.Get('ColorSliderRGB_1').GetValue())
-print('folder1 = ', Gui1.Get('folder1').GetValue())
-print('int1 = ', Gui1.Get('int1').GetValue())
-print('intslider1 = ', Gui1.Get('intslider1').GetValue())
-print('num1 = ', Gui1.Get('num1').GetValue())
-print('numslider1 = ', Gui1.Get('numslider1').GetValue())
-print('separator6 = ', Gui1.Get('separator6').GetValue())
-print('string1 = ', Gui1.Get('string1').GetValue())
-print('text1 = ', Gui1.Get('text1').GetValue())
-print('vec2_1 = ', Gui1.Get('vec2_1').GetValue())
-print('vec3_1 = ', Gui1.Get('vec3_1').GetValue())
 
 ---------------
 -- Removal API --

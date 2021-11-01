@@ -271,6 +271,10 @@
 					func (Function) = Reference to the function that is called when the value is changed
 			-- @Returns: (Gizmo)
 
+		-- TriggerListeners ()
+			-- @Description: calls every function listening to this gizmo with the currently stored value
+			-- @Returns: (Gizmo)
+
 		-- Set (newValue)
 			-- @Description: change the internal stored value
 			-- @Parameters:
@@ -516,6 +520,16 @@
 			-- @Parameters:
 					NewChoices (table) = table array of strings
 			-- @Returns: (Gizmo)
+
+		-- SetReadOnly (state)
+			-- @Description: Will lock UI from being modified by the User
+			-- @Parameters:
+					state (Boolean) = LockState
+			-- @Returns: (Gizmo)
+
+		-- IsReadOnly ()
+			-- @Description: Check the ReadOnly state
+			-- @Returns: (Boolean)
 
 
 	-- Gizmo (LongString) : stores a multiline string

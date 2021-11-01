@@ -13,7 +13,7 @@ function GizmoBase.New()
 	-------------
     local API = {
 		_IsDestroyed = false,
-        _Listener = nil,
+        _Listeners = {},
         _Input = nil,
 		_Connections = nil,
 		_Draggers = nil,
@@ -38,6 +38,7 @@ function GizmoBase.New()
 
 	function API._Destroy()
 		API._IsDestroyed = true
+		API._Listeners = nil
 		-- Remove Connections
 		if API._Connections then
 			for _, Connection in ipairs(API._Connections) do
@@ -74,9 +75,16 @@ function GizmoBase.New()
         return false
     end
 
+	function API.TriggerListeners()
+		for _, Function in ipairs(API._Listeners) do
+			Function(API._Input)
+		end
+		return API
+	end
+
     function API.Listen(func)
 		if API._DeadCheck() then return nil end
-        API._Listener = func
+        table.insert(API._Listeners, func)
         return API
     end
 

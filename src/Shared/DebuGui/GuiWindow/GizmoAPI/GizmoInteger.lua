@@ -31,7 +31,7 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	-- Defines
 	local API = GizmoBase.New()
 	local IsReadOnly = false
-	
+
 	----------------
 	-- Public API --
 	----------------
@@ -91,27 +91,30 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 		if IsReadOnly then
 			Gui.TextBox.TextEditable = false
 			Gui.TextBox.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox.TextEditable = true
 			Gui.TextBox.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
 
-   -- Update Values
-   API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
-	   local Success = API.Validate(Gui.TextBox.Text)
+	-- Update Values
+	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+		if IsReadOnly then
+			return
+		end
 
-	   if Success and API._Listener then
-		API._Listener(API._Input)
-	end
+		if API.Validate(Gui.TextBox.Text) then
+			API.TriggerListeners()
+		end
+	end))
 
-   end))
+	-- Call Validate on Default Value
+	API.Validate(DefaultValue)
 
-   -- Call Validate on Default Value
-   API.Validate(DefaultValue)
-
-   return API
+	return API
 end
 
 return GizmoInteger

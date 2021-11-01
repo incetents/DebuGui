@@ -28,9 +28,9 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox1.Text = DefaultValue.x
-	Gui.TextBox2.Text = DefaultValue.y
-	Gui.TextBox3.Text = DefaultValue.z
+	Gui.TextBox1.Text = DefaultValue.X
+	Gui.TextBox2.Text = DefaultValue.Y
+	Gui.TextBox3.Text = DefaultValue.Z
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox3.ClearTextOnFocus = ClearTextOnFocus
@@ -131,6 +131,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox1.TextTransparency = 0.5
 			Gui.TextBox2.TextTransparency = 0.5
 			Gui.TextBox3.TextTransparency = 0.5
+			Gui.TextName.TextTransparency = 0.5
 		else
 			Gui.TextBox1.TextEditable = true
 			Gui.TextBox2.TextEditable = true
@@ -138,6 +139,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			Gui.TextBox1.TextTransparency = 0.0
 			Gui.TextBox2.TextTransparency = 0.0
 			Gui.TextBox3.TextTransparency = 0.0
+			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
 	end
@@ -148,10 +150,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -159,10 +159,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text) then
+			API.TriggerListeners()
 		end
 	end))
 	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
@@ -170,10 +168,8 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		local Success = API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z)
-
-		if Success and API._Listener then
-			API._Listener(API._Input)
+		if API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z) then
+			API.TriggerListeners()
 		end
 	end))
 

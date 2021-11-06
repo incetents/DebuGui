@@ -13,7 +13,7 @@ local VERTICAL_PADDING = 6
 local GizmoSeparator = {}
 
 --
-function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
+function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Text, Height)
 
     -- Defaults
     Color = Color or Color3.fromRGB(59, 60, 120)
@@ -25,7 +25,7 @@ function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
     Utility.QuickTypeAssert(Color, 'Color3')
     Utility.QuickTypeAssert(Text, 'string')
     Utility.QuickTypeAssert(Height, 'number')
-    
+
     -- Init Values
     Gui.Line.Text = Text
     Gui.Line.BackgroundColor3 = Color
@@ -50,11 +50,15 @@ function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
     end
     function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
+		-- Modify Gui Size
 		local OCHeight = Gui.Size.Y.Offset
-        Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
-		local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
-		-- Fix canvas height based on change in height
-		Utility.ModifyCanvasHeight(MasterAPI._GuiParent, DeltaHeight)
+		Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
+
+		-- Modify Canvas Height based on change in height
+		if Utility.IsFolderVisible(ParentAPI, true) then
+			local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
+			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
+		end
     end
 
     -- End

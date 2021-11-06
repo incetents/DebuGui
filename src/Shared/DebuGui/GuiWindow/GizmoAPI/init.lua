@@ -305,7 +305,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, Height)
-		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API._MasterAPI, DefaultValue, Height)
+		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API, DefaultValue, Height)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)

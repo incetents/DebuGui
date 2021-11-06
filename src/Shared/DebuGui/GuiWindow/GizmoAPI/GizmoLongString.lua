@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
+function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, Height)
 
 	-- Defaults
 	DefaultValue = DefaultValue or ''
@@ -29,7 +29,7 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 	-- Data
 	local IsReadOnly = false
 	local API = GizmoBase.New()
-	
+
 	----------------
 	-- Public API --
 	----------------
@@ -98,11 +98,15 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 
 	function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
+		-- Modify Gui Size
 		local OCHeight = Gui.Size.Y.Offset
         Gui.Size = UDim2.new(1, 0, 0, NewHeight)
-		local DeltaHeight = NewHeight - OCHeight
-		-- Fix canvas height based on change in height
-		Utility.ModifyCanvasHeight(MasterAPI._GuiParent, DeltaHeight)
+
+		-- Modify Canvas Height based on change in height
+		if Utility.IsFolderVisible(ParentAPI, true) then
+			local DeltaHeight = NewHeight - OCHeight
+			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
+		end
 	end
 
 	function API.SetHeightBasedOnLineCount(LineCount)

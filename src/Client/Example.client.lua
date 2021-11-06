@@ -14,6 +14,7 @@ local Gui1 = DebuGui.NewWindow('Core', {
 	Width = 600,
 	Height = 520,
 })
+Gui1.Minimize()
 Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
 Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
@@ -143,9 +144,11 @@ Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
 
-Gui1.AddLongString('longstring3', "line1\nline2\nline3")
-	.SetReadOnly()
+Gui1.AddLongString('longstring3', "line1\nline2\nline3", 30)
+Gui1.AddLongString('longstring4', "line1\nline2\nline3", 30).SetHeight(100)
 
+Gui1.AddLongString('longstring_locked', "line1\nline2\nline3")
+	.SetReadOnly()
 
 -- Numbers --
 Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
@@ -258,31 +261,31 @@ Gui1.AddVector3('vec3_6', Vector3.new(6, 6, 6)).SetReadOnly()
 -- Color Slider
 Gui1.AddSeparator('COLOR_SLIDER_SEPARATOR').SetName('COLOR SLIDERS')
 --
-Gui1.AddColorSliderRGB('ColorSliderRGB_1', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+Gui1.AddColorSliderRGB('ColorSliderRGB_1', Color3.fromRGB(123, 69, 255), 2, true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGB_1 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGB('ColorSliderRGB_2', Color3.fromRGB(0, 255, 77), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderRGB('ColorSliderRGB_2', Color3.fromRGB(0, 255, 77), nil, true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGB_2 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_1', Color3.fromRGB(10, 44, 78), nil)
+Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_1', Color3.fromRGB(10, 44, 78))
 	.Set(Color3.fromRGB(126, 0, 0))
 
-Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), 2, DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGBInt_2 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
 	.Set(Color3.fromRGB(126, 0, 0))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGB('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+Gui1.AddColorSliderRGBInt('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255))
 	.SetReadOnly()
 
 
@@ -366,7 +369,7 @@ Folder1.AddString('string1', 'Cool Beans')
 Folder1.AddVector2('vec2', Vector2.new(33, 565))
 Folder1.AddVector2('vec3', Vector2.new(33, 565))
 Folder1.AddNumberSlider('numslider', 100, 0, 200)
-Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), true)
 Folder1.AddListPicker('listpicker1', 'bbb', {
 	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
 }).Listen(function(NewChoice)

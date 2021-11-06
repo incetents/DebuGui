@@ -4,6 +4,7 @@
 local GizmoFolder = {}
 
 -- Modules
+local Constants = require(script.Parent.Parent.Parent.Constants)
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
 ----------------------
@@ -36,6 +37,8 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Setup
 	Gui.TextName.Text = Name
+	Gui.Line.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
+	Gui.SideLine.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
 
 	-- Defines
 	local GizmoAPI = require(script.Parent)
@@ -105,6 +108,10 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		Gui.Line.BackgroundColor3 = NewColor
 		Gui.SideLine.BackgroundColor3 = NewColor
 		return API
+	end
+
+	function API.GetColor()
+		return Gui.Line.BackgroundColor3
 	end
 
 	function API.IsVisible()

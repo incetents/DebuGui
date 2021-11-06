@@ -1,11 +1,7 @@
 -- © 2021 Emmanuel Lajeunesse
 
 -- Module
-local DebuGui = {
-	-- Module Constants
-	SLIDERPARAM_UPDATE_ON_MOVEMENT = false;
-	SLIDERPARAM_UPDATE_ON_RELEASE = true;
-}
+local DebuGui = {}
 
 -- Services
 local RunService = game:GetService("RunService")
@@ -20,6 +16,7 @@ end
 -- Modules
 local GuiWindow = require(script.GuiWindow)
 local Utility = require(script.Utility)
+local Constants = require(script.Constants)
 
 -- Defines --
 local Player = Players.LocalPlayer
@@ -86,6 +83,10 @@ function DebuGui.NewWindow(GuiName, InitData)
 	DebuGui.ScreenGuiCount += 1
 
 	return API
+end
+
+function DebuGui.GetConstants()
+	return Constants
 end
 
 return DebuGui

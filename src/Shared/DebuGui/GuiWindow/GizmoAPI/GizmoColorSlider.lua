@@ -76,6 +76,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Defaults
 	DefaultColor = DefaultColor or Color3.fromRGB(255, 255, 255)
+	UpdateOnlyOnDragEnd = UpdateOnlyOnDragEnd or false
 
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
@@ -172,17 +173,17 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		Gui.ColorDisplayer.BackgroundColor3 = Input
 
 		if Mode == MODES.RGB then
-			Gui.TextBox1.Text = 'R: '..tostring(GetColor255(API._Input.R))
-			Gui.TextBox2.Text = 'G: '..tostring(GetColor255(API._Input.G))
-			Gui.TextBox3.Text = 'B: '..tostring(GetColor255(API._Input.B))
+			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
+			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
+			Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(API._Input.B, DecimalAmount))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
 
 		elseif Mode == MODES.RGBINT then
-			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
-			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
-			Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(API._Input.B, DecimalAmount))
+			Gui.TextBox1.Text = 'R: '..tostring(GetColor255(API._Input.R))
+			Gui.TextBox2.Text = 'G: '..tostring(GetColor255(API._Input.G))
+			Gui.TextBox3.Text = 'B: '..tostring(GetColor255(API._Input.B))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
@@ -235,10 +236,10 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 			-- Text
 			if Mode == MODES.RGB then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 
 			elseif Mode == MODES.RGBINT then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
 			end
 
 		elseif Mode == MODES.HSV then

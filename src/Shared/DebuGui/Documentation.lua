@@ -110,6 +110,12 @@
 					UniqueName (String) = UniqueName of the Gizmo
 			-- @Returns: (Gizmo)
 
+		-- GetFolder (UniqueName)
+			-- @Description: Return the API of a specific Folder
+			-- @Parameters:
+					UniqueName (String) = UniqueName of the Folder
+			-- @Returns: (Folder Gizmo)
+
 		-- Remove (UniqueName)
 			-- @Description: Destroy a Gizmo
 			-- @Parameters:
@@ -386,9 +392,38 @@
 
 
 	-- Gizmo (Folder) : Folder that can also contain Gizmos in a recursive fashion
-		-- [ Same API as (Gizmos) ]
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetColor (color)
+			-- @Description: Changes color of the frame container
+			-- @Parameters:
+					color (Color3) = New color for the frame container
+			-- @Returns: (Gizmo)
+
+		-- GetColor ()
+			-- @Description: Returns the color of the frame container
+			-- @Returns: (Color3)
+
+
+		-- IsVisible ()
+			-- @Description: Whether the folder is currently visible
+			-- @Returns: (Boolean)
+
+		-- [ Also uses same API as (GuiWindow Gizmos) ]
 
 		-- Get (UniqueName)
+		-- GetFolder (UniqueName)
 		-- Remove (UniqueName)
 		-- RemoveAll ()
 		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)

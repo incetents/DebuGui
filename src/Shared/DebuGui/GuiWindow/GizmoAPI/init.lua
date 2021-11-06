@@ -348,12 +348,12 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
 	end
 
-	function API.AddColorSliderRGB(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, nil)
+	function API.AddColorSliderRGB(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, DecimalAmount)
 	end
 
-	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, DecimalAmount)
+	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, nil)
 	end
 
 	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
@@ -368,10 +368,20 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	function API.Get(UniqueName)
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
-			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
+			error("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
 			return nil
 		end
 		return API._GizmosTable[UniqueName]
+	end
+
+	-- Returns API of Folder
+	function API.GetFolder(UniqueName)
+		-- Sanity
+		if API._GizmosFolders[UniqueName] == nil then
+			error("Warning! Folder does not exist ("..UniqueName..")")
+			return nil
+		end
+		return API._GizmosFolders[UniqueName]
 	end
 
 	-- Removes API of Gizmo

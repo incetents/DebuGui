@@ -1,0 +1,4 @@
+return {
+	DEFAULT_WINDOW_TOPBAR_COLOR = Color3.fromRGB(64, 103, 157);
+	DEFAULT_FOLDER_COLOR = Color3.fromRGB(59, 60, 120);
+}

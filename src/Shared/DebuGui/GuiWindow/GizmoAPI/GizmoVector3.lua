@@ -150,7 +150,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFoc
 			return
 		end
 
-		if API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text) then
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y, API._Input.Z) then
 			API.TriggerListeners()
 		end
 	end))
@@ -159,16 +159,16 @@ function GizmoVector3.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFoc
 			return
 		end
 
-		if API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text) then
+		if API.Validate(API._Input.X, Gui.TextBox2.Text, API._Input.Z) then
 			API.TriggerListeners()
 		end
 	end))
-	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox3.FocusLost:Connect(function(__) -- enterPressed
 		if IsReadOnly then
 			return
 		end
 
-		if API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z) then
+		if API.Validate(API._Input.X, API._Input.Y, Gui.TextBox3.Text) then
 			API.TriggerListeners()
 		end
 	end))

@@ -11,21 +11,17 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------------
 local function UpdateVisual(API, Gui)
 	if API.IsVisible() then
+		Gui.DropDownBtn.Text = 'v'
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
-		local FrameHeight = CanvasHeight
-		Gui.Size = UDim2.new(1, 0, 0, FrameHeight + 24)
-		Gui.DropDownBtn.Text = 'v'
-		-- Show Everything in Canvas
-		Gui.ScrollingFrame.ScrollingEnabled = false
-		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
+		Gui.Size = UDim2.new(1, 0, 0, CanvasHeight + 24)
 	else
+		Gui.DropDownBtn.Text = '>'
 		Gui.ScrollingFrame.Visible = false
 		Gui.Size = UDim2.new(1, 0, 0, 24)
-		Gui.DropDownBtn.Text = '>'
 	end
 end
 

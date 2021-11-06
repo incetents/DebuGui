@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoNumber.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
 
 	-- Defaults
 	DefaultValue = tonumber(DefaultValue) or 0

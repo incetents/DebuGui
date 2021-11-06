@@ -316,8 +316,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 	end
 
-	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+	function API.AddNumber(UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
@@ -340,12 +340,12 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API._MasterAPI, API, StartOpen)
 	end
 
-	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+	function API.AddVector2(UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
 	end
 
-	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+	function API.AddVector3(UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddColorSliderRGB(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)

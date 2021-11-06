@@ -28,6 +28,10 @@
 			-- @Parameters:
 					TimeOutTime (number) = Time to wait, nil = wait forever
 
+		-- GetConstants ()
+			-- @Description: Returns the Constants Module as a table (ScriptModule that is directly below DebuGui called Constants)
+			-- @Returns: (table)
+
 
 	-- GuiWindow (Core) : A singular window spawned from DebuGui's NewWindow
 
@@ -126,7 +130,7 @@
 			-- @Description: Destroy all the gizmos
 			-- @Returns: (Gizmo)
 
-		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus = false)
 			-- @Description: String Gizmo, stores 1 editable string
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -149,7 +153,7 @@
 					Height (number) = Pixel Height of gizmo
 			-- @Returns: (Gizmo)
 
-		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus = false)
 			-- @Description: Integer Gizmo, displays 1 number that holds one rounded number
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -167,13 +171,13 @@
 					UpdateOnlyOnDragEnd = (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumber (UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Number Gizmo, displays 1 number
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultValue (number) = Initial Number Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
 		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
@@ -215,22 +219,22 @@
 					StartOpen (Boolean) = Is Initially Opened
 			-- @Returns: (Gizmo)
 
-		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		-- AddVector2 (UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Vector2 Gizmo, can store a Vector2 Value
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultVec2 (Vector2) = Initial Vector2 Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
-		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddVector3 (UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Vector3 Gizmo, can store a Vector2 Value
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultVec3 (Vector3) = Initial Vector3 Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
 		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
@@ -258,7 +262,7 @@
 					UpdateOnlyOnDragEnd (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus = false)
 			-- @Description: ListPicker Gizmo, have 1 string selected from a list of strings. Opens a Modal to select which one you want
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -431,14 +435,14 @@
 		-- AddLongString (UniqueName, DefaultValue, Height)
 		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
 		-- AddIntegerSlider (UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
-		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumber (UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
 		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 		-- AddBool (UniqueName, DefaultValue)
 		-- AddButton (UniqueName)
 		-- AddSeparator (UniqueName, Color, Text, Height)
 		-- AddFolder (UniqueName, StartOpen)
-		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddVector2 (UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
+		-- AddVector3 (UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
 		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		-- AddColorSliderRGBInt (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
 		-- AddColorSliderHSV (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)

@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoVector2.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	-- Defaults
 	DefaultValue = DefaultValue or Vector2.new(0, 0)
 	if ClearTextOnFocus == nil then

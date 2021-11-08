@@ -144,8 +144,8 @@ Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
 
-Gui1.AddLongString('longstring3', "line1\nline2\nline3", 30)
-Gui1.AddLongString('longstring4', "line1\nline2\nline3", 30).SetHeight(100)
+Gui1.AddLongString('longstring3', "line1\nline2\nline3", false, 30)
+Gui1.AddLongString('longstring4', "line1\nline2\nline3", false, 30).SetHeight(100)
 
 Gui1.AddLongString('longstring_locked', "line1\nline2\nline3")
 	.SetReadOnly()

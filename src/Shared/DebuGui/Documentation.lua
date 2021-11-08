@@ -145,7 +145,7 @@
 					DefaultValue (String) = Displayed Text
 			-- @Returns: (Gizmo)
 
-		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddLongString (UniqueName, DefaultValue, ClearTextOnFocus, Height)
 			-- @Description: LongString Gizmo, similar to StringGizmo except with larger display box
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -438,7 +438,7 @@
 		-- RemoveAll ()
 		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
 		-- AddText (UniqueName, DefaultValue)
-		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddLongString (UniqueName, DefaultValue, ClearTextOnFocus, Height)
 		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
 		-- AddIntegerSlider (UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 		-- AddNumber (UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
@@ -732,7 +732,7 @@
 					name (String) = New displayed name
 			-- @Returns: (Gizmo)
 
-		-- SetTextColor (color)
+		-- SetNameColor (color)
 			-- @Description: Changes color of the text in the separator
 			-- @Parameters:
 					color (Color3) = New color for the separator text

@@ -10,9 +10,10 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, Height)
+function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocus, Height)
 
 	-- Defaults
+	ClearTextOnFocus = ClearTextOnFocus or false
 	DefaultValue = DefaultValue or ''
 	Height = Height or 48
 
@@ -24,6 +25,7 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, Height)
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
+	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 	Gui.Size = UDim2.new(1, 0, 0, Height)
 
 	-- Data

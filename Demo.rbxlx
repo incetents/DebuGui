@@ -7,7 +7,7 @@
 			<token name="AnimationWeightedBlendFix">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<token name="ClientAnimatorThrottling">0</token>
-			<string name="CollisionGroups">Default^0^-1</string>
+			<string name="CollisionGroups">Default^0^-3\Plugin_StudioTweaks_BoundingBox^1^-2</string>
 			<Ref name="CurrentCamera">RBX0F01C2780FC6466095A19E1448DDE9AF</Ref>
 			<double name="DistributedGameTime">0</double>
 			<bool name="ExplicitAutoJoints">true</bool>
@@ -74,27 +74,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>40.5865517</X>
-					<Y>44.2145042</Y>
-					<Z>-119.055664</Z>
-					<R00>-0.911785781</R00>
-					<R01>0.0460899882</R01>
-					<R02>-0.408071607</R02>
-					<R10>-0</R10>
-					<R11>0.993682086</R11>
-					<R12>0.112232238</R12>
-					<R20>0.410666198</R20>
-					<R21>0.102331758</R21>
-					<R22>-0.906025171</R22>
+					<X>-0.717637599</X>
+					<Y>37.837822</Y>
+					<Z>62.9166603</Z>
+					<R00>0.999852717</R00>
+					<R01>0.00725610508</R01>
+					<R02>-0.0155534912</R02>
+					<R10>4.65661287e-10</R10>
+					<R11>0.906232059</R11>
+					<R12>0.422780633</R12>
+					<R20>0.0171628147</R20>
+					<R21>-0.422718376</R21>
+					<R22>0.906098545</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>41.4026947</X>
-					<Y>43.9900398</Y>
-					<Z>-117.243614</Z>
+					<X>-0.68653059</X>
+					<Y>36.99226</Y>
+					<Z>61.1044617</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -350,7 +350,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<token name="BottomSurface">0</token>
 				<token name="BottomSurfaceInput">0</token>
 				<CoordinateFrame name="CFrame">
-					<X>0</X>
+					<X>2</X>
 					<Y>0.5</Y>
 					<Z>0</Z>
 					<R00>1</R00>
@@ -385,7 +385,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
-				<string name="Name">SpawnLocation</string>
+				<string name="Name">Spawn_White</string>
 				<bool name="Neutral">true</bool>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -449,6 +449,629 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<Content name="Texture"><url>rbxasset://textures/SpawnLocation.png</url></Content>
 					<float name="Transparency">0</float>
 					<UniqueId name="UniqueId">46009198e08047480187a7bd0001916a</UniqueId>
+					<int name="ZIndex">1</int>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX058125FFCE2240628A06E0E82F0ACE1C">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>2</X>
+					<Y>4.5</Y>
+					<Z>-22</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">SceneObject_Block</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">0fc089a5a774912b01988041007a6556</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>9</Y>
+					<Z>4</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SurfaceGui" referent="RBXB36C50425F8F4FDAB3C5F45F88A30457">
+				<Properties>
+					<bool name="Active">true</bool>
+					<Ref name="Adornee">null</Ref>
+					<bool name="AlwaysOnTop">false</bool>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="AutoLocalize">true</bool>
+					<float name="Brightness">1</float>
+					<Vector2 name="CanvasSize">
+						<X>800</X>
+						<Y>600</Y>
+					</Vector2>
+					<bool name="ClipsDescendants">true</bool>
+					<bool name="Enabled">true</bool>
+					<token name="Face">2</token>
+					<float name="LightInfluence">1</float>
+					<string name="Name">SurfaceGui</string>
+					<float name="PixelsPerStud">50</float>
+					<bool name="ResetOnSpawn">true</bool>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<token name="SizingMode">1</token>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<float name="ToolPunchThroughDistance">0</float>
+					<UniqueId name="UniqueId">0fc089a5a774912b019880410168fd0c</UniqueId>
+					<token name="ZIndexBehavior">1</token>
+					<float name="ZOffset">0</float>
+				</Properties>
+				<Item class="TextLabel" referent="RBXF46BBCED6DA94DF2BF12B493783839B5">
+					<Properties>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0.5</X>
+							<Y>0.5</Y>
+						</Vector2>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<bool name="AutoLocalize">true</bool>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">0</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<token name="Font">3</token>
+						<int name="LayoutOrder">0</int>
+						<float name="LineHeight">1</float>
+						<int name="MaxVisibleGraphemes">-1</int>
+						<string name="Name">TextLabel</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.5</XS>
+							<XO>0</XO>
+							<YS>0.5</YS>
+							<YO>0</YO>
+						</UDim2>
+						<bool name="RichText">false</bool>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<UDim2 name="Size">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>100</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<string name="Text">Label</string>
+						<Color3 name="TextColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<bool name="TextScaled">true</bool>
+						<float name="TextSize">14</float>
+						<Color3 name="TextStrokeColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<float name="TextStrokeTransparency">1</float>
+						<float name="TextTransparency">0</float>
+						<token name="TextTruncate">0</token>
+						<bool name="TextWrapped">true</bool>
+						<token name="TextXAlignment">2</token>
+						<token name="TextYAlignment">1</token>
+						<UniqueId name="UniqueId">0fc089a5a774912b019880410168fd16</UniqueId>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX30133D1A59FE4C94A81EAF9606CAC2A0">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>20</X>
+					<Y>4.5</Y>
+					<Z>-22</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">SceneObject_Sphere</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">0fc089a5a774912b0198804100825bdd</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">0</token>
+				<Vector3 name="size">
+					<X>10</X>
+					<Y>10</Y>
+					<Z>10</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="RBX32D570C9026745419F44B7324F70A061">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-16</X>
+					<Y>4.5</Y>
+					<Z>-22</Z>
+					<R00>0</R00>
+					<R01>-1</R01>
+					<R02>0</R02>
+					<R10>1</R10>
+					<R11>0</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">SceneObject_Cylinder</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">0fc089a5a774912b0198804100825c83</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">2</token>
+				<Vector3 name="size">
+					<X>9</X>
+					<Y>4</Y>
+					<Z>4</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="SpawnLocation" referent="RBX7A918B8643AC47E382169A31BE9DE53E">
+			<Properties>
+				<bool name="AllowTeamChangeOnTouch">false</bool>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>62</X>
+					<Y>0.5</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4289020495</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<int name="Duration">0</int>
+				<bool name="Enabled">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Spawn_Red</string>
+				<bool name="Neutral">false</bool>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<int name="TeamColor">1004</int>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">0fc089a5a774912b0198804102871048</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>12</X>
+					<Y>1</Y>
+					<Z>12</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Decal" referent="RBXC8F07DCE21584B36A5D099D8F5A5418F">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Color3 name="Color3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<token name="Face">1</token>
+					<string name="Name">Decal</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<Content name="Texture"><url>rbxasset://textures/SpawnLocation.png</url></Content>
+					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">0fc089a5a774912b0198804102871049</UniqueId>
+					<int name="ZIndex">1</int>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="SpawnLocation" referent="RBX10F2520D88A546FFBCD35F92EDA96486">
+			<Properties>
+				<bool name="AllowTeamChangeOnTouch">false</bool>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-58</X>
+					<Y>0.5</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4281705755</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<int name="Duration">0</int>
+				<bool name="Enabled">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Spawn_Green</string>
+				<bool name="Neutral">false</bool>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<int name="TeamColor">1020</int>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">0fc089a5a774912b01988041028711c0</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>12</X>
+					<Y>1</Y>
+					<Z>12</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Decal" referent="RBX48D3899A55954533A298C8FE05246588">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Color3 name="Color3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<token name="Face">1</token>
+					<string name="Name">Decal</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<Content name="Texture"><url>rbxasset://textures/SpawnLocation.png</url></Content>
+					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">0fc089a5a774912b01988041028711c1</UniqueId>
 					<int name="ZIndex">1</int>
 				</Properties>
 			</Item>
@@ -587,7 +1210,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<float name="CharacterJumpHeight">7.19999981</float>
 			<float name="CharacterJumpPower">50</float>
 			<float name="CharacterMaxSlopeAngle">89</float>
-			<bool name="CharacterUseJumpPower">false</bool>
+			<bool name="CharacterUseJumpPower">true</bool>
 			<float name="CharacterWalkSpeed">16</float>
 			<token name="DevCameraOcclusionMode">0</token>
 			<token name="DevComputerCameraMovementMode">0</token>
@@ -647,12 +1270,13 @@ local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window
 local Gui1 = DebuGui.NewWindow('Core', {
-	Title = 'TEST NAME HERE 12312312',
+	Title = 'API Examples',
 	X = 150,
 	Y = 20,
 	Width = 600,
 	Height = 520,
 })
+Gui1.Minimize()
 Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
 Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
@@ -782,9 +1406,11 @@ Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
 
-Gui1.AddLongString('longstring3', "line1\nline2\nline3")
-	.SetReadOnly()
+Gui1.AddLongString('longstring3', "line1\nline2\nline3", false, 30)
+Gui1.AddLongString('longstring4', "line1\nline2\nline3", false, 30).SetHeight(100)
 
+Gui1.AddLongString('longstring_locked', "line1\nline2\nline3")
+	.SetReadOnly()
 
 -- Numbers --
 Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
@@ -799,11 +1425,11 @@ end).SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
 Gui1.AddNumber('num7', 1).Set('a').SetReadOnly()
 Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
-Gui1.AddNumber('num9', '123.456789', false, 3).Listen(function(NewValue)
+Gui1.AddNumber('num9', '123.456789', 3).Listen(function(NewValue)
 	print("New num9 Value: "..NewValue)
 end)
 
-Gui1.AddNumber('num_colorOnNumber', 100, false)
+Gui1.AddNumber('num_colorOnNumber', 100)
 	.SetValueTextColor(Color3.new(0,0,0))
 	.SetValueBGColor(Color3.fromRGB(100, 255, 255))
 	.Listen(function(NewValue)
@@ -843,9 +1469,9 @@ Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
 Gui1.AddSeparator('separator1')
 Gui1.AddSeparator('separator2', Color3.fromRGB(223, 157, 35))
-Gui1.AddSeparator('separator3', Color3.fromRGB(129, 175, 36), 'TEST TEST')
-Gui1.AddSeparator('separator4', nil, '* SECTION TEST *', 42)
-Gui1.AddSeparator('separator5').SetColor(Color3.fromRGB(173, 72, 72))
+Gui1.AddSeparator('separator3', Color3.fromRGB(129, 175, 36)).SetName('TEST TEST')
+Gui1.AddSeparator('separator4', nil, 42)
+Gui1.AddSeparator('separator5').SetFrameColor(Color3.fromRGB(173, 72, 72))
 Gui1.AddSeparator('separator6').SetName('junkster')
 Gui1.AddSeparator('separator7').SetHeight(8)
 
@@ -872,7 +1498,7 @@ Gui1.AddVector2('vec2_1', Vector2.new(7.9, -2)).Listen(function(NewVector)
 end)
 Gui1.AddVector2('vec2_2', Vector2.new(666, 999)).SetReadOnly()
 Gui1.AddVector2('vec2_3')
-Gui1.AddVector2('vec2_4', Vector2.new(123.456789, 987.654321), false, 3)
+Gui1.AddVector2('vec2_4', Vector2.new(123.456789, 987.654321), 3)
 Gui1.AddVector2('vec2_5', Vector2.new(-1, -1))
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
@@ -886,7 +1512,7 @@ Gui1.AddVector3('vec3_1', Vector3.new(7.9, -2, 54)).Listen(function(NewVector)
 end)
 Gui1.AddVector3('vec3_2', Vector3.new(666, 999, -1)).SetReadOnly()
 Gui1.AddVector3('vec3_3')
-Gui1.AddVector3('vec3_4', Vector3.new(123.456789, 987.654321, 555.55555), false, 3)
+Gui1.AddVector3('vec3_4', Vector3.new(123.456789, 987.654321, 555.55555), 3)
 Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
 	.SetValueBGColor(Color3.fromRGB(248, 150, 232))
@@ -897,31 +1523,31 @@ Gui1.AddVector3('vec3_6', Vector3.new(6, 6, 6)).SetReadOnly()
 -- Color Slider
 Gui1.AddSeparator('COLOR_SLIDER_SEPARATOR').SetName('COLOR SLIDERS')
 --
-Gui1.AddColorSliderRGB('ColorSliderRGB_1', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+Gui1.AddColorSliderRGB('ColorSliderRGB_1', Color3.fromRGB(123, 69, 255), 2, true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGB_1 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGB('ColorSliderRGB_2', Color3.fromRGB(0, 255, 77), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderRGB('ColorSliderRGB_2', Color3.fromRGB(0, 255, 77), nil, true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGB_2 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_1', Color3.fromRGB(10, 44, 78), nil)
+Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_1', Color3.fromRGB(10, 44, 78))
 	.Set(Color3.fromRGB(126, 0, 0))
 
-Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), 2, DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), true)
 	.Listen(function(NewValue)
 		print('New ColorSliderRGBInt_2 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
 	.Set(Color3.fromRGB(126, 0, 0))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderRGB('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255), DebuGui.SLIDERPARAM_UPDATE_ON_MOVEMENT)
+Gui1.AddColorSliderRGBInt('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255))
 	.SetReadOnly()
 
 
@@ -1005,7 +1631,7 @@ Folder1.AddString('string1', 'Cool Beans')
 Folder1.AddVector2('vec2', Vector2.new(33, 565))
 Folder1.AddVector2('vec3', Vector2.new(33, 565))
 Folder1.AddNumberSlider('numslider', 100, 0, 200)
-Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE)
+Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), true)
 Folder1.AddListPicker('listpicker1', 'bbb', {
 	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
 }).Listen(function(NewChoice)
@@ -1195,11 +1821,23 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
 -- Roblox Services --
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Chat = game:GetService("Chat")
+local Debris = game:GetService("Debris")
+local Players = game:GetService("Players")
 local Lighting = game:GetService("Lighting")
+local Workspace = game:GetService("Workspace")
+local StarterPlayer = game:GetService("StarterPlayer")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Module --
 local DebuGui = require(ReplicatedStorage.DebuGui)
+
+-- Defines
+local LocalPlayer = Players.LocalPlayer
+local Camera = Workspace.CurrentCamera
+local Humanoid = nil
+local Mouse = LocalPlayer:GetMouse()
+local RNG = Random.new()
 
 -- Create New Window
 local Gui = DebuGui.NewWindow('Scene', {
@@ -1209,12 +1847,308 @@ local Gui = DebuGui.NewWindow('Scene', {
 	Width = 600,
 	Height = 520,
 })
-Gui.Minimize()
+--Gui.Minimize()
+
+-- Humanoid
+local function UpdateHumanoid(Character)
+	Humanoid = Character:WaitForChild('Humanoid')
+	Humanoid.StateChanged:Connect(function(_, NewState)
+		-- If Jumping
+		if NewState == Enum.HumanoidStateType.Jumping then
+			local JumpCounterGui = Gui.Get("Player Settings").Get('Jump Counter')
+			local NewValue = tonumber(JumpCounterGui:GetValue()) + 1
+			JumpCounterGui.Set(NewValue)
+		end
+	end)
+end
+-- Mouse
+Mouse.Button1Down:Connect(function()
+	local ClickCounterGui = Gui.Get("Click Counter")
+	local NewValue = tonumber(ClickCounterGui:GetValue()) + 1
+	ClickCounterGui.Set(NewValue)
+end)
+
+LocalPlayer.CharacterAdded:Connect(function(Character)
+	UpdateHumanoid(Character)
+end)
+if LocalPlayer.Character then
+	UpdateHumanoid(LocalPlayer.Character)
+end
+
+-- Settings
+Gui.AddColorSliderRGBInt('Folder Color', DebuGui.GetConstants().DEFAULT_FOLDER_COLOR, nil, true).Listen(function(NewColor)
+	Gui.GetFolder('Chat').SetColor(NewColor)
+	Gui.GetFolder('Object Spawning').SetColor(NewColor)
+	Gui.GetFolder('Player Settings').SetColor(NewColor)
+	Gui.GetFolder('Scene Objects').SetColor(NewColor)
+	Gui.GetFolder('Scene Lighting').SetColor(NewColor)
+end)
+
+Gui.AddInteger('Click Counter', 0).SetReadOnly()
+Gui.AddText('_Info1', '(Does not count for clicking inside DebuGui)')
+	.SetName('^')
+	.SetValueTextColor(Color3.fromRGB(100, 100, 100))
+
+-- Fake Chat
+local Gui_Chat = Gui.AddFolder('Chat', false)
+
+Gui_Chat.AddLongString('Chat', 'Insert Text Here', true)
+	.SetHeightBasedOnLineCount(4)
+
+Gui_Chat.AddButton('Send').Listen(function()
+	Chat:Chat(LocalPlayer.Character, Gui_Chat.Get('Chat').GetValue())
+end)
+
+-- Spawn Items
+local Gui_Spawner = Gui.AddFolder('Object Spawning', false)
+
+Gui_Spawner.AddButton('Spawn Sphere').Listen(function()
+	local Object = Instance.new('Part')
+	Object.Shape = Enum.PartType.Ball
+	Object.Parent = workspace
+	Object.Anchored = false
+	Object.CanCollide = true
+	Object.Color = Color3.fromRGB(240, 100, 100)
+	Object.Position = LocalPlayer.Character.PrimaryPart.Position + Vector3.new(Camera.CFrame.LookVector.X, 0, Camera.CFrame.LookVector.Z).Unit * 3.0
+	Object.Size = Vector3.new(3, 3, 3)
+	Debris:AddItem(Object, 5)
+end)
+
+Gui_Spawner.AddButton('Spawn Block').Listen(function()
+	local Object = Instance.new('Part')
+	Object.Shape = Enum.PartType.Block
+	Object.Parent = workspace
+	Object.Anchored = false
+	Object.CanCollide = true
+	Object.Color = Color3.fromRGB(100, 240, 100)
+	Object.Position = LocalPlayer.Character.PrimaryPart.Position + Vector3.new(Camera.CFrame.LookVector.X, 0, Camera.CFrame.LookVector.Z).Unit * 3.0
+	Object.Size = Vector3.new(3, 3, 3)
+	Object.Orientation = Vector3.new(RNG:NextNumber(0, 180), RNG:NextNumber(0, 180), RNG:NextNumber(0, 180))
+	Debris:AddItem(Object, 5)
+end)
+
+Gui_Spawner.AddButton('Spawn Cylinder').Listen(function()
+	local Object = Instance.new('Part')
+	Object.Shape = Enum.PartType.Cylinder
+	Object.Parent = workspace
+	Object.Anchored = false
+	Object.CanCollide = true
+	Object.Color = Color3.fromRGB(100, 100, 240)
+	Object.Position = LocalPlayer.Character.PrimaryPart.Position + Vector3.new(Camera.CFrame.LookVector.X, 0, Camera.CFrame.LookVector.Z).Unit * 3.0
+	Object.Size = Vector3.new(3, 3, 3)
+	Object.Orientation = Vector3.new(RNG:NextNumber(0, 180), RNG:NextNumber(0, 180), RNG:NextNumber(0, 180))
+	Debris:AddItem(Object, 5)
+end)
+
+Gui_Spawner.AddButton('Spawn Platform').Listen(function()
+	local Object = Instance.new('Part')
+	Object.Transparency = 0.5
+	Object.Shape = Enum.PartType.Cylinder
+	Object.Parent = workspace
+	Object.Anchored = true
+	Object.CanCollide = true
+	Object.Color = Color3.fromRGB(175, 175, 175)
+	Object.Position = LocalPlayer.Character.PrimaryPart.Position + LocalPlayer.Character.PrimaryPart.CFrame.LookVector * 7.0 + Vector3.new(0, 4, 0)
+	Object.Size = Vector3.new(1, 8, 8)
+	Object.Orientation = Vector3.new(0, 0, 90)
+	Debris:AddItem(Object, 5)
+end)
+
+
+-- Player
+local Gui_PlayerSettings = Gui.AddFolder('Player Settings', false)
+
+Gui_PlayerSettings.AddSeparator('Read Only')
+	.SetNameColor(Color3.fromRGB(237, 255, 172))
+	.SetFrameColor(Color3.fromRGB(39, 167, 92))
+
+-- Jump Counter
+Gui_PlayerSettings.AddInteger('Jump Counter', 0).SetReadOnly()
+
+-- Teleport
+Gui_PlayerSettings.AddSeparator('Teleport')
+	.SetNameColor(Color3.fromRGB(237, 255, 172))
+	.SetFrameColor(Color3.fromRGB(39, 167, 92))
+
+Gui_PlayerSettings.AddButton('Teleport_White_Spawn')
+	.SetName('White Spawn')
+	.SetColor(Color3.fromRGB(255, 255, 255))
+	.SetNameColor(Color3.fromRGB(0, 0, 0))
+	.Listen(function()
+		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_White.CFrame + Vector3.new(0, 4, 0))
+		end
+	end)
+
+Gui_PlayerSettings.AddButton('Teleport_Red_Spawn')
+	.SetName('Red Spawn')
+	.SetColor(Color3.fromRGB(240, 100, 100))
+	.SetNameColor(Color3.fromRGB(0, 0, 0))
+	.Listen(function()
+		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_Red.CFrame + Vector3.new(0, 4, 0))
+		end
+	end)
+
+Gui_PlayerSettings.AddButton('Teleport_Green_Spawn')
+	.SetName('Green Spawn')
+	.SetColor(Color3.fromRGB(100, 240, 100))
+	.SetNameColor(Color3.fromRGB(0, 0, 0))
+	.Listen(function()
+		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_Green.CFrame + Vector3.new(0, 4, 0))
+		end
+	end)
+
+-- WalkSpeed
+Gui_PlayerSettings.AddSeparator('WalkSpeed')
+	.SetNameColor(Color3.fromRGB(237, 255, 172))
+	.SetFrameColor(Color3.fromRGB(39, 167, 92))
+
+Gui_PlayerSettings.AddNumberSlider('WalkSpeed_Value', StarterPlayer.CharacterWalkSpeed, 0, 50, 1, true)
+	.SetName('Value')
+	.Listen(function(NewNumber)
+		if Humanoid then
+			LocalPlayer.Character.Humanoid.WalkSpeed = NewNumber
+		end
+	end)
+Gui_PlayerSettings.AddButton('WalkSpeed_Reset')
+	.SetName('Reset')
+	.Listen(function()
+		Gui_PlayerSettings.Get('WalkSpeed_Value').Set(StarterPlayer.CharacterWalkSpeed)
+	end)
+
+-- JumpPower
+Gui_PlayerSettings.AddSeparator('JumpPower')
+	.SetNameColor(Color3.fromRGB(237, 255, 172))
+	.SetFrameColor(Color3.fromRGB(39, 167, 92))
+
+Gui_PlayerSettings.AddNumberSlider('JumpPower_Value', StarterPlayer.CharacterJumpPower, 0, 100, 1, true)
+	.SetName('Value')
+	.Listen(function(NewNumber)
+		if Humanoid then
+			LocalPlayer.Character.Humanoid.JumpPower = NewNumber
+		end
+	end)
+Gui_PlayerSettings.AddButton('JumpPower_Reset')
+	.SetName('Reset')
+	.Listen(function()
+		Gui_PlayerSettings.Get('JumpPower_Value').Set(StarterPlayer.CharacterJumpPower)
+	end)
+
+-- Humanoid State
+Gui_PlayerSettings.AddSeparator('Humanoid State')
+	.SetNameColor(Color3.fromRGB(237, 255, 172))
+	.SetFrameColor(Color3.fromRGB(39, 167, 92))
+
+Gui_PlayerSettings.AddButton('ChangeState_Jump')
+	.SetName('Jump')
+	.Listen(function()
+		if Humanoid then
+			LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+		end
+	end)
+
+Gui_PlayerSettings.AddButton('ChangeState_Ragdoll')
+	.SetName('Ragdoll')
+	.Listen(function()
+		if Humanoid then
+			LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Ragdoll)
+		end
+	end)
+
+Gui_PlayerSettings.AddButton('ChangeState_Dead')
+	.SetName('Dead')
+	.Listen(function()
+		if Humanoid then
+			LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Dead)
+		end
+	end)
+
+
+-- Objects
+local Gui_Objects = Gui.AddFolder('Scene Objects', false)
+
+Gui_Objects.AddSeparator('BLOCK')
+
+Gui_Objects.AddColorSliderHSV('Block Color', workspace.SceneObject_Block.Color).Listen(function(NewColor)
+	workspace.SceneObject_Block.Color = NewColor
+end)
+Gui_Objects.AddNumberSlider('Block Transparency', workspace.SceneObject_Block.Transparency, 0.0, 1.0, 1).Listen(function(NewNumber)
+	workspace.SceneObject_Block.Transparency = NewNumber
+end)
+Gui_Objects.AddBool('Block Anchored', workspace.SceneObject_Block.Anchored).Listen(function(NewBool)
+	workspace.SceneObject_Block.Anchored = NewBool
+end)
+Gui_Objects.AddBool('Block CanCollide', workspace.SceneObject_Block.CanCollide).Listen(function(NewBool)
+	workspace.SceneObject_Block.CanCollide = NewBool
+end)
+Gui_Objects.AddVector3('Block Orientation', workspace.SceneObject_Block.Orientation).Listen(function(NewVec3)
+	workspace.SceneObject_Block.Orientation = NewVec3
+end)
+Gui_Objects.AddVector3('Block Size', workspace.SceneObject_Block.Size).Listen(function(NewVec3)
+	workspace.SceneObject_Block.Size = NewVec3
+end)
+Gui_Objects.AddBool('Block Cast Shadow', workspace.SceneObject_Block.CastShadow).Listen(function(NewBool)
+	workspace.SceneObject_Block.CastShadow = NewBool
+end)
+Gui_Objects.AddString('Block Text', workspace.SceneObject_Block.SurfaceGui.TextLabel.Text, true).Listen(function(NewString)
+	workspace.SceneObject_Block.SurfaceGui.TextLabel.Text = NewString
+end)
+Gui_Objects.AddBool('Block Text Visible', workspace.SceneObject_Block.SurfaceGui.Enabled, true).Listen(function(NewBool)
+	workspace.SceneObject_Block.SurfaceGui.Enabled = NewBool
+end)
+
+Gui_Objects.AddSeparator('SPHERE')
+
+Gui_Objects.AddColorSliderHSV('Sphere Color', workspace.SceneObject_Sphere.Color).Listen(function(NewColor)
+	workspace.SceneObject_Sphere.Color = NewColor
+end)
+Gui_Objects.AddBool('Sphere CanCollide', workspace.SceneObject_Sphere.CanCollide).Listen(function(NewBool)
+	workspace.SceneObject_Sphere.CanCollide = NewBool
+end)
+Gui_Objects.AddIntegerSlider('Sphere Size', workspace.SceneObject_Sphere.Size.X, 1, 40).Listen(function(NewNumber)
+	workspace.SceneObject_Sphere.Size = Vector3.new(NewNumber, NewNumber, NewNumber)
+end)
+
+Gui_Objects.AddSeparator('CYLINDER')
+
+Gui_Objects.AddColorSliderHSV('Cylinder Color', workspace.SceneObject_Cylinder.Color).Listen(function(NewColor)
+	workspace.SceneObject_Cylinder.Color = NewColor
+end)
+Gui_Objects.AddVector3('Cylinder Orientation', workspace.SceneObject_Cylinder.Orientation).Listen(function(NewVec3)
+	workspace.SceneObject_Cylinder.Orientation = NewVec3
+end)
+Gui_Objects.AddNumberSlider('Cylinder Length', workspace.SceneObject_Cylinder.Size.X, 1.0, 10.0, 2).Listen(function(NewNumber)
+	workspace.SceneObject_Cylinder.Size = Vector3.new(NewNumber, workspace.SceneObject_Cylinder.Size.Y, workspace.SceneObject_Cylinder.Size.Z)
+end)
+Gui_Objects.AddNumberSlider('Cylinder Radius', workspace.SceneObject_Cylinder.Size.Y, 0.5, 30.0, 2).Listen(function(NewNumber)
+	workspace.SceneObject_Cylinder.Size = Vector3.new(workspace.SceneObject_Cylinder.Size.X, NewNumber, NewNumber)
+end)
+
+local MaterialEnumsChoices = {
+	['SmoothPlastic'] = Enum.Material.SmoothPlastic;
+	['Plastic'] = Enum.Material.Plastic;
+	['Grass'] = Enum.Material.Grass;
+	['Cobblestone'] = Enum.Material.Cobblestone;
+	['Brick'] = Enum.Material.Brick;
+	['CorrodedMetal'] = Enum.Material.CorrodedMetal;
+}
+Gui_Objects.AddListPicker('Cylinder Material', 'Plastic', {
+	'SmoothPlastic';
+	'Plastic';
+	'Grass';
+	'Cobblestone';
+	'Brick';
+	'CorrodedMetal';
+}, false).Listen(function(NewChoice)
+	workspace.SceneObject_Cylinder.Material = MaterialEnumsChoices[NewChoice]
+end)
 
 -- Lighting --
-local Gui_Lighting = Gui.AddFolder('Scene Lighting', true)
+local Gui_Lighting = Gui.AddFolder('Scene Lighting', false)
 
-Gui_Lighting.AddColorSliderRGB('Ambient', Lighting.Ambient).Listen(function(NewColor)
+Gui_Lighting.AddColorSliderRGB('Ambient', Lighting.Ambient, 3).Listen(function(NewColor)
 	Lighting.Ambient = NewColor
 end)
 
@@ -1222,11 +2156,11 @@ Gui_Lighting.AddNumberSlider('Brightness', Lighting.Brightness, 0, 10, 3).Listen
 	Lighting.Brightness = NewNumber
 end)
 
-Gui_Lighting.AddColorSliderRGB('ColorShift_Bottom', Lighting.ColorShift_Bottom).Listen(function(NewColor)
+Gui_Lighting.AddColorSliderRGBInt('ColorShift_Bottom', Lighting.ColorShift_Bottom).Listen(function(NewColor)
 	Lighting.ColorShift_Bottom = NewColor
 end)
 
-Gui_Lighting.AddColorSliderRGB('ColorShift_Top', Lighting.ColorShift_Bottom).Listen(function(NewColor)
+Gui_Lighting.AddColorSliderRGBInt('ColorShift_Top', Lighting.ColorShift_Bottom).Listen(function(NewColor)
 	Lighting.ColorShift_Bottom = NewColor
 end)
 
@@ -1242,7 +2176,7 @@ Gui_Lighting.AddBool('GlobalShadows', Lighting.GlobalShadows).Listen(function(Ne
 	Lighting.GlobalShadows = NewBool
 end)
 
-Gui_Lighting.AddColorSliderRGB('OutdoorAmbient', Lighting.OutdoorAmbient).Listen(function(NewColor)
+Gui_Lighting.AddColorSliderRGBInt('OutdoorAmbient', Lighting.OutdoorAmbient).Listen(function(NewColor)
 	Lighting.OutdoorAmbient = NewColor
 end)
 
@@ -1511,11 +2445,7 @@ end)]]></ProtectedString>
 				<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
 -- Module
-local DebuGui = {
-	-- Module Constants
-	SLIDERPARAM_UPDATE_ON_MOVEMENT = false;
-	SLIDERPARAM_UPDATE_ON_RELEASE = true;
-}
+local DebuGui = {}
 
 -- Services
 local RunService = game:GetService("RunService")
@@ -1530,6 +2460,7 @@ end
 -- Modules
 local GuiWindow = require(script.GuiWindow)
 local Utility = require(script.Utility)
+local Constants = require(script.Constants)
 
 -- Defines --
 local Player = Players.LocalPlayer
@@ -1596,6 +2527,10 @@ function DebuGui.NewWindow(GuiName, InitData)
 	DebuGui.ScreenGuiCount += 1
 
 	return API
+end
+
+function DebuGui.GetConstants()
+	return Constants
 end
 
 return DebuGui]]></ProtectedString>
@@ -2433,8 +3368,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, DefaultValue)
 	end
 
-	function API.AddLongString(UniqueName, DefaultValue, Height)
-		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API._MasterAPI, DefaultValue, Height)
+	function API.AddLongString(UniqueName, DefaultValue, ClearTextOnFocus, Height)
+		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API, DefaultValue, ClearTextOnFocus, Height)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
@@ -2445,8 +3380,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 	end
 
-	function API.AddNumber(UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+	function API.AddNumber(UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
@@ -2461,28 +3396,28 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
 	end
 
-	function API.AddSeparator(UniqueName, Color, Text, Height)
-		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API._MasterAPI, Color, Text, Height)
+	function API.AddSeparator(UniqueName, Color, Height)
+		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API, Color, Height)
 	end
 
 	function API.AddFolder(UniqueName, StartOpen)
 		return AddGizmo(GizmoUI_Folder, GizmoFolder, UniqueName, API._MasterAPI, API, StartOpen)
 	end
 
-	function API.AddVector2(UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+	function API.AddVector2(UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
 	end
 
-	function API.AddVector3(UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
-		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+	function API.AddVector3(UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
 	end
 
-	function API.AddColorSliderRGB(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, nil)
+	function API.AddColorSliderRGB(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, DecimalAmount)
 	end
 
-	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, DecimalAmount)
+	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, nil)
 	end
 
 	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
@@ -2495,12 +3430,24 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	-- Returns API of Gizmo
 	function API.Get(UniqueName)
+		assert(typeof(UniqueName) == 'string', 'UniqueName must be of type string')
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
-			warn("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
+			error("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
 			return nil
 		end
 		return API._GizmosTable[UniqueName]
+	end
+
+	-- Returns API of Folder
+	function API.GetFolder(UniqueName)
+		assert(typeof(UniqueName) == 'string', 'UniqueName must be of type string')
+		-- Sanity
+		if API._GizmosFolders[UniqueName] == nil then
+			error("Warning! Folder does not exist ("..UniqueName..")")
+			return nil
+		end
+		return API._GizmosFolders[UniqueName]
 	end
 
 	-- Removes API of Gizmo
@@ -2661,9 +3608,12 @@ function GizmoBase.New()
     function API.Set(newValue)
 		if API._DeadCheck() then return nil end
         API.Validate(newValue)
-		if API._Listener then
-			API._Listener(API._Input)
-		end
+        return API.TriggerListeners()
+    end
+
+	function API.SetSilently(newValue)
+		if API._DeadCheck() then return nil end
+        API.Validate(newValue)
         return API
     end
 
@@ -2930,6 +3880,7 @@ return GizmoButton]]></ProtectedString>
 local GizmoFolder = {}
 
 -- Modules
+local Constants = require(script.Parent.Parent.Parent.Constants)
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
 ----------------------
@@ -2937,21 +3888,17 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------------
 local function UpdateVisual(API, Gui)
 	if API.IsVisible() then
+		Gui.DropDownBtn.Text = 'v'
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
 		for __, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
-		local FrameHeight = CanvasHeight
-		Gui.Size = UDim2.new(1, 0, 0, FrameHeight + 24)
-		Gui.DropDownBtn.Text = 'v'
-		-- Show Everything in Canvas
-		Gui.ScrollingFrame.ScrollingEnabled = false
-		Gui.ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, CanvasHeight)
+		Gui.Size = UDim2.new(1, 0, 0, CanvasHeight + 24)
 	else
+		Gui.DropDownBtn.Text = '>'
 		Gui.ScrollingFrame.Visible = false
 		Gui.Size = UDim2.new(1, 0, 0, 24)
-		Gui.DropDownBtn.Text = '>'
 	end
 end
 
@@ -2966,6 +3913,8 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Setup
 	Gui.TextName.Text = Name
+	Gui.Line.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
+	Gui.SideLine.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
 
 	-- Defines
 	local GizmoAPI = require(script.Parent)
@@ -3035,6 +3984,10 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		Gui.Line.BackgroundColor3 = NewColor
 		Gui.SideLine.BackgroundColor3 = NewColor
 		return API
+	end
+
+	function API.GetColor()
+		return Gui.Line.BackgroundColor3
 	end
 
 	function API.IsVisible()
@@ -3423,9 +4376,10 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
+function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocus, Height)
 
 	-- Defaults
+	ClearTextOnFocus = ClearTextOnFocus or false
 	DefaultValue = DefaultValue or ''
 	Height = Height or 48
 
@@ -3437,12 +4391,13 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 	-- Setup
 	Gui.TextName.Text = Name
 	Gui.TextBox.Text = DefaultValue
+	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 	Gui.Size = UDim2.new(1, 0, 0, Height)
 
 	-- Data
 	local IsReadOnly = false
 	local API = GizmoBase.New()
-	
+
 	----------------
 	-- Public API --
 	----------------
@@ -3511,11 +4466,15 @@ function GizmoLongString.new(Gui, Name, MasterAPI, DefaultValue, Height)
 
 	function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
+		-- Modify Gui Size
 		local OCHeight = Gui.Size.Y.Offset
         Gui.Size = UDim2.new(1, 0, 0, NewHeight)
-		local DeltaHeight = NewHeight - OCHeight
-		-- Fix canvas height based on change in height
-		Utility.ModifyCanvasHeight(MasterAPI._GuiParent, DeltaHeight)
+
+		-- Modify Canvas Height based on change in height
+		if Utility.IsFolderVisible(ParentAPI, true) then
+			local DeltaHeight = NewHeight - OCHeight
+			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
+		end
 	end
 
 	function API.SetHeightBasedOnLineCount(LineCount)
@@ -3564,7 +4523,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoNumber.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoNumber.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
 
 	-- Defaults
 	DefaultValue = tonumber(DefaultValue) or 0
@@ -3931,21 +4890,19 @@ local VERTICAL_PADDING = 6
 local GizmoSeparator = {}
 
 --
-function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
+function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 
     -- Defaults
     Color = Color or Color3.fromRGB(59, 60, 120)
-    Text = Text or ''
     Height = Height or 24
 
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(Color, 'Color3')
-    Utility.QuickTypeAssert(Text, 'string')
     Utility.QuickTypeAssert(Height, 'number')
-    
+
     -- Init Values
-    Gui.Line.Text = Text
+    Gui.Line.Text = Name
     Gui.Line.BackgroundColor3 = Color
     Gui.Size = UDim2.new(1, 0, 0, Height)
 
@@ -3958,21 +4915,36 @@ function GizmoSeparator.new(Gui, Name, MasterAPI, Color, Text, Height)
 	API.Set = nil
 
     -- Public API --
-    function API.SetColor(NewColor)
+	function API.SetNameColor(NewColor)
+		if API._DeadCheck() then return nil end
+		Gui.Line.TextColor3 = NewColor
+		return API
+	end
+
+    function API.SetFrameColor(NewColor)
 		if API._DeadCheck() then return nil end
         Gui.Line.BackgroundColor3 = NewColor
+		return API
     end
+
     function API.SetName(NewText)
 		if API._DeadCheck() then return nil end
         Gui.Line.Text = NewText
+		return API
     end
+
     function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
+		-- Modify Gui Size
 		local OCHeight = Gui.Size.Y.Offset
-        Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
-		local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
-		-- Fix canvas height based on change in height
-		Utility.ModifyCanvasHeight(MasterAPI._GuiParent, DeltaHeight)
+		Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
+
+		-- Modify Canvas Height based on change in height
+		if Utility.IsFolderVisible(ParentAPI, true) then
+			local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
+			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
+		end
+		return API
     end
 
     -- End
@@ -4134,7 +5106,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoVector2.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoVector2.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	-- Defaults
 	DefaultValue = DefaultValue or Vector2.new(0, 0)
 	if ClearTextOnFocus == nil then
@@ -4306,7 +5278,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmount)
+function GizmoVector3.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	-- Defaults
 	DefaultValue = DefaultValue or Vector3.new(0, 0, 0)
 	if ClearTextOnFocus == nil then
@@ -4446,7 +5418,7 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		if API.Validate(Gui.TextBox1.Text, API._Input.Y, Gui.TextBox3.Text) then
+		if API.Validate(Gui.TextBox1.Text, API._Input.Y, API._Input.Z) then
 			API.TriggerListeners()
 		end
 	end))
@@ -4455,16 +5427,16 @@ function GizmoVector3.new(Gui, Name, DefaultValue, ClearTextOnFocus, DecimalAmou
 			return
 		end
 
-		if API.Validate(API._Input.X, Gui.TextBox2.Text, Gui.TextBox3.Text) then
+		if API.Validate(API._Input.X, Gui.TextBox2.Text, API._Input.Z) then
 			API.TriggerListeners()
 		end
 	end))
-	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox3.FocusLost:Connect(function(__) -- enterPressed
 		if IsReadOnly then
 			return
 		end
 
-		if API.Validate(Gui.TextBox1.Text, Gui.TextBox2.Text, API._Input.Z) then
+		if API.Validate(API._Input.X, API._Input.Y, Gui.TextBox3.Text) then
 			API.TriggerListeners()
 		end
 	end))
@@ -4565,6 +5537,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 	-- Defaults
 	DefaultColor = DefaultColor or Color3.fromRGB(255, 255, 255)
+	UpdateOnlyOnDragEnd = UpdateOnlyOnDragEnd or false
 
 	-- Sanity
 	Utility.QuickTypeAssert(Name, 'string')
@@ -4661,17 +5634,17 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 		Gui.ColorDisplayer.BackgroundColor3 = Input
 
 		if Mode == MODES.RGB then
-			Gui.TextBox1.Text = 'R: '..tostring(GetColor255(API._Input.R))
-			Gui.TextBox2.Text = 'G: '..tostring(GetColor255(API._Input.G))
-			Gui.TextBox3.Text = 'B: '..tostring(GetColor255(API._Input.B))
+			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
+			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
+			Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(API._Input.B, DecimalAmount))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
 
 		elseif Mode == MODES.RGBINT then
-			Gui.TextBox1.Text = 'R: '..tostring(DecimalRounding(API._Input.R, DecimalAmount))
-			Gui.TextBox2.Text = 'G: '..tostring(DecimalRounding(API._Input.G, DecimalAmount))
-			Gui.TextBox3.Text = 'B: '..tostring(DecimalRounding(API._Input.B, DecimalAmount))
+			Gui.TextBox1.Text = 'R: '..tostring(GetColor255(API._Input.R))
+			Gui.TextBox2.Text = 'G: '..tostring(GetColor255(API._Input.G))
+			Gui.TextBox3.Text = 'B: '..tostring(GetColor255(API._Input.B))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, API._Input.R, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, API._Input.G, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, API._Input.B, 0, 1)
@@ -4724,10 +5697,10 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 			-- Text
 			if Mode == MODES.RGB then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 
 			elseif Mode == MODES.RGBINT then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
 			end
 
 		elseif Mode == MODES.HSV then
@@ -10798,6 +11771,10 @@ asd]]></string>
 			-- @Parameters:
 					TimeOutTime (number) = Time to wait, nil = wait forever
 
+		-- GetConstants ()
+			-- @Description: Returns the Constants Module as a table (ScriptModule that is directly below DebuGui called Constants)
+			-- @Returns: (table)
+
 
 	-- GuiWindow (Core) : A singular window spawned from DebuGui's NewWindow
 
@@ -10880,6 +11857,12 @@ asd]]></string>
 					UniqueName (String) = UniqueName of the Gizmo
 			-- @Returns: (Gizmo)
 
+		-- GetFolder (UniqueName)
+			-- @Description: Return the API of a specific Folder
+			-- @Parameters:
+					UniqueName (String) = UniqueName of the Folder
+			-- @Returns: (Folder Gizmo)
+
 		-- Remove (UniqueName)
 			-- @Description: Destroy a Gizmo
 			-- @Parameters:
@@ -10890,7 +11873,7 @@ asd]]></string>
 			-- @Description: Destroy all the gizmos
 			-- @Returns: (Gizmo)
 
-		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus = false)
 			-- @Description: String Gizmo, stores 1 editable string
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -10905,7 +11888,7 @@ asd]]></string>
 					DefaultValue (String) = Displayed Text
 			-- @Returns: (Gizmo)
 
-		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddLongString (UniqueName, DefaultValue, ClearTextOnFocus, Height)
 			-- @Description: LongString Gizmo, similar to StringGizmo except with larger display box
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -10913,7 +11896,7 @@ asd]]></string>
 					Height (number) = Pixel Height of gizmo
 			-- @Returns: (Gizmo)
 
-		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
+		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus = false)
 			-- @Description: Integer Gizmo, displays 1 number that holds one rounded number
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -10931,13 +11914,13 @@ asd]]></string>
 					UpdateOnlyOnDragEnd = (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumber (UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Number Gizmo, displays 1 number
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultValue (number) = Initial Number Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
 		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
@@ -10979,22 +11962,22 @@ asd]]></string>
 					StartOpen (Boolean) = Is Initially Opened
 			-- @Returns: (Gizmo)
 
-		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
+		-- AddVector2 (UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Vector2 Gizmo, can store a Vector2 Value
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultVec2 (Vector2) = Initial Vector2 Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
-		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddVector3 (UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus = false)
 			-- @Description: Vector3 Gizmo, can store a Vector2 Value
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultVec3 (Vector3) = Initial Vector3 Value
-					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 					DecimalAmount (number) = How many digits after the decimal point are displayed
+					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
 			-- @Returns: (Gizmo)
 
 		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
@@ -11022,7 +12005,7 @@ asd]]></string>
 					UpdateOnlyOnDragEnd (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice = false, ClearTextOnFocus = false)
 			-- @Description: ListPicker Gizmo, have 1 string selected from a list of strings. Opens a Modal to select which one you want
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -11046,7 +12029,13 @@ asd]]></string>
 			-- @Returns: (Gizmo)
 
 		-- Set (newValue)
-			-- @Description: change the internal stored value
+			-- @Description: change the internal stored value, triggers all listeners
+			-- @Parameters:
+					newValue (Gizmo's Stored Value type)
+			-- @Returns: (Gizmo)
+
+		-- SetSilently (newValue)
+			-- @Description: change the internal stored value, does not trigger any listeners
 			-- @Parameters:
 					newValue (Gizmo's Stored Value type)
 			-- @Returns: (Gizmo)
@@ -11156,24 +12145,53 @@ asd]]></string>
 
 
 	-- Gizmo (Folder) : Folder that can also contain Gizmos in a recursive fashion
-		-- [ Same API as (Gizmos) ]
+
+		-- SetName (name)
+			-- @Description: Changes displayed name
+			-- @Parameters:
+					name (String) = New displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetNameColor (color)
+			-- @Description: Changes color of the displayed name
+			-- @Parameters:
+					color (Color3) = New color for the displayed name
+			-- @Returns: (Gizmo)
+
+		-- SetColor (color)
+			-- @Description: Changes color of the frame container
+			-- @Parameters:
+					color (Color3) = New color for the frame container
+			-- @Returns: (Gizmo)
+
+		-- GetColor ()
+			-- @Description: Returns the color of the frame container
+			-- @Returns: (Color3)
+
+
+		-- IsVisible ()
+			-- @Description: Whether the folder is currently visible
+			-- @Returns: (Boolean)
+
+		-- [ Also uses same API as (GuiWindow Gizmos) ]
 
 		-- Get (UniqueName)
+		-- GetFolder (UniqueName)
 		-- Remove (UniqueName)
 		-- RemoveAll ()
 		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus)
 		-- AddText (UniqueName, DefaultValue)
-		-- AddLongString (UniqueName, DefaultValue, Height)
+		-- AddLongString (UniqueName, DefaultValue, ClearTextOnFocus, Height)
 		-- AddInteger (UniqueName, DefaultValue, ClearTextOnFocus)
 		-- AddIntegerSlider (UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
-		-- AddNumber (UniqueName, DefaultValue, ClearTextOnFocus, DecimalAmount)
+		-- AddNumber (UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
 		-- AddNumberSlider (UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 		-- AddBool (UniqueName, DefaultValue)
 		-- AddButton (UniqueName)
 		-- AddSeparator (UniqueName, Color, Text, Height)
 		-- AddFolder (UniqueName, StartOpen)
-		-- AddVector2 (UniqueName, DefaultVec2, ClearTextOnFocus, DecimalAmount)
-		-- AddVector3 (UniqueName, DefaultVec3, ClearTextOnFocus, DecimalAmount)
+		-- AddVector2 (UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
+		-- AddVector3 (UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
 		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		-- AddColorSliderRGBInt (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
 		-- AddColorSliderHSV (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
@@ -11457,8 +12475,14 @@ asd]]></string>
 					name (String) = New displayed name
 			-- @Returns: (Gizmo)
 
-		-- SetColor (color)
-			-- @Description: Changes color of the separator
+		-- SetNameColor (color)
+			-- @Description: Changes color of the text in the separator
+			-- @Parameters:
+					color (Color3) = New color for the separator text
+			-- @Returns: (Gizmo)
+
+		-- SetFrameColor (color)
+			-- @Description: Changes color of the separator's frame
 			-- @Parameters:
 					color (Color3) = New color for the separator
 			-- @Returns: (Gizmo)
@@ -11606,6 +12630,21 @@ asd]]></string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">46009198e08047480187a7bd000191e7</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX5F46530C6937412DAC0F75DFBAEEF36F">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Constants</string>
+					<string name="ScriptGuid">{8A2F4442-4D5A-42E7-8114-9B4DE9E308F5}</string>
+					<ProtectedString name="Source"><![CDATA[return {
+	DEFAULT_WINDOW_TOPBAR_COLOR = Color3.fromRGB(64, 103, 157);
+	DEFAULT_FOLDER_COLOR = Color3.fromRGB(59, 60, 120);
+}]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0fc089a5a774912b0198804100a225a5</UniqueId>
 				</Properties>
 			</Item>
 		</Item>

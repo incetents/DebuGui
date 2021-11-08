@@ -304,8 +304,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, DefaultValue)
 	end
 
-	function API.AddLongString(UniqueName, DefaultValue, Height)
-		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API, DefaultValue, Height)
+	function API.AddLongString(UniqueName, DefaultValue, ClearTextOnFocus, Height)
+		return AddGizmo(GizmoUI_TextMultiline, GizmoLongString, UniqueName, API, DefaultValue, ClearTextOnFocus, Height)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
@@ -366,6 +366,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	-- Returns API of Gizmo
 	function API.Get(UniqueName)
+		assert(typeof(UniqueName) == 'string', 'UniqueName must be of type string')
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
 			error("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
@@ -376,6 +377,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	-- Returns API of Folder
 	function API.GetFolder(UniqueName)
+		assert(typeof(UniqueName) == 'string', 'UniqueName must be of type string')
 		-- Sanity
 		if API._GizmosFolders[UniqueName] == nil then
 			error("Warning! Folder does not exist ("..UniqueName..")")

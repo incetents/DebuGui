@@ -38,7 +38,7 @@ function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 	API.Set = nil
 
     -- Public API --
-	function API.SetTextColor(NewColor)
+	function API.SetNameColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.Line.TextColor3 = NewColor
 		return API

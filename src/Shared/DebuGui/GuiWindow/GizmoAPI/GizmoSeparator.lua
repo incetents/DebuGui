@@ -13,21 +13,19 @@ local VERTICAL_PADDING = 6
 local GizmoSeparator = {}
 
 --
-function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Text, Height)
+function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 
     -- Defaults
     Color = Color or Color3.fromRGB(59, 60, 120)
-    Text = Text or ''
     Height = Height or 24
 
     -- Sanity
     Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(Color, 'Color3')
-    Utility.QuickTypeAssert(Text, 'string')
     Utility.QuickTypeAssert(Height, 'number')
 
     -- Init Values
-    Gui.Line.Text = Text
+    Gui.Line.Text = Name
     Gui.Line.BackgroundColor3 = Color
     Gui.Size = UDim2.new(1, 0, 0, Height)
 

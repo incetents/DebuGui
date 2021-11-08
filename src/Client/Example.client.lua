@@ -209,7 +209,7 @@ Gui1.AddSeparator('separator1')
 Gui1.AddSeparator('separator2', Color3.fromRGB(223, 157, 35))
 Gui1.AddSeparator('separator3', Color3.fromRGB(129, 175, 36)).SetName('TEST TEST')
 Gui1.AddSeparator('separator4', nil, 42)
-Gui1.AddSeparator('separator5').SetColor(Color3.fromRGB(173, 72, 72))
+Gui1.AddSeparator('separator5').SetFrameColor(Color3.fromRGB(173, 72, 72))
 Gui1.AddSeparator('separator6').SetName('junkster')
 Gui1.AddSeparator('separator7').SetHeight(8)
 

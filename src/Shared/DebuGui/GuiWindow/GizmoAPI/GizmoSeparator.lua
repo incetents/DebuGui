@@ -38,14 +38,24 @@ function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 	API.Set = nil
 
     -- Public API --
-    function API.SetColor(NewColor)
+	function API.SetTextColor(NewColor)
+		if API._DeadCheck() then return nil end
+		Gui.Line.TextColor3 = NewColor
+		return API
+	end
+
+    function API.SetFrameColor(NewColor)
 		if API._DeadCheck() then return nil end
         Gui.Line.BackgroundColor3 = NewColor
+		return API
     end
+
     function API.SetName(NewText)
 		if API._DeadCheck() then return nil end
         Gui.Line.Text = NewText
+		return API
     end
+
     function API.SetHeight(NewHeight)
 		if API._DeadCheck() then return nil end
 		-- Modify Gui Size
@@ -57,6 +67,7 @@ function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 			local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
 			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
 		end
+		return API
     end
 
     -- End

@@ -732,8 +732,14 @@
 					name (String) = New displayed name
 			-- @Returns: (Gizmo)
 
-		-- SetColor (color)
-			-- @Description: Changes color of the separator
+		-- SetTextColor (color)
+			-- @Description: Changes color of the text in the separator
+			-- @Parameters:
+					color (Color3) = New color for the separator text
+			-- @Returns: (Gizmo)
+
+		-- SetFrameColor (color)
+			-- @Description: Changes color of the separator's frame
 			-- @Parameters:
 					color (Color3) = New color for the separator
 			-- @Returns: (Gizmo)

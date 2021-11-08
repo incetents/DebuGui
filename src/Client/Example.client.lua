@@ -8,7 +8,7 @@ local DebuGui = require(ReplicatedStorage.DebuGui)
 
 -- Create New Window
 local Gui1 = DebuGui.NewWindow('Core', {
-	Title = 'TEST NAME HERE 12312312',
+	Title = 'API Examples',
 	X = 150,
 	Y = 20,
 	Width = 600,
@@ -207,8 +207,8 @@ Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
 Gui1.AddSeparator('separator1')
 Gui1.AddSeparator('separator2', Color3.fromRGB(223, 157, 35))
-Gui1.AddSeparator('separator3', Color3.fromRGB(129, 175, 36), 'TEST TEST')
-Gui1.AddSeparator('separator4', nil, '* SECTION TEST *', 42)
+Gui1.AddSeparator('separator3', Color3.fromRGB(129, 175, 36)).SetName('TEST TEST')
+Gui1.AddSeparator('separator4', nil, 42)
 Gui1.AddSeparator('separator5').SetColor(Color3.fromRGB(173, 72, 72))
 Gui1.AddSeparator('separator6').SetName('junkster')
 Gui1.AddSeparator('separator7').SetHeight(8)

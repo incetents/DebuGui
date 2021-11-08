@@ -262,7 +262,7 @@
 					UpdateOnlyOnDragEnd (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus = false)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice = false, ClearTextOnFocus = false)
 			-- @Description: ListPicker Gizmo, have 1 string selected from a list of strings. Opens a Modal to select which one you want
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -286,7 +286,13 @@
 			-- @Returns: (Gizmo)
 
 		-- Set (newValue)
-			-- @Description: change the internal stored value
+			-- @Description: change the internal stored value, triggers all listeners
+			-- @Parameters:
+					newValue (Gizmo's Stored Value type)
+			-- @Returns: (Gizmo)
+
+		-- SetSilently (newValue)
+			-- @Description: change the internal stored value, does not trigger any listeners
 			-- @Parameters:
 					newValue (Gizmo's Stored Value type)
 			-- @Returns: (Gizmo)

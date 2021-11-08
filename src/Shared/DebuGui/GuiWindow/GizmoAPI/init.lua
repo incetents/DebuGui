@@ -332,8 +332,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
 	end
 
-	function API.AddSeparator(UniqueName, Color, Text, Height)
-		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API, Color, Text, Height)
+	function API.AddSeparator(UniqueName, Color, Height)
+		return AddGizmo(GizmoUI_Separator, GizmoSeparator, UniqueName, API, Color, Height)
 	end
 
 	function API.AddFolder(UniqueName, StartOpen)

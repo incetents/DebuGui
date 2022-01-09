@@ -146,7 +146,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 		-- Pre Data
 		if IsVisible then
-			SizeBeforeHidden = MasterFrame.AbsoluteSize
+			if IsMinimized then
+				SizeBeforeHidden = SizeBeforeMinimized
+			else
+				SizeBeforeHidden = MasterFrame.AbsoluteSize
+			end
 		end
 
 		-- Data
@@ -168,7 +172,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		if IsVisible then
 			MasterFrame.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
 		else
-			MasterFrame.Size = UDim2.new(0, MasterFrame.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
+			MasterFrame.Size = UDim2.fromOffset(MasterFrame.AbsoluteSize.X, TITLEBAR_HEIGHT)
 		end
 
 		-- Visibility

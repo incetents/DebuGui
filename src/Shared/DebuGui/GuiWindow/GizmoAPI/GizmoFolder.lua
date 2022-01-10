@@ -32,6 +32,7 @@ end
 function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Sanity
+	StartOpen = StartOpen or true
 	Utility.QuickTypeAssert(Name, 'string')
 	Utility.QuickTypeAssert(StartOpen, 'boolean')
 

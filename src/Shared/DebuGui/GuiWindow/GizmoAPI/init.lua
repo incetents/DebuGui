@@ -7,7 +7,6 @@ local GizmoAPI = {}
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local TextService = game:GetService("TextService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Define
 local LocalPlayer = Players.LocalPlayer
@@ -358,6 +357,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
+	end
+
+	function API.AddColorSliderHSVInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 4, nil)
 	end
 
 	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)

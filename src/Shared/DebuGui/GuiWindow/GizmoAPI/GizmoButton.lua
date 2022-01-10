@@ -22,7 +22,7 @@ local function GetTextSize(TextButton)
 		TextButton.Text,
 		TextButton.TextSize,
 		TextButton.Font,
-		TextButton.Parent.AbsoluteSize
+		Vector2.new(math.huge, TextButton.TextSize)
 	)
 	return UDim2.new(0, math.max(MINSIZE, NameSize.X + PADDING), 1, -4)
 end

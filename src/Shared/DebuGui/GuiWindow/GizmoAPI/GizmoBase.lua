@@ -88,7 +88,7 @@ function GizmoBase.New()
         return API
     end
 
-    function API.Set(newValue)
+    function API.SetValue(newValue)
 		if API._DeadCheck() then return nil end
         API.Validate(newValue)
         return API.TriggerListeners()

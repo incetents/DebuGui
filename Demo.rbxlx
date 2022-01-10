@@ -1290,8 +1290,8 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 --	Gui1.Maximize()
 --	Gui1.ToggleVisibility()
 --	Gui1.ToggleMinimized()
---  Gui.SetPosition(100, 100)
---  Gui.SetSize(500, 5)
+--  Gui1.SetPosition(100, 100)
+--  Gui1.SetSize(500, 5)
 
 -- Getting Reference to Gui
 local Gui1_AlternateRef = DebuGui.GetWindow('Core')
@@ -1304,7 +1304,7 @@ Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
 --
 Gui1.AddText('text1', 'abc')
 Gui1.AddText('text2', 'abc').SetName('custom name')
-Gui1.AddText('text3', 'zxc').Set('Funky')
+Gui1.AddText('text3', 'zxc').SetValue('Funky')
 Gui1.AddText('text4', 'text')
 	.SetNameColor(Color3.fromRGB(223, 78, 78))
 	.SetValueTextColor(Color3.fromRGB(78, 93, 223))
@@ -1313,10 +1313,10 @@ Gui1.AddText('text5', 'abc')
 	.Listen(function(V)
 		print('text5 changed to: ', V)
 	end)
-	.Set('Krankey Kong')
+	.SetValue('Krankey Kong')
 
 Gui1.AddText('text6', 'abc')
-	.Set('Frankey Kong')
+	.SetValue('Frankey Kong')
 	.Listen(function(V)
 		print('text6 changed to: ', V)
 	end)
@@ -1331,9 +1331,9 @@ Gui1.AddBool('bool3').SetCheckboxColor(Color3.fromRGB(46, 106, 124))
 Gui1.AddBool('bool4', true).Listen(function(NewValue)
 	print("New Bool4 Value: ", NewValue)
 end)
-Gui1.AddBool('bool5', false).Set(true).SetCheckboxColor(Color3.fromRGB(122, 40, 122))
+Gui1.AddBool('bool5', false).SetValue(true).SetCheckboxColor(Color3.fromRGB(122, 40, 122))
 Gui1.AddBool('bool6', true).SetReadOnly()
-Gui1.AddBool('bool7', false).SetReadOnly().Set(true).Set(false)
+Gui1.AddBool('bool7', false).SetReadOnly().SetValue(true).SetValue(false)
 
 Gui1.AddBool('bool_multi_listen', true)
 	.Listen(function()
@@ -1376,9 +1376,9 @@ Gui1.AddInteger('int4')
 Gui1.AddInteger('int5', 6.6).Listen(function(NewValue)
 	print("NEW int5 Value: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(39, 87, 59))
-Gui1.AddInteger('int6', 1).Set(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
-Gui1.AddInteger('int7', 1).Set('a')
-Gui1.AddInteger('int8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddInteger('int6', 1).SetValue(2).SetValueTextColor(Color3.fromRGB(62, 197, 118))
+Gui1.AddInteger('int7', 1).SetValue('a')
+Gui1.AddInteger('int8', 'a').SetValue(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddInteger('int9', 99).SetReadOnly()
 
 -- Integer Sliders --
@@ -1391,8 +1391,8 @@ Gui1.AddIntegerSlider('intslider2', 0, -5, 5, DebuGui.SLIDERPARAM_UPDATE_ON_RELE
 	print('New intslider2 Value: '..NewValue)
 end)
 Gui1.AddIntegerSlider('intslider3', 50.1, 0.1, 50.1)
-Gui1.AddIntegerSlider('intslider4', 25, 0, 50).Set(99)
-Gui1.AddIntegerSlider('intslider5', 25, 0, 50).Set(-1)
+Gui1.AddIntegerSlider('intslider4', 25, 0, 50).SetValue(99)
+Gui1.AddIntegerSlider('intslider5', 25, 0, 50).SetValue(-1)
 Gui1.AddIntegerSlider('intslider6', 1, -2, 2).SetReadOnly()
 
 Gui1.AddIntegerSlider('intslider_min', 0, -20, 20)
@@ -1424,9 +1424,9 @@ Gui1.AddNumber('num4')
 Gui1.AddNumber('num5', 6.6).Listen(function(NewValue)
 	print("New num5 Value: "..NewValue)
 end).SetValueBGColor(Color3.fromRGB(87, 86, 39))
-Gui1.AddNumber('num6', 1).Set(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
-Gui1.AddNumber('num7', 1).Set('a').SetReadOnly()
-Gui1.AddNumber('num8', 'a').Set(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
+Gui1.AddNumber('num6', 1).SetValue(2).SetValueTextColor(Color3.fromRGB(197, 62, 175))
+Gui1.AddNumber('num7', 1).SetValue('a').SetReadOnly()
+Gui1.AddNumber('num8', 'a').SetValue(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddNumber('num9', '123.456789', 3).Listen(function(NewValue)
 	print("New num9 Value: "..NewValue)
 end)
@@ -1448,10 +1448,10 @@ end)
 Gui1.AddNumberSlider('numslider2', 100, 100, 200, 4, DebuGui.SLIDERPARAM_UPDATE_ON_RELEASE).SetValueTextColor(Color3.fromRGB(62, 197, 118)).Listen(function(NewValue)
 	print('New numslider2 Value: '..NewValue)
 end)
-Gui1.AddNumberSlider('numslider3', 20, 0, 100, 3).Set(45)
+Gui1.AddNumberSlider('numslider3', 20, 0, 100, 3).SetValue(45)
 Gui1.AddNumberSlider('numslider4', 40, 33, 44)
 Gui1.AddNumberSlider('numslider5', 1, 2, 3, 2)
-Gui1.AddNumberSlider('numslider6', 20, 0, 100, 1).Set(-1)
+Gui1.AddNumberSlider('numslider6', 20, 0, 100, 1).SetValue(-1)
 Gui1.AddNumberSlider('numslider7', 20, 0, 100, 0)
 	.SetName('No Decimals')
 	.SetNameColor(Color3.fromRGB(223, 157, 35))
@@ -1488,7 +1488,7 @@ Gui1.AddString('string4').SetValueTextColor(Color3.fromRGB(248, 150, 232))
 Gui1.AddString('string5', 'default').Listen(function(NewValue)
 	print("New String5 Value: "..NewValue)
 end)
-Gui1.AddString('string6', 'a').Set('b')
+Gui1.AddString('string6', 'a').SetValue('b')
 Gui1.AddString('string7', 'readonly string').SetReadOnly()
 
 
@@ -1536,7 +1536,7 @@ Gui1.AddColorSliderRGB('ColorSliderRGB_2', Color3.fromRGB(0, 255, 77), nil, true
 end)
 
 Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_1', Color3.fromRGB(10, 44, 78))
-	.Set(Color3.fromRGB(126, 0, 0))
+	.SetValue(Color3.fromRGB(126, 0, 0))
 
 Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), true)
 	.Listen(function(NewValue)
@@ -1544,13 +1544,13 @@ Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), tru
 end)
 
 Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
-	.Set(Color3.fromRGB(126, 0, 0))
+	.SetValue(Color3.fromRGB(126, 0, 0))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
 Gui1.AddColorSliderHSVInt('ColorSliderHSV_2', Color3.fromRGB(111, 0, 255), true)
-	.Set(Color3.fromRGB(0, 107, 126))
+	.SetValue(Color3.fromRGB(0, 107, 126))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_2 Value: ', NewValue)
 end)
@@ -1570,7 +1570,7 @@ end)
 
 Gui1.AddListPicker('listpicker2', 'true', {
 	'false', 'true', 'false', 'true', 'false', 'true', 'none'
-}).Set('false')
+}).SetValue('false')
 
 Gui1.AddListPicker('listpicker3', nil, {'a', 'b', 'c'})
 	.Listen(function(NewChoice)
@@ -1587,13 +1587,13 @@ Gui1.AddListPicker('listpicker5', '1', {'1'})
 	.AddChoice('2')
 	.AddChoice('3')
 	.AddChoice('4')
-	.Set('3')
+	.SetValue('3')
 
 Gui1.AddListPicker('listpicker6', '4', {'1', '2', '3', '4'})
 	.RemoveChoice('2')
 	.RemoveChoice('4')
 	.RemoveChoice('1')
-	.Set('1')
+	.SetValue('1')
 	.SetNameColor(Color3.fromRGB(223, 78, 78))
 
 Gui1.AddListPicker('listpicker7', '3', {'1', '2', '3', '4'})
@@ -1865,7 +1865,7 @@ local function UpdateHumanoid(Character)
 		if NewState == Enum.HumanoidStateType.Jumping then
 			local JumpCounterGui = Gui.Get("Player Settings").Get('Jump Counter')
 			local NewValue = tonumber(JumpCounterGui:GetValue()) + 1
-			JumpCounterGui.Set(NewValue)
+			JumpCounterGui.SetValue(NewValue)
 		end
 	end)
 end
@@ -1873,7 +1873,7 @@ end
 Mouse.Button1Down:Connect(function()
 	local ClickCounterGui = Gui.Get("Click Counter")
 	local NewValue = tonumber(ClickCounterGui:GetValue()) + 1
-	ClickCounterGui.Set(NewValue)
+	ClickCounterGui.SetValue(NewValue)
 end)
 
 LocalPlayer.CharacterAdded:Connect(function(Character)
@@ -2023,7 +2023,7 @@ Gui_PlayerSettings.AddNumberSlider('WalkSpeed_Value', StarterPlayer.CharacterWal
 Gui_PlayerSettings.AddButton('WalkSpeed_Reset')
 	.SetName('Reset')
 	.Listen(function()
-		Gui_PlayerSettings.Get('WalkSpeed_Value').Set(StarterPlayer.CharacterWalkSpeed)
+		Gui_PlayerSettings.Get('WalkSpeed_Value').SetValue(StarterPlayer.CharacterWalkSpeed)
 	end)
 
 -- JumpPower
@@ -2041,7 +2041,7 @@ Gui_PlayerSettings.AddNumberSlider('JumpPower_Value', StarterPlayer.CharacterJum
 Gui_PlayerSettings.AddButton('JumpPower_Reset')
 	.SetName('Reset')
 	.Listen(function()
-		Gui_PlayerSettings.Get('JumpPower_Value').Set(StarterPlayer.CharacterJumpPower)
+		Gui_PlayerSettings.Get('JumpPower_Value').SetValue(StarterPlayer.CharacterJumpPower)
 	end)
 
 -- Humanoid State
@@ -3638,7 +3638,7 @@ function GizmoBase.New()
         return API
     end
 
-    function API.Set(newValue)
+    function API.SetValue(newValue)
 		if API._DeadCheck() then return nil end
         API.Validate(newValue)
         return API.TriggerListeners()

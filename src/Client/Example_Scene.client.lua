@@ -37,7 +37,7 @@ local function UpdateHumanoid(Character)
 		if NewState == Enum.HumanoidStateType.Jumping then
 			local JumpCounterGui = Gui.Get("Player Settings").Get('Jump Counter')
 			local NewValue = tonumber(JumpCounterGui:GetValue()) + 1
-			JumpCounterGui.Set(NewValue)
+			JumpCounterGui.SetValue(NewValue)
 		end
 	end)
 end
@@ -45,7 +45,7 @@ end
 Mouse.Button1Down:Connect(function()
 	local ClickCounterGui = Gui.Get("Click Counter")
 	local NewValue = tonumber(ClickCounterGui:GetValue()) + 1
-	ClickCounterGui.Set(NewValue)
+	ClickCounterGui.SetValue(NewValue)
 end)
 
 LocalPlayer.CharacterAdded:Connect(function(Character)
@@ -195,7 +195,7 @@ Gui_PlayerSettings.AddNumberSlider('WalkSpeed_Value', StarterPlayer.CharacterWal
 Gui_PlayerSettings.AddButton('WalkSpeed_Reset')
 	.SetName('Reset')
 	.Listen(function()
-		Gui_PlayerSettings.Get('WalkSpeed_Value').Set(StarterPlayer.CharacterWalkSpeed)
+		Gui_PlayerSettings.Get('WalkSpeed_Value').SetValue(StarterPlayer.CharacterWalkSpeed)
 	end)
 
 -- JumpPower
@@ -213,7 +213,7 @@ Gui_PlayerSettings.AddNumberSlider('JumpPower_Value', StarterPlayer.CharacterJum
 Gui_PlayerSettings.AddButton('JumpPower_Reset')
 	.SetName('Reset')
 	.Listen(function()
-		Gui_PlayerSettings.Get('JumpPower_Value').Set(StarterPlayer.CharacterJumpPower)
+		Gui_PlayerSettings.Get('JumpPower_Value').SetValue(StarterPlayer.CharacterJumpPower)
 	end)
 
 -- Humanoid State

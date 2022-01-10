@@ -32,6 +32,8 @@ In the github project you'll notice some files under src/Client/ that all begin 
 
 Under the DebuGui module, there is a module called "Documentation" that contains an example of all the API calls that can be used as an easy reference
 
+> [**Quick Link**](https://github.com/incetents/DebuGui/blob/main/src/Shared/DebuGui/Documentation.lua)
+
 ---
 
 ## Setup

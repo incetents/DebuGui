@@ -57,7 +57,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
 	ScreenGui.Enabled = true
 	MasterFrame.Position = UDim2.fromOffset(InitData.X, InitData.Y)
-	MasterFrame.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
+	MasterFrame.Size = UDim2.fromOffset(math.max(MIN_GUI_WIDTH, InitData.Width), math.max(MIN_GUI_HEIGHT, InitData.Height))
 	MasterFrame.TopBar.Title.Text = InitData.Title
 	VerticalLayout:Clone().Parent = MasterFrame.DrawFrame
 
@@ -282,7 +282,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		ScreenGui.Enabled = true
 		return API
 	end
-	
+
 	function API.Disable()
 		ScreenGui.Enabled = false
 		return API
@@ -341,6 +341,24 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	function API.SetScrollbarColor(NewColor)
 		Utility.QuickTypeAssert(NewColor, 'Color3')
 		MasterFrame.DrawFrame.ScrollBarImageColor3 = NewColor
+		return API
+	end
+
+	function API.SetPosition(X, Y)
+		assert(typeof(X) == 'number', 'X Position must be of type number')
+		assert(typeof(Y) == 'number', 'X Position must be of type number')
+		if not IsMinimized then
+			MasterFrame.Position = UDim2.fromOffset(X, Y - GuiService:GetGuiInset().Y)
+		end
+		return API
+	end
+
+	function API.SetSize(W, H)
+		assert(typeof(W) == 'number', 'X Position must be of type number')
+		assert(typeof(H) == 'number', 'X Position must be of type number')
+		if IsVisible and not IsMinimized then
+			MasterFrame.Size = UDim2.fromOffset(math.max(MIN_GUI_WIDTH, W), math.max(MIN_GUI_HEIGHT, H))
+		end
 		return API
 	end
 

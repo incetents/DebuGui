@@ -28,6 +28,8 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 --	Gui1.Maximize()
 --	Gui1.ToggleVisibility()
 --	Gui1.ToggleMinimized()
+--  Gui1.SetPosition(100, 100)
+--  Gui1.SetSize(500, 5)
 
 -- Getting Reference to Gui
 local Gui1_AlternateRef = DebuGui.GetWindow('Core')

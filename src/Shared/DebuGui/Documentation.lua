@@ -105,6 +105,20 @@
 					NewColor (Color3) = New background color
 			-- @Returns: (GuiWindow)
 
+		-- SetPosition (X, Y)
+			-- @Description: Sets the Position.Offset of the Window (accounts for guiinset); Window must be maximized
+				-- @Parameters:
+					X (number) = X Position
+					Y (number) = Y Position
+			-- @Returns: (GuiWindow)
+
+		-- SetSize (W, H)
+			-- @Description: Sets the Size.Offset of the Window; Window must be maximized and Visible
+				-- @Parameters:
+					W (number) = Width
+					H (number) = Height
+			-- @Returns: (GuiWindow)
+
 
 	-- GuiWindow (Gizmos)
 

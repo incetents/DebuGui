@@ -74,27 +74,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-0.717637599</X>
-					<Y>37.837822</Y>
-					<Z>62.9166603</Z>
-					<R00>0.999852717</R00>
-					<R01>0.00725610508</R01>
-					<R02>-0.0155534912</R02>
-					<R10>4.65661287e-10</R10>
-					<R11>0.906232059</R11>
-					<R12>0.422780633</R12>
-					<R20>0.0171628147</R20>
-					<R21>-0.422718376</R21>
-					<R22>0.906098545</R22>
+					<X>-55.2598267</X>
+					<Y>24.6652069</Y>
+					<Z>-30.3837471</Z>
+					<R00>0.969925702</R00>
+					<R01>0.0678642616</R01>
+					<R02>-0.233749285</R02>
+					<R10>-7.4505806e-09</R10>
+					<R11>0.960344613</R11>
+					<R12>0.278816104</R12>
+					<R20>0.243401498</R20>
+					<R21>-0.270430893</R21>
+					<R22>0.931462824</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-0.68653059</X>
-					<Y>36.99226</Y>
-					<Z>61.1044617</Z>
+					<X>-54.7923279</X>
+					<Y>24.1075745</Y>
+					<Z>-32.2466736</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -1193,8 +1193,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<bool name="EnableTeamCreateStreamingOnLoad">false</bool>
 			<string name="Name">StudioData</string>
 			<int64 name="SourceAssetId">-1</int64>
-			<int64 name="SrcPlaceId">6531585849</int64>
-			<int64 name="SrcUniverseId">2448884957</int64>
+			<int64 name="SrcPlaceId">8502552655</int64>
+			<int64 name="SrcUniverseId">3246346405</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd000190db</UniqueId>
 		</Properties>
@@ -1290,6 +1290,8 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 --	Gui1.Maximize()
 --	Gui1.ToggleVisibility()
 --	Gui1.ToggleMinimized()
+--  Gui.SetPosition(100, 100)
+--  Gui.SetSize(500, 5)
 
 -- Getting Reference to Gui
 local Gui1_AlternateRef = DebuGui.GetWindow('Core')
@@ -1545,6 +1547,12 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
 	.Set(Color3.fromRGB(126, 0, 0))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
+end)
+
+Gui1.AddColorSliderHSVInt('ColorSliderHSV_2', Color3.fromRGB(111, 0, 255), true)
+	.Set(Color3.fromRGB(0, 107, 126))
+	.Listen(function(NewValue)
+		print('New ColorSliderHSV_2 Value: ', NewValue)
 end)
 
 Gui1.AddColorSliderRGBInt('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255))
@@ -2765,7 +2773,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
 	ScreenGui.Enabled = true
 	MasterFrame.Position = UDim2.fromOffset(InitData.X, InitData.Y)
-	MasterFrame.Size = UDim2.fromOffset(InitData.Width, InitData.Height)
+	MasterFrame.Size = UDim2.fromOffset(math.max(MIN_GUI_WIDTH, InitData.Width), math.max(MIN_GUI_HEIGHT, InitData.Height))
 	MasterFrame.TopBar.Title.Text = InitData.Title
 	VerticalLayout:Clone().Parent = MasterFrame.DrawFrame
 
@@ -2854,7 +2862,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 		-- Pre Data
 		if IsVisible then
-			SizeBeforeHidden = MasterFrame.AbsoluteSize
+			if IsMinimized then
+				SizeBeforeHidden = SizeBeforeMinimized
+			else
+				SizeBeforeHidden = MasterFrame.AbsoluteSize
+			end
 		end
 
 		-- Data
@@ -2876,7 +2888,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		if IsVisible then
 			MasterFrame.Size = UDim2.fromOffset(SizeBeforeHidden.X, SizeBeforeHidden.Y)
 		else
-			MasterFrame.Size = UDim2.new(0, MasterFrame.AbsoluteSize.X, 0, TITLEBAR_HEIGHT)
+			MasterFrame.Size = UDim2.fromOffset(MasterFrame.AbsoluteSize.X, TITLEBAR_HEIGHT)
 		end
 
 		-- Visibility
@@ -2986,7 +2998,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		ScreenGui.Enabled = true
 		return API
 	end
-	
+
 	function API.Disable()
 		ScreenGui.Enabled = false
 		return API
@@ -3048,6 +3060,24 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		return API
 	end
 
+	function API.SetPosition(X, Y)
+		assert(typeof(X) == 'number', 'X Position must be of type number')
+		assert(typeof(Y) == 'number', 'X Position must be of type number')
+		if not IsMinimized then
+			MasterFrame.Position = UDim2.fromOffset(X, Y - GuiService:GetGuiInset().Y)
+		end
+		return API
+	end
+
+	function API.SetSize(W, H)
+		assert(typeof(W) == 'number', 'X Position must be of type number')
+		assert(typeof(H) == 'number', 'X Position must be of type number')
+		if IsVisible and not IsMinimized then
+			MasterFrame.Size = UDim2.fromOffset(math.max(MIN_GUI_WIDTH, W), math.max(MIN_GUI_HEIGHT, H))
+		end
+		return API
+	end
+
 	return API
 end
 
@@ -3071,7 +3101,6 @@ local GizmoAPI = {}
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local TextService = game:GetService("TextService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Define
 local LocalPlayer = Players.LocalPlayer
@@ -3422,6 +3451,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
+	end
+
+	function API.AddColorSliderHSVInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 4, nil)
 	end
 
 	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
@@ -3788,7 +3821,7 @@ local function GetTextSize(TextButton)
 		TextButton.Text,
 		TextButton.TextSize,
 		TextButton.Font,
-		TextButton.Parent.AbsoluteSize
+		Vector2.new(math.huge, TextButton.TextSize)
 	)
 	return UDim2.new(0, math.max(MINSIZE, NameSize.X + PADDING), 1, -4)
 end
@@ -3908,6 +3941,7 @@ end
 function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 
 	-- Sanity
+	StartOpen = StartOpen or false
 	Utility.QuickTypeAssert(Name, 'string')
 	Utility.QuickTypeAssert(StartOpen, 'boolean')
 
@@ -5473,7 +5507,8 @@ local Dragger = require(script.Parent.Parent.Parent.Dragger)
 local MODES = {
 	RGB = 1,
 	RGBINT = 2,
-	HSV = 3
+	HSV = 3,
+	HSVINT = 4,
 }
 
 -- Defines
@@ -5651,12 +5686,22 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 		elseif Mode == MODES.HSV then
 			local H, S, V = Color3.toHSV(API._Input)
+			Gui.TextBox1.Text = 'H: '..tostring(DecimalRounding(H, DecimalAmount))
+			Gui.TextBox2.Text = 'S: '..tostring(DecimalRounding(S, DecimalAmount))
+			Gui.TextBox3.Text = 'V: '..tostring(DecimalRounding(V, DecimalAmount))
+			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+
+		elseif Mode == MODES.HSVINT then
+			local H, S, V = Color3.toHSV(API._Input)
 			Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
 			Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
 			Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+
 		end
 
 		return true
@@ -5703,7 +5748,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
 			end
 
-		elseif Mode == MODES.HSV then
+		elseif Mode == MODES.HSV or Mode == MODES.HSVINT then
 
 			-- Value
 			local H, S, V = Color3.toHSV(API._Input)
@@ -5717,7 +5762,12 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			API._Input = Color3.fromHSV(H, S, V)
 
 			-- Text
-			TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+			if Mode == MODES.HSV then
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+
+			elseif Mode == MODES.HSVINT then
+				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+			end
 		end
 
 		-- Color Displayer
@@ -11848,6 +11898,20 @@ asd]]></string>
 					NewColor (Color3) = New background color
 			-- @Returns: (GuiWindow)
 
+		-- SetPosition (X, Y)
+			-- @Description: Sets the Position.Offset of the Window (accounts for guiinset); Window must be maximized
+				-- @Parameters:
+					X (number) = X Position
+					Y (number) = Y Position
+			-- @Returns: (GuiWindow)
+
+		-- SetSize (W, H)
+			-- @Description: Sets the Size.Offset of the Window; Window must be maximized and Visible
+				-- @Parameters:
+					W (number) = Width
+					H (number) = Height
+			-- @Returns: (GuiWindow)
+
 
 	-- GuiWindow (Gizmos)
 
@@ -12796,6 +12860,15 @@ asd]]></string>
 			</Properties>
 		</Item>
 	</Item>
+	<Item class="LodDataService" referent="RBX799A986FB2CE451C9ADB940BAAB1B149">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">Instance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">30b11c95d04e923501ecfac7000196cb</UniqueId>
+		</Properties>
+	</Item>
 	<Item class="DataStoreService" referent="RBX16373B19BB9940BB9F9A35A9E3F4FF63">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -12810,7 +12883,7 @@ asd]]></string>
 	<Item class="HttpService" referent="RBX38BD93E8C04A460CA5B29B7DA319C5BB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="HttpEnabled">true</bool>
+			<bool name="HttpEnabled">false</bool>
 			<string name="Name">HttpService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>

@@ -12,7 +12,8 @@ local Dragger = require(script.Parent.Parent.Parent.Dragger)
 local MODES = {
 	RGB = 1,
 	RGBINT = 2,
-	HSV = 3
+	HSV = 3,
+	HSVINT = 4,
 }
 
 -- Defines
@@ -190,12 +191,22 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 		elseif Mode == MODES.HSV then
 			local H, S, V = Color3.toHSV(API._Input)
+			Gui.TextBox1.Text = 'H: '..tostring(DecimalRounding(H, DecimalAmount))
+			Gui.TextBox2.Text = 'S: '..tostring(DecimalRounding(S, DecimalAmount))
+			Gui.TextBox3.Text = 'V: '..tostring(DecimalRounding(V, DecimalAmount))
+			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
+			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+
+		elseif Mode == MODES.HSVINT then
+			local H, S, V = Color3.toHSV(API._Input)
 			Gui.TextBox1.Text = 'H: '..tostring(GetColor255(H))
 			Gui.TextBox2.Text = 'S: '..tostring(GetColor255(S))
 			Gui.TextBox3.Text = 'V: '..tostring(GetColor255(V))
 			UpdateDraggerPositionFromValue(Gui.TextBox1.DragRange.Dragger, H, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox2.DragRange.Dragger, S, 0, 1)
 			UpdateDraggerPositionFromValue(Gui.TextBox3.DragRange.Dragger, V, 0, 1)
+
 		end
 
 		return true
@@ -242,7 +253,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
 			end
 
-		elseif Mode == MODES.HSV then
+		elseif Mode == MODES.HSV or Mode == MODES.HSVINT then
 
 			-- Value
 			local H, S, V = Color3.toHSV(API._Input)
@@ -256,7 +267,12 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 			API._Input = Color3.fromHSV(H, S, V)
 
 			-- Text
-			TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+			if Mode == MODES.HSV then
+				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+
+			elseif Mode == MODES.HSVINT then
+				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
+			end
 		end
 
 		-- Color Displayer

@@ -285,6 +285,12 @@ Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
 end)
 
+Gui1.AddColorSliderHSVInt('ColorSliderHSV_2', Color3.fromRGB(111, 0, 255), true)
+	.Set(Color3.fromRGB(0, 107, 126))
+	.Listen(function(NewValue)
+		print('New ColorSliderHSV_2 Value: ', NewValue)
+end)
+
 Gui1.AddColorSliderRGBInt('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255))
 	.SetReadOnly()
 

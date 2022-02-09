@@ -58,7 +58,7 @@ local function RGBColorIndexToDisplayText(ColorIndex)
 		return 'G: '
 	else
 		return 'B: '
-	end 
+	end
 end
 local function HSVColorIndexToDisplayText(ColorIndex)
 	if ColorIndex == 1 then
@@ -67,7 +67,7 @@ local function HSVColorIndexToDisplayText(ColorIndex)
 		return 'S: '
 	else
 		return 'V: '
-	end 
+	end
 end
 
 ----------------
@@ -268,7 +268,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 			-- Text
 			if Mode == MODES.HSV then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 
 			elseif Mode == MODES.HSVINT then
 				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))

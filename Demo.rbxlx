@@ -12,6 +12,11 @@
 			<double name="DistributedGameTime">0</double>
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
+			<Vector3 name="GlobalWind">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
 			<float name="Gravity">196.199997</float>
 			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
 			<token name="InterpolationThrottling">0</token>
@@ -41,6 +46,7 @@
 			<bool name="NeedsPivotMigration">false</bool>
 			<token name="PhysicsSteppingMethod">0</token>
 			<Ref name="PrimaryPart">null</Ref>
+			<token name="ReplicateInstanceDestroySetting">0</token>
 			<token name="Retargeting">0</token>
 			<token name="SignalBehavior">0</token>
 			<int64 name="SourceAssetId">-1</int64>
@@ -74,18 +80,18 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-55.2598267</X>
-					<Y>24.6652069</Y>
-					<Z>-30.3837471</Z>
-					<R00>0.969925702</R00>
-					<R01>0.0678642616</R01>
-					<R02>-0.233749285</R02>
-					<R10>-7.4505806e-09</R10>
-					<R11>0.960344613</R11>
-					<R12>0.278816104</R12>
-					<R20>0.243401498</R20>
-					<R21>-0.270430893</R21>
-					<R22>0.931462824</R22>
+					<X>-56.5010338</X>
+					<Y>24.8907547</Y>
+					<Z>-32.9300499</Z>
+					<R00>-0.37134102</R00>
+					<R01>0.363587767</R01>
+					<R02>-0.854347527</R02>
+					<R10>-0</R10>
+					<R11>0.920140743</R11>
+					<R12>0.391587645</R12>
+					<R20>0.92849654</R20>
+					<R21>0.145412549</R21>
+					<R22>-0.34168601</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -5553,7 +5559,7 @@ local function RGBColorIndexToDisplayText(ColorIndex)
 		return 'G: '
 	else
 		return 'B: '
-	end 
+	end
 end
 local function HSVColorIndexToDisplayText(ColorIndex)
 	if ColorIndex == 1 then
@@ -5562,7 +5568,7 @@ local function HSVColorIndexToDisplayText(ColorIndex)
 		return 'S: '
 	else
 		return 'V: '
-	end 
+	end
 end
 
 ----------------
@@ -5763,7 +5769,7 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 
 			-- Text
 			if Mode == MODES.HSV then
-				TextBox.Text = RGBColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
+				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(DecimalRounding(Value, DecimalAmount))
 
 			elseif Mode == MODES.HSVINT then
 				TextBox.Text = HSVColorIndexToDisplayText(ColorIndex)..tostring(GetColor255(Value))
@@ -12731,6 +12737,15 @@ asd]]></string>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd0001911b</UniqueId>
 		</Properties>
 	</Item>
+	<Item class="LanguageService" referent="RBX155A93E6D2624988A06D1AC1FA0C3923">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">LanguageService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ef</UniqueId>
+		</Properties>
+	</Item>
 	<Item class="Lighting" referent="RBXF5AABC98F9924019985D7AF8E9141F57">
 		<Properties>
 			<Color3 name="Ambient">
@@ -12888,15 +12903,6 @@ asd]]></string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ee</UniqueId>
-		</Properties>
-	</Item>
-	<Item class="LanguageService" referent="RBX155A93E6D2624988A06D1AC1FA0C3923">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">LanguageService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-			<UniqueId name="UniqueId">46009198e08047480187a7bd000191ef</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Teams" referent="RBX636FC8B8607D4BEB8C3BC6B886491E18">

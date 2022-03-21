@@ -6,6 +6,7 @@ local GizmoAPI = {}
 -- Services
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
+local HttpService = game:GetService("HttpService")
 local TextService = game:GetService("TextService")
 
 -- Define
@@ -97,6 +98,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			warn('Gizmo already exists ('..UniqueName..')')
 			return
 		end
+		UniqueName = UniqueName or HttpService:GenerateGUID(false)
 
 		-- New UI
 		local GizmoUI = GIZMO_UI:Clone()

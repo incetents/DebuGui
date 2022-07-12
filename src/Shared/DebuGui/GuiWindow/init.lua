@@ -143,14 +143,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	local function SetVisible(State)
 		-- Abort if no change
 		if State == IsVisible then return end
+		if IsMinimized then return end
 
 		-- Pre Data
 		if IsVisible then
-			if IsMinimized then
-				SizeBeforeHidden = SizeBeforeMinimized
-			else
-				SizeBeforeHidden = MasterFrame.AbsoluteSize
-			end
+			SizeBeforeHidden = MasterFrame.AbsoluteSize
 		end
 
 		-- Data
@@ -285,6 +282,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 	function API.Disable()
 		ScreenGui.Enabled = false
+		return API
+	end
+
+	function API.ToggleGui()
+		ScreenGui.Enabled = not ScreenGui.Enabled
 		return API
 	end
 

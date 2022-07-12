@@ -55,6 +55,10 @@
 			-- @Description: Sets the Enabled of the ScreenGui to false
 			-- @Returns: (GuiWindow)
 
+		-- ToggleGui ()
+			-- @Description: Toggles the Enabled of the ScreenGui
+			-- @Returns: (GuiWindow)
+
 		-- Show ()
 			-- @Description: Make the DrawFrame of the GuiWindow visible
 			-- @Returns: (GuiWindow)

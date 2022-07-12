@@ -162,14 +162,14 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		-- Check if Modal is not in-use
 		if not API._Modal.Lock then return end
 
-			-- Remove Modal
-			GuiParent.Parent.ModalLock.Visible = false
-			API._Modal.Frame:Destroy()
+		-- Remove Modal
+		GuiParent.Parent.ModalLock.Visible = false
+		API._Modal.Frame:Destroy()
 
-			-- Remove Locks
-			API._Modal.Lock = false
-			API._Modal.ListenerAPI = nil
-			API._Modal.Frame = nil
+		-- Remove Locks
+		API._Modal.Lock = false
+		API._Modal.ListenerAPI = nil
+		API._Modal.Frame = nil
 	end
 
 	function API._ModalChoiceSelected(Choice)

@@ -22,6 +22,7 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 -- Additional Master Functions for testing
 --	Gui1.Disable()
 --	Gui1.Enable()
+--	Gui1.ToggleEnabled()
 --	Gui1.Hide()
 --	Gui1.Show()
 --	Gui1.Minimize()

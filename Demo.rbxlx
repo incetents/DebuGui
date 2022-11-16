@@ -7,6 +7,8 @@
 			<token name="AnimationWeightedBlendFix">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<token name="ClientAnimatorThrottling">0</token>
+			<BinaryString name="CollisionGroupData"><![CDATA[AQIABP3///8HRGVmYXVsdAEE/v///x9QbHVnaW5fU3R1ZGlvVHdlYWtzX0JvdW5kaW5nQm94
+]]></BinaryString>
 			<string name="CollisionGroups">Default^0^-3\Plugin_StudioTweaks_BoundingBox^1^-2</string>
 			<Ref name="CurrentCamera">RBX0F01C2780FC6466095A19E1448DDE9AF</Ref>
 			<double name="DistributedGameTime">0</double>
@@ -18,6 +20,7 @@
 				<Z>0</Z>
 			</Vector3>
 			<float name="Gravity">196.199997</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
 			<token name="InterpolationThrottling">0</token>
 			<token name="LevelOfDetail">0</token>
@@ -42,6 +45,7 @@
 				<Y>0</Y>
 				<Z>0</Z>
 			</Vector3>
+			<token name="ModelStreamingMode">0</token>
 			<string name="Name">Workspace</string>
 			<bool name="NeedsPivotMigration">false</bool>
 			<token name="PhysicsSteppingMethod">0</token>
@@ -52,12 +56,13 @@
 			<int64 name="SourceAssetId">-1</int64>
 			<token name="StreamOutBehavior">0</token>
 			<bool name="StreamingEnabled">false</bool>
+			<token name="StreamingIntegrityMode">0</token>
 			<int name="StreamingMinRadius">64</int>
-			<token name="StreamingPauseMode">0</token>
 			<int name="StreamingTargetRadius">1024</int>
 			<BinaryString name="Tags"></BinaryString>
 			<bool name="TerrainWeldsFixed">true</bool>
 			<bool name="TouchesUseCollisionGroups">false</bool>
+			<token name="UnionsScaleNonuniformly">0</token>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd00017e4d</UniqueId>
 			<OptionalCoordinateFrame name="WorldPivotData">
 				<CFrame>
@@ -80,27 +85,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-56.5010338</X>
-					<Y>24.8907547</Y>
-					<Z>-32.9300499</Z>
-					<R00>-0.37134102</R00>
-					<R01>0.363587767</R01>
-					<R02>-0.854347527</R02>
-					<R10>-0</R10>
-					<R11>0.920140743</R11>
-					<R12>0.391587645</R12>
-					<R20>0.92849654</R20>
-					<R21>0.145412549</R21>
-					<R22>-0.34168601</R22>
+					<X>-37.9205551</X>
+					<Y>23.3193817</Y>
+					<Z>-35.9288521</Z>
+					<R00>-0.351817161</R00>
+					<R01>0.362037539</R01>
+					<R02>-0.863222718</R02>
+					<R10>1.4901163e-08</R10>
+					<R11>0.922178805</R11>
+					<R12>0.386763841</R12>
+					<R20>0.936068773</R20>
+					<R21>0.136070147</R21>
+					<R22>-0.324438334</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-54.7923279</X>
-					<Y>24.1075745</Y>
-					<Z>-32.2466736</Z>
+					<X>-36.1941109</X>
+					<Y>22.5458546</Y>
+					<Z>-35.2799759</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -113,6 +118,7 @@
 				</CoordinateFrame>
 				<bool name="HeadLocked">true</bool>
 				<float name="HeadScale">1</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">Camera</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
@@ -149,6 +155,7 @@
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4284177243</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -158,6 +165,7 @@
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -165,6 +173,7 @@
 				<bool name="Locked">true</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">Baseplate</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -221,6 +230,7 @@
 						<B>0</B>
 					</Color3>
 					<token name="Face">1</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">Texture</string>
 					<float name="OffsetStudsU">0</float>
 					<float name="OffsetStudsV">0</float>
@@ -266,6 +276,7 @@
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -276,6 +287,7 @@
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -285,6 +297,7 @@
 				<token name="Material">256</token>
 				<BinaryString name="MaterialColors"><![CDATA[AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHta
 gcLgc4RKxr21zq2UlJSM]]></BinaryString>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">Terrain</string>
 				<BinaryString name="PhysicsGrid">AgMAAAAAAAAAAAAAAAA=</BinaryString>
 				<CoordinateFrame name="PivotOffset">
@@ -373,6 +386,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -384,6 +398,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -391,6 +406,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">Spawn_White</string>
 				<bool name="Neutral">true</bool>
 				<CoordinateFrame name="PivotOffset">
@@ -449,6 +465,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<B>1</B>
 					</Color3>
 					<token name="Face">1</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">Decal</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -489,6 +506,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -498,6 +516,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -505,6 +524,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">SceneObject_Block</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -567,11 +587,17 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<bool name="ClipsDescendants">true</bool>
 					<bool name="Enabled">true</bool>
 					<token name="Face">2</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<float name="LightInfluence">1</float>
 					<string name="Name">SurfaceGui</string>
 					<float name="PixelsPerStud">50</float>
 					<bool name="ResetOnSpawn">true</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<token name="SizingMode">1</token>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -606,6 +632,13 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">3</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -624,7 +657,13 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -690,6 +729,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -699,6 +739,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -706,6 +747,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">SceneObject_Sphere</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -784,6 +826,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -793,6 +836,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -800,6 +844,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">SceneObject_Cylinder</string>
 				<CoordinateFrame name="PivotOffset">
 					<X>0</X>
@@ -879,6 +924,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4289020495</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -890,6 +936,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -897,6 +944,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">Spawn_Red</string>
 				<bool name="Neutral">false</bool>
 				<CoordinateFrame name="PivotOffset">
@@ -955,6 +1003,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<B>1</B>
 					</Color3>
 					<token name="Face">1</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">Decal</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -996,6 +1045,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
 				<int name="CollisionGroupId">0</int>
 				<Color3uint8 name="Color3uint8">4281705755</Color3uint8>
 				<PhysicalProperties name="CustomPhysicalProperties">
@@ -1007,6 +1057,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="LeftParamA">-0.5</float>
 				<float name="LeftParamB">0.5</float>
 				<token name="LeftSurface">0</token>
@@ -1014,6 +1065,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<bool name="Locked">false</bool>
 				<bool name="Massless">false</bool>
 				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
 				<string name="Name">Spawn_Green</string>
 				<bool name="Neutral">false</bool>
 				<CoordinateFrame name="PivotOffset">
@@ -1072,6 +1124,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 						<B>1</B>
 					</Color3>
 					<token name="Face">1</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<string name="Name">Decal</string>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -1089,17 +1142,20 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<float name="DistanceFactor">3.32999992</float>
 			<float name="DopplerScale">1</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">SoundService</string>
 			<bool name="RespectFilteringEnabled">true</bool>
 			<float name="RolloffScale">1</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd000190b9</UniqueId>
+			<token name="VolumetricAudio">1</token>
 		</Properties>
 	</Item>
 	<Item class="NonReplicatedCSGDictionaryService" referent="RBXA0290C6B22FD40DC98628E1ACAD0D6A1">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -1109,6 +1165,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="CSGDictionaryService" referent="RBXBAC29ED8630A4A5EBB8D4D355EE4428C">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -1119,6 +1176,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="BubbleChatEnabled">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="LoadDefaultChat">true</bool>
 			<string name="Name">Chat</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -1129,6 +1187,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="TimerService" referent="RBX593BF212D26B4922AB3093154554CF94">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -1139,6 +1198,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="CharacterAutoLoads">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxPlayersInternal">30</int>
 			<string name="Name">Players</string>
 			<int name="PreferredPlayersInternal">30</int>
@@ -1151,6 +1211,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="ReplicatedFirst" referent="RBXF07FFD1CC9734F4E99775E629A2C0F62">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ReplicatedFirst</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -1160,15 +1221,60 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="TweenService" referent="RBX7E7A289D5A5E49CA91FCA434300C10A5">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">TweenService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd000190d3</UniqueId>
 		</Properties>
 	</Item>
+	<Item class="MaterialService" referent="RBXD4A0DEA1C73F4AC597123E6ABF8C225A">
+		<Properties>
+			<string name="AsphaltName">Asphalt</string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="BasaltName">Basalt</string>
+			<string name="BrickName">Brick</string>
+			<string name="CobblestoneName">Cobblestone</string>
+			<string name="ConcreteName">Concrete</string>
+			<string name="CorrodedMetalName">CorrodedMetal</string>
+			<string name="CrackedLavaName">CrackedLava</string>
+			<string name="DiamondPlateName">DiamondPlate</string>
+			<string name="FabricName">Fabric</string>
+			<string name="FoilName">Foil</string>
+			<string name="GlacierName">Glacier</string>
+			<string name="GraniteName">Granite</string>
+			<string name="GrassName">Grass</string>
+			<string name="GroundName">Ground</string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="IceName">Ice</string>
+			<string name="LeafyGrassName">LeafyGrass</string>
+			<string name="LimestoneName">Limestone</string>
+			<string name="MarbleName">Marble</string>
+			<string name="MetalName">Metal</string>
+			<string name="MudName">Mud</string>
+			<string name="Name">MaterialService</string>
+			<string name="PavementName">Pavement</string>
+			<string name="PebbleName">Pebble</string>
+			<string name="PlasticName">Plastic</string>
+			<string name="RockName">Rock</string>
+			<string name="SaltName">Salt</string>
+			<string name="SandName">Sand</string>
+			<string name="SandstoneName">Sandstone</string>
+			<string name="SlateName">Slate</string>
+			<string name="SmoothPlasticName">SmoothPlastic</string>
+			<string name="SnowName">Snow</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">4d4d492d303ed20a0386ca3c000002c8</UniqueId>
+			<bool name="Use2022MaterialsXml">false</bool>
+			<string name="WoodName">Wood</string>
+			<string name="WoodPlanksName">WoodPlanks</string>
+		</Properties>
+	</Item>
 	<Item class="PermissionsService" referent="RBX4F946AA548064AE3B6B5B3C0854897F1">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">PermissionsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -1181,6 +1287,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<bool name="CustomPoliciesEnabled">false</bool>
 			<string name="EmulatedCountryCode"></string>
 			<string name="EmulatedGameLocale"></string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">PlayerEmulatorService</string>
 			<bool name="PlayerEmulationEnabled">false</bool>
 			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
@@ -1192,15 +1299,10 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 	<Item class="StudioData" referent="RBX616DF6630AD24495AE13EF1F13ECA07B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
-			<int64 name="CommitInflightAuthorId">0</int64>
-			<string name="CommitInflightGuid"></string>
-			<int name="CommitInflightPlaceVersion">0</int>
 			<bool name="EnableScriptCollabByDefaultOnLoad">true</bool>
-			<bool name="EnableTeamCreateStreamingOnLoad">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StudioData</string>
 			<int64 name="SourceAssetId">-1</int64>
-			<int64 name="SrcPlaceId">8502552655</int64>
-			<int64 name="SrcUniverseId">3246346405</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">46009198e08047480187a7bd000190db</UniqueId>
 		</Properties>
@@ -1223,6 +1325,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<token name="DevComputerMovementMode">0</token>
 			<token name="DevTouchCameraMovementMode">0</token>
 			<token name="DevTouchMovementMode">0</token>
+			<token name="EnableDynamicHeads">0</token>
 			<bool name="EnableMouseLockOption">true</bool>
 			<int64 name="GameSettingsAssetIDFace">0</int64>
 			<int64 name="GameSettingsAssetIDHead">0</int64>
@@ -1242,6 +1345,8 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 			<NumberRange name="GameSettingsScaleRangeProportion">0 1 </NumberRange>
 			<NumberRange name="GameSettingsScaleRangeWidth">0.7 1 </NumberRange>
 			<float name="HealthDisplayDistance">100</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<token name="HumanoidStateMachineMode">0</token>
 			<bool name="LoadCharacterAppearance">true</bool>
 			<token name="LoadCharacterLayeredClothing">0</token>
 			<string name="Name">StarterPlayer</string>
@@ -1254,6 +1359,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 		<Item class="StarterPlayerScripts" referent="RBXAD0B9D2AACCF457C9C4D4C71874FC7FC">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">StarterPlayerScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
@@ -1263,8 +1369,10 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Example</string>
+					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{5AA24728-A29F-407D-84BF-9BF3D8F51509}</string>
 					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
@@ -1290,6 +1398,7 @@ Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
 -- Additional Master Functions for testing
 --	Gui1.Disable()
 --	Gui1.Enable()
+--	Gui1.ToggleEnabled()
 --	Gui1.Hide()
 --	Gui1.Show()
 --	Gui1.Minimize()
@@ -1804,8 +1913,10 @@ rVec2.SetName('Invalid')
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Example_RacingCondition</string>
+					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{AABD3203-6AF9-4265-ABD5-477C5AB24D66}</string>
 					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
@@ -1829,8 +1940,10 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Example_Scene</string>
+					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{CD28711D-DAC4-43CC-A702-40582EA48F59}</string>
 					<ProtectedString name="Source"><![CDATA[-- © 2021 Emmanuel Lajeunesse
 
@@ -2218,6 +2331,7 @@ end)]]></ProtectedString>
 		<Item class="StarterCharacterScripts" referent="RBX784DD2D75896453CBC932082A018EB6E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">StarterCharacterScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
@@ -2228,6 +2342,7 @@ end)]]></ProtectedString>
 	<Item class="StarterPack" referent="RBX8BD11B4EA9EC417D9F72C77D94CDC8AE">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StarterPack</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2237,6 +2352,7 @@ end)]]></ProtectedString>
 	<Item class="StarterGui" referent="RBX3CC98BF0C189472BA8B7D78F8463EC76">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">StarterGui</string>
 			<bool name="ResetPlayerGuiOnSpawn">true</bool>
 			<token name="ScreenOrientation">4</token>
@@ -2250,6 +2366,7 @@ end)]]></ProtectedString>
 	<Item class="LocalizationService" referent="RBXC9536EBFA4D34F90B6A8927B8DCA3354">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LocalizationService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2259,6 +2376,7 @@ end)]]></ProtectedString>
 	<Item class="TeleportService" referent="RBXC28881E1C3AB4F49A0AEF8FBCAAEB2F6">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Teleport Service</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2268,6 +2386,7 @@ end)]]></ProtectedString>
 	<Item class="CollectionService" referent="RBXA4C93A7A4C16442B9D70C8D440EF9817">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CollectionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2277,6 +2396,7 @@ end)]]></ProtectedString>
 	<Item class="PhysicsService" referent="RBXAC709B308EC64D858B34AC329139491B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">PhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2286,6 +2406,7 @@ end)]]></ProtectedString>
 	<Item class="Geometry" referent="RBXF2590483C762486E87E49C18DE5F0046">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Geometry</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2297,6 +2418,7 @@ end)]]></ProtectedString>
 			<bool name="AllowClientInsertModels">false</bool>
 			<bool name="AllowInsertFreeModels">false</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">InsertService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2305,6 +2427,7 @@ end)]]></ProtectedString>
 		<Item class="StringValue" referent="RBX6C4CC05201354931886307786067D19B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">InsertionHash</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
@@ -2316,6 +2439,7 @@ end)]]></ProtectedString>
 	<Item class="GamePassService" referent="RBX606B6E0AC63243A2A41978C2C1CA3680">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">GamePassService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2325,6 +2449,7 @@ end)]]></ProtectedString>
 	<Item class="Debris" referent="RBXDEB24AE185D844C49D50855D2473C9FB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxItems">1000</int>
 			<string name="Name">Debris</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -2335,6 +2460,7 @@ end)]]></ProtectedString>
 	<Item class="CookiesService" referent="RBX0B1D24C4DAE645F291F173EA1D531BDC">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">CookiesService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2344,6 +2470,7 @@ end)]]></ProtectedString>
 	<Item class="VRService" referent="RBXAC03B3D7B0844158A7DAC06C6DDA44CB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">VRService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2353,6 +2480,7 @@ end)]]></ProtectedString>
 	<Item class="ContextActionService" referent="RBX903ABB01FCB2462A87B4896F3EE05B64">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ContextActionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2362,6 +2490,7 @@ end)]]></ProtectedString>
 	<Item class="ScriptService" referent="RBX9AA273FF25E14ED59D1CD210918806BB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2371,6 +2500,7 @@ end)]]></ProtectedString>
 	<Item class="AssetService" referent="RBXFEA31424DF984D348D91B340252B067E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">AssetService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2380,6 +2510,7 @@ end)]]></ProtectedString>
 	<Item class="TouchInputService" referent="RBX86118045108A4982993EDD4AA6149507">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">TouchInputService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2390,6 +2521,7 @@ end)]]></ProtectedString>
 		<Properties>
 			<string name="ApiKey"></string>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">AnalyticsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2398,6 +2530,7 @@ end)]]></ProtectedString>
 		<Item class="ModuleScript" referent="RBXE6C7FF6F133343D4B994111A0016666E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">RobloxLSP_Settings</string>
 				<string name="ScriptGuid">{50C8024D-9D1B-4B96-B76A-CF05D4DDA29D}</string>
@@ -2417,6 +2550,7 @@ end)]]></ProtectedString>
 	<Item class="Selection" referent="RBXC635D993CDD7496DB244272DFD349D0F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Selection</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2426,6 +2560,7 @@ end)]]></ProtectedString>
 	<Item class="ServerScriptService" referent="RBX583A2BA252AE4F2392693E328BAFFC7F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="LoadStringEnabled">false</bool>
 			<string name="Name">ServerScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -2436,6 +2571,7 @@ end)]]></ProtectedString>
 	<Item class="ServerStorage" referent="RBX102C832A83EC4248A091891B46B46D7D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ServerStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2445,6 +2581,7 @@ end)]]></ProtectedString>
 	<Item class="ReplicatedStorage" referent="RBXADFAD439F7F14B9D943369167C9AEC03">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ReplicatedStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2453,6 +2590,7 @@ end)]]></ProtectedString>
 		<Item class="ModuleScript" referent="RBX2B43BB612C7543259D0718CEB23C2CBA">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">DebuGui</string>
 				<string name="ScriptGuid">{DC43DC3C-AA18-4070-96E0-F96134D67DE0}</string>
@@ -2555,6 +2693,7 @@ return DebuGui]]></ProtectedString>
 			<Item class="ModuleScript" referent="RBX15B2D72FFBA44913A7DA9A6C083FA1B8">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Dragger</string>
 					<string name="ScriptGuid">{9059B306-0BF1-4EBC-A03A-15C61F1C0312}</string>
@@ -2669,6 +2808,7 @@ return Dragger]]></ProtectedString>
 			<Item class="ModuleScript" referent="RBX14C10991F8164E4D8644F5294EAFBFE1">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Utility</string>
 					<string name="ScriptGuid">{48B40446-D8BF-4438-96C7-4E33AF0A43AB}</string>
@@ -2717,6 +2857,7 @@ return Utility]]></ProtectedString>
 			<Item class="ModuleScript" referent="RBXF5BC51AE4BE44207A8166FF7250A7943">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">GuiWindow</string>
 					<string name="ScriptGuid">{9523E78C-F780-4C51-A911-7B87B00FD658}</string>
@@ -2865,14 +3006,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	local function SetVisible(State)
 		-- Abort if no change
 		if State == IsVisible then return end
+		if IsMinimized then return end
 
 		-- Pre Data
 		if IsVisible then
-			if IsMinimized then
-				SizeBeforeHidden = SizeBeforeMinimized
-			else
-				SizeBeforeHidden = MasterFrame.AbsoluteSize
-			end
+			SizeBeforeHidden = MasterFrame.AbsoluteSize
 		end
 
 		-- Data
@@ -3010,6 +3148,11 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		return API
 	end
 
+	function API.ToggleEnabled()
+		ScreenGui.Enabled = not ScreenGui.Enabled
+		return API
+	end
+
 	function API.Show()
 		SetVisible(true)
 		return API
@@ -3095,6 +3238,7 @@ return GuiWindow]]></ProtectedString>
 				<Item class="ModuleScript" referent="RBX6AAEF307BA794F74B6986ACAB2E06CEC">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">GizmoAPI</string>
 						<string name="ScriptGuid">{0E86CDF6-F1A5-48CC-B359-F06A4E76B059}</string>
@@ -3106,6 +3250,7 @@ local GizmoAPI = {}
 -- Services
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
+local HttpService = game:GetService("HttpService")
 local TextService = game:GetService("TextService")
 
 -- Define
@@ -3197,6 +3342,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 			warn('Gizmo already exists ('..UniqueName..')')
 			return
 		end
+		UniqueName = UniqueName or HttpService:GenerateGUID(false)
 
 		-- New UI
 		local GizmoUI = GIZMO_UI:Clone()
@@ -3260,14 +3406,14 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		-- Check if Modal is not in-use
 		if not API._Modal.Lock then return end
 
-			-- Remove Modal
-			GuiParent.Parent.ModalLock.Visible = false
-			API._Modal.Frame:Destroy()
+		-- Remove Modal
+		GuiParent.Parent.ModalLock.Visible = false
+		API._Modal.Frame:Destroy()
 
-			-- Remove Locks
-			API._Modal.Lock = false
-			API._Modal.ListenerAPI = nil
-			API._Modal.Frame = nil
+		-- Remove Locks
+		API._Modal.Lock = false
+		API._Modal.ListenerAPI = nil
+		API._Modal.Frame = nil
 	end
 
 	function API._ModalChoiceSelected(Choice)
@@ -3551,6 +3697,7 @@ return GizmoAPI]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX17B99AD62B95400F97EEDB827C39C489">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBase</string>
 							<string name="ScriptGuid">{A59DFBD5-9565-42EA-9DAD-07E2F8AF019B}</string>
@@ -3672,6 +3819,7 @@ return GizmoBase]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX11A6816DB40A4581B83BF6C47A9E1A27">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBool</string>
 							<string name="ScriptGuid">{3602A8E2-958A-48D2-A84B-DFF4BC01D4E0}</string>
@@ -3800,6 +3948,7 @@ return GizmoBool]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX69C0F86EA8FD469898A29432C86ABD34">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoButton</string>
 							<string name="ScriptGuid">{11589E8D-B199-485E-AA59-259C6CB383BB}</string>
@@ -3910,6 +4059,7 @@ return GizmoButton]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXA0CE51C29D984EBBAF24F6DDBD9026EB">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoFolder</string>
 							<string name="ScriptGuid">{D193CF61-BC46-4A26-BB5D-5C985079B1C1}</string>
@@ -4049,6 +4199,7 @@ return GizmoFolder]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXC8A115146A3B4B27B0DD7D1471BD3ABC">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoInteger</string>
 							<string name="ScriptGuid">{C5B6DB0C-5508-477B-B3B9-7138546BC915}</string>
@@ -4180,6 +4331,7 @@ return GizmoInteger]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX5DFED56081234E67AA2BEA6B596CBB1F">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoIntegerSlider</string>
 							<string name="ScriptGuid">{B1DEC54D-D044-4427-AC0F-6AA78814819B}</string>
@@ -4401,6 +4553,7 @@ return GizmoIntegerSlider]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX997437460D614EA7802198918E3BA842">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoLongString</string>
 							<string name="ScriptGuid">{7F905EB5-BB16-4537-897B-83F1F3BA7575}</string>
@@ -4548,6 +4701,7 @@ return GizmoLongString]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXA1C2959714B44D7CB9A850FBE7B9F341">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumber</string>
 							<string name="ScriptGuid">{E0FAC82C-9106-4A5E-ABE0-709F55783EB4}</string>
@@ -4686,6 +4840,7 @@ return GizmoNumber]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX1CBF99DB62014749909E50B2B3BB551E">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumberSlider</string>
 							<string name="ScriptGuid">{294D026D-D60D-4ABB-B975-3ABCCDC22BB9}</string>
@@ -4912,6 +5067,7 @@ return GizmoNumberSlider]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXDCDE6E440242464A9102DF9E09C50F75">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoSeparator</string>
 							<string name="ScriptGuid">{EEB658EE-3EA4-464C-90F3-5BF04B05CF83}</string>
@@ -5001,6 +5157,7 @@ return GizmoSeparator]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX3AF9E14B807D42A3B83389654304CDE7">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoString</string>
 							<string name="ScriptGuid">{93F28F9F-0C01-47B3-8149-17F5172CDA43}</string>
@@ -5131,6 +5288,7 @@ return GizmoString]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX550C18FC4D28423CBC39DF70415CFD88">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector2</string>
 							<string name="ScriptGuid">{2BEBEDD1-D2BA-429C-9A8B-BC476BB37D3C}</string>
@@ -5303,6 +5461,7 @@ return GizmoVector2]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX8B38CDA1B52D45F1A9AF3CF5579975DC">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector3</string>
 							<string name="ScriptGuid">{74FC14EE-E84C-4509-95B2-99F67BD78BCD}</string>
@@ -5496,6 +5655,7 @@ return GizmoVector3]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBX938EEA2D773E451BA7A1A073FC5A14B6">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoColorSlider</string>
 							<string name="ScriptGuid">{A9C08860-3E7C-4D6F-91EB-48EE2FEC952A}</string>
@@ -5824,6 +5984,7 @@ return GizmoColorSlider]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXFD5092A10B8C4682A502CD3F0DDC2499">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoText</string>
 							<string name="ScriptGuid">{4BB9F2FD-59E6-4870-B886-CF2C414DAFBA}</string>
@@ -5901,6 +6062,7 @@ return GizmoText]]></ProtectedString>
 					<Item class="ModuleScript" referent="RBXA8D4DC96CDFF41C8AE145A55EAAA474E">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoListPicker</string>
 							<string name="ScriptGuid">{9442DE75-704B-4B43-8506-7A977A0025DA}</string>
@@ -6111,12 +6273,20 @@ return GizmoListPicker]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<bool name="ClipToDeviceSafeArea">true</bool>
 					<int name="DisplayOrder">0</int>
 					<bool name="Enabled">true</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<bool name="IgnoreGuiInset">false</bool>
 					<string name="Name">DebuGui_UI</string>
 					<bool name="ResetOnSpawn">false</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
+					<token name="SafeAreaCompatibility">1</token>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">46009198e08047480187a7bd00019187</UniqueId>
@@ -6147,6 +6317,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int name="BorderSizePixel">0</int>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">MasterFrame</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -6162,7 +6333,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>615</XO>
@@ -6202,6 +6379,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int name="BorderSizePixel">0</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<string name="Name">TopBar</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -6217,7 +6395,13 @@ return GizmoListPicker]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -6259,6 +6443,13 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">19</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>700</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6279,7 +6470,13 @@ return GizmoListPicker]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>20</XO>
@@ -6341,6 +6538,13 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="ClipsDescendants">true</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">3</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6361,7 +6565,13 @@ return GizmoListPicker]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>-40</XO>
@@ -6398,6 +6608,7 @@ return GizmoListPicker]]></ProtectedString>
 							<Item class="UIPadding" referent="RBXF791704CFC0B4BD9AA65DAADCE887110">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
+									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 									<string name="Name">UIPadding</string>
 									<UDim name="PaddingBottom">
 										<S>0</S>
@@ -6448,6 +6659,13 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">19</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>700</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6468,7 +6686,13 @@ return GizmoListPicker]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>20</XO>
@@ -6531,6 +6755,13 @@ return GizmoListPicker]]></ProtectedString>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
 							<token name="Font">3</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+							</Font>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -6551,7 +6782,13 @@ return GizmoListPicker]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0</XS>
 								<XO>20</XO>
@@ -6624,6 +6861,7 @@ return GizmoListPicker]]></ProtectedString>
 							<bool name="ClipsDescendants">true</bool>
 							<bool name="Draggable">false</bool>
 							<token name="ElasticBehavior">0</token>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<token name="HorizontalScrollBarInset">0</token>
 							<int name="LayoutOrder">0</int>
 							<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
@@ -6650,7 +6888,13 @@ return GizmoListPicker]]></ProtectedString>
 							<token name="ScrollingDirection">2</token>
 							<bool name="ScrollingEnabled">true</bool>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">true</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -6671,6 +6915,7 @@ return GizmoListPicker]]></ProtectedString>
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<token name="FillDirection">1</token>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<token name="HorizontalAlignment">1</token>
 								<string name="Name">VerticalLayout</string>
 								<UDim name="Padding">
@@ -6711,6 +6956,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="HoverImage"><null></null></Content>
 							<Content name="Image"><null></null></Content>
 							<Color3 name="ImageColor3">
@@ -6747,7 +6993,13 @@ return GizmoListPicker]]></ProtectedString>
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -6806,6 +7058,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<Content name="HoverImage"><null></null></Content>
 							<Content name="Image"><null></null></Content>
 							<Color3 name="ImageColor3">
@@ -6842,7 +7095,13 @@ return GizmoListPicker]]></ProtectedString>
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -6902,6 +7161,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Button</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -6917,7 +7177,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -6959,6 +7225,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -6979,7 +7252,13 @@ return GizmoListPicker]]></ProtectedString>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>-10</XO>
@@ -7020,6 +7299,7 @@ return GizmoListPicker]]></ProtectedString>
 								<S>0</S>
 								<O>16</O>
 							</UDim>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UICorner</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
@@ -7053,6 +7333,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_CheckBox</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -7068,7 +7349,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -7109,6 +7396,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -7127,7 +7421,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -7163,6 +7463,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXCDD883FE104742008D58FDD650218E61">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -7211,6 +7512,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int name="BorderSizePixel">0</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">CheckBoxBG</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -7226,7 +7528,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>24</XO>
@@ -7268,6 +7576,13 @@ return GizmoListPicker]]></ProtectedString>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
 							<token name="Font">10</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+							</Font>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -7288,7 +7603,13 @@ return GizmoListPicker]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-4</XO>
@@ -7329,6 +7650,7 @@ return GizmoListPicker]]></ProtectedString>
 									<S>0</S>
 									<O>4</O>
 								</UDim>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<string name="Name">UICorner</string>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
@@ -7361,6 +7683,13 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">3</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -7379,7 +7708,13 @@ return GizmoListPicker]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1.39999998</XS>
 									<XO>0</XO>
@@ -7441,6 +7776,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">true</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Folder</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -7456,7 +7792,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -7498,6 +7840,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">19</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>700</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -7518,7 +7867,13 @@ return GizmoListPicker]]></ProtectedString>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>20</XO>
@@ -7579,6 +7934,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -7597,7 +7959,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>-20</XO>
@@ -7633,6 +8001,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX6292F126C02345E2929C6FCD14C58D24">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -7694,6 +8063,7 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="ElasticBehavior">0</token>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<token name="HorizontalScrollBarInset">0</token>
 						<int name="LayoutOrder">0</int>
 						<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
@@ -7720,7 +8090,13 @@ return GizmoListPicker]]></ProtectedString>
 						<token name="ScrollingDirection">2</token>
 						<bool name="ScrollingEnabled">true</bool>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">true</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>-6</XO>
@@ -7741,6 +8117,7 @@ return GizmoListPicker]]></ProtectedString>
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<token name="FillDirection">1</token>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<token name="HorizontalAlignment">1</token>
 							<string name="Name">VerticalLayout</string>
 							<UDim name="Padding">
@@ -7780,6 +8157,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int name="BorderSizePixel">0</int>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">Line</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -7795,7 +8173,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -7836,6 +8220,7 @@ return GizmoListPicker]]></ProtectedString>
 						<int name="BorderSizePixel">0</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">SideLine</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -7851,7 +8236,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>6</XO>
@@ -7893,6 +8284,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Picker</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -7908,7 +8300,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -7949,6 +8347,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -7967,7 +8372,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -8003,6 +8414,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX4B9C77C6094149B6BF811AC1AF4A149A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -8053,6 +8465,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">3</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8073,7 +8492,13 @@ return GizmoListPicker]]></ProtectedString>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>40</XO>
@@ -8114,6 +8539,7 @@ return GizmoListPicker]]></ProtectedString>
 								<S>0</S>
 								<O>8</O>
 							</UDim>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UICorner</string>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
@@ -8148,6 +8574,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8173,7 +8606,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.600000024</XS>
@@ -8235,6 +8674,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Separator</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -8250,7 +8690,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -8291,6 +8737,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8309,7 +8762,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -8369,6 +8828,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Slider</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -8384,7 +8844,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -8425,6 +8891,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8443,7 +8916,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -8479,6 +8958,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX2FA4CD43467F432D896A333A3EE9198A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -8528,6 +9008,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8546,7 +9033,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.600000024</XS>
 							<XO>-4</XO>
@@ -8604,6 +9097,7 @@ return GizmoListPicker]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<string name="Name">DragRange</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -8619,7 +9113,13 @@ return GizmoListPicker]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-24</XO>
@@ -8661,6 +9161,13 @@ return GizmoListPicker]]></ProtectedString>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">10</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -8681,7 +9188,13 @@ return GizmoListPicker]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>24</XO>
@@ -8744,6 +9257,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_Text</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -8759,7 +9273,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -8800,6 +9320,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8818,7 +9345,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -8854,6 +9387,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXD83D8973F0A64E4C805DB2CB3455C306">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -8903,6 +9437,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -8921,7 +9462,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.600000024</XS>
 							<XO>0</XO>
@@ -8957,6 +9504,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXA33E907B06CC48C7837DAD1B04F9CC56">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9006,6 +9554,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_TextBox</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -9021,7 +9570,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -9062,6 +9617,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9080,7 +9642,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -9116,6 +9684,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX1B130B541BB14F09A941372C01761E57">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9166,6 +9735,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9191,7 +9767,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.600000024</XS>
@@ -9229,6 +9811,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX760114E8A7D1498394389DBBD6B02653">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9278,6 +9861,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_TextBox_Multi2</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -9293,7 +9877,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -9334,6 +9924,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9352,7 +9949,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -9388,6 +9991,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX5B562F131E61454AA36C5FAF2AB7AA4A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9438,6 +10042,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9463,7 +10074,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.300000012</XS>
@@ -9501,6 +10118,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX9611D0AAD0CA49D09683B2D0240C078A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9551,6 +10169,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9576,7 +10201,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.300000012</XS>
@@ -9614,6 +10245,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXCCA08CBFDB794C0D838C363E6FEE39F2">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9663,6 +10295,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_TextBox_Multi3</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -9678,7 +10311,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -9719,6 +10358,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9737,7 +10383,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -9773,6 +10425,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX69A7DAD2BACC4F0E972A139B7F70BA4D">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9823,6 +10476,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9848,7 +10508,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.200000003</XS>
@@ -9886,6 +10552,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX005DA03AC6F54E4BBAE62A2C8EBB9037">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -9936,6 +10603,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -9961,7 +10635,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.200000003</XS>
@@ -9999,6 +10679,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXE69590FB5E38489DAA02B89200353ADB">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -10049,6 +10730,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10074,7 +10762,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.200000003</XS>
@@ -10112,6 +10806,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBX5E27E78211914A46AF076CE372A1EE2B">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -10161,6 +10856,7 @@ return GizmoListPicker]]></ProtectedString>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_TextMultiline</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -10176,7 +10872,13 @@ return GizmoListPicker]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -10217,6 +10919,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10235,7 +10944,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -10271,6 +10986,7 @@ return GizmoListPicker]]></ProtectedString>
 					<Item class="UIPadding" referent="RBXCF44C94831BA4E6088AF14E8C7070AF5">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -10321,6 +11037,13 @@ return GizmoListPicker]]></ProtectedString>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10346,7 +11069,13 @@ return GizmoListPicker]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.600000024</XS>
@@ -10387,6 +11116,7 @@ asd]]></string>
 					<Item class="UIPadding" referent="RBX18792EE3E0C94D03AA6046F6A5336070">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -10436,6 +11166,7 @@ asd]]></string>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">false</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">GizmoUI_TripleSlider</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -10451,7 +11182,13 @@ asd]]></string>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -10492,6 +11229,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10510,7 +11254,13 @@ asd]]></string>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.400000006</XS>
 							<XO>0</XO>
@@ -10546,6 +11296,7 @@ asd]]></string>
 					<Item class="UIPadding" referent="RBXA27AEE61FC99453A8EA708097AF5A33F">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<string name="Name">UIPadding</string>
 							<UDim name="PaddingBottom">
 								<S>0</S>
@@ -10595,6 +11346,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10613,7 +11371,13 @@ asd]]></string>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.550000012</XS>
 							<XO>0</XO>
@@ -10671,6 +11435,7 @@ asd]]></string>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<string name="Name">DragRange</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -10686,7 +11451,13 @@ asd]]></string>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-24</XO>
@@ -10728,6 +11499,13 @@ asd]]></string>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">10</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -10748,7 +11526,13 @@ asd]]></string>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>24</XO>
@@ -10811,6 +11595,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -10829,7 +11620,13 @@ asd]]></string>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.550000012</XS>
 							<XO>0</XO>
@@ -10887,6 +11684,7 @@ asd]]></string>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<string name="Name">DragRange</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -10902,7 +11700,13 @@ asd]]></string>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-24</XO>
@@ -10944,6 +11748,13 @@ asd]]></string>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">10</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -10964,7 +11775,13 @@ asd]]></string>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>24</XO>
@@ -11027,6 +11844,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">10</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -11045,7 +11869,13 @@ asd]]></string>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.550000012</XS>
 							<XO>0</XO>
@@ -11103,6 +11933,7 @@ asd]]></string>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<string name="Name">DragRange</string>
 							<Ref name="NextSelectionDown">null</Ref>
@@ -11118,7 +11949,13 @@ asd]]></string>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-24</XO>
@@ -11160,6 +11997,13 @@ asd]]></string>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<token name="Font">10</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+								</Font>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -11180,7 +12024,13 @@ asd]]></string>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0</XS>
 									<XO>24</XO>
@@ -11242,6 +12092,7 @@ asd]]></string>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<string name="Name">ColorDisplayer</string>
 						<Ref name="NextSelectionDown">null</Ref>
@@ -11257,7 +12108,13 @@ asd]]></string>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.0549999997</XS>
 							<XO>-10</XO>
@@ -11299,6 +12156,7 @@ asd]]></string>
 					<int name="BorderSizePixel">0</int>
 					<bool name="ClipsDescendants">true</bool>
 					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<int name="LayoutOrder">0</int>
 					<string name="Name">ModalFrame</string>
 					<Ref name="NextSelectionDown">null</Ref>
@@ -11314,7 +12172,13 @@ asd]]></string>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>0</XS>
 						<XO>400</XO>
@@ -11367,6 +12231,7 @@ asd]]></string>
 						<bool name="ClipsDescendants">true</bool>
 						<bool name="Draggable">false</bool>
 						<token name="ElasticBehavior">0</token>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<token name="HorizontalScrollBarInset">0</token>
 						<int name="LayoutOrder">0</int>
 						<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
@@ -11393,7 +12258,13 @@ asd]]></string>
 						<token name="ScrollingDirection">2</token>
 						<bool name="ScrollingEnabled">true</bool>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">true</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -11414,6 +12285,7 @@ asd]]></string>
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<token name="FillDirection">1</token>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<token name="HorizontalAlignment">1</token>
 							<string name="Name">VerticalLayout</string>
 							<UDim name="Padding">
@@ -11455,6 +12327,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">0</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/LegacyArial.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/arial.ttf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -11475,7 +12354,13 @@ asd]]></string>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>-20</XO>
@@ -11535,6 +12420,13 @@ asd]]></string>
 							<bool name="ClipsDescendants">true</bool>
 							<bool name="Draggable">false</bool>
 							<token name="Font">3</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/SourceSansPro.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/SourceSansPro-Regular.ttf</url></CachedFaceId>
+							</Font>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -11553,7 +12445,13 @@ asd]]></string>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>-5</XO>
@@ -11589,6 +12487,7 @@ asd]]></string>
 						<Item class="UIPadding" referent="RBX33364EA5400246378A20BA6E7191D72C">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<string name="Name">UIPadding</string>
 								<UDim name="PaddingBottom">
 									<S>0</S>
@@ -11640,6 +12539,13 @@ asd]]></string>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
 						<token name="Font">19</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>700</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+						</Font>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -11660,7 +12566,13 @@ asd]]></string>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0</XS>
 							<XO>20</XO>
@@ -11721,6 +12633,7 @@ asd]]></string>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 						<Content name="HoverImage"><null></null></Content>
 						<Content name="Image"><null></null></Content>
 						<Color3 name="ImageColor3">
@@ -11757,7 +12670,13 @@ asd]]></string>
 						<token name="ScaleType">0</token>
 						<bool name="Selectable">true</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -11794,6 +12713,7 @@ asd]]></string>
 			<Item class="ModuleScript" referent="RBXBAA9B7FE7A664599A5FC9B3DB7AB8DF9">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Documentation</string>
 					<string name="ScriptGuid">{F622B28B-A5E6-4210-A94A-F3F94FCE9801}</string>
@@ -11852,6 +12772,10 @@ asd]]></string>
 
 		-- Disable ()
 			-- @Description: Sets the Enabled of the ScreenGui to false
+			-- @Returns: (GuiWindow)
+
+		-- ToggleEnabled ()
+			-- @Description: Toggles the Enabled of the ScreenGui
 			-- @Returns: (GuiWindow)
 
 		-- Show ()
@@ -12705,6 +13629,7 @@ asd]]></string>
 			<Item class="ModuleScript" referent="RBX5F46530C6937412DAC0F75DFBAEEF36F">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Constants</string>
 					<string name="ScriptGuid">{8A2F4442-4D5A-42E7-8114-9B4DE9E308F5}</string>
@@ -12722,6 +13647,7 @@ asd]]></string>
 	<Item class="LuaWebService" referent="RBX2DE6A3F941D245E1BCC922BB06270FE3">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12731,6 +13657,7 @@ asd]]></string>
 	<Item class="ProcessInstancePhysicsService" referent="RBXD31AA94457B847D8B5663A8169DE9EDC">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">ProcessInstancePhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12740,6 +13667,7 @@ asd]]></string>
 	<Item class="LanguageService" referent="RBX155A93E6D2624988A06D1AC1FA0C3923">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">LanguageService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12777,6 +13705,7 @@ asd]]></string>
 			<float name="FogStart">0</float>
 			<float name="GeographicLatitude">0</float>
 			<bool name="GlobalShadows">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Lighting</string>
 			<Color3 name="OutdoorAmbient">
 				<R>0.274509817</R>
@@ -12795,6 +13724,7 @@ asd]]></string>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="CelestialBodiesShown">true</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="MoonAngularSize">11</float>
 				<Content name="MoonTextureId"><url>rbxassetid://6444320592</url></Content>
 				<string name="Name">Sky</string>
@@ -12816,6 +13746,7 @@ asd]]></string>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="Intensity">0.00999999978</float>
 				<string name="Name">SunRays</string>
 				<int64 name="SourceAssetId">-1</int64>
@@ -12840,6 +13771,7 @@ asd]]></string>
 				<float name="Density">0.300000012</float>
 				<float name="Glare">0</float>
 				<float name="Haze">0</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<string name="Name">Atmosphere</string>
 				<float name="Offset">0.25</float>
 				<int64 name="SourceAssetId">-1</int64>
@@ -12851,6 +13783,7 @@ asd]]></string>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="Intensity">1</float>
 				<string name="Name">Bloom</string>
 				<float name="Size">24</float>
@@ -12866,6 +13799,7 @@ asd]]></string>
 				<bool name="Enabled">false</bool>
 				<float name="FarIntensity">0.100000001</float>
 				<float name="FocusDistance">0.0500000007</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<float name="InFocusRadius">30</float>
 				<string name="Name">DepthOfField</string>
 				<float name="NearIntensity">0.75</float>
@@ -12878,6 +13812,7 @@ asd]]></string>
 	<Item class="LodDataService" referent="RBX799A986FB2CE451C9ADB940BAAB1B149">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Instance</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12888,6 +13823,7 @@ asd]]></string>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="AutomaticRetry">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="LegacyNamingScheme">false</bool>
 			<string name="Name">DataStoreService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -12898,6 +13834,7 @@ asd]]></string>
 	<Item class="HttpService" referent="RBX38BD93E8C04A460CA5B29B7DA319C5BB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="HttpEnabled">false</bool>
 			<string name="Name">HttpService</string>
 			<int64 name="SourceAssetId">-1</int64>
@@ -12908,6 +13845,7 @@ asd]]></string>
 	<Item class="Teams" referent="RBX636FC8B8607D4BEB8C3BC6B886491E18">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">Teams</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12920,6 +13858,7 @@ asd]]></string>
 			<bool name="AutoRuns">true</bool>
 			<string name="Description"></string>
 			<bool name="ExecuteWithStudioRun">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<bool name="Is30FpsThrottleEnabled">true</bool>
 			<bool name="IsPhysicsEnvironmentalThrottled">true</bool>
 			<bool name="IsSleepAllowed">true</bool>
@@ -12935,6 +13874,7 @@ asd]]></string>
 	<Item class="VirtualInputManager" referent="RBX6F605A817D5E47059E63D5A56A158EAB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<string name="Name">VirtualInputManager</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -12945,6 +13885,7 @@ asd]]></string>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="Enabled">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 			<int name="MaxPromptsVisible">16</int>
 			<string name="Name">ProximityPromptService</string>
 			<int64 name="SourceAssetId">-1</int64>

@@ -285,7 +285,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		return API
 	end
 
-	function API.ToggleGui()
+	function API.ToggleEnabled()
 		ScreenGui.Enabled = not ScreenGui.Enabled
 		return API
 	end

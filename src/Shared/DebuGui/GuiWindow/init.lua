@@ -18,7 +18,7 @@ local MIN_GUI_HEIGHT = 72
 local TITLEBAR_HEIGHT = 20
 local TITLEBAR_ICONSIZE = 20
 local TITLEBAR_WIDTH_PADDING_TOTAL = 8
-local DISPLAY_ORDER_MINIMUM = 100 -- All Guis will start with this number and increment further
+local DISPLAY_ORDER_MINIMUM = 10000 -- All Guis will start with this number and increment further
 
 -- Defines
 local VerticalLayout = Instance.new('UIListLayout')

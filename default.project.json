@@ -1,27 +1,20 @@
 {
-	"name" : "DebuGui",
-	"tree" : {
-		"$className" : "DataModel",
+	"name": "DebuGui",
+	"base": "default.base.rbxl",
+	"build": "Temp/Build.rbxl",
+
+	"tree": {
 
 		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-			"$ignoreUnknownInstances": true,
 			"$path": "src/Shared"
 		},
 
 		"ServerScriptService": {
-			"$className": "ServerScriptService",
-			"$ignoreUnknownInstances": true,
 			"$path": "src/Server"
 		},
 
-		"StarterPlayer" : {
-
-			"$className" : "StarterPlayer",
-			"$ignoreUnknownInstances": true,
-
+		"StarterPlayer": {
 			"StarterPlayerScripts": {
-				"$className": "StarterPlayerScripts",
 				"$ignoreUnknownInstances": true,
 				"$path": "src/Client"
 			}

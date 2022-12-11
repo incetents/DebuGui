@@ -1,4 +1,4 @@
--- © 2021 Emmanuel Lajeunesse
+-- © 2022 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local Chat = game:GetService("Chat")
@@ -85,7 +85,7 @@ local Gui_Spawner = Gui.AddFolder('Object Spawning', false)
 Gui_Spawner.AddButton('Spawn Sphere').Listen(function()
 	local Object = Instance.new('Part')
 	Object.Shape = Enum.PartType.Ball
-	Object.Parent = workspace
+	Object.Parent = Workspace.Scene
 	Object.Anchored = false
 	Object.CanCollide = true
 	Object.Color = Color3.fromRGB(240, 100, 100)
@@ -97,7 +97,7 @@ end)
 Gui_Spawner.AddButton('Spawn Block').Listen(function()
 	local Object = Instance.new('Part')
 	Object.Shape = Enum.PartType.Block
-	Object.Parent = workspace
+	Object.Parent = Workspace.Scene
 	Object.Anchored = false
 	Object.CanCollide = true
 	Object.Color = Color3.fromRGB(100, 240, 100)
@@ -110,7 +110,7 @@ end)
 Gui_Spawner.AddButton('Spawn Cylinder').Listen(function()
 	local Object = Instance.new('Part')
 	Object.Shape = Enum.PartType.Cylinder
-	Object.Parent = workspace
+	Object.Parent = Workspace.Scene
 	Object.Anchored = false
 	Object.CanCollide = true
 	Object.Color = Color3.fromRGB(100, 100, 240)
@@ -124,7 +124,7 @@ Gui_Spawner.AddButton('Spawn Platform').Listen(function()
 	local Object = Instance.new('Part')
 	Object.Transparency = 0.5
 	Object.Shape = Enum.PartType.Cylinder
-	Object.Parent = workspace
+	Object.Parent = Workspace.Scene
 	Object.Anchored = true
 	Object.CanCollide = true
 	Object.Color = Color3.fromRGB(175, 175, 175)
@@ -156,7 +156,7 @@ Gui_PlayerSettings.AddButton('Teleport_White_Spawn')
 	.SetNameColor(Color3.fromRGB(0, 0, 0))
 	.Listen(function()
 		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
-			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_White.CFrame + Vector3.new(0, 4, 0))
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Scene.Spawn_White.CFrame + Vector3.new(0, 4, 0))
 		end
 	end)
 
@@ -166,7 +166,7 @@ Gui_PlayerSettings.AddButton('Teleport_Red_Spawn')
 	.SetNameColor(Color3.fromRGB(0, 0, 0))
 	.Listen(function()
 		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
-			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_Red.CFrame + Vector3.new(0, 4, 0))
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Scene.Spawn_Red.CFrame + Vector3.new(0, 4, 0))
 		end
 	end)
 
@@ -176,7 +176,7 @@ Gui_PlayerSettings.AddButton('Teleport_Green_Spawn')
 	.SetNameColor(Color3.fromRGB(0, 0, 0))
 	.Listen(function()
 		if LocalPlayer.Character and LocalPlayer.Character.PrimaryPart then
-			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Spawn_Green.CFrame + Vector3.new(0, 4, 0))
+			LocalPlayer.Character:SetPrimaryPartCFrame(Workspace.Scene.Spawn_Green.CFrame + Vector3.new(0, 4, 0))
 		end
 	end)
 
@@ -251,59 +251,59 @@ local Gui_Objects = Gui.AddFolder('Scene Objects', false)
 
 Gui_Objects.AddSeparator('BLOCK')
 
-Gui_Objects.AddColorSliderHSV('Block Color', workspace.SceneObject_Block.Color).Listen(function(NewColor)
-	workspace.SceneObject_Block.Color = NewColor
+Gui_Objects.AddColorSliderHSV('Block Color', Workspace.Scene.SceneObject_Block.Color).Listen(function(NewColor)
+	Workspace.Scene.SceneObject_Block.Color = NewColor
 end)
-Gui_Objects.AddNumberSlider('Block Transparency', workspace.SceneObject_Block.Transparency, 0.0, 1.0, 1).Listen(function(NewNumber)
-	workspace.SceneObject_Block.Transparency = NewNumber
+Gui_Objects.AddNumberSlider('Block Transparency', Workspace.Scene.SceneObject_Block.Transparency, 0.0, 1.0, 1).Listen(function(NewNumber)
+	Workspace.Scene.SceneObject_Block.Transparency = NewNumber
 end)
-Gui_Objects.AddBool('Block Anchored', workspace.SceneObject_Block.Anchored).Listen(function(NewBool)
-	workspace.SceneObject_Block.Anchored = NewBool
+Gui_Objects.AddBool('Block Anchored', Workspace.Scene.SceneObject_Block.Anchored).Listen(function(NewBool)
+	Workspace.Scene.SceneObject_Block.Anchored = NewBool
 end)
-Gui_Objects.AddBool('Block CanCollide', workspace.SceneObject_Block.CanCollide).Listen(function(NewBool)
-	workspace.SceneObject_Block.CanCollide = NewBool
+Gui_Objects.AddBool('Block CanCollide', Workspace.Scene.SceneObject_Block.CanCollide).Listen(function(NewBool)
+	Workspace.Scene.SceneObject_Block.CanCollide = NewBool
 end)
-Gui_Objects.AddVector3('Block Orientation', workspace.SceneObject_Block.Orientation).Listen(function(NewVec3)
-	workspace.SceneObject_Block.Orientation = NewVec3
+Gui_Objects.AddVector3('Block Orientation', Workspace.Scene.SceneObject_Block.Orientation).Listen(function(NewVec3)
+	Workspace.Scene.SceneObject_Block.Orientation = NewVec3
 end)
-Gui_Objects.AddVector3('Block Size', workspace.SceneObject_Block.Size).Listen(function(NewVec3)
-	workspace.SceneObject_Block.Size = NewVec3
+Gui_Objects.AddVector3('Block Size', Workspace.Scene.SceneObject_Block.Size).Listen(function(NewVec3)
+	Workspace.Scene.SceneObject_Block.Size = NewVec3
 end)
-Gui_Objects.AddBool('Block Cast Shadow', workspace.SceneObject_Block.CastShadow).Listen(function(NewBool)
-	workspace.SceneObject_Block.CastShadow = NewBool
+Gui_Objects.AddBool('Block Cast Shadow', Workspace.Scene.SceneObject_Block.CastShadow).Listen(function(NewBool)
+	Workspace.Scene.SceneObject_Block.CastShadow = NewBool
 end)
-Gui_Objects.AddString('Block Text', workspace.SceneObject_Block.SurfaceGui.TextLabel.Text, true).Listen(function(NewString)
-	workspace.SceneObject_Block.SurfaceGui.TextLabel.Text = NewString
+Gui_Objects.AddString('Block Text', Workspace.Scene.SceneObject_Block.SurfaceGui.TextLabel.Text, true).Listen(function(NewString)
+	Workspace.Scene.SceneObject_Block.SurfaceGui.TextLabel.Text = NewString
 end)
-Gui_Objects.AddBool('Block Text Visible', workspace.SceneObject_Block.SurfaceGui.Enabled, true).Listen(function(NewBool)
-	workspace.SceneObject_Block.SurfaceGui.Enabled = NewBool
+Gui_Objects.AddBool('Block Text Visible', Workspace.Scene.SceneObject_Block.SurfaceGui.Enabled, true).Listen(function(NewBool)
+	Workspace.Scene.SceneObject_Block.SurfaceGui.Enabled = NewBool
 end)
 
 Gui_Objects.AddSeparator('SPHERE')
 
-Gui_Objects.AddColorSliderHSV('Sphere Color', workspace.SceneObject_Sphere.Color).Listen(function(NewColor)
-	workspace.SceneObject_Sphere.Color = NewColor
+Gui_Objects.AddColorSliderHSV('Sphere Color', Workspace.Scene.SceneObject_Sphere.Color).Listen(function(NewColor)
+	Workspace.Scene.SceneObject_Sphere.Color = NewColor
 end)
-Gui_Objects.AddBool('Sphere CanCollide', workspace.SceneObject_Sphere.CanCollide).Listen(function(NewBool)
-	workspace.SceneObject_Sphere.CanCollide = NewBool
+Gui_Objects.AddBool('Sphere CanCollide', Workspace.Scene.SceneObject_Sphere.CanCollide).Listen(function(NewBool)
+	Workspace.Scene.SceneObject_Sphere.CanCollide = NewBool
 end)
-Gui_Objects.AddIntegerSlider('Sphere Size', workspace.SceneObject_Sphere.Size.X, 1, 40).Listen(function(NewNumber)
-	workspace.SceneObject_Sphere.Size = Vector3.new(NewNumber, NewNumber, NewNumber)
+Gui_Objects.AddIntegerSlider('Sphere Size', Workspace.Scene.SceneObject_Sphere.Size.X, 1, 40).Listen(function(NewNumber)
+	Workspace.Scene.SceneObject_Sphere.Size = Vector3.new(NewNumber, NewNumber, NewNumber)
 end)
 
 Gui_Objects.AddSeparator('CYLINDER')
 
-Gui_Objects.AddColorSliderHSV('Cylinder Color', workspace.SceneObject_Cylinder.Color).Listen(function(NewColor)
-	workspace.SceneObject_Cylinder.Color = NewColor
+Gui_Objects.AddColorSliderHSV('Cylinder Color', Workspace.Scene.SceneObject_Cylinder.Color).Listen(function(NewColor)
+	Workspace.Scene.SceneObject_Cylinder.Color = NewColor
 end)
-Gui_Objects.AddVector3('Cylinder Orientation', workspace.SceneObject_Cylinder.Orientation).Listen(function(NewVec3)
-	workspace.SceneObject_Cylinder.Orientation = NewVec3
+Gui_Objects.AddVector3('Cylinder Orientation', Workspace.Scene.SceneObject_Cylinder.Orientation).Listen(function(NewVec3)
+	Workspace.Scene.SceneObject_Cylinder.Orientation = NewVec3
 end)
-Gui_Objects.AddNumberSlider('Cylinder Length', workspace.SceneObject_Cylinder.Size.X, 1.0, 10.0, 2).Listen(function(NewNumber)
-	workspace.SceneObject_Cylinder.Size = Vector3.new(NewNumber, workspace.SceneObject_Cylinder.Size.Y, workspace.SceneObject_Cylinder.Size.Z)
+Gui_Objects.AddNumberSlider('Cylinder Length', Workspace.Scene.SceneObject_Cylinder.Size.X, 1.0, 10.0, 2).Listen(function(NewNumber)
+	Workspace.Scene.SceneObject_Cylinder.Size = Vector3.new(NewNumber, Workspace.Scene.SceneObject_Cylinder.Size.Y, Workspace.Scene.SceneObject_Cylinder.Size.Z)
 end)
-Gui_Objects.AddNumberSlider('Cylinder Radius', workspace.SceneObject_Cylinder.Size.Y, 0.5, 30.0, 2).Listen(function(NewNumber)
-	workspace.SceneObject_Cylinder.Size = Vector3.new(workspace.SceneObject_Cylinder.Size.X, NewNumber, NewNumber)
+Gui_Objects.AddNumberSlider('Cylinder Radius', Workspace.Scene.SceneObject_Cylinder.Size.Y, 0.5, 30.0, 2).Listen(function(NewNumber)
+	Workspace.Scene.SceneObject_Cylinder.Size = Vector3.new(Workspace.Scene.SceneObject_Cylinder.Size.X, NewNumber, NewNumber)
 end)
 
 local MaterialEnumsChoices = {
@@ -322,7 +322,7 @@ Gui_Objects.AddListPicker('Cylinder Material', 'Plastic', {
 	'Brick';
 	'CorrodedMetal';
 }, false).Listen(function(NewChoice)
-	workspace.SceneObject_Cylinder.Material = MaterialEnumsChoices[NewChoice]
+	Workspace.Scene.SceneObject_Cylinder.Material = MaterialEnumsChoices[NewChoice]
 end)
 
 -- Lighting --

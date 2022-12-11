@@ -1,4 +1,4 @@
--- © 2021 Emmanuel Lajeunesse
+-- © 2022 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -37,6 +37,11 @@ local Gui1_AlternateRef = DebuGui.GetWindow('Core')
 Gui1_AlternateRef.AddIntegerSlider('TEST123', 2, 0, 10)
 Gui1_AlternateRef.Remove('TEST123')
 
+-- Empty --
+Gui1.AddSeparator('EMPTY_SEPARATOR').SetName('EMPTY')
+
+Gui1.AddEmpty()
+Gui1.AddEmpty(nil, 120)
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
@@ -59,7 +64,6 @@ Gui1.AddText('text6', 'abc')
 	.Listen(function(V)
 		print('text6 changed to: ', V)
 	end)
-
 
 -- Booleans --
 Gui1.AddSeparator('BOOL_SEPARATOR').SetName('BOOLS')
@@ -363,6 +367,9 @@ local Folder1 = Gui1.AddFolder('folder1', true)
 
 Folder1.AddBool('bool1', true)
 Folder1.AddButton('button1')
+
+Folder1.AddSeparator('empty space (90 px)')
+Folder1.AddEmpty(nil, 90)
 
 local SubFolder1 = Folder1.AddFolder('SubFolder1', false)
 	.SetColor(Color3.fromRGB(139, 108, 41))

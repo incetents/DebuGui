@@ -1,6 +1,6 @@
 --[[
 
-	-- © 2021 Emmanuel Lajeunesse
+	-- © 2022 Emmanuel Lajeunesse
 	-- DebuGui Documentation
 
 	-- DebuGui : First point of Access
@@ -146,6 +146,13 @@
 
 		-- RemoveAll ()
 			-- @Description: Destroy all the gizmos
+			-- @Returns: (Gizmo)
+
+		-- AddEmpty (UniqueName, Height)
+			-- @Description: Empty Gizmo, an empty frame with no contents for spacing
+			-- @Parameters:
+					UniqueName (String) = UniqueName of the Gizmo
+					Height (number) = Pixel Height of the Gizmo
 			-- @Returns: (Gizmo)
 
 		-- AddString (UniqueName, DefaultValue, ClearTextOnFocus = false)
@@ -318,6 +325,15 @@
 		-- GetValue ()
 			-- @Description: returns the internal stored value
 			-- @Returns: (Gizmo's Stored Value)
+
+
+	-- Gizmo (Empty) : empty spacing used for padding
+
+		-- SetHeight (NewHeight)
+			-- @Description: Modifies pixel height of the gizmo
+			-- @Parameters:
+					NewHeight (number) = height in pixels
+			-- @Returns: (Gizmo)
 
 
 	-- Gizmo (Bool) : Can toggle on/off

@@ -1,4 +1,4 @@
--- © 2021 Emmanuel Lajeunesse
+-- © 2022 Emmanuel Lajeunesse
 
 -- Module
 local GizmoAPI = {}
@@ -20,6 +20,7 @@ local Utility = require(script.Parent.Parent.Utility)
 local Dragger = require(script.Parent.Parent.Dragger)
 local GizmoBool = require(script.GizmoBool)
 local GizmoButton = require(script.GizmoButton)
+local GizmoEmpty = require(script.GizmoEmpty)
 local GizmoFolder = require(script.GizmoFolder)
 local GizmoInteger = require(script.GizmoInteger)
 local GizmoIntegerSlider = require(script.GizmoIntegerSlider)
@@ -37,6 +38,7 @@ local GizmoColorSlider = require(script.GizmoColorSlider)
 -- Gizmo UI References
 local GizmoUI_Button = DebuGuiRef.GizmoUI_Button
 local GizmoUI_CheckBox = DebuGuiRef.GizmoUI_CheckBox
+local GizmoUI_Empty = DebuGuiRef.GizmoUI_Empty
 local GizmoUI_Folder = DebuGuiRef.GizmoUI_Folder
 local GizmoUI_Picker = DebuGuiRef.GizmoUI_Picker
 local GizmoUI_Separator = DebuGuiRef.GizmoUI_Separator
@@ -297,6 +299,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	----------------
 	-- Public API --
 	----------------
+	function API.AddEmpty(UniqueName, Height)
+		return AddGizmo(GizmoUI_Empty, GizmoEmpty, UniqueName, API, Height)
+	end
+
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
 		return AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
 	end

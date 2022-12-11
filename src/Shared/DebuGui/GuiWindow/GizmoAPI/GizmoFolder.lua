@@ -1,4 +1,4 @@
--- © 2021 Emmanuel Lajeunesse
+-- © 2022 Emmanuel Lajeunesse
 
 -- Module
 local GizmoFolder = {}

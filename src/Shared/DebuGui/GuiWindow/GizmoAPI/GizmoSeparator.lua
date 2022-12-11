@@ -1,13 +1,10 @@
--- © 2021 Emmanuel Lajeunesse
+-- © 2022 Emmanuel Lajeunesse
 
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
 -- Base
 local GizmoBase = require(script.Parent.GizmoBase)
-
--- Constants
-local VERTICAL_PADDING = 6
 
 -- Module
 local GizmoSeparator = {}
@@ -60,11 +57,12 @@ function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
 		if API._DeadCheck() then return nil end
 		-- Modify Gui Size
 		local OCHeight = Gui.Size.Y.Offset
-		Gui.Size = UDim2.new(1, 0, 0, NewHeight + VERTICAL_PADDING)
+		local VerticalPadding = (Gui.AbsoluteSize.Y - Gui.Line.AbsoluteSize.Y)
+		Gui.Size = UDim2.new(1, 0, 0, NewHeight + VerticalPadding)
 
 		-- Modify Canvas Height based on change in height
 		if Utility.IsFolderVisible(ParentAPI, true) then
-			local DeltaHeight = (NewHeight + VERTICAL_PADDING) - OCHeight
+			local DeltaHeight = (NewHeight + VerticalPadding) - OCHeight
 			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
 		end
 		return API

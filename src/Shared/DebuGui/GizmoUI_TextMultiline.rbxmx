@@ -2,7 +2,7 @@
 	<Meta name="ExplicitAutoJoints">true</Meta>
 	<External>null</External>
 	<External>nil</External>
-	<Item class="Frame" referent="RBX9571AF832BC14E43A43E86BDE0A390EC">
+	<Item class="Frame" referent="RBX9DB019567A6E4D79BD1AE97A9DD6D33D">
 		<Properties>
 			<bool name="Active">false</bool>
 			<Vector2 name="AnchorPoint">
@@ -42,7 +42,13 @@
 			<Ref name="RootLocalizationTable">null</Ref>
 			<float name="Rotation">0</float>
 			<bool name="Selectable">false</bool>
+			<token name="SelectionBehaviorDown">0</token>
+			<token name="SelectionBehaviorLeft">0</token>
+			<token name="SelectionBehaviorRight">0</token>
+			<token name="SelectionBehaviorUp">0</token>
+			<bool name="SelectionGroup">false</bool>
 			<Ref name="SelectionImageObject">null</Ref>
+			<int name="SelectionOrder">0</int>
 			<UDim2 name="Size">
 				<XS>1</XS>
 				<XO>0</XO>
@@ -56,7 +62,7 @@
 			<bool name="Visible">true</bool>
 			<int name="ZIndex">3</int>
 		</Properties>
-		<Item class="TextLabel" referent="RBX4741B6B610594E109B06005698AA81C0">
+		<Item class="TextLabel" referent="RBX3ACC2451DB9A4904992ED50E9ADDC9ED">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -82,6 +88,12 @@
 				<bool name="ClipsDescendants">true</bool>
 				<bool name="Draggable">false</bool>
 				<token name="Font">10</token>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+					<Weight>400</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+				</Font>
 				<int name="LayoutOrder">0</int>
 				<float name="LineHeight">1</float>
 				<int name="MaxVisibleGraphemes">-1</int>
@@ -100,7 +112,13 @@
 				<Ref name="RootLocalizationTable">null</Ref>
 				<float name="Rotation">0</float>
 				<bool name="Selectable">false</bool>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
 				<Ref name="SelectionImageObject">null</Ref>
+				<int name="SelectionOrder">0</int>
 				<UDim2 name="Size">
 					<XS>0.400000006</XS>
 					<XO>0</XO>
@@ -132,7 +150,7 @@
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">4</int>
 			</Properties>
-			<Item class="UIPadding" referent="RBXCF44C94831BA4E6088AF14E8C7070AF5">
+			<Item class="UIPadding" referent="RBX1FDB22C42BE84ADDB31B0F97592609B8">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">UIPadding</string>
@@ -157,7 +175,7 @@
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="TextBox" referent="RBXF29FF16313924788A49FB3EC4B6DEE0F">
+		<Item class="ScrollingFrame" referent="RBX8E6D593757FF4F09A87A508142B08D64">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -166,6 +184,7 @@
 				</Vector2>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
+				<token name="AutomaticCanvasSize">2</token>
 				<token name="AutomaticSize">0</token>
 				<Color3 name="BackgroundColor3">
 					<R>0.266666681</R>
@@ -180,37 +199,53 @@
 				</Color3>
 				<token name="BorderMode">0</token>
 				<int name="BorderSizePixel">0</int>
-				<bool name="ClearTextOnFocus">false</bool>
+				<Content name="BottomImage"><url>rbxasset://textures/ui/Scroll/scroll-bottom.png</url></Content>
+				<Vector2 name="CanvasPosition">
+					<X>0</X>
+					<Y>0</Y>
+				</Vector2>
+				<UDim2 name="CanvasSize">
+					<XS>0</XS>
+					<XO>0</XO>
+					<YS>0</YS>
+					<YO>0</YO>
+				</UDim2>
 				<bool name="ClipsDescendants">true</bool>
 				<bool name="Draggable">false</bool>
-				<token name="Font">10</token>
+				<token name="ElasticBehavior">0</token>
+				<token name="HorizontalScrollBarInset">0</token>
 				<int name="LayoutOrder">0</int>
-				<float name="LineHeight">1</float>
-				<int name="MaxVisibleGraphemes">-1</int>
-				<bool name="MultiLine">true</bool>
-				<string name="Name">TextBox</string>
+				<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+				<string name="Name">ScrollingFrame</string>
 				<Ref name="NextSelectionDown">null</Ref>
 				<Ref name="NextSelectionLeft">null</Ref>
 				<Ref name="NextSelectionRight">null</Ref>
 				<Ref name="NextSelectionUp">null</Ref>
-				<Color3 name="PlaceholderColor3">
-					<R>0.699999988</R>
-					<G>0.699999988</G>
-					<B>0.699999988</B>
-				</Color3>
-				<string name="PlaceholderText"></string>
 				<UDim2 name="Position">
 					<XS>0.400000006</XS>
 					<XO>0</XO>
 					<YS>0.5</YS>
 					<YO>0</YO>
 				</UDim2>
-				<bool name="RichText">false</bool>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<float name="Rotation">0</float>
+				<Color3 name="ScrollBarImageColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<float name="ScrollBarImageTransparency">0</float>
+				<int name="ScrollBarThickness">12</int>
+				<token name="ScrollingDirection">2</token>
+				<bool name="ScrollingEnabled">true</bool>
 				<bool name="Selectable">true</bool>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
 				<Ref name="SelectionImageObject">null</Ref>
-				<bool name="ShowNativeInput">true</bool>
+				<int name="SelectionOrder">0</int>
 				<UDim2 name="Size">
 					<XS>0.600000024</XS>
 					<XO>-4</XO>
@@ -220,55 +255,134 @@
 				<token name="SizeConstraint">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<string name="Text"><![CDATA[567565756
-asd
-sd
-asd]]></string>
-				<Color3 name="TextColor3">
-					<R>1</R>
-					<G>1</G>
-					<B>1</B>
-				</Color3>
-				<bool name="TextEditable">true</bool>
-				<bool name="TextScaled">false</bool>
-				<float name="TextSize">14</float>
-				<Color3 name="TextStrokeColor3">
-					<R>0</R>
-					<G>0</G>
-					<B>0</B>
-				</Color3>
-				<float name="TextStrokeTransparency">1</float>
-				<float name="TextTransparency">0</float>
-				<token name="TextTruncate">0</token>
-				<bool name="TextWrapped">false</bool>
-				<token name="TextXAlignment">0</token>
-				<token name="TextYAlignment">0</token>
+				<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-top.png</url></Content>
+				<token name="VerticalScrollBarInset">0</token>
+				<token name="VerticalScrollBarPosition">0</token>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">4</int>
 			</Properties>
-			<Item class="UIPadding" referent="RBX18792EE3E0C94D03AA6046F6A5336070">
+			<Item class="TextBox" referent="RBXF9CD8A8C2D11472A9176DB6E70D4D0C6">
 				<Properties>
+					<bool name="Active">true</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0</X>
+						<Y>0</Y>
+					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">UIPadding</string>
-					<UDim name="PaddingBottom">
-						<S>0</S>
-						<O>0</O>
-					</UDim>
-					<UDim name="PaddingLeft">
-						<S>0</S>
-						<O>4</O>
-					</UDim>
-					<UDim name="PaddingRight">
-						<S>0</S>
-						<O>0</O>
-					</UDim>
-					<UDim name="PaddingTop">
-						<S>0</S>
-						<O>0</O>
-					</UDim>
+					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">2</token>
+					<Color3 name="BackgroundColor3">
+						<R>0.266666681</R>
+						<G>0.266666681</G>
+						<B>0.266666681</B>
+					</Color3>
+					<float name="BackgroundTransparency">0</float>
+					<Color3 name="BorderColor3">
+						<R>0.105882362</R>
+						<G>0.164705887</G>
+						<B>0.207843155</B>
+					</Color3>
+					<token name="BorderMode">0</token>
+					<int name="BorderSizePixel">0</int>
+					<bool name="ClearTextOnFocus">false</bool>
+					<bool name="ClipsDescendants">true</bool>
+					<bool name="Draggable">false</bool>
+					<token name="Font">10</token>
+					<Font name="FontFace">
+						<Family><url>rbxasset://fonts/families/Inconsolata.json</url></Family>
+						<Weight>400</Weight>
+						<Style>Normal</Style>
+						<CachedFaceId><url>rbxasset://fonts/Inconsolata-Regular.ttf</url></CachedFaceId>
+					</Font>
+					<int name="LayoutOrder">0</int>
+					<float name="LineHeight">1</float>
+					<int name="MaxVisibleGraphemes">-1</int>
+					<bool name="MultiLine">true</bool>
+					<string name="Name">TextBox</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<Color3 name="PlaceholderColor3">
+						<R>0.699999988</R>
+						<G>0.699999988</G>
+						<B>0.699999988</B>
+					</Color3>
+					<string name="PlaceholderText"></string>
+					<UDim2 name="Position">
+						<XS>0</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<bool name="RichText">false</bool>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">true</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
+					<bool name="ShowNativeInput">true</bool>
+					<UDim2 name="Size">
+						<XS>1</XS>
+						<XO>0</XO>
+						<YS>0</YS>
+						<YO>0</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<string name="Text">PlaceHolder</string>
+					<Color3 name="TextColor3">
+						<R>1</R>
+						<G>1</G>
+						<B>1</B>
+					</Color3>
+					<bool name="TextEditable">true</bool>
+					<bool name="TextScaled">false</bool>
+					<float name="TextSize">14</float>
+					<Color3 name="TextStrokeColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<float name="TextStrokeTransparency">1</float>
+					<float name="TextTransparency">0</float>
+					<token name="TextTruncate">0</token>
+					<bool name="TextWrapped">false</bool>
+					<token name="TextXAlignment">0</token>
+					<token name="TextYAlignment">0</token>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">5</int>
 				</Properties>
+				<Item class="UIPadding" referent="RBX94976D18FFAB4349979426E0AC7A2309">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<string name="Name">UIPadding</string>
+						<UDim name="PaddingBottom">
+							<S>0</S>
+							<O>0</O>
+						</UDim>
+						<UDim name="PaddingLeft">
+							<S>0</S>
+							<O>4</O>
+						</UDim>
+						<UDim name="PaddingRight">
+							<S>0</S>
+							<O>0</O>
+						</UDim>
+						<UDim name="PaddingTop">
+							<S>0</S>
+							<O>0</O>
+						</UDim>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
 			</Item>
 		</Item>
 	</Item>

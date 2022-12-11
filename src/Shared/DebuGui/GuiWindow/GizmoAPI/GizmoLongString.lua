@@ -24,8 +24,8 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 
 	-- Setup
 	Gui.TextName.Text = Name
-	Gui.TextBox.Text = DefaultValue
-	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
+	Gui.ScrollingFrame.TextBox.Text = DefaultValue
+	Gui.ScrollingFrame.TextBox.ClearTextOnFocus = ClearTextOnFocus
 	Gui.Size = UDim2.new(1, 0, 0, Height)
 
 	-- Data
@@ -39,11 +39,11 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 		if API._DeadCheck() then return nil end
 		local Str = tostring(Input)
 		if Str then
-			Gui.TextBox.Text = Str
+			Gui.ScrollingFrame.TextBox.Text = Str
 			API._Input = Str
 			return true
 		else
-			Gui.TextBox.Text = API._Input
+			Gui.ScrollingFrame.TextBox.Text = API._Input
 			return false
 		end
 	end
@@ -62,13 +62,13 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 
 	function API.SetValueBGColor(NewColor)
 		if API._DeadCheck() then return nil end
-		Gui.TextBox.BackgroundColor3 = NewColor
+		Gui.ScrollingFrame.TextBox.BackgroundColor3 = NewColor
 		return API
 	end
 
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
-		Gui.TextBox.TextColor3 = NewColor
+		Gui.ScrollingFrame.TextBox.TextColor3 = NewColor
 		return API
 	end
 
@@ -87,12 +87,12 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 		end
 		-- Apply
 		if IsReadOnly then
-			Gui.TextBox.TextEditable = false
-			Gui.TextBox.TextTransparency = 0.5
+			Gui.ScrollingFrame.TextBox.TextEditable = false
+			Gui.ScrollingFrame.TextBox.TextTransparency = 0.5
 			Gui.TextName.TextTransparency = 0.5
 		else
-			Gui.TextBox.TextEditable = true
-			Gui.TextBox.TextTransparency = 0.0
+			Gui.ScrollingFrame.TextBox.TextEditable = true
+			Gui.ScrollingFrame.TextBox.TextTransparency = 0.0
 			Gui.TextName.TextTransparency = 0.0
 		end
 		return API
@@ -112,17 +112,18 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 	end
 
 	function API.SetHeightBasedOnLineCount(LineCount)
-		local YOffset = Gui.TextBox.Size.Y.Offset
-		API.SetHeight(-YOffset + LineCount * Gui.TextBox.TextSize)
+		local YOffset = Gui.ScrollingFrame.TextBox.Size.Y.Offset
+		local ScrollingFrameHeightDiff = (Gui.AbsoluteSize.Y - Gui.ScrollingFrame.AbsoluteSize.Y)
+		API.SetHeight(-YOffset + LineCount * Gui.ScrollingFrame.TextBox.TextSize + ScrollingFrameHeightDiff)
 	end
 
 	-- Update Values
-	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.ScrollingFrame.TextBox.FocusLost:Connect(function(__) -- enterPressed
 		if IsReadOnly then
 			return
 		end
 
-		if API.Validate(Gui.TextBox.Text) then
+		if API.Validate(Gui.ScrollingFrame.TextBox.Text) then
 			API.TriggerListeners()
 		end
 	end))

@@ -147,6 +147,12 @@ Gui1.AddLongString('longstring1', "line1\nline2\nline3")
 Gui1.AddLongString('longstring2', "a\nb\nc\nd\ne")
 	.SetHeightBasedOnLineCount(5)
 
+Gui1.AddLongString('longstring2 (biased)', "a\nb\nc\nd\ne\nf")
+	.SetHeightBasedOnLineCount(6)
+
+Gui1.AddLongString('longstring2 (biased again)', "a\nb\nc\nd\ne\nf\ng")
+	.SetHeightBasedOnLineCount(7)
+
 Gui1.AddLongString('longstring3', "line1\nline2\nline3", false, 30)
 Gui1.AddLongString('longstring4', "line1\nline2\nline3", false, 30).SetHeight(100)
 
@@ -384,6 +390,13 @@ Folder1.AddListPicker('listpicker1', 'bbb', {
 }).Listen(function(NewChoice)
 	print('listpicker1 choice: ', NewChoice)
 end)
+
+Folder1.AddLongString('longstring1', "line1\nline2\nline3")
+Folder1.AddLongString('longstring2', "a\nb\nc\nd\ne")
+	.SetHeightBasedOnLineCount(5)
+
+Folder1.AddLongString('longstring3', "line1\nline2\nline3", false, 30)
+Folder1.AddLongString('longstring4', "line1\nline2\nline3", false, 30).SetHeight(100)
 
 SubSubFolder1.AddString('test1', 'xxx')
 SubFolder1.AddString('test1', 'xxx')

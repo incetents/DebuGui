@@ -380,7 +380,6 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		assert(typeof(UniqueName) == 'string', 'UniqueName must be of type string')
 		-- Sanity
 		if API._GizmosTable[UniqueName] == nil then
-			error("Warning! Trying to get non-existant Gizmo ("..UniqueName..")")
 			return nil
 		end
 		return API._GizmosTable[UniqueName]

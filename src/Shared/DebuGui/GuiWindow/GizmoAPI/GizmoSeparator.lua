@@ -10,24 +10,24 @@ local GizmoBase = require(script.Parent.GizmoBase)
 local GizmoSeparator = {}
 
 --
-function GizmoSeparator.new(Gui, Name, ParentAPI, Color, Height)
+function GizmoSeparator.new(Gui, UniqueName, ParentAPI, Color, Height)
 
     -- Defaults
     Color = Color or Color3.fromRGB(59, 60, 120)
     Height = Height or 24
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
+    Utility.QuickTypeAssert(UniqueName, 'string')
     Utility.QuickTypeAssert(Color, 'Color3')
     Utility.QuickTypeAssert(Height, 'number')
 
     -- Init Values
-    Gui.Line.Text = Name
+    Gui.Line.Text = UniqueName
     Gui.Line.BackgroundColor3 = Color
     Gui.Size = UDim2.new(1, 0, 0, Height)
 
     -- API
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	-- Private API --
 	API.Validate = nil

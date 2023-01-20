@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
+function GizmoInteger.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearTextOnFocus)
 
 	-- Defaults
 	DefaultValue = tonumber(DefaultValue) or 0
@@ -19,17 +19,17 @@ function GizmoInteger.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 	Gui.TextBox.Text = DefaultValue
 	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
 
 	----------------

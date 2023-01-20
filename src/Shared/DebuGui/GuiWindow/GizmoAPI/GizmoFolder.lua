@@ -29,15 +29,15 @@ end
 ----------------
 -- Public API --
 ----------------
-function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
+function GizmoFolder.new(Gui, UniqueName, MasterAPI, ParentAPI, StartOpen)
 
 	-- Sanity
 	StartOpen = StartOpen or false
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(StartOpen, 'boolean')
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 	Gui.Line.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
 	Gui.SideLine.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
 
@@ -82,6 +82,7 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	end
 
 	function API._Destroy()
+		API._IsDestroyed = true
 		Gui:Destroy()
 		-- Destroy Children too
 		for _, Gizmo in ipairs(API._GizmosArray) do
@@ -89,22 +90,33 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 		end
 	end
 
+	function API._DeadCheck()
+		if API._IsDestroyed then
+			warn("Warning! Accessing Removed Gizmo ("..API.Name..")")
+			return true
+		end
+		return false
+	end
+
 	----------------
 	-- Public API --
 	----------------
 	function API.SetName(NewName)
+		if API._DeadCheck() then return nil end
 		Utility.QuickTypeAssert(NewName, 'string')
 		Gui.TextName.Text = NewName
 		return API
 	end
 
 	function API.SetNameColor(NewNameColor)
+		if API._DeadCheck() then return nil end
 		Utility.QuickTypeAssert(NewNameColor, 'Color3')
 		Gui.TextName.TextColor3 = NewNameColor
 		return API
 	end
 
 	function API.SetColor(NewColor)
+		if API._DeadCheck() then return nil end
 		Utility.QuickTypeAssert(NewColor, 'Color3')
 		Gui.Line.BackgroundColor3 = NewColor
 		Gui.SideLine.BackgroundColor3 = NewColor
@@ -112,11 +124,20 @@ function GizmoFolder.new(Gui, Name, MasterAPI, ParentAPI, StartOpen)
 	end
 
 	function API.GetColor()
+		if API._DeadCheck() then return nil end
 		return Gui.Line.BackgroundColor3
 	end
 
 	function API.IsVisible()
+		if API._DeadCheck() then return false end
 		return IsVisible
+	end
+
+	function API.Destroy()
+		assert(ParentAPI, 'No Parent API to destroy this Gizmo')
+		if API._DeadCheck() then return nil end
+		-- Needs to call parent to remove itself
+		ParentAPI.Remove(UniqueName)
 	end
 
 	-- Special Init

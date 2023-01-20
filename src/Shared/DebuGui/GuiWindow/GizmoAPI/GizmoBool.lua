@@ -13,22 +13,22 @@ local COLOR_DARK = Color3.fromRGB(43, 43, 43)
 ----------------
 -- Public API --
 ----------------
-function GizmoBool.new(Gui, Name, DefaultValue)
+function GizmoBool.new(Gui, UniqueName, ParentAPI, DefaultValue)
     -- Defaults
     if DefaultValue == nil then
 		DefaultValue = false
 	end
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
+    Utility.QuickTypeAssert(UniqueName, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'boolean')
 
     -- Setup
 	Gui.CheckBoxBG.CheckBoxFG.Checkmark.Text = '✓' -- Best to store unicode in Script vs in parameter
-    Gui.TextName.Text = Name
+    Gui.TextName.Text = UniqueName
 
 	-- Defines
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
     local DefaultColor = Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3
 

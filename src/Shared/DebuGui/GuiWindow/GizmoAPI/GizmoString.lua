@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
+function GizmoString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearTextOnFocus)
 
     -- Defaults
     DefaultValue = DefaultValue or ''
@@ -19,18 +19,18 @@ function GizmoString.new(Gui, Name, DefaultValue, ClearTextOnFocus)
 	end
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
+    Utility.QuickTypeAssert(UniqueName, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'string')
     Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
 
     -- Setup
-    Gui.TextName.Text = Name
+    Gui.TextName.Text = UniqueName
     Gui.TextBox.Text = DefaultValue
     Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
 	local IsReadOnly = false
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	----------------
 	-- Public API --

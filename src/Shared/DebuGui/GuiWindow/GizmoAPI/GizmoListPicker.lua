@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, AllowNoChoice, ClearTextOnFocus)
+function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices, AllowNoChoice, ClearTextOnFocus)
 
 	-- Defaults
 	if ClearTextOnFocus == nil then
@@ -21,32 +21,32 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 	end
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
+    Utility.QuickTypeAssert(UniqueName, 'string')
 	if DefaultChoice then
 		Utility.QuickTypeAssert(DefaultChoice, 'string')
 	end
     Utility.QuickTypeAssert(Choices, 'table')
 	for _, Value in ipairs(Choices) do
 		if typeof(Value) ~= 'string' then
-			error('a choice was not a string in Choices for '..Name)
+			error('a choice was not a string in Choices for '..UniqueName)
 		end
 	end
 	if DefaultChoice and not table.find(Choices, DefaultChoice) then
-		error('Choice ('..DefaultChoice..') not found in Choices for '..Name)
+		error('Choice ('..DefaultChoice..') not found in Choices for '..UniqueName)
 	end
 	if #Choices == 0 then
-		error('No choices given for '..Name)
+		error('No choices given for '..UniqueName)
 	end
 	if not AllowNoChoice and not DefaultChoice then
 		DefaultChoice = Choices[1]
 	end
 
     -- Setup
-    Gui.TextName.Text = Name
+    Gui.TextName.Text = UniqueName
 	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
 
 	----------------
@@ -176,7 +176,7 @@ function GizmoListPicker.new(Gui, Name, ParentAPI, DefaultChoice, Choices, Allow
 	----------------------
 	API._AddConnection(Gui.ModalButton.MouseButton1Down:Connect(function()
 		if not IsReadOnly then
-			ParentAPI._CreateModal(Name..' :', API, API._Input, Choices)
+			ParentAPI._CreateModal(UniqueName..' :', API, API._Input, Choices)
 		end
 	end))
 	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed

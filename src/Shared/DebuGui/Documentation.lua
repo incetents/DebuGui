@@ -274,6 +274,7 @@
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultColor (Color3) = Initial Color3 Value
+					DecimalAmount (number) = How many digits after the decimal point are displayed
 					UpdateOnlyOnDragEnd = (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
@@ -282,7 +283,6 @@
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultColor (Color3) = Initial Color3 Value
-					DecimalAmount (number) = How many digits after the decimal point are displayed
 					UpdateOnlyOnDragEnd = (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
@@ -317,7 +317,7 @@
 			-- @Description: calls every function listening to this gizmo with the currently stored value
 			-- @Returns: (Gizmo)
 
-		-- Set (newValue)
+		-- SetValue (newValue)
 			-- @Description: change the internal stored value, triggers all listeners
 			-- @Parameters:
 					newValue (Gizmo's Stored Value type)
@@ -332,6 +332,9 @@
 		-- GetValue ()
 			-- @Description: returns the internal stored value
 			-- @Returns: (Gizmo's Stored Value)
+
+		-- Destroy ()
+			-- @Description: Deletes this gizmo (make sure to remove any local references to it)
 
 
 	-- Gizmo (Empty) : empty spacing used for padding
@@ -490,8 +493,8 @@
 		-- AddFolder (UniqueName, StartOpen)
 		-- AddVector2 (UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
 		-- AddVector3 (UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
-		-- AddColorSliderRGB (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		-- AddColorSliderRGBInt (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddColorSliderRGB (UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		-- AddColorSliderRGBInt (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		-- AddColorSliderHSV (UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
 		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
 

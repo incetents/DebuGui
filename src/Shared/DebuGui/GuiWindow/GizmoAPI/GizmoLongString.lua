@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocus, Height)
+function GizmoLongString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearTextOnFocus, Height)
 
 	-- Defaults
 	ClearTextOnFocus = ClearTextOnFocus or false
@@ -18,19 +18,19 @@ function GizmoLongString.new(Gui, Name, ParentAPI, DefaultValue, ClearTextOnFocu
 	Height = Height or 48
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'string')
 	Utility.QuickTypeAssert(Height, 'number')
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 	Gui.ScrollingFrame.TextBox.Text = DefaultValue
 	Gui.ScrollingFrame.TextBox.ClearTextOnFocus = ClearTextOnFocus
 	Gui.Size = UDim2.new(1, 0, 0, Height)
 
 	-- Data
 	local IsReadOnly = false
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	----------------
 	-- Public API --

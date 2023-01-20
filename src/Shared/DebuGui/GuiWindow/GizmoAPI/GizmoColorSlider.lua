@@ -73,14 +73,14 @@ end
 ----------------
 -- Public API --
 ----------------
-function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode, DecimalAmount)
+function GizmoColorSlider.new(Gui, UniqueName, ParentAPI, DefaultColor, UpdateOnlyOnDragEnd, Mode, DecimalAmount)
 
 	-- Defaults
 	DefaultColor = DefaultColor or Color3.fromRGB(255, 255, 255)
 	UpdateOnlyOnDragEnd = UpdateOnlyOnDragEnd or false
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultColor, 'Color3')
 
 	-- Defines
@@ -88,10 +88,10 @@ function GizmoColorSlider.new(Gui, Name, DefaultColor, UpdateOnlyOnDragEnd, Mode
 	local ValueDragger_2 = Dragger.new(Gui.TextBox2.DragRange.Dragger)
 	local ValueDragger_3 = Dragger.new(Gui.TextBox3.DragRange.Dragger)
 	local IsReadOnly = false
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 
 	-- RGB stored
 	API._AddDragger(ValueDragger_1)

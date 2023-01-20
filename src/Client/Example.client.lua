@@ -6,6 +6,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- Module --
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
+local _ToDestroy = nil
+
 -- Create New Window
 local Gui1 = DebuGui.NewWindow('Core', {
 	Title = 'API Examples',
@@ -37,17 +39,28 @@ local Gui1_AlternateRef = DebuGui.GetWindow('Core')
 Gui1_AlternateRef.AddIntegerSlider('TEST123', 2, 0, 10)
 Gui1_AlternateRef.Remove('TEST123')
 
+
 -- Empty --
 Gui1.AddSeparator('EMPTY_SEPARATOR').SetName('EMPTY')
 
 Gui1.AddEmpty()
 Gui1.AddEmpty(nil, 120)
 
+-- Test Destroy
+_ToDestroy = Gui1.AddEmpty()
+_ToDestroy.Destroy()
+
+
 -- Text Simple --
-Gui1.AddSeparator('TEXT_SIOMPLE_SEPARATOR').SetName('SIMPLE TEXT')
+Gui1.AddSeparator('TEXT_SIMPLE_SEPARATOR').SetName('SIMPLE TEXT')
 --
 Gui1.AddSimpleText('SimpleString1', '12345678901234567890123456789012345678901234567890')
 Gui1.AddSimpleText('SimpleString2', '???').SetValue('qwertyuiop')
+
+-- Test Destroy
+_ToDestroy = Gui1.AddSimpleText('SimpleStringDelete', "DON'T LOOK")
+_ToDestroy.Destroy()
+
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')
@@ -71,6 +84,11 @@ Gui1.AddText('text6', 'abc')
 		print('text6 changed to: ', V)
 	end)
 
+-- Test Destroy
+_ToDestroy = Gui1.AddText('textDelete', "DON'T LOOK")
+_ToDestroy.Destroy()
+
+
 -- Booleans --
 Gui1.AddSeparator('BOOL_SEPARATOR').SetName('BOOLS')
 --
@@ -91,6 +109,11 @@ Gui1.AddBool('bool_multi_listen', true)
 	.Listen(function()
 		print('multi listen B')
 	end)
+
+-- Test Destroy
+_ToDestroy = Gui1.AddBool('boolDelete', true)
+_ToDestroy.Destroy()
+
 
 -- Buttons --
 Gui1.AddSeparator('BUTTON_SEPARATOR').SetName('BUTTONS')
@@ -114,6 +137,10 @@ Gui1.AddButton('button4').SetName('Toggle Locked Button').Listen(function()
 	end
 end)
 
+-- Test Destroy
+_ToDestroy = Gui1.AddButton('buttonDelete')
+_ToDestroy.Destroy()
+
 
 -- Integers --
 Gui1.AddSeparator('INTEGERS_SEPARATOR').SetName('INTEGERS')
@@ -129,6 +156,11 @@ Gui1.AddInteger('int6', 1).SetValue(2).SetValueTextColor(Color3.fromRGB(62, 197,
 Gui1.AddInteger('int7', 1).SetValue('a')
 Gui1.AddInteger('int8', 'a').SetValue(1).SetValueTextColor(Color3.fromRGB(0, 0, 0))
 Gui1.AddInteger('int9', 99).SetReadOnly()
+
+-- Test Destroy
+_ToDestroy = Gui1.AddInteger('intDelete', 123)
+_ToDestroy.Destroy()
+
 
 -- Integer Sliders --
 Gui1.AddSeparator('INTEGER_SLIDER_SEPARATOR').SetName('INTEGER SLIDERS')
@@ -150,6 +182,11 @@ Gui1.AddIntegerSlider('intslider_min', 0, -20, 20)
 Gui1.AddIntegerSlider('intslider_max', 0, -20, 20)
 	.SetMaxValue(-1)
 
+-- Test Destroy
+_ToDestroy = Gui1.AddIntegerSlider('intsliderDelete', 5, 0, 10)
+_ToDestroy.Destroy()
+
+
 -- Long String
 Gui1.AddSeparator('LONG_STRING_SEPARATOR').SetName('LONG STRING')
 --
@@ -168,6 +205,11 @@ Gui1.AddLongString('longstring4', "line1\nline2\nline3", false, 30).SetHeight(10
 
 Gui1.AddLongString('longstring_locked', "line1\nline2\nline3")
 	.SetReadOnly()
+
+-- Test Destroy
+_ToDestroy = Gui1.AddLongString('longstringDelete',  "line1\nline2\nline3")
+_ToDestroy.Destroy()
+
 
 -- Numbers --
 Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
@@ -192,6 +234,10 @@ Gui1.AddNumber('num_colorOnNumber', 100)
 	.Listen(function(NewValue)
 		Gui1.Get('num_colorOnNumber').SetValueBGColor(Color3.fromRGB(NewValue, NewValue * 0.5, 255 - NewValue))
 end)
+
+-- Test Destroy
+_ToDestroy = Gui1.AddNumber('numberDelete', 420)
+_ToDestroy.Destroy()
 
 
 -- Number Sliders --
@@ -221,6 +267,11 @@ Gui1.AddNumberSlider('numslider_min', 0, -20, 20, 4)
 Gui1.AddNumberSlider('numslider_max', 0, -20, 20, 4)
 	.SetMaxValue(-1)
 
+-- Test Destroy
+_ToDestroy = Gui1.AddNumberSlider('numberSliderDelete', 0, -20, 20, 1)
+_ToDestroy.Destroy()
+
+
 -- Separators --
 Gui1.AddSeparator('SEPARATOR_SEPARATOR').SetName('SEPARATORS')
 --
@@ -231,6 +282,10 @@ Gui1.AddSeparator('separator4', nil, 42)
 Gui1.AddSeparator('separator5').SetFrameColor(Color3.fromRGB(173, 72, 72))
 Gui1.AddSeparator('separator6').SetName('junkster')
 Gui1.AddSeparator('separator7').SetHeight(8)
+
+-- Test Destroy
+_ToDestroy = Gui1.AddSeparator('separatorDelete')
+_ToDestroy.Destroy()
 
 
 -- Strings --
@@ -245,6 +300,10 @@ Gui1.AddString('string5', 'default').Listen(function(NewValue)
 end)
 Gui1.AddString('string6', 'a').SetValue('b')
 Gui1.AddString('string7', 'readonly string').SetReadOnly()
+
+-- Test Destroy
+_ToDestroy = Gui1.AddString('stringDelete', 'GONE')
+_ToDestroy.Destroy()
 
 
 -- Vectors --
@@ -277,6 +336,14 @@ Gui1.AddVector3('vec3_5', Vector3.new(-1, -1, -1))
 
 Gui1.AddVector3('vec3_6', Vector3.new(6, 6, 6)).SetReadOnly()
 
+-- Test Destroy
+_ToDestroy = Gui1.AddVector2('vec2Delete', Vector2.new(1, 2))
+_ToDestroy.Destroy()
+-- Test Destroy
+_ToDestroy = Gui1.AddVector3('vec2Delete', Vector3.new(1, 2, 3))
+_ToDestroy.Destroy()
+
+
 -- Color Slider
 Gui1.AddSeparator('COLOR_SLIDER_SEPARATOR').SetName('COLOR SLIDERS')
 --
@@ -298,7 +365,7 @@ Gui1.AddColorSliderRGBInt('ColorSliderRGBInt_2', Color3.fromRGB(66, 67, 68), tru
 		print('New ColorSliderRGBInt_2 Value: ', NewValue)
 end)
 
-Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), true)
+Gui1.AddColorSliderHSV('ColorSliderHSV_1', Color3.fromRGB(255, 255, 0), 2, true)
 	.SetValue(Color3.fromRGB(126, 0, 0))
 	.Listen(function(NewValue)
 		print('New ColorSliderHSV_1 Value: ', NewValue)
@@ -312,6 +379,16 @@ end)
 
 Gui1.AddColorSliderRGBInt('ColorSliderRGB_Locked', Color3.fromRGB(123, 69, 255))
 	.SetReadOnly()
+
+-- Test Destroy
+_ToDestroy = Gui1.AddColorSliderRGB('rgbDelete', Color3.fromRGB(123, 69, 255), 2, true)
+_ToDestroy.Destroy()
+_ToDestroy = Gui1.AddColorSliderRGBInt('rgbDelete', Color3.fromRGB(123, 69, 255), true)
+_ToDestroy.Destroy()
+_ToDestroy = Gui1.AddColorSliderHSV('hsvDelete', Color3.fromRGB(123, 69, 255), 2, true)
+_ToDestroy.Destroy()
+_ToDestroy = Gui1.AddColorSliderHSVInt('hsvDelete', Color3.fromRGB(123, 69, 255), true)
+_ToDestroy.Destroy()
 
 
 -- List Picker --
@@ -360,6 +437,10 @@ Gui1.AddListPicker('listpicker8', '3', {'1', '2', '3', '4'})
 
 Gui1.AddListPicker('listpicker_locked', '1', {'1', '2', '3'}).SetReadOnly()
 
+-- Test Destroy
+_ToDestroy = Gui1.AddListPicker('listDelete', '1', {'1', '2', '3'})
+_ToDestroy.Destroy()
+
 -------------
 -- Folders --
 -------------
@@ -397,7 +478,7 @@ Folder1.AddString('string1', 'Cool Beans')
 Folder1.AddVector2('vec2', Vector2.new(33, 565))
 Folder1.AddVector2('vec3', Vector2.new(33, 565))
 Folder1.AddNumberSlider('numslider', 100, 0, 200)
-Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), true)
+Folder1.AddColorSliderHSV('colorsliderhsv', Color3.fromRGB(67, 44, 129), 2, true)
 Folder1.AddListPicker('listpicker1', 'bbb', {
 	'aaa', 'bbb', 'ccc', 'ddd', 'eee_1234567890123456789012345678901234567890_eee'
 }).Listen(function(NewChoice)
@@ -446,6 +527,13 @@ SmallFrameFolder2.AddString('string6', 'text')
 SmallFrameFolder2.AddString('string7', 'text')
 
 Gui1.Remove('Small Frame Folder 2')
+
+-- Test Destroy
+_ToDestroy = Gui1.AddFolder('folderDelete', true)
+_ToDestroy.AddString('stringdelete', 'fake')
+_ToDestroy.Destroy()
+
+print('------ SEPARATION LINE ------')
 
 ----------------
 -- Getter API --

@@ -34,7 +34,7 @@ end
 ----------------
 -- Public API --
 ----------------
-function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
+function GizmoNumberSlider.new(Gui, UniqueName, ParentAPI, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 
 	-- Defaults
 	MinValue = tonumber(MinValue) or 0
@@ -46,7 +46,7 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 		warn('Warning! NumberSlider Min is larger than Max')
 		MinValue = MaxValue
 	end
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(MinValue, 'number')
 	Utility.QuickTypeAssert(MaxValue, 'number')
@@ -58,10 +58,10 @@ function GizmoNumberSlider.new(Gui, Name, DefaultValue, MinValue, MaxValue, Deci
 	-- Defines
 	local ValueDragger = Dragger.new(Gui.TextBox.DragRange.Dragger)
 	local IsReadOnly = false
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 
 	API._AddDragger(ValueDragger)
 

@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoNumber.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
+function GizmoNumber.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmount, ClearTextOnFocus)
 
 	-- Defaults
 	DefaultValue = tonumber(DefaultValue) or 0
@@ -19,7 +19,7 @@ function GizmoNumber.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocu
 	end
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'number')
 	Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
 	if DecimalAmount ~= nil then
@@ -28,12 +28,12 @@ function GizmoNumber.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocu
 	end
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 	Gui.TextBox.Text = DefaultValue
 	Gui.TextBox.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
 
 	----------------

@@ -10,21 +10,21 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoText.new(Gui, Name, DefaultValue)
+function GizmoText.new(Gui, UniqueName, ParentAPI, DefaultValue)
 
     -- Defaults
     DefaultValue = DefaultValue or ''
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
+    Utility.QuickTypeAssert(UniqueName, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'string')
 
     -- Setup
-    Gui.TextName.Text = Name
+    Gui.TextName.Text = UniqueName
     Gui.TextBox.Text = DefaultValue
 
 	-- Defines
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	----------------
 	-- Public API --

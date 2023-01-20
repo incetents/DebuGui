@@ -6,7 +6,7 @@ local GizmoBase = {}
 ----------------
 -- Public API --
 ----------------
-function GizmoBase.New()
+function GizmoBase.New(UniqueName, ParentAPI)
 
 	-------------
 	-- Defines --
@@ -102,6 +102,12 @@ function GizmoBase.New()
 
 	function API.GetValue()
 		return API._Input
+	end
+
+	function API.Destroy()
+		if API._DeadCheck() then return nil end
+		-- Needs to call parent to remove itself
+		ParentAPI.Remove(UniqueName)
 	end
 
     return API

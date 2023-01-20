@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoVector2.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFocus)
+function GizmoVector2.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	-- Defaults
 	DefaultValue = DefaultValue or Vector2.new(0, 0)
 	if ClearTextOnFocus == nil then
@@ -18,7 +18,7 @@ function GizmoVector2.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFoc
 	end
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(DefaultValue, 'Vector2')
 	Utility.QuickTypeAssert(ClearTextOnFocus, 'boolean')
 	if DecimalAmount ~= nil then
@@ -27,14 +27,14 @@ function GizmoVector2.new(Gui, Name, DefaultValue, DecimalAmount, ClearTextOnFoc
 	end
 
 	-- Setup
-	Gui.TextName.Text = Name
+	Gui.TextName.Text = UniqueName
 	Gui.TextBox1.Text = DefaultValue.X
 	Gui.TextBox2.Text = DefaultValue.Y
 	Gui.TextBox1.ClearTextOnFocus = ClearTextOnFocus
 	Gui.TextBox2.ClearTextOnFocus = ClearTextOnFocus
 
 	-- Defines
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
 
 	----------------

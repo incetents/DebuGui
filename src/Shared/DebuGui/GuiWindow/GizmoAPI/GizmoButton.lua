@@ -30,16 +30,16 @@ end
 ----------------
 -- Public API --
 ----------------
-function GizmoButton.new(Gui, Name)
+function GizmoButton.new(Gui, UniqueName, ParentAPI)
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
-    
+    Utility.QuickTypeAssert(UniqueName, 'string')
+
     -- Setup
-    Gui.TextButton.Text = Name
+    Gui.TextButton.Text = UniqueName
 	Gui.TextButton.Size = GetTextSize(Gui.TextButton)
 
 	-- Defines
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 	local IsReadOnly = false
 
 	----------------

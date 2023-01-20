@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoSimpleText.new(Gui, _Name, DefaultValue)
+function GizmoSimpleText.new(Gui, UniqueName, ParentAPI, DefaultValue)
 
     -- Defaults
     DefaultValue = DefaultValue or ''
@@ -22,7 +22,7 @@ function GizmoSimpleText.new(Gui, _Name, DefaultValue)
     Gui.TextBox.Text = DefaultValue
 
 	-- Defines
-    local API = GizmoBase.New()
+    local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	----------------
 	-- Public API --

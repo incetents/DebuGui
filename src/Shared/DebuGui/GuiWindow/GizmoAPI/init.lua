@@ -306,15 +306,15 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddString(UniqueName, DefaultValue, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, DefaultValue, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox, GizmoString, UniqueName, API, DefaultValue, ClearTextOnFocus)
 	end
 
 	function API.AddText(UniqueName, DefaultValue)
-		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, DefaultValue)
+		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, API, DefaultValue)
 	end
 
 	function API.AddSimpleText(UniqueName, DefaultValue)
-		return AddGizmo(GizmoUI_SimpleText, GizmoSimpleText, UniqueName, DefaultValue)
+		return AddGizmo(GizmoUI_SimpleText, GizmoSimpleText, UniqueName, API, DefaultValue)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, ClearTextOnFocus, Height)
@@ -322,27 +322,27 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddInteger(UniqueName, DefaultValue, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, DefaultValue, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox, GizmoInteger, UniqueName, API, DefaultValue, ClearTextOnFocus)
 	end
 
 	function API.AddIntegerSlider(UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_Slider, GizmoIntegerSlider, UniqueName, API, DefaultValue, MinValue, MaxValue, UpdateOnlyOnDragEnd)
 	end
 
 	function API.AddNumber(UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, DefaultValue, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox, GizmoNumber, UniqueName, API, DefaultValue, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddNumberSlider(UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_Slider, GizmoNumberSlider, UniqueName, API, DefaultValue, MinValue, MaxValue, DecimalAmount, UpdateOnlyOnDragEnd)
 	end
 
 	function API.AddBool(UniqueName, DefaultValue)
-		return AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, DefaultValue)
+		return AddGizmo(GizmoUI_CheckBox, GizmoBool, UniqueName, API, DefaultValue)
 	end
 
 	function API.AddButton(UniqueName)
-		return AddGizmo(GizmoUI_Button, GizmoButton, UniqueName)
+		return AddGizmo(GizmoUI_Button, GizmoButton, UniqueName, API)
 	end
 
 	function API.AddSeparator(UniqueName, Color, Height)
@@ -354,27 +354,27 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	end
 
 	function API.AddVector2(UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, DefaultVec2, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi2, GizmoVector2, UniqueName, API, DefaultVec2, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddVector3(UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, DefaultVec3, DecimalAmount, ClearTextOnFocus)
+		return AddGizmo(GizmoUI_TextBox_Multi3, GizmoVector3, UniqueName, API, DefaultVec3, DecimalAmount, ClearTextOnFocus)
 	end
 
 	function API.AddColorSliderRGB(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 1, DecimalAmount)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, API, DefaultColor, UpdateOnlyOnDragEnd, 1, DecimalAmount)
 	end
 
 	function API.AddColorSliderRGBInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 2, nil)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, API, DefaultColor, UpdateOnlyOnDragEnd, 2, nil)
 	end
 
-	function API.AddColorSliderHSV(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 3, nil)
+	function API.AddColorSliderHSV(UniqueName, DefaultColor, DecimalAmount, UpdateOnlyOnDragEnd)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, API, DefaultColor, UpdateOnlyOnDragEnd, 3, DecimalAmount)
 	end
 
 	function API.AddColorSliderHSVInt(UniqueName, DefaultColor, UpdateOnlyOnDragEnd)
-		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, DefaultColor, UpdateOnlyOnDragEnd, 4, nil)
+		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, API, DefaultColor, UpdateOnlyOnDragEnd, 4, nil)
 	end
 
 	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)

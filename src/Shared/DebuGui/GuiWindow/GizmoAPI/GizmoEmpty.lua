@@ -10,20 +10,20 @@ local GizmoBase = require(script.Parent.GizmoBase)
 local GizmoEmpty = {}
 
 --
-function GizmoEmpty.new(Gui, Name, ParentAPI, Height)
+function GizmoEmpty.new(Gui, UniqueName, ParentAPI, Height)
 
 	-- Defaults
 	Height = Height or 24
 
 	-- Sanity
-	Utility.QuickTypeAssert(Name, 'string')
+	Utility.QuickTypeAssert(UniqueName, 'string')
 	Utility.QuickTypeAssert(Height, 'number')
 
 	-- Init Values
 	Gui.Size = UDim2.new(1, 0, 0, Height)
 
 	-- API
-	local API = GizmoBase.New()
+	local API = GizmoBase.New(UniqueName, ParentAPI)
 
 	-- Private API --
 	API.Validate = nil

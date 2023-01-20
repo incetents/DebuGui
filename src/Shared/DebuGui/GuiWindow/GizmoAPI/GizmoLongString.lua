@@ -1,4 +1,4 @@
--- © 2022 Emmanuel Lajeunesse
+-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoLongString = {}

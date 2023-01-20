@@ -361,8 +361,9 @@ Result:
 | Number | A text field that only accepts numbers as input |
 | NumberSlider | A slider that can be dragged to change a numbers value, requires a min/max value for edge values |
 | Separator | Adds a colored box with text to aesthetically space the gizmos apart |
+| Simple Text | A textlabel that simply displays a string without any way of editing or highlighting it |
 | String | A textbox that can accept any string as input |
-| Text | A textlabel that simply displays a string without any way of editing or highlighting it |
+| Text | A textlabel that simply displays a string and its name without any way of editing or highlighting it |
 | Vector2 | 2 text fields that only accepts numbers as inputs, stores the result as a Vector2 |
 | Vector3 | 3 text fields that only accepts numbers as inputs, stores the result as a Vector3  |
 

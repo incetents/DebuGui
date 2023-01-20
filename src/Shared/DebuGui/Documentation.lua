@@ -1,6 +1,6 @@
 --[[
 
-	-- © 2022 Emmanuel Lajeunesse
+	-- © 2023 Emmanuel Lajeunesse
 	-- DebuGui Documentation
 
 	-- DebuGui : First point of Access
@@ -164,7 +164,14 @@
 			-- @Returns: (Gizmo)
 
 		-- AddText (UniqueName, DefaultValue)
-			-- @Description: Text Gizmo, stores 1 non-editable string
+			-- @Description: Text Gizmo, stores 1 non user-editable string + shows name of text param
+			-- @Parameters:
+					UniqueName (String) = UniqueName of the Gizmo
+					DefaultValue (String) = Displayed Text
+			-- @Returns: (Gizmo)
+
+		-- AddSimpleText (UniqueName, DefaultValue)
+			-- @Description: Simple Text Gizmo, stores 1 non user-editable string (only shows value, takes width of entire row)
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
 					DefaultValue (String) = Displayed Text

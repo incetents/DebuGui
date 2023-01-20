@@ -1,7 +1,7 @@
 -- © 2023 Emmanuel Lajeunesse
 
 -- Module
-local GizmoText = {}
+local GizmoSimpleText = {}
 
 -- Modules
 local GizmoBase = require(script.Parent.GizmoBase)
@@ -10,17 +10,15 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoText.new(Gui, Name, DefaultValue)
+function GizmoSimpleText.new(Gui, _Name, DefaultValue)
 
     -- Defaults
     DefaultValue = DefaultValue or ''
 
     -- Sanity
-    Utility.QuickTypeAssert(Name, 'string')
     Utility.QuickTypeAssert(DefaultValue, 'string')
 
     -- Setup
-    Gui.TextName.Text = Name
     Gui.TextBox.Text = DefaultValue
 
 	-- Defines
@@ -42,18 +40,6 @@ function GizmoText.new(Gui, Name, DefaultValue)
         end
     end
 
-	function API.SetName(NewName)
-		if API._DeadCheck() then return nil end
-		Gui.TextName.Text = NewName
-		return API
-	end
-
-	function API.SetNameColor(NewNameColor)
-		if API._DeadCheck() then return nil end
-		Gui.TextName.TextColor3 = NewNameColor
-		return API
-	end
-
 	function API.SetValueTextColor(NewColor)
 		if API._DeadCheck() then return nil end
 		Gui.TextBox.TextColor3 = NewColor
@@ -63,4 +49,4 @@ function GizmoText.new(Gui, Name, DefaultValue)
     return API
 end
 
-return GizmoText
+return GizmoSimpleText

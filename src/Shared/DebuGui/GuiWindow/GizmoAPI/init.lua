@@ -1,4 +1,4 @@
--- © 2022 Emmanuel Lajeunesse
+-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoAPI = {}
@@ -31,6 +31,7 @@ local GizmoNumberSlider = require(script.GizmoNumberSlider)
 local GizmoSeparator = require(script.GizmoSeparator)
 local GizmoString = require(script.GizmoString)
 local GizmoText = require(script.GizmoText)
+local GizmoSimpleText = require(script.GizmoSimpleText)
 local GizmoVector2 = require(script.GizmoVector2)
 local GizmoVector3 = require(script.GizmoVector3)
 local GizmoColorSlider = require(script.GizmoColorSlider)
@@ -44,6 +45,7 @@ local GizmoUI_Picker = DebuGuiRef.GizmoUI_Picker
 local GizmoUI_Separator = DebuGuiRef.GizmoUI_Separator
 local GizmoUI_Slider = DebuGuiRef.GizmoUI_Slider
 local GizmoUI_Text = DebuGuiRef.GizmoUI_Text
+local GizmoUI_SimpleText = DebuGuiRef.GizmoUI_SimpleText
 local GizmoUI_TextBox = DebuGuiRef.GizmoUI_TextBox
 local GizmoUI_TextBox_Multi2 = DebuGuiRef.GizmoUI_TextBox_Multi2
 local GizmoUI_TextBox_Multi3 = DebuGuiRef.GizmoUI_TextBox_Multi3
@@ -309,6 +311,10 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	function API.AddText(UniqueName, DefaultValue)
 		return AddGizmo(GizmoUI_Text, GizmoText, UniqueName, DefaultValue)
+	end
+
+	function API.AddSimpleText(UniqueName, DefaultValue)
+		return AddGizmo(GizmoUI_SimpleText, GizmoSimpleText, UniqueName, DefaultValue)
 	end
 
 	function API.AddLongString(UniqueName, DefaultValue, ClearTextOnFocus, Height)

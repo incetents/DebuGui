@@ -5,6 +5,10 @@
 
 	"tree": {
 
+		"Workspace": {
+			"$path": "src/Workspace"
+		},
+
 		"ReplicatedStorage": {
 			"$path": "src/Shared"
 		},

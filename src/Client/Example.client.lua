@@ -1,4 +1,4 @@
--- © 2022 Emmanuel Lajeunesse
+-- © 2023 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -14,7 +14,7 @@ local Gui1 = DebuGui.NewWindow('Core', {
 	Width = 600,
 	Height = 520,
 })
-Gui1.Minimize()
+--Gui1.Minimize()
 Gui1.SetTopBarColor(Color3.fromRGB(103, 65, 161))
 Gui1.SetScrollbarWidth(10)
 Gui1.SetScrollbarColor(Color3.fromRGB(134, 29, 103))
@@ -42,6 +42,12 @@ Gui1.AddSeparator('EMPTY_SEPARATOR').SetName('EMPTY')
 
 Gui1.AddEmpty()
 Gui1.AddEmpty(nil, 120)
+
+-- Text Simple --
+Gui1.AddSeparator('TEXT_SIOMPLE_SEPARATOR').SetName('SIMPLE TEXT')
+--
+Gui1.AddSimpleText('SimpleString1', '12345678901234567890123456789012345678901234567890')
+Gui1.AddSimpleText('SimpleString2', '???').SetValue('qwertyuiop')
 
 -- Text --
 Gui1.AddSeparator('TEXT_SEPARATOR').SetName('TEXT')

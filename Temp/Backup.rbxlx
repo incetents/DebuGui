@@ -1374,7 +1374,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<string name="Name">Example</string>
 					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{5AA24728-A29F-407D-84BF-9BF3D8F51509}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -1918,7 +1918,7 @@ rVec2.SetName('Invalid')
 					<string name="Name">Example_RacingCondition</string>
 					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{AABD3203-6AF9-4265-ABD5-477C5AB24D66}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -1945,7 +1945,7 @@ Gui1.AddBool('NewWindowBool', true).SetName('Racing Condition Test')]]></Protect
 					<string name="Name">Example_Scene</string>
 					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{CD28711D-DAC4-43CC-A702-40582EA48F59}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local Chat = game:GetService("Chat")
@@ -2594,7 +2594,7 @@ end)]]></ProtectedString>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">DebuGui</string>
 				<string name="ScriptGuid">{DC43DC3C-AA18-4070-96E0-F96134D67DE0}</string>
-				<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+				<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local DebuGui = {}
@@ -2697,7 +2697,7 @@ return DebuGui]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Dragger</string>
 					<string name="ScriptGuid">{9059B306-0BF1-4EBC-A03A-15C61F1C0312}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local Dragger = {}
@@ -2812,7 +2812,7 @@ return Dragger]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">Utility</string>
 					<string name="ScriptGuid">{48B40446-D8BF-4438-96C7-4E33AF0A43AB}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 local Utility = {}
 
@@ -2861,7 +2861,7 @@ return Utility]]></ProtectedString>
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">GuiWindow</string>
 					<string name="ScriptGuid">{9523E78C-F780-4C51-A911-7B87B00FD658}</string>
-					<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+					<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GuiWindow = {}
@@ -3242,7 +3242,7 @@ return GuiWindow]]></ProtectedString>
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">GizmoAPI</string>
 						<string name="ScriptGuid">{0E86CDF6-F1A5-48CC-B359-F06A4E76B059}</string>
-						<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+						<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoAPI = {}
@@ -3701,7 +3701,7 @@ return GizmoAPI]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBase</string>
 							<string name="ScriptGuid">{A59DFBD5-9565-42EA-9DAD-07E2F8AF019B}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoBase = {}
@@ -3823,7 +3823,7 @@ return GizmoBase]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoBool</string>
 							<string name="ScriptGuid">{3602A8E2-958A-48D2-A84B-DFF4BC01D4E0}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoBool = {}
@@ -3952,7 +3952,7 @@ return GizmoBool]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoButton</string>
 							<string name="ScriptGuid">{11589E8D-B199-485E-AA59-259C6CB383BB}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoButton = {}
@@ -4063,7 +4063,7 @@ return GizmoButton]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoFolder</string>
 							<string name="ScriptGuid">{D193CF61-BC46-4A26-BB5D-5C985079B1C1}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoFolder = {}
@@ -4203,7 +4203,7 @@ return GizmoFolder]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoInteger</string>
 							<string name="ScriptGuid">{C5B6DB0C-5508-477B-B3B9-7138546BC915}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoInteger = {}
@@ -4335,7 +4335,7 @@ return GizmoInteger]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoIntegerSlider</string>
 							<string name="ScriptGuid">{B1DEC54D-D044-4427-AC0F-6AA78814819B}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoIntegerSlider = {}
@@ -4557,7 +4557,7 @@ return GizmoIntegerSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoLongString</string>
 							<string name="ScriptGuid">{7F905EB5-BB16-4537-897B-83F1F3BA7575}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoLongString = {}
@@ -4705,7 +4705,7 @@ return GizmoLongString]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumber</string>
 							<string name="ScriptGuid">{E0FAC82C-9106-4A5E-ABE0-709F55783EB4}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoNumber = {}
@@ -4844,7 +4844,7 @@ return GizmoNumber]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoNumberSlider</string>
 							<string name="ScriptGuid">{294D026D-D60D-4ABB-B975-3ABCCDC22BB9}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoNumberSlider = {}
@@ -5071,7 +5071,7 @@ return GizmoNumberSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoSeparator</string>
 							<string name="ScriptGuid">{EEB658EE-3EA4-464C-90F3-5BF04B05CF83}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
@@ -5161,7 +5161,7 @@ return GizmoSeparator]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoString</string>
 							<string name="ScriptGuid">{93F28F9F-0C01-47B3-8149-17F5172CDA43}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoString = {}
@@ -5292,7 +5292,7 @@ return GizmoString]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector2</string>
 							<string name="ScriptGuid">{2BEBEDD1-D2BA-429C-9A8B-BC476BB37D3C}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoVector2 = {}
@@ -5465,7 +5465,7 @@ return GizmoVector2]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoVector3</string>
 							<string name="ScriptGuid">{74FC14EE-E84C-4509-95B2-99F67BD78BCD}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoVector3 = {}
@@ -5659,7 +5659,7 @@ return GizmoVector3]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoColorSlider</string>
 							<string name="ScriptGuid">{A9C08860-3E7C-4D6F-91EB-48EE2FEC952A}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoColorSlider = {}
@@ -5988,7 +5988,7 @@ return GizmoColorSlider]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoText</string>
 							<string name="ScriptGuid">{4BB9F2FD-59E6-4870-B886-CF2C414DAFBA}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoText = {}
@@ -6066,7 +6066,7 @@ return GizmoText]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">GizmoListPicker</string>
 							<string name="ScriptGuid">{9442DE75-704B-4B43-8506-7A977A0025DA}</string>
-							<ProtectedString name="Source"><![CDATA[-- © 2022 Emmanuel Lajeunesse
+							<ProtectedString name="Source"><![CDATA[-- © 2023 Emmanuel Lajeunesse
 
 -- Module
 local GizmoListPicker = {}
@@ -12719,7 +12719,7 @@ asd]]></string>
 					<string name="ScriptGuid">{F622B28B-A5E6-4210-A94A-F3F94FCE9801}</string>
 					<ProtectedString name="Source"><![CDATA[--[[
 
-	-- © 2022 Emmanuel Lajeunesse
+	-- © 2023 Emmanuel Lajeunesse
 	-- DebuGui Documentation
 
 	-- DebuGui : First point of Access

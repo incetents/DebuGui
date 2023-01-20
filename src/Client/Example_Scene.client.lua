@@ -1,4 +1,4 @@
--- © 2022 Emmanuel Lajeunesse
+-- © 2023 Emmanuel Lajeunesse
 
 -- Roblox Services --
 local Chat = game:GetService("Chat")
@@ -27,7 +27,7 @@ local Gui = DebuGui.NewWindow('Scene', {
 	Width = 600,
 	Height = 520,
 })
---Gui.Minimize()
+Gui.Minimize()
 
 -- Humanoid
 local function UpdateHumanoid(Character)

@@ -377,8 +377,8 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 		return AddGizmo(GizmoUI_TripleSlider, GizmoColorSlider, UniqueName, API, DefaultColor, UpdateOnlyOnDragEnd, 4, nil)
 	end
 
-	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
-		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus)
+	function API.AddListPicker(UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus, IgnoreSameResult)
+		return AddGizmo(GizmoUI_Picker, GizmoListPicker, UniqueName, API, DefaultChoice, ChoiceArray, AllowNoChoice, ClearTextOnFocus, IgnoreSameResult)
 	end
 
 	-- Returns API of Gizmo

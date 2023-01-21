@@ -37,6 +37,7 @@ function GizmoLongString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearText
 	----------------
 	function API.Validate(Input)
 		if API._DeadCheck() then return nil end
+		if Input == API._Input then return true end
 		local Str = tostring(Input)
 		if Str then
 			Gui.ScrollingFrame.TextBox.Text = Str

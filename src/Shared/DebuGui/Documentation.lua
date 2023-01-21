@@ -294,7 +294,7 @@
 					UpdateOnlyOnDragEnd (boolean) = only trigger Listen updates on MouseReleased
 			-- @Returns: (Gizmo)
 
-		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice = false, ClearTextOnFocus = false)
+		-- AddListPicker (UniqueName, DefaultChoice, ChoiceArray, AllowNoChoice = false, ClearTextOnFocus = false, DontListenSameResult = false)
 			-- @Description: ListPicker Gizmo, have 1 string selected from a list of strings. Opens a Modal to select which one you want
 			-- @Parameters:
 					UniqueName (String) = UniqueName of the Gizmo
@@ -302,6 +302,7 @@
 					ChoiceArray (table) = Array table of all possible choices
 					AllowNoChoice = Allows nil to be a possible Choice
 					ClearTextOnFocus (Boolean) = Clicking the Textbox will clear the current text
+					DontListenSameResult = If you select the same choice, it will not trigger the listeners
 			-- @Returns: (Gizmo)
 
 

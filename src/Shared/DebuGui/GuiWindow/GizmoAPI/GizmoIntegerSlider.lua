@@ -148,7 +148,7 @@ function GizmoIntegerSlider.new(Gui, UniqueName, ParentAPI, DefaultValue, MinVal
 
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == tostring(API._Input) then return true end
 		if typeof(Input) ~= 'number' then
 			warn('GizmoIntegerSlider Given non Color Parameter')
 			return false
@@ -175,12 +175,15 @@ function GizmoIntegerSlider.new(Gui, UniqueName, ParentAPI, DefaultValue, MinVal
 		ButtonPositionT = math.clamp(ButtonPositionT, 0, 1)
 		Gui.TextBox.DragRange.Dragger.Position = UDim2.fromScale(ButtonPositionT, 0)
 
-		-- Get New Value based on Mouse and round result
+		-- Get New Value based on Mouse Position and round result
 		local NewValue = GetValueFromDraggerPosition(Gui.TextBox.DragRange.Dragger, MinValue, MaxValue)
 		NewValue = math.round(NewValue)
 
 		-- Move Position based on rounded Value
 		UpdateDraggerPositionFromValue(Gui.TextBox.DragRange.Dragger, NewValue, MinValue, MaxValue)
+
+		-- Check if nothing has changed
+		if NewValue == API._Input then return end
 
 		-- Calculate value from position
 		API._Input = NewValue

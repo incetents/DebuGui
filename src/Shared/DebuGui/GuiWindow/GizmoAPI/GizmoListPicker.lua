@@ -10,7 +10,7 @@ local Utility = require(script.Parent.Parent.Parent.Utility)
 ----------------
 -- Public API --
 ----------------
-function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices, AllowNoChoice, ClearTextOnFocus)
+function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices, AllowNoChoice, ClearTextOnFocus, DontListenSameResult)
 
 	-- Defaults
 	if ClearTextOnFocus == nil then
@@ -18,6 +18,9 @@ function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices,
 	end
 	if AllowNoChoice == nil then
 		AllowNoChoice = false
+	end
+	if DontListenSameResult == nil then
+		DontListenSameResult = false
 	end
 
     -- Sanity
@@ -66,8 +69,9 @@ function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices,
 				end
 			end
 		end
-		-- Check Choice
-		if Input == API._Input then return false end
+		-- Same Result ends check early
+		if Input == API._Input then return not DontListenSameResult end
+		-- Check Choice if valid
         local Str = tostring(Input)
         if Str and table.find(Choices, Str) then
             Gui.TextBox.Text = Str

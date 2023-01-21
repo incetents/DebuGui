@@ -164,7 +164,7 @@ function GizmoColorSlider.new(Gui, UniqueName, ParentAPI, DefaultColor, UpdateOn
 	-- Validate
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == API._Input then return true end
 		if typeof(Input) ~= 'Color3' then
 			warn('GizmoColorSlider Given non Color Parameter')
 			return false

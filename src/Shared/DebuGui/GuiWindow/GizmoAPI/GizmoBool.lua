@@ -37,7 +37,7 @@ function GizmoBool.new(Gui, UniqueName, ParentAPI, DefaultValue)
 	----------------
     function API.Validate(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == API._Input then return true end
         local IsTrue = (Input == true)
         if IsTrue then
             Gui.CheckBoxBG.CheckBoxFG.BackgroundColor3 = DefaultColor

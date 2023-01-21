@@ -41,7 +41,7 @@ function GizmoNumber.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmount
 	----------------
 	function API.Validate(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == tostring(API._Input) then return true end
 		local NumberInput = tonumber(Input)
 		if NumberInput then
 			if DecimalAmount then

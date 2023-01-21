@@ -37,7 +37,7 @@ function GizmoString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearTextOnFo
 	----------------
     function API.Validate(Input)
 		if API._DeadCheck() then return false end
-		if Input == API._Input then return false end
+		if Input == API._Input then return true end
         local Str = tostring(Input)
         if Str then
             Gui.TextBox.Text = Str

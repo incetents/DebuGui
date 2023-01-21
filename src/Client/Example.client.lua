@@ -2,7 +2,6 @@
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local UserInputService = game:GetService("UserInputService")
 
 -- Module --
 local DebuGui = require(ReplicatedStorage.DebuGui)

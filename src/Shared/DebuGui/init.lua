@@ -16,7 +16,6 @@ end
 -- Modules
 local GuiWindow = require(script.GuiWindow)
 local Utility = require(script.Utility)
-local Constants = require(script.Constants)
 
 -- Defines --
 local Player = Players.LocalPlayer
@@ -27,6 +26,7 @@ local ScreenGuiReference = script.DebuGui_UI
 DebuGui.ScreenGuis = {}
 DebuGui.ScreenGuiCount = 0
 DebuGui.MinimizeOrder = {} -- Array of Guis that are minimized
+DebuGui.DisplayOrderMinimum = 10000 -- All Guis will start with this number and increment further
 
 ----------------
 -- Public API --
@@ -54,6 +54,16 @@ function DebuGui.WaitForWindow(GuiName, TimeOutTime)
 		end
 		return DebuGui.ScreenGuis[GuiName].API
 	end
+end
+
+function DebuGui.SetDisplayOrderMinimum(NewDisplayOrderMinimum)
+	-- Fix
+	for _, Data in pairs(DebuGui.ScreenGuis) do
+		Data.ScreenGui.DisplayOrder -= DebuGui.DisplayOrderMinimum
+		Data.ScreenGui.DisplayOrder += NewDisplayOrderMinimum
+	end
+	-- Value Change
+	DebuGui.DisplayOrderMinimum = NewDisplayOrderMinimum
 end
 
 function DebuGui.NewWindow(GuiName, InitData)
@@ -85,8 +95,12 @@ function DebuGui.NewWindow(GuiName, InitData)
 	return API
 end
 
-function DebuGui.GetConstants()
-	return Constants
+function DebuGui.GetDefaultWindowTopBarColor()
+	return Color3.fromRGB(64, 103, 157);
+end
+
+function DebuGui.GetDefaultFolderColor()
+	return Color3.fromRGB(59, 60, 120);
 end
 
 return DebuGui

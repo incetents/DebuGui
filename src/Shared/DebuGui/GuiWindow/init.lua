@@ -18,7 +18,6 @@ local MIN_GUI_HEIGHT = 72
 local TITLEBAR_HEIGHT = 20
 local TITLEBAR_ICONSIZE = 20
 local TITLEBAR_WIDTH_PADDING_TOTAL = 8
-local DISPLAY_ORDER_MINIMUM = 10000 -- All Guis will start with this number and increment further
 
 -- Defines
 local VerticalLayout = Instance.new('UIListLayout')
@@ -54,7 +53,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 	local ResizeDragger = Dragger.new(MasterFrame.ResizeBtn)
 
 	-- Setup
-	ScreenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount
+	ScreenGui.DisplayOrder = DebuGui.DisplayOrderMinimum + DebuGui.ScreenGuiCount
 	ScreenGui.Enabled = true
 	MasterFrame.Position = UDim2.fromOffset(InitData.X, InitData.Y)
 	MasterFrame.Size = UDim2.fromOffset(math.max(MIN_GUI_WIDTH, InitData.Width), math.max(MIN_GUI_HEIGHT, InitData.Height))
@@ -97,7 +96,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 			-- Find X Position at end of Minimized List
 			local XOffset = 0
-			for __, Gui in ipairs(DebuGui.MinimizeOrder) do
+			for _, Gui in ipairs(DebuGui.MinimizeOrder) do
 				XOffset += Gui.MasterFrame.AbsoluteSize.X
 			end
 			-- Placed Minimized Position
@@ -127,7 +126,7 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 
 			-- Reorder all Minimized windows
 			local XOffset = 0
-			for __, Gui in ipairs(DebuGui.MinimizeOrder) do
+			for _, Gui in ipairs(DebuGui.MinimizeOrder) do
 				Gui.MasterFrame.Position = UDim2.new(
 					0, XOffset,
 					Gui.MasterFrame.Position.Y.Scale, Gui.MasterFrame.Position.Y.Offset
@@ -257,13 +256,13 @@ function GuiWindow.New(DebuGui, ScreenGui, InitData)
 		end
 
 		-- All Guis in front of it go back 1 step
-		for __, Data in pairs(DebuGui.ScreenGuis) do
+		for _, Data in pairs(DebuGui.ScreenGuis) do
 			if Data.ScreenGui.DisplayOrder > ChosenGui.DisplayOrder then
 				Data.ScreenGui.DisplayOrder -= 1
 			end
 		end
 		-- Gui becomes largest display order
-		ChosenGui.DisplayOrder = DISPLAY_ORDER_MINIMUM + DebuGui.ScreenGuiCount - 1
+		ChosenGui.DisplayOrder = DebuGui.DisplayOrderMinimum + DebuGui.ScreenGuiCount - 1
 	end
 
 	function API.GetScreenGui()

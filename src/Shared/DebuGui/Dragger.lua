@@ -16,7 +16,7 @@ local Draggers = {}
 
 -- Helper Functions --
 local function DragEndGlobal()
-	for __, Class in ipairs(Draggers) do
+	for _, Class in ipairs(Draggers) do
 		if Class.IsDragging and Class.Listener_OnDragEnd then
 			Class.Listener_OnDragEnd()
 		end
@@ -24,7 +24,7 @@ local function DragEndGlobal()
 	end
 end
 local function DragGlobal()
-	for __, Class in ipairs(Draggers) do
+	for _, Class in ipairs(Draggers) do
 		if Class.IsDragging and Class.Listener_OnDrag then
 			local Delta = Vector2.new(Mouse.X - Class.MouseClickPos.X, Mouse.Y - Class.MouseClickPos.Y)    
 			Class.Listener_OnDrag(Delta)
@@ -81,7 +81,7 @@ function Dragger.new(DraggerButton)
     end
 
     function Class.Destroy()
-        for __, Connection in ipairs(Connections) do
+        for _, Connection in ipairs(Connections) do
             Connection:Disconnect()
         end
         Connections = nil

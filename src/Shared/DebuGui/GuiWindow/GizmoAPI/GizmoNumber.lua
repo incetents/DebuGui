@@ -108,7 +108,7 @@ function GizmoNumber.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmount
 	end
 
 	-- Update Values
-	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end

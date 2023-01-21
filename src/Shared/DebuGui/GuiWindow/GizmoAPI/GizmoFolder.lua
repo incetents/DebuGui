@@ -4,7 +4,6 @@
 local GizmoFolder = {}
 
 -- Modules
-local Constants = require(script.Parent.Parent.Parent.Constants)
 local Utility = require(script.Parent.Parent.Parent.Utility)
 
 ----------------------
@@ -15,7 +14,7 @@ local function UpdateVisual(API, Gui)
 		Gui.DropDownBtn.Text = 'v'
 		Gui.ScrollingFrame.Visible = true
 		local CanvasHeight = 0
-		for __, Gizmo in ipairs(API._GizmosArray) do
+		for _, Gizmo in ipairs(API._GizmosArray) do
 			CanvasHeight += Gizmo.Gui.AbsoluteSize.Y
 		end
 		Gui.Size = UDim2.new(1, 0, 0, CanvasHeight + 24)
@@ -38,8 +37,8 @@ function GizmoFolder.new(Gui, UniqueName, MasterAPI, ParentAPI, StartOpen)
 
 	-- Setup
 	Gui.TextName.Text = UniqueName
-	Gui.Line.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
-	Gui.SideLine.BackgroundColor3 = Constants.DEFAULT_FOLDER_COLOR
+	Gui.Line.BackgroundColor3 = Color3.fromRGB(59, 60, 120); -- Default Folder Color
+	Gui.SideLine.BackgroundColor3 = Color3.fromRGB(59, 60, 120); -- Default Folder Color
 
 	-- Defines
 	local GizmoAPI = require(script.Parent)
@@ -64,7 +63,7 @@ function GizmoFolder.new(Gui, UniqueName, MasterAPI, ParentAPI, StartOpen)
 	-----------------
 	function API._NewGizmoAdded()
 		-- Update Children first
-		for __, Gizmo in ipairs(API._GizmosArray) do
+		for _, Gizmo in ipairs(API._GizmosArray) do
 			if Gizmo._UpdateVisual then
 				Gizmo._UpdateVisual()
 			end

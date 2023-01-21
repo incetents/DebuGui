@@ -56,7 +56,7 @@ if LocalPlayer.Character then
 end
 
 -- Settings
-Gui.AddColorSliderRGBInt('Folder Color', DebuGui.GetConstants().DEFAULT_FOLDER_COLOR, nil, true).Listen(function(NewColor)
+Gui.AddColorSliderRGBInt('Folder Color', DebuGui.GetDefaultFolderColor(), nil, true).Listen(function(NewColor)
 	Gui.GetFolder('Chat').SetColor(NewColor)
 	Gui.GetFolder('Object Spawning').SetColor(NewColor)
 	Gui.GetFolder('Player Settings').SetColor(NewColor)

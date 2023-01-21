@@ -2,11 +2,15 @@
 
 -- Roblox Services --
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
 
 -- Module --
 local DebuGui = require(ReplicatedStorage.DebuGui)
 
 local _ToDestroy = nil
+
+-- Set Minimum Layout Order
+DebuGui.SetDisplayOrderMinimum(600) -- All DebuGui windows will start from this number and increment
 
 -- Create New Window
 local Gui1 = DebuGui.NewWindow('Core', {
@@ -221,7 +225,7 @@ Gui1.AddSeparator('NUMBER_SEPARATOR').SetName('NUMBERS')
 --
 Gui1.AddNumber('num1', 1).SetName('fancy number')
 Gui1.AddNumber('num2', -1).SetNameColor(Color3.fromRGB(148, 255, 175))
-Gui1.AddNumber('num3', '9__#$%#$&*')
+Gui1.AddNumber('num3', '9_#$%#$&*')
 Gui1.AddNumber('num4')
 Gui1.AddNumber('num5', 6.6).Listen(function(NewValue)
 	print("New num5 Value: "..NewValue)
@@ -300,7 +304,7 @@ Gui1.AddString('string1', 'aa').SetName('fancy string').Listen(function(NewValue
 	print(NewValue)
 end)
 Gui1.AddString('string2', '1').SetNameColor(Color3.fromRGB(255, 200, 148))
-Gui1.AddString('string3', '__#$%#$&*').SetValueBGColor(Color3.fromRGB(87, 86, 39))
+Gui1.AddString('string3', '_#$%#$&*').SetValueBGColor(Color3.fromRGB(87, 86, 39))
 Gui1.AddString('string4').SetValueTextColor(Color3.fromRGB(248, 150, 232))
 Gui1.AddString('string5', 'default').Listen(function(NewValue)
 	print("New String5 Value: "..NewValue)

@@ -70,7 +70,7 @@ function GizmoBase.New(UniqueName, ParentAPI)
 	----------------
     -- Public API --
 	----------------
-    function API.Validate(__) -- Input
+    function API.Validate(_) -- Input
         warn('! Validate Function not implemented')
         return false
     end

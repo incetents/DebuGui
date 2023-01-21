@@ -28,9 +28,16 @@
 			-- @Parameters:
 					TimeOutTime (number) = Time to wait, nil = wait forever
 
-		-- GetConstants ()
-			-- @Description: Returns the Constants Module as a table (ScriptModule that is directly below DebuGui called Constants)
-			-- @Returns: (table)
+		-- SetDisplayOrderMinimum (NewDisplayOrderMinimum)
+			-- @Description: All DebuGui windows will start from this layout order number and increment by one based on ordering
+			-- @Parameters:
+					NewDisplayOrderMinimum (number) = Backmost gui will have this layout order
+
+		-- GetDefaultWindowTopBarColor ()
+			-- @Returns: (Color3)
+
+		-- GetDefaultFolderColor ()
+			-- @Returns: (Color3)
 
 
 	-- GuiWindow (Core) : A singular window spawned from DebuGui's NewWindow

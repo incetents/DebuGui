@@ -100,7 +100,7 @@ function GizmoString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearTextOnFo
 	end
 
     -- Update Values
-    API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+    API._AddConnection(Gui.TextBox.FocusLost:Connect(function(_) -- enterPressed
        	if IsReadOnly then
 			return
 	    end

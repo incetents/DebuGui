@@ -183,7 +183,7 @@ function GizmoListPicker.new(Gui, UniqueName, ParentAPI, DefaultChoice, Choices,
 			ParentAPI._CreateModal(UniqueName..' :', API, API._Input, Choices)
 		end
 	end))
-	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end

@@ -85,7 +85,7 @@ function GizmoButton.new(Gui, UniqueName, ParentAPI)
 	end
 
     -- Update Values
-    API._AddConnection(Gui.TextButton.MouseButton1Down:Connect(function(__) -- enterPressed
+    API._AddConnection(Gui.TextButton.MouseButton1Down:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end

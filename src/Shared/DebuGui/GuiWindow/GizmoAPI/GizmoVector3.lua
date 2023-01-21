@@ -145,7 +145,7 @@ function GizmoVector3.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmoun
 	end
 
 	-- Update Values
-	API._AddConnection(Gui.TextBox1.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox1.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end
@@ -154,7 +154,7 @@ function GizmoVector3.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmoun
 			API.TriggerListeners()
 		end
 	end))
-	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox2.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end
@@ -163,7 +163,7 @@ function GizmoVector3.new(Gui, UniqueName, ParentAPI, DefaultValue, DecimalAmoun
 			API.TriggerListeners()
 		end
 	end))
-	API._AddConnection(Gui.TextBox3.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.TextBox3.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end

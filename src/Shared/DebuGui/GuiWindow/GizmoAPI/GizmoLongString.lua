@@ -119,7 +119,7 @@ function GizmoLongString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearText
 	end
 
 	-- Update Values
-	API._AddConnection(Gui.ScrollingFrame.TextBox.FocusLost:Connect(function(__) -- enterPressed
+	API._AddConnection(Gui.ScrollingFrame.TextBox.FocusLost:Connect(function(_) -- enterPressed
 		if IsReadOnly then
 			return
 		end

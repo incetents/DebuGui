@@ -144,7 +144,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 	-----------------
 	function API._UpdateAllGizmos()
 		-- Update self
-		for __, Gizmo in ipairs(API._GizmosArray) do
+		for _, Gizmo in ipairs(API._GizmosArray) do
 			if Gizmo._UpdateVisual then
 				Gizmo._UpdateVisual()
 			end
@@ -404,7 +404,7 @@ function GizmoAPI.New(GuiParent, MasterAPI, ParentAPI)
 
 	-- Removes API of Gizmo
 	function API.RemoveAll()
-		for __, Gizmo in ipairs(API._GizmosArray) do
+		for _, Gizmo in ipairs(API._GizmosArray) do
 			Gizmo._Destroy()
 		end
 		API._GizmosTable = {}

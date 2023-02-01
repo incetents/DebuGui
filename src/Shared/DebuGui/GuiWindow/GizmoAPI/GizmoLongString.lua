@@ -110,12 +110,16 @@ function GizmoLongString.new(Gui, UniqueName, ParentAPI, DefaultValue, ClearText
 			local DeltaHeight = NewHeight - OCHeight
 			Utility.ModifyCanvasHeight(ParentAPI._MasterAPI._GuiParent, DeltaHeight)
 		end
+
+		return API
 	end
 
 	function API.SetHeightBasedOnLineCount(LineCount)
 		local YOffset = Gui.ScrollingFrame.TextBox.Size.Y.Offset
 		local ScrollingFrameHeightDiff = (Gui.AbsoluteSize.Y - Gui.ScrollingFrame.AbsoluteSize.Y)
 		API.SetHeight(-YOffset + LineCount * Gui.ScrollingFrame.TextBox.TextSize + ScrollingFrameHeightDiff)
+
+		return API
 	end
 
 	-- Update Values

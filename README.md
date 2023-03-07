@@ -353,6 +353,7 @@ Result:
 | Bool | A togglable checkbox for true/false states |
 | Button | A button that when pressed will trigger its Listeners |
 | ColorSlider | 3 sliders for selecting a color with RGB floating point, RGB integers, HSV floating point, and HSV integers |
+| Empty | An empty gizmo, used for spacing
 | Folder |  A container to hold gizmos that can be easily collapsed. Also indents all the gizmos a bit with the folder color |
 | Integer | A text field that only accepts integers as input |
 | IntegerSlider | A slider that can be dragged to change an integers value, requires a min/max value for edge values |

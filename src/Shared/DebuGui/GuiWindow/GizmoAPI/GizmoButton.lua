@@ -1,4 +1,4 @@
--- © 2023 Emmanuel Lajeunesse
+-- © 2023 Natasha Lajeunesse
 
 -- Module
 local GizmoButton = {}

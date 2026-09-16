@@ -380,7 +380,7 @@ This published place showcases the Demo place, see for yourself the Gui Window i
 
 ## Credits
 
-Developed by Emmanuel Lajeunesse
+Developed by Natasha Lajeunesse
 
 Inspiration from Omar's DearImGui C++ library
 

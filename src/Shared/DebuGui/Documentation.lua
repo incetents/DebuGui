@@ -1,6 +1,6 @@
 --[[
 
-	-- © 2023 Emmanuel Lajeunesse
+	-- © 2023 Natasha Lajeunesse
 	-- DebuGui Documentation
 
 	-- DebuGui : First point of Access

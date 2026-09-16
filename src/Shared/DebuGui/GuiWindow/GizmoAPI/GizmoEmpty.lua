@@ -1,4 +1,4 @@
--- © 2023 Emmanuel Lajeunesse
+-- © 2023 Natasha Lajeunesse
 
 -- Modules
 local Utility = require(script.Parent.Parent.Parent.Utility)
